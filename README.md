@@ -1,6 +1,6 @@
 # HubEx.API — справочник API HubEx для ИИ-агентов
 
-> **Что здесь:** автономный справочник REST API HubEx: полный каталог ручек 22 сервисов (`endpoints/`), точные схемы типов (`schemas/`), заметки практики (`notes/`), канонические swagger-снапшоты (`snapshots/`) и пайплайн обновления.
+> **Что здесь:** автономный справочник REST API HubEx: полный каталог ручек 22 сервисов (`endpoints/`), точные схемы типов (`schemas/`), заметки практики (`notes/`), канонические swagger-снапшоты (`snapshots/`) и пайплайн обновления. Отдача наружу в формате llmstxt.org — производный экспорт (см. «Обновление»), в репо не коммитится.
 > **Когда сюда идти:** нужна ручка HubEx API, её параметры или правила работы с API — начни с [overview.md](overview.md).
 
 **HubEx** — облачная мультитенантная FSM-платформа (Field Service Management) для выездного обслуживания: заявки с жизненным циклом, объекты/оборудование, исполнители, SLA, чек-листы, акты, склад, аналитика.
@@ -15,11 +15,10 @@
 | [schemas/](schemas/) | определения типов запросов/ответов (генерируется из swagger) | нужна точная форма типа, на который ссылается ручка |
 | [notes/](notes/) | проверенные практикой правила и ⚠-грабли | перед использованием сервиса |
 | [snapshots/](snapshots/) | канонические swagger JSON | нужна точная схема — grep, целиком не читать (до 1.2 МБ) |
-| [llms.txt](llms.txt) / [llms-full.txt](llms-full.txt) | индекс и склейка по llmstxt.org | отдать справочник внешнему инструменту |
 
 ## Правила
 
-- `endpoints/**`, `schemas/**`, `snapshots/**`, `llms*.txt` руками не правятся — их перезаписывает пайплайн.
+- `endpoints/**`, `schemas/**`, `snapshots/**` руками не правятся — их перезаписывает пайплайн.
 - **Нашёл особенность/правило, которого нет в swagger, — запиши в `notes/<SVC>.md`** (⚠-строка: ссылка на ручку, тире, факт). Кросс-сервисное — в `overview.md`. Запрещено записывать факты, противоречащие `snapshots/`.
 - Не выдумывай ручки: нет в `endpoints/` — нет в API; проверь `snapshots/` или скажи, что не нашёл.
 - Рецепт поиска: не знаешь сервис — grep по `endpoints/` (summary русские); `overview.md` — выбор сервиса по сценарию.
@@ -29,8 +28,11 @@
 
 `tools/` и `cli/` — git-сабмодули (репозитории `HubEx.API.Pipeline` и `HubEx.API.CLI` рядом, у того же владельца). Обычный `git clone` их не тянет — потребителю справочника они не нужны. Выкачать: `git submodule update --init tools` (или `cli`, или клон с `--recursive`).
 
-python3 tools/api_cli.py update [--service WORK ...] [--recompress]   # обновление (детали: tools/README.md)
+python3 tools/api_cli.py update [--service WORK ...] [--recompress]   # обновление snapshots/endpoints/schemas (детали: tools/README.md)
+python3 tools/api_cli.py export-llms [--out dist]                     # экспорт llms.txt/llms-full.txt + копии в dist/ (не коммитится)
 python3 cli/hubex_cli.py api get --tenant N /WORK/Tasks               # живой доступ (детали: cli/README.md)
+
+`export-llms` — операция мейнтейнера: собирает в `dist/` (в `.gitignore`) самодостаточный набор в формате [llmstxt.org](https://llmstxt.org) для отдачи по HTTP. В самом репозитории llms не хранятся — это производный артефакт, генерируется перед выкладкой.
 
 ## Комбинирование с другими доменами
 
