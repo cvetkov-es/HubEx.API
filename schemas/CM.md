@@ -4,6 +4,6 @@
 > **Источник:** `snapshots/CM.json` · файл генерируется пайплайном — руками не править.
 
 ```
-type CoordinateData { altitude?: float /* Высота */, bearing?: float /* Азимут */, accuracy?: float /* Точность */, speed?: float /* Скорость */, latitude?: float /* Широта */, longitude?: float /* Долгота */ }
-type PostData { coordinate?: str /* Координаты в формате "широта:долгота" */, clientTimestamp?: datetime /* Дата события UTC */, timestamp?: datetime /* Дата события UTC */, altitude?: float /* Высота */, bearing?: float /* Азимут */, accuracy?: float /* Точность */, speed?: float /* Скорость */, coords?: CoordinateData }
+type CoordinateData { accuracy?: float /* Точность */, altitude?: float /* Высота */, bearing?: float /* Азимут */, latitude?: float /* Широта */, longitude?: float /* Долгота */, speed?: float /* Скорость */ }
+type PostData { accuracy?: float /* Точность */, altitude?: float /* Высота */, bearing?: float /* Азимут */, clientTimestamp?: datetime /* Дата события UTC */, coordinate?: str /* Координаты в формате "широта:долгота" */, coords?: CoordinateData, speed?: float /* Скорость */, timestamp?: datetime /* Дата события UTC */ }
 ```

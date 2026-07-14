@@ -23,7 +23,7 @@ Base: `{BASE_URL}/COMMON`
 - `POST /Attachments/upload/fromBody` — Загружает файл на файловый сервер. Данные будут получены из тела запроса. · права: AttachmentUpload
   ← body: FromBodyUploadData → UploadResult
 - `POST /Attachments/upload/fromForm` — Загружает файл на файловый сервер. Данные будут получены из формы. · права: AttachmentUpload
-  ← body: { Description?: str, IsPublic?: bool, IsIgnorePossibleDuplication?: bool, Roles?: int[], Coordinate?: str, File: file, FileName?: str, ContentType?: str, Uid?: uuid, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.CanTimeout?: bool, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, Md5Hash?: str, ContentLength?: int } → UploadResult
+  ← body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → UploadResult
 - `POST /Attachments/v2/upload/fromForm` — Загружает несколько файлов на файловый сервер. Данные будут получены из формы. · права: AttachmentUpload
   ← body: { Attachments?: FromFormUploadData[] /* Данные загружаемого файла, полученные из формы */ } → UploadResult
 - `GET /Attachments/{attachmentID}` — Возвращает TemporartRedirect на временную ссылку для скачки файла · права: AttachmentDownload · paginated

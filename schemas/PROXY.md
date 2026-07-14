@@ -6,6 +6,6 @@
 ```
 type GetResult { url?: str }
 type KeyValuePair<String, String> { key?: str, value?: str }
-type PostData { url: str, method: str, headers?: KeyValuePair<String, String>[], body?: str }
-type PostResult { headers?: map<str[]>, content?: str, statusCode?: int }
+type PostData { body?: str, headers?: KeyValuePair<String, String>[], method: str, url: str }
+type PostResult { content?: str, headers?: map<str[]>, statusCode?: int }
 ```

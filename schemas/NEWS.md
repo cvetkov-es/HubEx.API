@@ -4,7 +4,7 @@
 > **Источник:** `snapshots/NEWS.json` · файл генерируется пайплайном — руками не править.
 
 ```
-type ErrorModel { traceIdentifier?: str, code?: str, message?: str, arguments?: map<str> }
-type ListResult { id?: int, title?: str /* Заголовок новости */, text?: str /* Содержание новости, разметка */, footer?: str /* Нижний колонтитул новости */ }
+type ErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifier?: str }
+type ListResult { footer?: str /* Нижний колонтитул новости */, id?: int, text?: str /* Содержание новости, разметка */, title?: str /* Заголовок новости */ }
 type MergeDeliveryData { articleID: int }
 ```

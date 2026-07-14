@@ -34,7 +34,7 @@ Base: `{BASE_URL}/WORK`
 
 ## CompletedWorkAttachments
 - `POST /CompletedWorkAttachments` — Добавляет загруженный ранее вложенный файл к выполненной работе · права: CompletedWorkAttachmentAdd
-  ← body: TaskActionData<AddData>[] → CompletedWorkAttachments.AddResult[]
+  ← body: Common.TaskActionData<CompletedWorkAttachment.AddData>[] → CompletedWorkAttachments.AddResult[]
 - `DELETE /CompletedWorkAttachments` — Помечает прикрепленный к выполненной работе файл как удаленный · права: CompletedWorkAttachmentDelete
   ← body: TaskActionData<DeleteData>[]
 - `POST /CompletedWorkAttachments/upload/fromBody` — Загружает файл на файловый сервер и привязывает его к выполненной работе. Данные будут получены из тела запроса. · права: CompletedWorkAttachmentUpload
@@ -44,7 +44,7 @@ Base: `{BASE_URL}/WORK`
 
 ## CompletedWorks
 - `POST /CompletedWorks` — Создаёт выполненные работы по одной или нескольким заявкам · права: CompletedWorkAdd
-  ← body: TaskActionData<AddData>[] → CompletedWorks.AddResult[]
+  ← body: Common.TaskActionData<CompletedWork.AddData>[] → CompletedWorks.AddResult[]
   ## Пример запроса:
 `POST /CompletedWorks`
             
@@ -92,7 +92,7 @@ Base: `{BASE_URL}/WORK`
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `CompletedWorkAdd`.
 - `PUT /CompletedWorks` — Изменяет выполненные работы по заявкам · права: CompletedWorkUpdate
-  ← body: TaskActionData<UpdateData>[]
+  ← body: Common.TaskActionData<CompletedWork.UpdateData>[]
   ## Пример запроса:
 `PUT /CompletedWorks`
             
@@ -231,7 +231,7 @@ Base: `{BASE_URL}/WORK`
 - `POST /TaskMaterials` — Добавляет, изменяет необходимые материалы к заявкам · права: TaskMaterialAdd
   ← body: TaskActionData<MergeData>[] → TaskMaterials.PostResult
 - `PUT /TaskMaterials` — Изменяет необходимые материалы в заявках · права: TaskMaterialUpdate
-  ← body: TaskActionData<UpdateData>[]
+  ← body: Common.TaskActionData<TaskMaterial.UpdateData>[]
 - `DELETE /TaskMaterials` — Удаляет необходимые материалы из заявок · права: TaskMaterialDelete
   ← body: TaskActionData<Int16>[]
 - `PUT /TaskMaterials/takeOff` — Убирает признак взятия необходимых материалов из заявок · права: TaskMaterialTakeOff
@@ -379,7 +379,7 @@ Base: `{BASE_URL}/WORK`
 - `GET /Tasks` — Возвращает список заявок, доступных пользователю. · права: TasksList · paginated
   ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, ratingCriteriaId?:any, taskTemplateID?:str, requestMethodID?:any, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), topLevelTasksForHierarchy?:enum(true, false), assetTypeID?:any, assetClassID?:any, districtID?:any, assetResponsibleUserID?:any, branchID?:any, erpID?:str, parentID?:any, assetSchemaID?:any, attributeValues?:str, lastModifiedFrom?:any, lastModifiedTill?:any, contactID?:any, payeeCompanyID?:any → map<Tasks.ListResult>
 - `POST /Tasks` — Создаёт заявку · права: TaskAdd
-  ← body: Task.AddData → IdResult<Int32>
+  ← body: Task.AddData → Auxiliary.IdResult<System.Int32>
   ## Пример запроса:
 `POST /Tasks`
             
@@ -507,7 +507,7 @@ Base: `{BASE_URL}/WORK`
 - `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments/{attachmentID}` — Получает информацию о прикрепленном к чек-листу по завке файле · права: TaskCheckListResultAttachmentGet
   ← path: taskID:int, taskCheckListID:int, taskChecklistResultID:int, attachmentID:int
 - `POST /Tasks/{taskID}/checkLists/{taskCheckListID}/upload/fromForm` — Загружает файл на файловый сервер и привязывает его к чек-листу по заявке. Данные будут получены из формы. · права: TaskCheckListResultAttachmentUpload
-  ← path: taskID:int, taskCheckListID:int; body: { TaskCheckListID?: int /* Идентификатор чек- листа по заявке */, TaskCheckListResultID?: int /* Идентификатор результата чек- листа по заявке */, Attachments?: TaskCheckListResultAttachment[] /* Вложения в чек- листе по заявке */ } → TaskCheckListResultAttachment.UploadResult
+  ← path: taskID:int, taskCheckListID:int; body: { Attachments?: TaskCheckListResultAttachment[] /* Вложения в чек- листе по заявке */, TaskCheckListID?: int /* Идентификатор чек- листа по заявке */, TaskCheckListResultID?: int /* Идентификатор результата чек- листа по заявке */ } → TaskCheckListResultAttachment.UploadResult
 - `PUT /Tasks/{taskID}/complete` — Помечает заявку, как выполненную · права: TaskComplete
   ← path: taskID:int; body: TaskCompletion.AddData
 - `GET /Tasks/{taskID}/completedWorks` — Возвращает список выполненных работ по заявке · права: CompletedWorkList · paginated
@@ -555,7 +555,7 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/technicians` — Удаляет исполнителей у выполненной работы по заявке · права: CompletedWorkMaterialDelete
   ← path: taskID:int, completedWorkID:int; body: int[]
 - `POST /Tasks/{taskID}/completedWorks/{completedWorkID}/upload/fromForm` — Загружает файл на файловый сервер и привязывает его к чек-листу по заявке. Данные будут получены из формы. · права: CompletedWorkAttributeAttachmentUpload
-  ← path: taskID:int, completedWorkID:int; body: { CompletedWorkID?: int /* Идентификатор выполненной работы по заявке */, AttributeID?: int /* Идентификатор атрибута выполненной работы по заявке */, Attachments?: CompletedWorkAttributeAttachment[] /* Вложения в атрибуте выполненной работы по заявке */ } → CompletedWorkAttachments.UploadResult
+  ← path: taskID:int, completedWorkID:int; body: { Attachments?: CompletedWorkAttributeAttachment[] /* Вложения в атрибуте выполненной работы по заявке */, AttributeID?: int /* Идентификатор атрибута выполненной работы по заявке */, CompletedWorkID?: int /* Идентификатор выполненной работы по заявке */ } → CompletedWorkAttachments.UploadResult
 - `GET /Tasks/{taskID}/completedWorks/{id}` — Получает информацию о выполненной работе по заявкам · права: CompletedWorkGet
   ← path: taskID:int, id:int → CompletedWorkResult[]
 - `GET /Tasks/{taskID}/contacts` — Возвращает список контактов заявки · права: TaskContactsList · paginated
@@ -567,7 +567,7 @@ Base: `{BASE_URL}/WORK`
 - `POST /Tasks/{taskID}/conversation` — Добавляет сообщения по заявкам. · права: TaskConversationAdd
   ← path: taskID:int; body: TaskConversationData → TaskConversations.AddResult[]
 - `POST /Tasks/{taskID}/conversation/upload/fromForm` — Загружает файл на файловый сервер и привязывает его к сообщению по заявке. Данные будут получены из формы. · права: TaskConversationAttachmentUpload
-  ← path: taskID:int; body: { Message?: str /* Сообщение по заявке */, IsExternal?: bool /* Чат с командой или Заказчиком */, Attachments?: TaskConversationAttachment[] /* Вложения в сообщение по заявке */ } → TaskConversations.UploadResult
+  ← path: taskID:int; body: { Attachments?: TaskConversationAttachment[] /* Вложения в сообщение по заявке */, IsExternal?: bool /* Чат с командой или Заказчиком */, Message?: str /* Сообщение по заявке */ } → TaskConversations.UploadResult
 - `GET /Tasks/{taskID}/conversations` — Возвращает сообщения по заявке
 <param name="taskID">Идентификатор заявки</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param><param name="searchText">Текст для поиска в сообщениях по заявке</param> · права: TaskConversationsList · paginated
   ← path: taskID:int; query: thumbnailSize?:int, searchText?:str, isRead?:enum(true, false) → TaskMessage[]
