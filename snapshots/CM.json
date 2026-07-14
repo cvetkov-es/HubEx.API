@@ -1,0 +1,162 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.Service.CM.Api.Data.Clients.CoordinateData": {
+        "additionalProperties": false,
+        "description": "Гео данные",
+        "properties": {
+          "accuracy": {
+            "description": "Точность",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "altitude": {
+            "description": "Высота",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "bearing": {
+            "description": "Азимут",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "latitude": {
+            "description": "Широта",
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "description": "Долгота",
+            "format": "double",
+            "type": "number"
+          },
+          "speed": {
+            "description": "Скорость",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.CM.Api.Data.Clients.PostData": {
+        "additionalProperties": false,
+        "description": "Гео данные",
+        "properties": {
+          "accuracy": {
+            "description": "Точность",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "altitude": {
+            "description": "Высота",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "bearing": {
+            "description": "Азимут",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "clientTimestamp": {
+            "description": "Дата события UTC",
+            "format": "date-time",
+            "type": "string"
+          },
+          "coordinate": {
+            "description": "Координаты в формате \"широта:долгота\"",
+            "nullable": true,
+            "type": "string"
+          },
+          "coords": {
+            "$ref": "#/components/schemas/HubEx.Service.CM.Api.Data.Clients.CoordinateData"
+          },
+          "speed": {
+            "description": "Скорость",
+            "format": "float",
+            "nullable": true,
+            "type": "number"
+          },
+          "timestamp": {
+            "description": "Дата события UTC",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Service offers application programming interface for ....",
+    "title": "API for CM in HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/Clients/locations": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.Service.CM.Api.Data.Clients.PostData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.Service.CM.Api.Data.Clients.PostData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.Service.CM.Api.Data.Clients.PostData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.Service.CM.Api.Data.Clients.PostData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Геоданные"
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Сохраняет данные о местоположении",
+        "tags": [
+          "Clients"
+        ]
+      }
+    }
+  }
+}

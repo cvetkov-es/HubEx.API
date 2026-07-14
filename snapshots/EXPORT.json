@@ -1,0 +1,3091 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.Service.EXPORT.Api.Results.FieldResult": {
+        "additionalProperties": false,
+        "description": "Экспортируемое поле",
+        "properties": {
+          "code": {
+            "description": "Код поля",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание поля",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "hods over main system's enitities: tasks, users and assets",
+    "title": "API for data exporting in HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/Assets": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AssetsExport**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы родительских объектов, по которым будет производиться фильтрация выборки ( -1 - корневые элементы)",
+            "in": "query",
+            "name": "parentID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей (ответственных по объекту), по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "responsiblePerson",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы участков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "districtID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы навыков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "skillID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Тэги, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Название объекта, по которому будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак, возвращения только мобильного оборудования (если true) или исключая мобильного оборудования (если false)",
+            "in": "query",
+            "name": "isMobile",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения Только с указанным ответственным - если 'true', только без указанного ответственного - если 'false', все - если 'NULL'",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "type": "nullable`1"
+            }
+          },
+          {
+            "description": "Признак, возвращения только удаленных объектов",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения только опубликованных объектов",
+            "in": "query",
+            "name": "isPublished",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Начальная дата периода фильтрации по сроку гарантийных обязательств",
+            "in": "query",
+            "name": "warrantyFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечная дата периода фильтрации по сроку гарантийных обязательств",
+            "in": "query",
+            "name": "warrantyTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Идентификаторы чек-листов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "checkListID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификатор объекта, потомки которого будут возвращены",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список объектов с учетом указанных фильтров",
+        "tags": [
+          "Assets"
+        ]
+      }
+    },
+    "/Assets/extended": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AssetsExport**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "include",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы родительских объектов, по которым будет производиться фильтрация выборки ( -1 - корневые элементы)",
+            "in": "query",
+            "name": "parentID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей (ответственных по объекту), по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "responsiblePerson",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы участков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "districtID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы навыков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "skillID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Тэги, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Название объекта, по которому будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак, возвращения только мобильного оборудования (если true) или исключая мобильного оборудования (если false)",
+            "in": "query",
+            "name": "isMobile",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения Только с указанным ответственным - если 'true', только без указанного ответственного - если 'false', все - если 'NULL'",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "type": "nullable`1"
+            }
+          },
+          {
+            "description": "Признак, возвращения только удаленных объектов",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения только опубликованных объектов",
+            "in": "query",
+            "name": "isPublished",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Начальная дата периода фильтрации по сроку гарантийных обязательств",
+            "in": "query",
+            "name": "warrantyFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечная дата периода фильтрации по сроку гарантийных обязательств",
+            "in": "query",
+            "name": "warrantyTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Идентификаторы чек-листов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "checkListID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификатор объекта, потомки которого будут возвращены",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список объектов с учетом указанных фильтров",
+        "tags": [
+          "Assets"
+        ]
+      }
+    },
+    "/Assets/extended/includes": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AssetsExport**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Навание поля для поиска",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список данных, доступных для расширенного экспорта",
+        "tags": [
+          "Assets"
+        ]
+      }
+    },
+    "/Companies": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **CompaniesExport**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Флаг необходимости выводить пустой отчет, только с заголовками",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список компаний с учетом указанных фильтров",
+        "tags": [
+          "Companies"
+        ]
+      }
+    },
+    "/MaterialConsumption": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MaterialConsumptionList**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы складов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "warehouseID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы сотрудников, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "consumedByUserID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате инвентаризации",
+            "in": "query",
+            "name": "consumptionPeriodFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате инвентаризации",
+            "in": "query",
+            "name": "consumptionPeriodTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список расходов материалов",
+        "tags": [
+          "MaterialConsumption"
+        ]
+      }
+    },
+    "/Materials": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MaterialList**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы складов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "warehouseID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Дата инвентаризации, по которой будет фильтрация результата",
+            "in": "query",
+            "name": "inventoryDate",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Идентификатор сотрудника, по которому будет фильтрация результата",
+            "in": "query",
+            "name": "warehouseAssignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список материалов",
+        "tags": [
+          "Materials"
+        ]
+      }
+    },
+    "/Materials/v2.0": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MaterialList**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы складов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "warehouseID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Дата инвентаризации, по которой будет фильтрация результата",
+            "in": "query",
+            "name": "inventoryDate",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Идентификатор сотрудника, по которому будет фильтрация результата",
+            "in": "query",
+            "name": "warehouseAssignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список материалов (версия 2.0 с постраничной загрузкой)",
+        "tags": [
+          "Materials"
+        ]
+      }
+    },
+    "/Tasks": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, которые подали заявку, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "requestedBy",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых в текущий момент назначена заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, от которых ожидается утверждение заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "approvalWith",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых была эскалирована заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "escalatedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым и по дочерним объектам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Номера заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskNumber",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы стадий заявок, на которых в текущий находятся заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStageID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы статусов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStatusID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только закрытые заявки, если false - только открытые",
+            "in": "query",
+            "name": "isClosed",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только заявки из списка избранных для текущего пользователя, если false - только те, которые не вошли в список избранных текущего пользователя",
+            "in": "query",
+            "name": "isFavourite",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только выполненые заявки, если false - только не выполненные",
+            "in": "query",
+            "name": "isCompleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только назначенные на кого-либо заявки, если false - только не назначенные",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные заявки, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только просроченные заявки, если false - все остальные",
+            "in": "query",
+            "name": "isOutdated",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний владельца оборудования, по заявкам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы контракта, в рамках которого выполняется заявка",
+            "in": "query",
+            "name": "contractID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы критичности заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "criticalityID",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Идентификатор метода сортировки заявок (/taskOrderBy). Если не укзкн, то заявки будут отсортированы по дате создания",
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Направление сортировки заявок: 1 - по восходящей (asc), 2 - по нисходящей (desc). Если не укзкн, то заявки будут отсортировны по нисходящей (desc)",
+            "in": "query",
+            "name": "sortDirection",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Северо-Восточная координата геообласти",
+            "in": "query",
+            "name": "pointNorthEast",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Юго-Западная координата геообласти",
+            "in": "query",
+            "name": "pointSouthWest",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Центральная точка геообласти",
+            "in": "query",
+            "name": "pointCenter",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Радиус геообласти в метрах",
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "default": null,
+              "type": "single"
+            }
+          },
+          {
+            "description": "Хэш области",
+            "in": "query",
+            "name": "geoHash",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список заявок с учетом указанных фильтров",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Tasks/extended": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**",
+        "parameters": [
+          {
+            "description": "Код столбца",
+            "in": "query",
+            "name": "include",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "description": "Текстовый поиск по описанию заявки, названию объекта, названию вида работ",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hideEmptyColumns",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, которые подали заявку, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "requestedBy",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых в текущий момент назначена заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, от которых ожидается утверждение заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "approvalWith",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых была эскалирована заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "escalatedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым и по дочерним объектам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Номера заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskNumber",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы стадий заявок, на которых в текущий находятся заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStageID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы статусов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStatusID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только закрытые заявки, если false - только открытые",
+            "in": "query",
+            "name": "isClosed",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только заявки из списка избранных для текущего пользователя, если false - только те, которые не вошли в список избранных текущего пользователя",
+            "in": "query",
+            "name": "isFavourite",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только выполненые заявки, если false - только не выполненные",
+            "in": "query",
+            "name": "isCompleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только назначенные на кого-либо заявки, если false - только не назначенные",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные заявки, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только просроченные заявки, если false - все остальные",
+            "in": "query",
+            "name": "isOutdated",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний владельца оборудования, по заявкам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы контракта, в рамках которого выполняется заявка",
+            "in": "query",
+            "name": "contractID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы критичности заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "criticalityID",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Идентификатор метода сортировки заявок (/taskOrderBy). Если не укзкн, то заявки будут отсортированы по дате создания",
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Направление сортировки заявок: 1 - по восходящей (asc), 2 - по нисходящей (desc). Если не укзкн, то заявки будут отсортировны по нисходящей (desc)",
+            "in": "query",
+            "name": "sortDirection",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Северо-Восточная координата геообласти",
+            "in": "query",
+            "name": "pointNorthEast",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Юго-Западная координата геообласти",
+            "in": "query",
+            "name": "pointSouthWest",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Центральная точка геообласти",
+            "in": "query",
+            "name": "pointCenter",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Радиус геообласти в метрах",
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "default": null,
+              "type": "single"
+            }
+          },
+          {
+            "description": "Хэш области",
+            "in": "query",
+            "name": "geoHash",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Скрывать колонки с незаполненными данными.",
+            "in": "query",
+            "name": "hideEmptyColumns",
+            "schema": {
+              "default": "false",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует расширенный список заявок с учетом указанных фильтров",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Tasks/extended/V2": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**",
+        "parameters": [
+          {
+            "description": "Код столбца",
+            "in": "query",
+            "name": "include",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "description": "Текстовый поиск по описанию заявки, названию объекта, названию вида работ",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hideEmptyColumns",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, которые подали заявку, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "requestedBy",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых в текущий момент назначена заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, от которых ожидается утверждение заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "approvalWith",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых была эскалирована заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "escalatedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым и по дочерним объектам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Номера заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskNumber",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы стадий заявок, на которых в текущий находятся заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStageID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы статусов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStatusID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только закрытые заявки, если false - только открытые",
+            "in": "query",
+            "name": "isClosed",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только заявки из списка избранных для текущего пользователя, если false - только те, которые не вошли в список избранных текущего пользователя",
+            "in": "query",
+            "name": "isFavourite",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только выполненые заявки, если false - только не выполненные",
+            "in": "query",
+            "name": "isCompleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только назначенные на кого-либо заявки, если false - только не назначенные",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные заявки, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только просроченные заявки, если false - все остальные",
+            "in": "query",
+            "name": "isOutdated",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний владельца оборудования, по заявкам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы контракта, в рамках которого выполняется заявка",
+            "in": "query",
+            "name": "contractID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы критичности заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "criticalityID",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Идентификатор метода сортировки заявок (/taskOrderBy). Если не укзкн, то заявки будут отсортированы по дате создания",
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Направление сортировки заявок: 1 - по восходящей (asc), 2 - по нисходящей (desc). Если не укзкн, то заявки будут отсортировны по нисходящей (desc)",
+            "in": "query",
+            "name": "sortDirection",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Северо-Восточная координата геообласти",
+            "in": "query",
+            "name": "pointNorthEast",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Юго-Западная координата геообласти",
+            "in": "query",
+            "name": "pointSouthWest",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Центральная точка геообласти",
+            "in": "query",
+            "name": "pointCenter",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Радиус геообласти в метрах",
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "default": null,
+              "type": "single"
+            }
+          },
+          {
+            "description": "Хэш области",
+            "in": "query",
+            "name": "geoHash",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Скрывать колонки с незаполненными данными.",
+            "in": "query",
+            "name": "hideEmptyColumns",
+            "schema": {
+              "default": "false",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует расширенный список заявок с учетом указанных фильтров",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Tasks/extended/includes": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Навание поля для поиска",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.EXPORT.Api.Results.FieldResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список данных, доступных для расширенного экспорта",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Tasks/noData": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует пустой шаблон для импорта заявок",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Tasks/v2.0": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TasksExport**",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, которые подали заявку, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "requestedBy",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых в текущий момент назначена заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assignedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, от которых ожидается утверждение заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "approvalWith",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, на которых была эскалирована заявка, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "escalatedTo",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы объектов, по которым и по дочерним объектам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "startWithAssetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Номера заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskNumber",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы типов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы стадий заявок, на которых в текущий находятся заявки, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStageID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы статусов заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "taskStatusID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате создания заявки",
+            "in": "query",
+            "name": "creationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате назначения заявки",
+            "in": "query",
+            "name": "assignationTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате выполнения заявки",
+            "in": "query",
+            "name": "completionTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате закрытия заявки",
+            "in": "query",
+            "name": "closingTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по сроку выполнения заявки",
+            "in": "query",
+            "name": "deadlineTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только закрытые заявки, если false - только открытые",
+            "in": "query",
+            "name": "isClosed",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только заявки из списка избранных для текущего пользователя, если false - только те, которые не вошли в список избранных текущего пользователя",
+            "in": "query",
+            "name": "isFavourite",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только выполненые заявки, если false - только не выполненные",
+            "in": "query",
+            "name": "isCompleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только назначенные на кого-либо заявки, если false - только не назначенные",
+            "in": "query",
+            "name": "isAssigned",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные заявки, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только просроченные заявки, если false - все остальные",
+            "in": "query",
+            "name": "isOutdated",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы компаний владельца оборудования, по заявкам которых будет отфильтрован результат",
+            "in": "query",
+            "name": "companyID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы контракта, в рамках которого выполняется заявка",
+            "in": "query",
+            "name": "contractID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы критичности заявок, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "criticalityID",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Идентификатор метода сортировки заявок (/taskOrderBy). Если не укзкн, то заявки будут отсортированы по дате создания",
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Направление сортировки заявок: 1 - по восходящей (asc), 2 - по нисходящей (desc). Если не укзкн, то заявки будут отсортировны по нисходящей (desc)",
+            "in": "query",
+            "name": "sortDirection",
+            "schema": {
+              "default": null,
+              "type": "byte"
+            }
+          },
+          {
+            "description": "Северо-Восточная координата геообласти",
+            "in": "query",
+            "name": "pointNorthEast",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Юго-Западная координата геообласти",
+            "in": "query",
+            "name": "pointSouthWest",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Центральная точка геообласти",
+            "in": "query",
+            "name": "pointCenter",
+            "schema": {
+              "default": null,
+              "type": "coordinate"
+            }
+          },
+          {
+            "description": "Радиус геообласти в метрах",
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "default": null,
+              "type": "single"
+            }
+          },
+          {
+            "description": "Хэш области",
+            "in": "query",
+            "name": "geoHash",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы заявок во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список заявок с учетом указанных фильтров",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/Users": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **UsersExport**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Идентификаторы орг.единиц, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "orgUnitID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы участков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "districtID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы пользователей, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "userID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Идентификаторы видов работ, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "workTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Идентификаторы навыков, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "skillID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Тэги, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак, возвращения только удаленных записей",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения только заказчиков (если true) или исключая заказчиков (если false)",
+            "in": "query",
+            "name": "isCustomer",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения только бригад (если true) или исключая бригады (если false)",
+            "in": "query",
+            "name": "isTeam",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак, возвращения только мобильных инженеров (если true) или исключая мобильных инженеров (если false)",
+            "in": "query",
+            "name": "isTechnician",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Текущее имя пользователя, по которому будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "firstName",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Текущая фамилия пользователя, по которой будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "lastName",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Текущее отчество пользователя, по которому будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "middleName",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Текущая должность пользователя, по которой будет отфильтрован результат (поддерживается like-синтаксис)",
+            "in": "query",
+            "name": "position",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Экспорт пустого шаблона",
+            "in": "query",
+            "name": "noData",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы трудоустройст пользователей во внешней системе, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "erpID",
+            "schema": {
+              "default": null,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Экспортирует список пользователей с учетом указанных фильтров",
+        "tags": [
+          "Users"
+        ]
+      }
+    }
+  }
+}

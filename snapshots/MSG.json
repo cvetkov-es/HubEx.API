@@ -1,0 +1,6239 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.DataProvider.Api.Data.LOG.Notification.SetViewedData": {
+        "additionalProperties": false,
+        "properties": {
+          "isViewed": {
+            "type": "boolean"
+          },
+          "notificationIDs": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.CriticalityForTrigger.MergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "triggerID": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "triggerID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.MailBox.MailBoxSenderMergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "maximum": 255,
+            "minimum": 1,
+            "nullable": true,
+            "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "recipient": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string"
+          },
+          "regexNotMatchActionID": {
+            "format": "int32",
+            "maximum": 255,
+            "minimum": 1,
+            "nullable": true,
+            "type": "integer"
+          },
+          "sendResponse": {
+            "type": "boolean"
+          },
+          "taskSubjectRegex": {
+            "nullable": true,
+            "type": "string"
+          },
+          "taskTemplateID": {
+            "maxLength": 64,
+            "minLength": 0,
+            "type": "string"
+          },
+          "taskTextBodyRegex": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "isActive",
+          "recipient",
+          "sendResponse",
+          "taskTemplateID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.MailBox.MergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string"
+          },
+          "emailMessageReplyID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "host": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "maximum": 255,
+            "minimum": 1,
+            "nullable": true,
+            "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "login": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string"
+          },
+          "mailBoxID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "maxLength": 64,
+            "minLength": 0,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 64,
+            "minLength": 0,
+            "type": "string"
+          },
+          "port": {
+            "format": "int32",
+            "maximum": 32767,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "protocolID": {
+            "format": "int32",
+            "maximum": 255,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "secureConnection": {
+            "type": "boolean"
+          },
+          "senders": {
+            "items": {
+              "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MailBox.MailBoxSenderMergeData"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "required": [
+          "email",
+          "host",
+          "isActive",
+          "login",
+          "name",
+          "password",
+          "port",
+          "protocolID",
+          "secureConnection"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.MessageTemplate.AddData": {
+        "additionalProperties": false,
+        "properties": {
+          "applicationID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "content": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "contentTypeID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "navigateToID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "providerID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "subject": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "content",
+          "contentTypeID",
+          "description",
+          "providerID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.MessageTemplate.UpdateData": {
+        "additionalProperties": false,
+        "properties": {
+          "applicationID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "content": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "contentTypeID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "navigateToID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "providerID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "subject": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "content",
+          "contentTypeID",
+          "description",
+          "providerID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.AddData": {
+        "additionalProperties": false,
+        "properties": {
+          "customAssetResponsiblePerson": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customEmailList": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customOrgUnitID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customPhoneList": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customRoleID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customUserID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "isCaller": {
+            "type": "boolean"
+          },
+          "isCustomOrgUnitManager": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isCustomOrgUnitStaff": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isForRelevantUsers": {
+            "type": "boolean"
+          },
+          "isForRelevantUsersByWorkType": {
+            "type": "boolean"
+          },
+          "isPreviousTaskAssignee": {
+            "type": "boolean"
+          },
+          "isTaskAssetResponsiblePerson": {
+            "type": "boolean"
+          },
+          "isTaskAssignee": {
+            "type": "boolean"
+          },
+          "isTaskAssigneeManager": {
+            "type": "boolean"
+          },
+          "isTaskContact": {
+            "type": "boolean"
+          },
+          "isTaskRequestor": {
+            "type": "boolean"
+          },
+          "isTaskWatchList": {
+            "type": "boolean"
+          },
+          "isTenantPowerUser": {
+            "type": "boolean"
+          },
+          "orgUnitsUpwardTillRoleID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "useUnverifiedContacts": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "description",
+          "isCaller",
+          "isForRelevantUsers",
+          "isForRelevantUsersByWorkType",
+          "isPreviousTaskAssignee",
+          "isTaskAssetResponsiblePerson",
+          "isTaskAssignee",
+          "isTaskAssigneeManager",
+          "isTaskContact",
+          "isTaskRequestor",
+          "isTaskWatchList",
+          "isTenantPowerUser",
+          "useUnverifiedContacts"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.UpdateData": {
+        "additionalProperties": false,
+        "properties": {
+          "customAssetResponsiblePerson": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customEmailList": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customOrgUnitID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customPhoneList": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customRoleID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "customUserID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isCaller": {
+            "type": "boolean"
+          },
+          "isCustomOrgUnitManager": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isCustomOrgUnitStaff": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isForRelevantUsers": {
+            "type": "boolean"
+          },
+          "isForRelevantUsersByWorkType": {
+            "type": "boolean"
+          },
+          "isPreviousTaskAssignee": {
+            "type": "boolean"
+          },
+          "isTaskAssetResponsiblePerson": {
+            "type": "boolean"
+          },
+          "isTaskAssignee": {
+            "type": "boolean"
+          },
+          "isTaskAssigneeManager": {
+            "type": "boolean"
+          },
+          "isTaskContact": {
+            "type": "boolean"
+          },
+          "isTaskRequestor": {
+            "type": "boolean"
+          },
+          "isTaskWatchList": {
+            "type": "boolean"
+          },
+          "isTenantPowerUser": {
+            "type": "boolean"
+          },
+          "orgUnitsUpwardTillRoleID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "useUnverifiedContacts": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "description",
+          "isCaller",
+          "isForRelevantUsers",
+          "isForRelevantUsersByWorkType",
+          "isPreviousTaskAssignee",
+          "isTaskAssetResponsiblePerson",
+          "isTaskAssignee",
+          "isTaskAssigneeManager",
+          "isTaskContact",
+          "isTaskRequestor",
+          "isTaskWatchList",
+          "isTenantPowerUser",
+          "useUnverifiedContacts"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.Trigger.AddData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "eventID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "isEnabled": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isNotifyDuringDutyHours": {
+            "type": "boolean"
+          },
+          "isNotifyDuringOtherHours": {
+            "type": "boolean"
+          },
+          "isNotifyDuringWorkHours": {
+            "type": "boolean"
+          },
+          "messageTemplateID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "timeoutSeconds": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "isNotifyDuringDutyHours",
+          "isNotifyDuringOtherHours",
+          "isNotifyDuringWorkHours",
+          "messageTemplateID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.Trigger.UpdateData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "eventID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isEnabled": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isNotifyDuringDutyHours": {
+            "type": "boolean"
+          },
+          "isNotifyDuringOtherHours": {
+            "type": "boolean"
+          },
+          "isNotifyDuringWorkHours": {
+            "type": "boolean"
+          },
+          "messageTemplateID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "timeoutSeconds": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "isNotifyDuringDutyHours",
+          "isNotifyDuringOtherHours",
+          "isNotifyDuringWorkHours",
+          "messageTemplateID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.TriggerRecipientSelectionRule.MergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "triggerID": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "triggerID"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.MSG.Webhook.MergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "events": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "id": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "taskStages": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "uri": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.Common.AspNetCore.Results.UserResult": {
+        "additionalProperties": false,
+        "properties": {
+          "avatarUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "deleted": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "firstName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "lastName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "middleName": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.ContentTypes.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка типов контента",
+        "properties": {
+          "code": {
+            "description": "Код типа контента",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBox.Base.BaseLastCallResult": {
+        "additionalProperties": false,
+        "description": "Базовый результат вызовов mailbox'а\r\nдля HubEx.Service.MSG.Api.Results.MailBox.GetResult и HubEx.Service.MSG.Api.Results.MailBox.ListResult",
+        "properties": {
+          "completed": {
+            "description": "Дата и время последнего вызова mailbox'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "exception": {
+            "description": "Последнее исключение, возникшее при неудачном выполнении mailbox'а",
+            "nullable": true,
+            "type": "string"
+          },
+          "hasError": {
+            "description": "Флаг что у mailbox'a есть ошибка",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBox.Base.CallRemaining": {
+        "additionalProperties": false,
+        "description": "Базовый результат для отправки данных\r\nо количестве попыток срабатываний mailbox'а\r\nдля HubEx.Service.MSG.Api.Results.MailBox.GetResult и HubEx.Service.MSG.Api.Results.MailBox.ListResult",
+        "properties": {
+          "remaining": {
+            "description": "Осталось попыток выполнения при неудачном результате",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "total": {
+            "description": "Всего попыток выполнения",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBox.GetResult": {
+        "additionalProperties": false,
+        "description": "Детальные данные о mailbox'е",
+        "properties": {
+          "calls": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.Base.CallRemaining"
+          },
+          "email": {
+            "description": "Email для выполнения mailbox-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "host": {
+            "description": "Host для выполнения mailbox-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли mailbox активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.LastCallResult"
+          },
+          "login": {
+            "description": "Login для выполнения mailbox-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "password": {
+            "description": "Password для выполнения mailbox-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "port": {
+            "description": "Порт для выполнения mailbox-а",
+            "format": "int32",
+            "type": "integer"
+          },
+          "protocolID": {
+            "description": "Протокол для выполнения mailbox-а",
+            "format": "int32",
+            "type": "integer"
+          },
+          "secureConnection": {
+            "description": "Признак защищенности соединения",
+            "type": "boolean"
+          },
+          "senders": {
+            "description": "Список событий, при которых webhook срабатывает",
+            "items": {
+              "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.ListResult"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBox.LastCallResult": {
+        "additionalProperties": false,
+        "description": "Данные о последнем результате вызова mailbox'а",
+        "properties": {
+          "completed": {
+            "description": "Дата и время последнего вызова mailbox'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "exception": {
+            "description": "Последнее исключение, возникшее при неудачном выполнении mailbox'а",
+            "nullable": true,
+            "type": "string"
+          },
+          "hasError": {
+            "description": "Флаг что у mailbox'a есть ошибка",
+            "type": "boolean"
+          },
+          "started": {
+            "description": "Дата и время начала выполнения mailbox'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBox.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные о mailbox'е для списка",
+        "properties": {
+          "calls": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.Base.CallRemaining"
+          },
+          "email": {
+            "description": "Email для выполнения mailbox-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли mailbox активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.Base.BaseLastCallResult"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBoxSender.GetResult": {
+        "additionalProperties": false,
+        "description": "Детальная информация о sender'e",
+        "properties": {
+          "calls": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.Base.CallRemaining"
+          },
+          "deleted": {
+            "description": "Дата удаления, в случае, если sender удален",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли sender активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.LastCallSenderResult"
+          },
+          "lastTask": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.LastTaskCreationResult"
+          },
+          "mailBoxID": {
+            "description": "Идентификатор mailbox'a sender'a",
+            "format": "int32",
+            "type": "integer"
+          },
+          "recipient": {
+            "description": "Email sender-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "regexNotMatchAction": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "sendResponse": {
+            "description": "Отправлять ли ответ на почту о статусе создания заявки",
+            "type": "boolean"
+          },
+          "taskSubjectRegex": {
+            "description": "Регулярное выражение для темы сообщения",
+            "nullable": true,
+            "type": "string"
+          },
+          "taskTemplateID": {
+            "description": "Шаблон заявки, по которому будет создаваться заявка sender'a",
+            "nullable": true,
+            "type": "string"
+          },
+          "taskTextBodyRegex": {
+            "description": "Регулярное выражение для тела сообщения",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBoxSender.LastCallSenderResult": {
+        "additionalProperties": false,
+        "description": "Данные о последнем результате вызова mailbox'а sender'ом",
+        "properties": {
+          "completed": {
+            "description": "Дата и время последнего вызова mailbox'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "exception": {
+            "description": "Последнее исключение, возникшее при неудачном выполнении mailbox'а",
+            "nullable": true,
+            "type": "string"
+          },
+          "hasError": {
+            "description": "Флаг что у mailbox'a есть ошибка",
+            "type": "boolean"
+          },
+          "lastRecipient": {
+            "description": "Последний email отправителя для последнего вызова mailbox'a",
+            "nullable": true,
+            "type": "string"
+          },
+          "started": {
+            "description": "Дата и время начала выполнения mailbox'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBoxSender.LastTaskCreationResult": {
+        "additionalProperties": false,
+        "description": "Информация о созданной sender'ом заявке",
+        "properties": {
+          "id": {
+            "description": "Идентификатор последней заявки, созданной sender'ом",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "number": {
+            "description": "Номер последней заявки, созданной sender'ом",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MailBoxSender.ListResult": {
+        "additionalProperties": false,
+        "description": "Информация о sender'e для списка",
+        "properties": {
+          "calls": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.Base.CallRemaining"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли sender активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.LastCallSenderResult"
+          },
+          "lastTask": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.LastTaskCreationResult"
+          },
+          "mailBoxID": {
+            "description": "Идентификатор mailbox'a sender'a",
+            "format": "int32",
+            "type": "integer"
+          },
+          "recipient": {
+            "description": "Email sender-а",
+            "nullable": true,
+            "type": "string"
+          },
+          "regexNotMatchAction": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "sendResponse": {
+            "description": "Отправлять ли ответ на почту о статусе создания заявки",
+            "type": "boolean"
+          },
+          "taskSubjectRegex": {
+            "description": "Регулярное выражение для темы сообщения",
+            "nullable": true,
+            "type": "string"
+          },
+          "taskTemplateID": {
+            "description": "Шаблон заявки, по которому будет создаваться заявка sender'a",
+            "nullable": true,
+            "type": "string"
+          },
+          "taskTextBodyRegex": {
+            "description": "Регулярное выражение для тела сообщения",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MessageTemplates.GetResult": {
+        "additionalProperties": false,
+        "description": "Данные шаблона уведомлений",
+        "properties": {
+          "application": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "content": {
+            "description": "Контент",
+            "nullable": true,
+            "type": "string"
+          },
+          "contentType": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "deleted": {
+            "description": "Дата удаления записи",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание шаблона уведомлений",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isValid": {
+            "description": "Флаг состояния валиадации",
+            "type": "boolean"
+          },
+          "navigateTo": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "subject": {
+            "description": "Тема шаблона уведомления",
+            "nullable": true,
+            "type": "string"
+          },
+          "validated": {
+            "description": "Дата валидации",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.MessageTemplates.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные шаблона уведомлений для списка",
+        "properties": {
+          "applicationID": {
+            "description": "Идентификатор приложения",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "contentTypeID": {
+            "description": "Идентификатор типа контента",
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": {
+            "description": "Описание шаблона уведомлений",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isValid": {
+            "description": "Флаг состояния валиадации",
+            "type": "boolean"
+          },
+          "navigateToID": {
+            "description": "Идентификатор перехода",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "providerID": {
+            "description": "Идентификатор провайдера",
+            "format": "int32",
+            "type": "integer"
+          },
+          "subject": {
+            "description": "Тема шаблона уведомления",
+            "nullable": true,
+            "type": "string"
+          },
+          "validated": {
+            "description": "Дата валидации",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.NavigateTo.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка переходов",
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Notification.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные истории уведомлений пользователя",
+        "properties": {
+          "content": {
+            "description": "Контент уведомления",
+            "nullable": true,
+            "type": "string"
+          },
+          "contentTypeID": {
+            "description": "Идентификатор типа контента",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "created": {
+            "description": "Время создания уведомления",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isViewed": {
+            "description": "Признак, что уведомление просмотрено",
+            "type": "boolean"
+          },
+          "navigateTo": {
+            "description": "Идентификатор провайдера",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "providerID": {
+            "description": "Идентификатор провайдера",
+            "format": "int32",
+            "type": "integer"
+          },
+          "sent": {
+            "description": "Время отправки уведомления",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "subject": {
+            "description": "Заголовок",
+            "nullable": true,
+            "type": "string"
+          },
+          "taskID": {
+            "description": "Идентификатор провайдера",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Protocols.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные протоколов",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Providers.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка провайдеров",
+        "properties": {
+          "code": {
+            "description": "Код провайдера",
+            "nullable": true,
+            "type": "string"
+          },
+          "descriptionRu": {
+            "description": "Описание на русском",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.RecipientSelectionRules.GetResult": {
+        "additionalProperties": false,
+        "description": "Данные шаблона уведомлений",
+        "properties": {
+          "customAssetResponsible": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customEmailList": {
+            "description": "Список адресов электронной почты",
+            "nullable": true,
+            "type": "string"
+          },
+          "customOrgUnit": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customPhoneList": {
+            "description": "Список номеров телефонов",
+            "nullable": true,
+            "type": "string"
+          },
+          "customRole": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customUser": {
+            "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Results.UserResult"
+          },
+          "deleted": {
+            "description": "Дата удаления, в случае, если запись удалена",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание шаблона уведомлений",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isCaller": {
+            "description": "Флаг звонившего",
+            "type": "boolean"
+          },
+          "isCustomOrgUnitManager": {
+            "description": "Флаг руководителя организационной единицы",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isCustomOrgUnitStaff": {
+            "description": "Флаг принадлежности организационной единице",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isForRelevantUsers": {
+            "description": "Флаг причастностых пользователй",
+            "type": "boolean"
+          },
+          "isForRelevantUsersByWorkType": {
+            "description": "Флаг соответствия по виду работ",
+            "type": "boolean"
+          },
+          "isPreviousTaskAssignee": {
+            "description": "Флаг предыдущего исполнителя",
+            "type": "boolean"
+          },
+          "isTaskAssetResponsiblePerson": {
+            "description": "Флаг ответственного за объект по заявке",
+            "type": "boolean"
+          },
+          "isTaskAssignee": {
+            "description": "Флаг исполнителя",
+            "type": "boolean"
+          },
+          "isTaskAssigneeManager": {
+            "description": "Флаг руководителя исполнителя",
+            "type": "boolean"
+          },
+          "isTaskContact": {
+            "description": "Флаг контакта по заявке",
+            "type": "boolean"
+          },
+          "isTaskRequestor": {
+            "description": "Флаг заказчика",
+            "type": "boolean"
+          },
+          "isTaskWatchList": {
+            "description": "Флаг подписки по заявке",
+            "type": "boolean"
+          },
+          "isTenantPowerUser": {
+            "description": "Флаг power user'а тенанта",
+            "type": "boolean"
+          },
+          "orgUnitsUpwardTillRole": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "useUnverifiedContacts": {
+            "description": "Флаг использования неподтверженного договора",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.RecipientSelectionRules.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные правил выбора получателя",
+        "properties": {
+          "customAssetResponsible": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customEmailList": {
+            "description": "Список адресов электронной почты",
+            "nullable": true,
+            "type": "string"
+          },
+          "customOrgUnit": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customPhoneList": {
+            "description": "Список номеров телефонов",
+            "nullable": true,
+            "type": "string"
+          },
+          "customRole": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "customUser": {
+            "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Results.UserResult"
+          },
+          "deleted": {
+            "description": "Дата удаления, в случае, если запись удалена",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание шаблона уведомлений",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isCaller": {
+            "description": "Флаг звонившего",
+            "type": "boolean"
+          },
+          "isCustomOrgUnitManager": {
+            "description": "Флаг руководителя организационной единицы",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isCustomOrgUnitStaff": {
+            "description": "Флаг принадлежности организационной единице",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "isForRelevantUsers": {
+            "description": "Флаг причастностых пользователй",
+            "type": "boolean"
+          },
+          "isForRelevantUsersByWorkType": {
+            "description": "Флаг соответствия по виду работ",
+            "type": "boolean"
+          },
+          "isPreviousTaskAssignee": {
+            "description": "Флаг предыдущего исполнителя",
+            "type": "boolean"
+          },
+          "isTaskAssetResponsiblePerson": {
+            "description": "Флаг ответственного за объект по заявке",
+            "type": "boolean"
+          },
+          "isTaskAssignee": {
+            "description": "Флаг исполнителя",
+            "type": "boolean"
+          },
+          "isTaskAssigneeManager": {
+            "description": "Флаг руководителя исполнителя",
+            "type": "boolean"
+          },
+          "isTaskContact": {
+            "description": "Флаг контакта по заявке",
+            "type": "boolean"
+          },
+          "isTaskRequestor": {
+            "description": "Флаг заказчика",
+            "type": "boolean"
+          },
+          "isTaskWatchList": {
+            "description": "Флаг подписки по заявке",
+            "type": "boolean"
+          },
+          "isTenantPowerUser": {
+            "description": "Флаг power user'а тенанта",
+            "type": "boolean"
+          },
+          "orgUnitsUpwardTillRole": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "useUnverifiedContacts": {
+            "description": "Флаг использования неподтверженного договора",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.RecipientSelectionRules.RecipientListResult": {
+        "additionalProperties": false,
+        "description": "Данные получателя уведомлений",
+        "properties": {
+          "code": {
+            "description": "Код поля в таблице",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "description": "Код поля в таблице",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.RegexNotMatchAction.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные о действиях, которые необходимо выполнить при неудачном применении \r\nрегулярного выражения для темы или тела email-сообщения",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Triggers.GetResult": {
+        "additionalProperties": false,
+        "description": "Данные триггера",
+        "properties": {
+          "deleted": {
+            "description": "Дата удаления, в случае, если запись удалена",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание",
+            "nullable": true,
+            "type": "string"
+          },
+          "event": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isEnabled": {
+            "description": "Включен ли триггер",
+            "type": "boolean"
+          },
+          "isNotifyDuringDutyHours": {
+            "description": "Нужно ли уведомлять во время смены",
+            "type": "boolean"
+          },
+          "isNotifyDuringOtherHours": {
+            "description": "Нужно ли уведомлять в прочее время",
+            "type": "boolean"
+          },
+          "isNotifyDuringWorkHours": {
+            "description": "Нужно ли уведомлять во время работы",
+            "type": "boolean"
+          },
+          "messageTemplate": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "timeoutSeconds": {
+            "description": "Таймаут в секундах",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Triggers.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные триггера для списка",
+        "properties": {
+          "deleted": {
+            "description": "Дата удаления, в случае, если запись удалена",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание",
+            "nullable": true,
+            "type": "string"
+          },
+          "event": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isEnabled": {
+            "description": "Включен ли триггер",
+            "type": "boolean"
+          },
+          "isNotifyDuringDutyHours": {
+            "description": "Нужно ли уведомлять во время смены",
+            "type": "boolean"
+          },
+          "isNotifyDuringOtherHours": {
+            "description": "Нужно ли уведомлять в прочее время",
+            "type": "boolean"
+          },
+          "isNotifyDuringWorkHours": {
+            "description": "Нужно ли уведомлять во время работы",
+            "type": "boolean"
+          },
+          "messageTemplate": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "timeoutSeconds": {
+            "description": "Таймаут в секундах",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Webhook.Base.BaseLastCallResult": {
+        "additionalProperties": false,
+        "description": "Базовый результат вызовов Webhook'а\r\nдля HubEx.Service.MSG.Api.Results.Webhook.GetResult и HubEx.Service.MSG.Api.Results.Webhook.ListResult",
+        "properties": {
+          "completed": {
+            "description": "Дата и время последнего вызова webhook'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "exception": {
+            "description": "Последнее исключение, возникшее при неудачном выполнении webhook'а",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Webhook.GetResult": {
+        "additionalProperties": false,
+        "description": "Детальные данные о webhook'е",
+        "properties": {
+          "callsRemaining": {
+            "description": "Осталось попыток выполенения, при неудачном результате",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "events": {
+            "description": "Список событий, при которых webhook срабатывает",
+            "items": {
+              "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли webhook активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.LastCallResult"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "taskStages": {
+            "description": "Список состояний заявок, при которых webhook срабатывает",
+            "items": {
+              "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "uri": {
+            "description": "Uri для выполнения webhook-а",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Webhook.LastCallResult": {
+        "additionalProperties": false,
+        "description": "Данные о последнем результате вызова Webhook'а",
+        "properties": {
+          "completed": {
+            "description": "Дата и время последнего вызова webhook'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "exception": {
+            "description": "Последнее исключение, возникшее при неудачном выполнении webhook'а",
+            "nullable": true,
+            "type": "string"
+          },
+          "started": {
+            "description": "Дата и время начала выполнения webhook'а",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.MSG.Api.Results.Webhook.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные о webhook'е для списка",
+        "properties": {
+          "callsRemaining": {
+            "description": "Осталось попыток выполенения, при неудачном результате",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Является ли webhook активным?",
+            "type": "boolean"
+          },
+          "lastCall": {
+            "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.Base.BaseLastCallResult"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.ExceptionHandling.Models.ErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "arguments": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "object"
+          },
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "traceIdentifier": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameDescriptionResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Service offers application programming interface for manipulation MSG and all connected entities.",
+    "title": "API for MSG in HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/ContentTypes": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContentTypeList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.ContentTypes.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.ContentTypes.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.ContentTypes.ListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка типов контента",
+        "tags": [
+          "ContentTypes"
+        ]
+      }
+    },
+    "/CriticalityForTriggers": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **CriticalityForTriggerMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.CriticalityForTrigger.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.CriticalityForTrigger.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.CriticalityForTrigger.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.CriticalityForTrigger.MergeData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Добавляет или изменяет критичноти для триггера",
+        "tags": [
+          "CriticalityForTriggers"
+        ]
+      }
+    },
+    "/MailBoxes": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает mailbox'ы как удаленные",
+        "tags": [
+          "MailBoxes"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список mailbox-ов",
+        "tags": [
+          "MailBoxes"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MailBox.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MailBox.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MailBox.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MailBox.MergeData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Добавить или обновить mailbox",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/activate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxActivate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает mailbox'ы активными",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/activate/{id}": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxActivate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает mailbox активным",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/deactivate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxDeactivate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает mailbox'ы неактивными",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/deactivate/{id}": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxDeactivate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает mailbox неактивным",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/regexactions": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RegexNotMatchActionList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RegexNotMatchAction.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RegexNotMatchAction.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RegexNotMatchAction.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод возвращает список действий, которые необходимо выполнить при неудачном применении \r\nрегулярного выражения для темы или тела email-сообщения",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает mailbox как удаленный",
+        "tags": [
+          "MailBoxes"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получение детальной информации о mailbox'е по идентификатору",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/{id}/errors": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxErrorsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Начальный период фильтрации по дате возникновения ошибки",
+            "in": "query",
+            "name": "occurredFrom",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          },
+          {
+            "description": "Конечный период фильтрации по дате возникновения ошибки",
+            "in": "query",
+            "name": "occurredTill",
+            "schema": {
+              "default": null,
+              "format": "UTC ISO-8601",
+              "type": "datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBox.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получение информации об ошибках, возникших при чтении mailbox'ов",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/{mailBoxID}/senders": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxSenderDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mailBoxID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает sender'ы mailbox'a как удаленные",
+        "tags": [
+          "MailBoxes"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxSenderList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mailBoxID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список sender'ов mailbox-ов",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/{mailBoxID}/senders/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxSenderDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mailBoxID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает sender mailbox'a как удаленный",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MailBoxes/{mailBoxID}/senders/{senderID}": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MailBoxSenderGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mailBoxID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "senderID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MailBoxSender.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получение детальной информации о sender'e mailbox'a по идентификатору",
+        "tags": [
+          "MailBoxes"
+        ]
+      }
+    },
+    "/MessageTemplates": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Идентификаторы шаблонов уведомлений"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает шаблоны уведомлений, как удаленные",
+        "tags": [
+          "MessageTemplates"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные шаблоны уведомлений, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список активных шаблонов уведоплений",
+        "tags": [
+          "MessageTemplates"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.AddData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные шаблонов уведомлений"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Создает шаблоны уведомлений",
+        "tags": [
+          "MessageTemplates"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.MessageTemplate.UpdateData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные шаблонов уведомлений"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Изменяет шаблоны уведомлений",
+        "tags": [
+          "MessageTemplates"
+        ]
+      }
+    },
+    "/MessageTemplates/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Conflict"
+          }
+        },
+        "summary": "Помечает шаблон уведомлений, как удаленный",
+        "tags": [
+          "MessageTemplates"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateGet**",
+        "parameters": [
+          {
+            "description": "Идентификатор шаблона",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.MessageTemplates.GetResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает шаблон уведомлений",
+        "tags": [
+          "MessageTemplates"
+        ]
+      }
+    },
+    "/MessageTemplates/{id}/validate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MessageTemplateValidate**",
+        "parameters": [
+          {
+            "description": "Идентификатор шаблона уведомлений",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Изменяет валидационную информацию в шаблонах уведомлений",
+        "tags": [
+          "MessageTemplates"
+        ]
+      }
+    },
+    "/NavigateTo": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NavigateToList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.NavigateTo.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.NavigateTo.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.NavigateTo.ListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка переходов",
+        "tags": [
+          "NavigateTo"
+        ]
+      }
+    },
+    "/Notifications": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NotificationLogList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeIsViewed",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Notification.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Notification.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Notification.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список уведомлений пользователя",
+        "tags": [
+          "Notifications"
+        ]
+      },
+      "head": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NotificationLogList**",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeIsViewed",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает заголовок запроса списка уведомлений пользователя с количеством данных",
+        "tags": [
+          "Notifications"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ApplicationIntegrationRequest**",
+        "parameters": [
+          {
+            "description": "Наименование системы для интеграции",
+            "in": "query",
+            "name": "integratedSystemName",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Отправка запроса на интеграцию с системой",
+        "tags": [
+          "Notifications"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NotificationLogList**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.LOG.Notification.SetViewedData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.LOG.Notification.SetViewedData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.LOG.Notification.SetViewedData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.LOG.Notification.SetViewedData"
+              }
+            }
+          },
+          "description": "Идентификатор уведомления пользователя"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Установка признака просмотра уведомления",
+        "tags": [
+          "Notifications"
+        ]
+      }
+    },
+    "/Notifications/all": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NotificationLogList**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Установка признака просмотра всех уведомлений пользователя",
+        "tags": [
+          "Notifications"
+        ]
+      }
+    },
+    "/Notifications/fields": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **NotificationFieldsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получение списка полей, используемых для уведомлений",
+        "tags": [
+          "Notifications"
+        ]
+      }
+    },
+    "/Protocols": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ProtocolList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Protocols.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Protocols.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Protocols.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список протоколов",
+        "tags": [
+          "Protocols"
+        ]
+      }
+    },
+    "/Providers": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ProviderList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Providers.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Providers.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Providers.ListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка провайдеров",
+        "tags": [
+          "Providers"
+        ]
+      }
+    },
+    "/RecipientSelectionRules": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Идентификаторы правил выбора получателя"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает правила выбора получателя, как удаленные",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные шаблоны уведомлений, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы триггеров, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "triggerID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список правил выбора получателя",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.AddData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные правила выбора получателя"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Создает правила выбора получателя",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.RecipientSelectionRule.UpdateData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные правила выбора получателя"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Изменяет правила выбора получателя",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      }
+    },
+    "/RecipientSelectionRules/recipients": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Если true, то результат содержит только скрытые записи",
+            "in": "query",
+            "name": "isHidden",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.RecipientListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.RecipientListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.RecipientListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список получателей уведомлений",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      }
+    },
+    "/RecipientSelectionRules/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Conflict"
+          }
+        },
+        "summary": "Помечает правило выбора получателя, как удаленное",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RecipientSelectionRuleGet**",
+        "parameters": [
+          {
+            "description": "Идентификатор шаблона",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.RecipientSelectionRules.GetResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает правило выбора получателя",
+        "tags": [
+          "RecipientSelectionRules"
+        ]
+      }
+    },
+    "/TriggerRecipientSelectionRules": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerRecipientSelectionRuleMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.TriggerRecipientSelectionRule.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.TriggerRecipientSelectionRule.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.TriggerRecipientSelectionRule.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.TriggerRecipientSelectionRule.MergeData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Добавляет или изменяет правила выбора получателя для триггера",
+        "tags": [
+          "TriggerRecipientSelectionRules"
+        ]
+      }
+    },
+    "/Triggers": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Идентификаторы триггеров"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает триггеры, как удаленные",
+        "tags": [
+          "Triggers"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные триггеры, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только включенные триггеры, если false - только выключенные",
+            "in": "query",
+            "name": "isEnabled",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список активных триггеров",
+        "tags": [
+          "Triggers"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.AddData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные триггеров"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Создает триггеры",
+        "tags": [
+          "Triggers"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Trigger.UpdateData"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Данные актуальностей заявок"
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Изменяет триггеры",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/activate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает триггеры активными",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/deactivate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает триггеры неактивными",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Conflict"
+          }
+        },
+        "summary": "Помечает триггер, как удаленный",
+        "tags": [
+          "Triggers"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerGet**",
+        "parameters": [
+          {
+            "description": "Идентификатор триггера",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.GetResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.GetResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает триггер",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/{id}/criticalities": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **CriticalityForTriggerList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Triggers.ListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка критичностей для триггера",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/{triggerID}/activate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerUpdate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "triggerID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает триггер активным",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Triggers/{triggerID}/deactivate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TriggerUpdate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "triggerID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает триггер неактивным",
+        "tags": [
+          "Triggers"
+        ]
+      }
+    },
+    "/Webhooks": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает webhookи, как удаленные",
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список webhook-ов",
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Webhook.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Webhook.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Webhook.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.MSG.Webhook.MergeData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Добавить или обновить webhook",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "/Webhooks/activate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookActivate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает webhook-и, активными",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "/Webhooks/activate/{id}": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookActivate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает webhook, активным",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "/Webhooks/deactivate": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookDeactivate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает webhook-и, неактивными",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "/Webhooks/deactivate/{id}": {
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookDeactivate**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Делает webhook, неактивным",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "/Webhooks/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Помечает webhook, как удаленный",
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **WebhookGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.MSG.Api.Results.Webhook.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получение детальной информации о webhook'е по идентификатору",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    }
+  }
+}

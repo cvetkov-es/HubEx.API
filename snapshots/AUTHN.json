@@ -1,0 +1,2710 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.DataProvider.Api.Entities.ADM.TenantCreationRequestEntity": {
+        "additionalProperties": false,
+        "properties": {
+          "accountID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "approved": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "isSuccess": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "licenseID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ownerFirstName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ownerLastName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ownerMiddleName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "processed": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "rejected": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "rejectionReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "templateID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "tenantFullName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "tenantName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantUriName": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Projections.AUTH.TenantAuthorizationProjection": {
+        "additionalProperties": false,
+        "properties": {
+          "accountID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "banReasonCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "banReasonID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "banTill": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "nullable": true,
+            "type": "string"
+          },
+          "firstName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "fullName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "hasUserProfile": {
+            "type": "boolean"
+          },
+          "isTenantArchived": {
+            "type": "boolean"
+          },
+          "isTenantDeleted": {
+            "type": "boolean"
+          },
+          "isUserBanned": {
+            "type": "boolean"
+          },
+          "lastName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "middleName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "tenantMemberDescription": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantMemberID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "tenantMemberValidTill": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "uriName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "userBanReasonCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "userBanReasonID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "userBanTill": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "userID": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Data.AccountRealms.CredentialData": {
+        "additionalProperties": false,
+        "properties": {
+          "credential": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Data.Passwords.SetData": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "codeHash": {
+            "nullable": true,
+            "type": "string"
+          },
+          "mobilePhone": {
+            "nullable": true,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "password"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Dto.AuthSmsDto": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "phone": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Dto.PhoneDto": {
+        "additionalProperties": false,
+        "properties": {
+          "phone": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Results.Account.AccountRealmResult": {
+        "additionalProperties": false,
+        "properties": {
+          "realm": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "tenantName": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult": {
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "accountHasUserProfile": {
+            "type": "boolean"
+          },
+          "accountUserTypeID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "expires_in": {
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "isAnonymous": {
+            "type": "boolean"
+          },
+          "isCrossTenantAdmin": {
+            "type": "boolean"
+          },
+          "jwtValidTill": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "refresh_token": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "requests": {
+            "items": {
+              "$ref": "#/components/schemas/HubEx.DataProvider.Api.Entities.ADM.TenantCreationRequestEntity"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "tenantEntities": {
+            "items": {
+              "$ref": "#/components/schemas/HubEx.DataProvider.Api.Projections.AUTH.TenantAuthorizationProjection"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Results.Account.JwtResultBase": {
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "accountUserTypeID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "expires_in": {
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "jwtValidTill": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "refresh_token": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHN.Core.Results.Account.OtpGenerateResult": {
+        "additionalProperties": false,
+        "properties": {
+          "phone": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter": {
+        "additionalProperties": false,
+        "type": "object"
+      },
+      "Microsoft.AspNetCore.Mvc.ObjectResult": {
+        "additionalProperties": false,
+        "properties": {
+          "contentTypes": {
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "declaredType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "formatters": {
+            "items": {
+              "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "statusCode": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "value": {
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.ExceptionHandling.Models.ErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "arguments": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "object"
+          },
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "traceIdentifier": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "System.IntPtr": {
+        "additionalProperties": false,
+        "type": "object"
+      },
+      "System.ModuleHandle": {
+        "additionalProperties": false,
+        "properties": {
+          "mdStreamVersion": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.Assembly": {
+        "additionalProperties": false,
+        "properties": {
+          "codeBase": {
+            "deprecated": true,
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "definedTypes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.TypeInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "entryPoint": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          },
+          "escapedCodeBase": {
+            "deprecated": true,
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "exportedTypes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Type"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "fullName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "globalAssemblyCache": {
+            "deprecated": true,
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "hostContext": {
+            "format": "int64",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "imageRuntimeVersion": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isDynamic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFullyTrusted": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "location": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "manifestModule": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.Module"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "reflectionOnly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "securityRuleSet": {
+            "$ref": "#/components/schemas/System.Security.SecurityRuleSet"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.CallingConventions": {
+        "enum": [
+          "Standard",
+          "VarArgs",
+          "Any",
+          "HasThis",
+          "ExplicitThis"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.ConstructorInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.MethodAttributes"
+          },
+          "callingConvention": {
+            "$ref": "#/components/schemas/System.Reflection.CallingConventions"
+          },
+          "containsGenericParameters": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isAbstract": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructedGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructor": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyAndAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyOrAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFinal": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethodDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isHideBySig": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isStatic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVirtual": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "methodHandle": {
+            "$ref": "#/components/schemas/System.RuntimeMethodHandle"
+          },
+          "methodImplementationFlags": {
+            "$ref": "#/components/schemas/System.Reflection.MethodImplAttributes"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.CustomAttributeData": {
+        "additionalProperties": false,
+        "properties": {
+          "attributeType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "constructor": {
+            "$ref": "#/components/schemas/System.Reflection.ConstructorInfo"
+          },
+          "constructorArguments": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeTypedArgument"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "namedArguments": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeNamedArgument"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.CustomAttributeNamedArgument": {
+        "additionalProperties": false,
+        "properties": {
+          "isField": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberInfo": {
+            "$ref": "#/components/schemas/System.Reflection.MemberInfo"
+          },
+          "memberName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "typedValue": {
+            "$ref": "#/components/schemas/System.Reflection.CustomAttributeTypedArgument"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.CustomAttributeTypedArgument": {
+        "additionalProperties": false,
+        "properties": {
+          "argumentType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "value": {
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.EventAttributes": {
+        "enum": [
+          "None",
+          "SpecialName",
+          "RTSpecialName"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.EventInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "addMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.EventAttributes"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "eventHandlerType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isMulticast": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "raiseMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "removeMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.FieldAttributes": {
+        "enum": [
+          "PrivateScope",
+          "Private",
+          "FamANDAssem",
+          "Assembly",
+          "Family",
+          "FamORAssem",
+          "Public",
+          "FieldAccessMask",
+          "Static",
+          "InitOnly",
+          "Literal",
+          "NotSerialized",
+          "HasFieldRVA",
+          "SpecialName",
+          "RTSpecialName",
+          "HasFieldMarshal",
+          "PinvokeImpl",
+          "HasDefault",
+          "ReservedMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.FieldInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.FieldAttributes"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "fieldHandle": {
+            "$ref": "#/components/schemas/System.RuntimeFieldHandle"
+          },
+          "fieldType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyAndAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyOrAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isInitOnly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isLiteral": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNotSerialized": {
+            "deprecated": true,
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPinvokeImpl": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isStatic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.GenericParameterAttributes": {
+        "enum": [
+          "None",
+          "Covariant",
+          "Contravariant",
+          "VarianceMask",
+          "ReferenceTypeConstraint",
+          "NotNullableValueTypeConstraint",
+          "DefaultConstructorConstraint",
+          "SpecialConstraintMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.ICustomAttributeProvider": {
+        "additionalProperties": false,
+        "type": "object"
+      },
+      "System.Reflection.MemberInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.MemberTypes": {
+        "enum": [
+          "Constructor",
+          "Event",
+          "Field",
+          "Method",
+          "Property",
+          "TypeInfo",
+          "Custom",
+          "NestedType",
+          "All"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.MethodAttributes": {
+        "enum": [
+          "PrivateScope",
+          "Private",
+          "FamANDAssem",
+          "Assembly",
+          "Family",
+          "FamORAssem",
+          "Public",
+          "MemberAccessMask",
+          "UnmanagedExport",
+          "Static",
+          "Final",
+          "Virtual",
+          "HideBySig",
+          "NewSlot",
+          "CheckAccessOnOverride",
+          "Abstract",
+          "SpecialName",
+          "RTSpecialName",
+          "PinvokeImpl",
+          "HasSecurity",
+          "RequireSecObject",
+          "ReservedMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.MethodBase": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.MethodAttributes"
+          },
+          "callingConvention": {
+            "$ref": "#/components/schemas/System.Reflection.CallingConventions"
+          },
+          "containsGenericParameters": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isAbstract": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructedGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructor": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyAndAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyOrAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFinal": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethodDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isHideBySig": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isStatic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVirtual": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "methodHandle": {
+            "$ref": "#/components/schemas/System.RuntimeMethodHandle"
+          },
+          "methodImplementationFlags": {
+            "$ref": "#/components/schemas/System.Reflection.MethodImplAttributes"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.MethodImplAttributes": {
+        "enum": [
+          "IL",
+          "Native",
+          "OPTIL",
+          "CodeTypeMask",
+          "ManagedMask",
+          "NoInlining",
+          "ForwardRef",
+          "Synchronized",
+          "NoOptimization",
+          "PreserveSig",
+          "AggressiveInlining",
+          "AggressiveOptimization",
+          "InternalCall",
+          "MaxMethodImplVal"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.MethodInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.MethodAttributes"
+          },
+          "callingConvention": {
+            "$ref": "#/components/schemas/System.Reflection.CallingConventions"
+          },
+          "containsGenericParameters": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "isAbstract": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructedGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructor": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyAndAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFamilyOrAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFinal": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethod": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethodDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isHideBySig": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isStatic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVirtual": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "methodHandle": {
+            "$ref": "#/components/schemas/System.RuntimeMethodHandle"
+          },
+          "methodImplementationFlags": {
+            "$ref": "#/components/schemas/System.Reflection.MethodImplAttributes"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "returnParameter": {
+            "$ref": "#/components/schemas/System.Reflection.ParameterInfo"
+          },
+          "returnType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "returnTypeCustomAttributes": {
+            "$ref": "#/components/schemas/System.Reflection.ICustomAttributeProvider"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.Module": {
+        "additionalProperties": false,
+        "properties": {
+          "assembly": {
+            "$ref": "#/components/schemas/System.Reflection.Assembly"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "fullyQualifiedName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "mdStreamVersion": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "moduleHandle": {
+            "$ref": "#/components/schemas/System.ModuleHandle"
+          },
+          "moduleVersionId": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "scopeName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.ParameterAttributes": {
+        "enum": [
+          "None",
+          "In",
+          "Out",
+          "Lcid",
+          "Retval",
+          "Optional",
+          "HasDefault",
+          "HasFieldMarshal",
+          "Reserved3",
+          "Reserved4",
+          "ReservedMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.ParameterInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.ParameterAttributes"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "defaultValue": {
+            "nullable": true,
+            "readOnly": true
+          },
+          "hasDefaultValue": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isIn": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isLcid": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isOptional": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isOut": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isRetval": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "member": {
+            "$ref": "#/components/schemas/System.Reflection.MemberInfo"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "parameterType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "position": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "rawDefaultValue": {
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.PropertyAttributes": {
+        "enum": [
+          "None",
+          "SpecialName",
+          "RTSpecialName",
+          "HasDefault",
+          "Reserved2",
+          "Reserved3",
+          "Reserved4",
+          "ReservedMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.PropertyInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.PropertyAttributes"
+          },
+          "canRead": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "canWrite": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "getMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "propertyType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "setMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+          }
+        },
+        "type": "object"
+      },
+      "System.Reflection.TypeAttributes": {
+        "enum": [
+          "NotPublic",
+          "Public",
+          "NestedPublic",
+          "NestedPrivate",
+          "NestedFamily",
+          "NestedAssembly",
+          "NestedFamANDAssem",
+          "VisibilityMask",
+          "SequentialLayout",
+          "ExplicitLayout",
+          "LayoutMask",
+          "Interface",
+          "Abstract",
+          "Sealed",
+          "SpecialName",
+          "RTSpecialName",
+          "Import",
+          "Serializable",
+          "WindowsRuntime",
+          "UnicodeClass",
+          "AutoClass",
+          "StringFormatMask",
+          "HasSecurity",
+          "ReservedMask",
+          "BeforeFieldInit",
+          "CustomFormatMask"
+        ],
+        "type": "string"
+      },
+      "System.Reflection.TypeInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "assembly": {
+            "$ref": "#/components/schemas/System.Reflection.Assembly"
+          },
+          "assemblyQualifiedName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.TypeAttributes"
+          },
+          "baseType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "containsGenericParameters": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredConstructors": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.ConstructorInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredEvents": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.EventInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredFields": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.FieldInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredMembers": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.MemberInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredMethods": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.MethodInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredNestedTypes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.TypeInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaredProperties": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.PropertyInfo"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodBase"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "fullName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "genericParameterAttributes": {
+            "$ref": "#/components/schemas/System.Reflection.GenericParameterAttributes"
+          },
+          "genericParameterPosition": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "genericTypeArguments": {
+            "items": {
+              "$ref": "#/components/schemas/System.Type"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "genericTypeParameters": {
+            "items": {
+              "$ref": "#/components/schemas/System.Type"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "guid": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "hasElementType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "implementedInterfaces": {
+            "items": {
+              "$ref": "#/components/schemas/System.Type"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "isAbstract": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAnsiClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAutoClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAutoLayout": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isByRef": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isByRefLike": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCOMObject": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructedGenericType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isContextful": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isEnum": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isExplicitLayout": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFunctionPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethodParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericTypeDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericTypeParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isImport": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isInterface": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isLayoutSequential": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isMarshalByRef": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNested": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamANDAssem": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamORAssem": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNotPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrimitive": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSZArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSealed": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSerializable": {
+            "deprecated": true,
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSignatureType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isTypeDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isUnicodeClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isUnmanagedFunctionPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isValueType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVariableBoundArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVisible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "namespace": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "structLayoutAttribute": {
+            "$ref": "#/components/schemas/System.Runtime.InteropServices.StructLayoutAttribute"
+          },
+          "typeHandle": {
+            "$ref": "#/components/schemas/System.RuntimeTypeHandle"
+          },
+          "typeInitializer": {
+            "$ref": "#/components/schemas/System.Reflection.ConstructorInfo"
+          },
+          "underlyingSystemType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      },
+      "System.Runtime.InteropServices.LayoutKind": {
+        "enum": [
+          "Sequential",
+          "Explicit",
+          "Auto"
+        ],
+        "type": "string"
+      },
+      "System.Runtime.InteropServices.StructLayoutAttribute": {
+        "additionalProperties": false,
+        "properties": {
+          "typeId": {
+            "nullable": true,
+            "readOnly": true
+          },
+          "value": {
+            "$ref": "#/components/schemas/System.Runtime.InteropServices.LayoutKind"
+          }
+        },
+        "type": "object"
+      },
+      "System.RuntimeFieldHandle": {
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/System.IntPtr"
+          }
+        },
+        "type": "object"
+      },
+      "System.RuntimeMethodHandle": {
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/System.IntPtr"
+          }
+        },
+        "type": "object"
+      },
+      "System.RuntimeTypeHandle": {
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/System.IntPtr"
+          }
+        },
+        "type": "object"
+      },
+      "System.Security.SecurityRuleSet": {
+        "enum": [
+          "None",
+          "Level1",
+          "Level2"
+        ],
+        "type": "string"
+      },
+      "System.Type": {
+        "additionalProperties": false,
+        "properties": {
+          "assembly": {
+            "$ref": "#/components/schemas/System.Reflection.Assembly"
+          },
+          "assemblyQualifiedName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/System.Reflection.TypeAttributes"
+          },
+          "baseType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "containsGenericParameters": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "customAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/System.Reflection.CustomAttributeData"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "declaringMethod": {
+            "$ref": "#/components/schemas/System.Reflection.MethodBase"
+          },
+          "declaringType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "fullName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "genericParameterAttributes": {
+            "$ref": "#/components/schemas/System.Reflection.GenericParameterAttributes"
+          },
+          "genericParameterPosition": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "genericTypeArguments": {
+            "items": {
+              "$ref": "#/components/schemas/System.Type"
+            },
+            "nullable": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "guid": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "hasElementType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAbstract": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAnsiClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAutoClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isAutoLayout": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isByRef": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isByRefLike": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCOMObject": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isCollectible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isConstructedGenericType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isContextful": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isEnum": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isExplicitLayout": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isFunctionPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericMethodParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericTypeDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isGenericTypeParameter": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isImport": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isInterface": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isLayoutSequential": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isMarshalByRef": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNested": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedAssembly": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamANDAssem": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamORAssem": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedFamily": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedPrivate": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNestedPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isNotPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPrimitive": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isPublic": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSZArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSealed": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecuritySafeCritical": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSecurityTransparent": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSerializable": {
+            "deprecated": true,
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSignatureType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isSpecialName": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isTypeDefinition": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isUnicodeClass": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isUnmanagedFunctionPointer": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isValueType": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVariableBoundArray": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "isVisible": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "memberType": {
+            "$ref": "#/components/schemas/System.Reflection.MemberTypes"
+          },
+          "metadataToken": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "module": {
+            "$ref": "#/components/schemas/System.Reflection.Module"
+          },
+          "name": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "namespace": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "reflectedType": {
+            "$ref": "#/components/schemas/System.Type"
+          },
+          "structLayoutAttribute": {
+            "$ref": "#/components/schemas/System.Runtime.InteropServices.StructLayoutAttribute"
+          },
+          "typeHandle": {
+            "$ref": "#/components/schemas/System.RuntimeTypeHandle"
+          },
+          "typeInitializer": {
+            "$ref": "#/components/schemas/System.Reflection.ConstructorInfo"
+          },
+          "underlyingSystemType": {
+            "$ref": "#/components/schemas/System.Type"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Performs all of the operations, necessary to authenticate and authorize a user as a valid tenant member. Offers an API for registering, verifying e-mail, changing password, etc.",
+    "title": "Authenticatin and authorization API for HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/Accounts/login": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Аутентификация учетной записи по мобильному телефону, адресу электронной почты или логину и паролю через Basic-авторизацию",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/Accounts/login/sso": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Аутентификация учетной записи по sso",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/Accounts/realm": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.AccountRealms.CredentialData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.AccountRealms.CredentialData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.AccountRealms.CredentialData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.AccountRealms.CredentialData"
+              }
+            }
+          },
+          "description": "Данные для входа"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AccountRealmResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AccountRealmResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AccountRealmResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Возвращает данные о реалмах аккаунта по адресу электронной почты или домену",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/Accounts/smsLogin": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.AuthSmsDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.AuthSmsDto"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.AuthSmsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.AuthSmsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.AuthenticationResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Проверка СМС кода",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/Accounts/smsSend": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.PhoneDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.PhoneDto"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.PhoneDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Dto.PhoneDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.OtpGenerateResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.OtpGenerateResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.OtpGenerateResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ObjectResult"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Генерация кода для авторизации через СМС",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/Passwords/set": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.Passwords.SetData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.Passwords.SetData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.Passwords.SetData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Data.Passwords.SetData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHN.Core.Results.Account.JwtResultBase"
+                }
+              }
+            },
+            "description": "Accepted"
+          }
+        },
+        "summary": "Устанавливает пароль для вновь созданной учётной записи.",
+        "tags": [
+          "Passwords"
+        ]
+      }
+    }
+  }
+}

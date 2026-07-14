@@ -1,0 +1,4910 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.DataProvider.Api.Data.COMMON.Attribute.AddData": {
+        "additionalProperties": false,
+        "properties": {
+          "attributeTypeID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "domainID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "isRelevantForAsset": {
+            "type": "boolean"
+          },
+          "isRelevantForCheckList": {
+            "type": "boolean"
+          },
+          "isRelevantForCompany": {
+            "type": "boolean"
+          },
+          "isRelevantForCompletedWork": {
+            "type": "boolean"
+          },
+          "isRelevantForContract": {
+            "type": "boolean"
+          },
+          "isRelevantForCustomer": {
+            "type": "boolean"
+          },
+          "isRelevantForTask": {
+            "type": "boolean"
+          },
+          "isRelevantForTechnician": {
+            "type": "boolean"
+          },
+          "measurementUnitID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "attributeTypeID",
+          "isPublic",
+          "name"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.COMMON.Attribute.UpdateData": {
+        "additionalProperties": false,
+        "properties": {
+          "attributeTypeID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "domainID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "isRelevantForAsset": {
+            "type": "boolean"
+          },
+          "isRelevantForCheckList": {
+            "type": "boolean"
+          },
+          "isRelevantForCompany": {
+            "type": "boolean"
+          },
+          "isRelevantForCompletedWork": {
+            "type": "boolean"
+          },
+          "isRelevantForContract": {
+            "type": "boolean"
+          },
+          "isRelevantForCustomer": {
+            "type": "boolean"
+          },
+          "isRelevantForTask": {
+            "type": "boolean"
+          },
+          "isRelevantForTechnician": {
+            "type": "boolean"
+          },
+          "measurementUnitID": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "attributeTypeID",
+          "isPublic",
+          "name"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.ListOfValueData": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "value": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.MergeData": {
+        "additionalProperties": false,
+        "properties": {
+          "attributeID": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.ListOfValueData"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.COMMON.Contact.AddData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "maxLength": 512,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 128,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "fullName": {
+            "maxLength": 128,
+            "minLength": 0,
+            "type": "string"
+          },
+          "phone": {
+            "maxLength": 32,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "position": {
+            "maxLength": 128,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "fullName"
+        ],
+        "type": "object"
+      },
+      "HubEx.DataProvider.Api.Data.COMMON.Contact.UpdateData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "maxLength": 512,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 128,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "fullName": {
+            "maxLength": 128,
+            "minLength": 0,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "phone": {
+            "maxLength": 32,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
+          "position": {
+            "maxLength": 128,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "fullName",
+          "id"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Application.ApplicationResult": {
+        "additionalProperties": false,
+        "description": "Модель для контроллера метода получения списка приложений",
+        "properties": {
+          "code": {
+            "description": "Кодовое обозначение приложения",
+            "nullable": true,
+            "type": "string"
+          },
+          "nameRu": {
+            "description": "Название приложения на русском",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attachments.GetResult": {
+        "additionalProperties": false,
+        "description": "Данные прикрепленного файла",
+        "properties": {
+          "created": {
+            "description": "Дата загрузки UTC",
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание файла",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Название файла (с расширением)",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор файла",
+            "format": "int32",
+            "type": "integer"
+          },
+          "isProtected": {
+            "description": "Признак того, что вложенный файл доступен ограниченному набору ролей",
+            "type": "boolean"
+          },
+          "isUploaded": {
+            "description": "Признак успешной загрузки в облачное хранилище (false если сейчас файл загружается)",
+            "type": "boolean"
+          },
+          "publicUrl": {
+            "description": "Публичная ссылка на файл (только для опубликованных файлов)",
+            "nullable": true,
+            "type": "string"
+          },
+          "size": {
+            "description": "Размер файла в байтах",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attachments.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные прикрепленного файла",
+        "properties": {
+          "created": {
+            "description": "Дата загрузки UTC",
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "description": "Описание файла",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Название файла (с расширением)",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор файла",
+            "format": "int32",
+            "type": "integer"
+          },
+          "isProtected": {
+            "description": "Признак того, что вложенный файл доступен ограниченному набору ролей",
+            "type": "boolean"
+          },
+          "isUploaded": {
+            "description": "Признак успешной загрузки в облачное хранилище (false если сейчас файл загружается)",
+            "type": "boolean"
+          },
+          "publicUrl": {
+            "description": "Публичная ссылка на файл (только для опубликованных файлов)",
+            "nullable": true,
+            "type": "string"
+          },
+          "size": {
+            "description": "Размер файла в байтах",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attachments.PublishResult": {
+        "additionalProperties": false,
+        "description": "Результат публикации файлов для общего доступа",
+        "properties": {
+          "attachmentID": {
+            "description": "Идентификатор вложенного файла",
+            "format": "int32",
+            "type": "integer"
+          },
+          "publicUrl": {
+            "description": "Публичная ссылка",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attachments.UploadResult": {
+        "additionalProperties": false,
+        "description": "Результат загрузки файла",
+        "properties": {
+          "attachmentID": {
+            "description": "Идентификатор вложенного файла",
+            "format": "int32",
+            "type": "integer"
+          },
+          "checkSum": {
+            "description": "Проверочная сумма MD5",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Имя загруженного файла",
+            "nullable": true,
+            "type": "string"
+          },
+          "isProtected": {
+            "description": "Признак того, что вложенный файл доступен ограниченному набору ролей",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.AttributeTypes.ExtListResult": {
+        "additionalProperties": false,
+        "description": "Представляет тип атрибута и его домен",
+        "properties": {
+          "code": {
+            "description": "Код типа атрибута",
+            "nullable": true,
+            "type": "string"
+          },
+          "domain": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.DomainResult"
+          },
+          "id": {
+            "description": "Идентификатор типа атрибута",
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "description": "Название типа атрибута",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.AttributeTypes.ListResult": {
+        "additionalProperties": false,
+        "description": "Элемент списка типов атрибутов",
+        "properties": {
+          "code": {
+            "description": "Код типа атрибута",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Название типа атрибута",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultGet": {
+        "additionalProperties": false,
+        "description": "Пользовательское поле (атрибут)",
+        "properties": {
+          "deleted": {
+            "description": "Метка времени удаления атрибута",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "domain": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.DomainResult"
+          },
+          "isPublic": {
+            "description": "Признак публичного пользоваетльского поля (поля будет доступно на шильде)",
+            "type": "boolean"
+          },
+          "listOfValues": {
+            "description": "Список доступных значений",
+            "items": {
+              "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Auxiliary.KeyValueDeleted`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "measurementUnit": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult"
+          },
+          "name": {
+            "description": "Название пользовательского поля",
+            "nullable": true,
+            "type": "string"
+          },
+          "relevantFor": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.RelevantAttributeResult"
+          },
+          "type": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeTypeResult"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultList": {
+        "additionalProperties": false,
+        "description": "Пользовательское поле (атрибут)",
+        "properties": {
+          "deleted": {
+            "description": "Метка времени удаления атрибута",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "domain": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.DomainResult"
+          },
+          "isPublic": {
+            "description": "Признак публичного пользоваетльского поля (поля будет доступно на шильде)",
+            "type": "boolean"
+          },
+          "listOfValues": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "description": "Список доступных значений",
+            "nullable": true,
+            "type": "object"
+          },
+          "measurementUnit": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult"
+          },
+          "name": {
+            "description": "Название пользовательского поля",
+            "nullable": true,
+            "type": "string"
+          },
+          "relevantFor": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.RelevantAttributeResult"
+          },
+          "type": {
+            "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeTypeResult"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attributes.AttributeTypeResult": {
+        "additionalProperties": false,
+        "description": "Тип атрибута",
+        "properties": {
+          "code": {
+            "description": "Код атрибута",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attributes.DomainResult": {
+        "additionalProperties": false,
+        "description": "Домен атрибута",
+        "properties": {
+          "code": {
+            "description": "Код домена - указывает базовую сущность для формирования источника данных для атрибута.списка атрибутов",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Внутренний идентификатор домена",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "description": "Описание для UI домена",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Attributes.RelevantAttributeResult": {
+        "additionalProperties": false,
+        "description": "Применимость атрибута к сущности",
+        "properties": {
+          "asset": {
+            "description": "Флаг применимости к оборудованию",
+            "type": "boolean"
+          },
+          "checkList": {
+            "description": "Флаг применимости к чек-листу",
+            "type": "boolean"
+          },
+          "company": {
+            "description": "Флаг применимости к компании",
+            "type": "boolean"
+          },
+          "completedWork": {
+            "description": "Флаг применимости к выполненной работе",
+            "type": "boolean"
+          },
+          "contract": {
+            "description": "Флаг применимости к договорам",
+            "type": "boolean"
+          },
+          "customer": {
+            "description": "Флаг применимости к заказчику",
+            "type": "boolean"
+          },
+          "task": {
+            "description": "Флаг применимости к задаче",
+            "type": "boolean"
+          },
+          "technician": {
+            "description": "Флаг применимости к сотруднику",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Auxiliary.KeyValueDeleted`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "description": "Значение из списка",
+        "properties": {
+          "deleted": {
+            "description": "Признак удаленного",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "key": {
+            "description": "Ключ",
+            "nullable": true,
+            "type": "string"
+          },
+          "value": {
+            "description": "Значение",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Banks.BankResult": {
+        "additionalProperties": false,
+        "description": "Банк",
+        "properties": {
+          "address": {
+            "description": "Адрес",
+            "nullable": true,
+            "type": "string"
+          },
+          "bic": {
+            "description": "БИК (банковский идентификационный код)",
+            "nullable": true,
+            "type": "string"
+          },
+          "correspondingAccount": {
+            "description": "Корреспондентский счет",
+            "nullable": true,
+            "type": "string"
+          },
+          "eMail": {
+            "description": "E-mail",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор банка",
+            "format": "int32",
+            "type": "integer"
+          },
+          "isActive": {
+            "description": "Статус активности",
+            "type": "boolean"
+          },
+          "name": {
+            "description": "Название банка",
+            "nullable": true,
+            "type": "string"
+          },
+          "phone": {
+            "description": "Телефон",
+            "nullable": true,
+            "type": "string"
+          },
+          "swift": {
+            "description": "SWIFT",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult": {
+        "additionalProperties": false,
+        "description": "Класс единиц измерения",
+        "properties": {
+          "abbreviation": {
+            "description": "Аббревиатура единицы измерения",
+            "nullable": true,
+            "type": "string"
+          },
+          "designation": {
+            "description": "Обозначение единицы измерения",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор единицы измерения",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "name": {
+            "description": "Название единицы измерения",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Contacts.GetResult": {
+        "additionalProperties": false,
+        "description": "Данные контакта",
+        "properties": {
+          "deleted": {
+            "description": "Отметка удаления контакта",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Комментарий к контакту",
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "Электронная почта контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "fullName": {
+            "description": "ФИО контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор контакта",
+            "format": "int32",
+            "type": "integer"
+          },
+          "phone": {
+            "description": "Мобильный телефон контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "position": {
+            "description": "Должность контакта",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Contacts.ListResult": {
+        "additionalProperties": false,
+        "description": "Данные контакта",
+        "properties": {
+          "deleted": {
+            "description": "Отметка удаления контакта",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Комментарий к контакту",
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "Электронная почта контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "fullName": {
+            "description": "ФИО контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Идентификатор контакта",
+            "format": "int32",
+            "type": "integer"
+          },
+          "isUsed": {
+            "description": "Отметка что контакт используется",
+            "type": "boolean"
+          },
+          "phone": {
+            "description": "Мобильный телефон контакта",
+            "nullable": true,
+            "type": "string"
+          },
+          "position": {
+            "description": "Должность контакта",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Countries.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка стран",
+        "properties": {
+          "name": {
+            "description": "Название страны",
+            "nullable": true,
+            "type": "string"
+          },
+          "threeSymbolCode": {
+            "description": "Трехсимвольный код страны",
+            "nullable": true,
+            "type": "string"
+          },
+          "twoSymbolCode": {
+            "description": "Двухсимвольный код страны",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Currencies.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка валют",
+        "properties": {
+          "asciiCode": {
+            "description": "ASCII код валюты",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Полное название валюты",
+            "nullable": true,
+            "type": "string"
+          },
+          "shortName": {
+            "description": "Краткое название валюты",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Events.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка событий",
+        "properties": {
+          "code": {
+            "description": "Код события",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult": {
+        "additionalProperties": false,
+        "description": "Отчет PowerBI",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reportID": {
+            "description": "Идентификатор отчета",
+            "nullable": true,
+            "type": "string"
+          },
+          "reportType": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Timezones.ListResult": {
+        "additionalProperties": false,
+        "description": "Класс списка временных зон",
+        "properties": {
+          "name": {
+            "description": "Название временной зоны",
+            "nullable": true,
+            "type": "string"
+          },
+          "utcTimeOffset": {
+            "description": "Разница во времени относительно UTC",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.COMMON.Api.Results.Timezones.TimezoneGetResult": {
+        "additionalProperties": false,
+        "description": "Информация о таймзоне",
+        "properties": {
+          "name": {
+            "description": "Название временной зоны",
+            "nullable": true,
+            "type": "string"
+          },
+          "utcTimeOffsetMinutes": {
+            "description": "Разница во времени относительно UTC",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.Common.AspNetCore.Data.Attachments.FromBodyUploadData": {
+        "additionalProperties": false,
+        "properties": {
+          "checkSum": {
+            "nullable": true,
+            "type": "string"
+          },
+          "contentLength": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "contentStream": {
+            "format": "binary",
+            "nullable": true,
+            "type": "string"
+          },
+          "contentType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "coordinate": {
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "file": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "fileName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "isIgnorePossibleDuplication": {
+            "type": "boolean"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "md5Hash": {
+            "nullable": true,
+            "type": "string"
+          },
+          "roles": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "uid": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "contentType",
+          "file",
+          "fileName"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.Common.AspNetCore.Data.Attachments.FromFormUploadData": {
+        "additionalProperties": false,
+        "properties": {
+          "contentLength": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "contentStream": {
+            "format": "binary",
+            "nullable": true,
+            "type": "string"
+          },
+          "contentType": {
+            "nullable": true,
+            "type": "string"
+          },
+          "coordinate": {
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "file": {
+            "format": "binary",
+            "type": "string"
+          },
+          "fileName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "isIgnorePossibleDuplication": {
+            "type": "boolean"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "md5Hash": {
+            "nullable": true,
+            "type": "string"
+          },
+          "roles": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "uid": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "type": "object"
+      },
+      "SmartService.Common.ExceptionHandling.Models.ErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "arguments": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "object"
+          },
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "traceIdentifier": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.FileStorage.Result.DownloadLinkResult": {
+        "additionalProperties": false,
+        "properties": {
+          "downloadUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "expiresAfter": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "failures": {
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "headers": {
+            "items": {
+              "$ref": "#/components/schemas/SmartService.Common.FileStorage.Result.HttpHeader"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.FileStorage.Result.HttpHeader": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "value": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Common service offers various methods for managing common and auxiliary dictionaries.",
+    "title": "API for managing common dictionaries in HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/Applications": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ApplicationList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Application.ApplicationResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Application.ApplicationResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Application.ApplicationResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список  веток",
+        "tags": [
+          "Applications"
+        ]
+      }
+    },
+    "/Attachments": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Помечает вложения и все связи как удаленные",
+        "tags": [
+          "Attachments"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Список идентификаторов объектов, по которым будет производиться фильтрация выборки",
+            "in": "query",
+            "name": "assetID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Список идентификаторов заявок, по которым будет производиться фильтрация выборки",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Список идентификаторов шаблонных объектов, по которым будет производиться фильтрация выборки",
+            "in": "query",
+            "name": "assetTemplateID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Список идентификаторов прикрепленных файлов, по которым будет производиться фильтрация выборки",
+            "in": "query",
+            "name": "attachmentID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Если true, результат будет содержать только удаленные файлы, если false - только неудаленные",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Список вложенных файлов, доступных пользователю",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/content/{container}/{filePath}": {
+      "get": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filePath",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "temp_url_sig",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "temp_url_expires",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filename",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "container",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/downloadLink": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Список идентификаторов заявок, по которым будет производиться фильтрация выборки",
+            "in": "query",
+            "name": "taskID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          },
+          {
+            "description": "Признак удаления контакта",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SmartService.Common.FileStorage.Result.DownloadLinkResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SmartService.Common.FileStorage.Result.DownloadLinkResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SmartService.Common.FileStorage.Result.DownloadLinkResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Получить URL и список необходимых данных, для возможности скачивания архива с файлами для заявок (не более 100)",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/upload/fromBody": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentUpload**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Data.Attachments.FromBodyUploadData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Data.Attachments.FromBodyUploadData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Data.Attachments.FromBodyUploadData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Data.Attachments.FromBodyUploadData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Загружает файл на файловый сервер. Данные будут получены из тела запроса.",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/upload/fromForm": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentUpload**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {
+                "ContentLength": {
+                  "style": "form"
+                },
+                "ContentStream.CanRead": {
+                  "style": "form"
+                },
+                "ContentStream.CanSeek": {
+                  "style": "form"
+                },
+                "ContentStream.CanTimeout": {
+                  "style": "form"
+                },
+                "ContentStream.CanWrite": {
+                  "style": "form"
+                },
+                "ContentStream.Capacity": {
+                  "style": "form"
+                },
+                "ContentStream.Length": {
+                  "style": "form"
+                },
+                "ContentStream.Position": {
+                  "style": "form"
+                },
+                "ContentStream.ReadTimeout": {
+                  "style": "form"
+                },
+                "ContentStream.WriteTimeout": {
+                  "style": "form"
+                },
+                "ContentType": {
+                  "style": "form"
+                },
+                "Coordinate": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "File": {
+                  "style": "form"
+                },
+                "FileName": {
+                  "style": "form"
+                },
+                "IsIgnorePossibleDuplication": {
+                  "style": "form"
+                },
+                "IsPublic": {
+                  "style": "form"
+                },
+                "Md5Hash": {
+                  "style": "form"
+                },
+                "Roles": {
+                  "style": "form"
+                },
+                "Uid": {
+                  "style": "form"
+                }
+              },
+              "schema": {
+                "properties": {
+                  "ContentLength": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "ContentStream.CanRead": {
+                    "type": "boolean"
+                  },
+                  "ContentStream.CanSeek": {
+                    "type": "boolean"
+                  },
+                  "ContentStream.CanTimeout": {
+                    "type": "boolean"
+                  },
+                  "ContentStream.CanWrite": {
+                    "type": "boolean"
+                  },
+                  "ContentStream.Capacity": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "ContentStream.Length": {
+                    "format": "int64",
+                    "type": "integer"
+                  },
+                  "ContentStream.Position": {
+                    "format": "int64",
+                    "type": "integer"
+                  },
+                  "ContentStream.ReadTimeout": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "ContentStream.WriteTimeout": {
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "ContentType": {
+                    "type": "string"
+                  },
+                  "Coordinate": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "File": {
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "FileName": {
+                    "type": "string"
+                  },
+                  "IsIgnorePossibleDuplication": {
+                    "type": "boolean"
+                  },
+                  "IsPublic": {
+                    "type": "boolean"
+                  },
+                  "Md5Hash": {
+                    "type": "string"
+                  },
+                  "Roles": {
+                    "items": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "Uid": {
+                    "format": "uuid",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "File"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Загружает файл на файловый сервер. Данные будут получены из формы.",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/v2/upload/fromForm": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentUpload**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {
+                "Attachments": {
+                  "style": "form"
+                }
+              },
+              "schema": {
+                "properties": {
+                  "Attachments": {
+                    "description": "Данные загружаемого файла, полученные из формы",
+                    "items": {
+                      "$ref": "#/components/schemas/HubEx.Service.Common.AspNetCore.Data.Attachments.FromFormUploadData"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.UploadResult"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Загружает несколько файлов на файловый сервер. Данные будут получены из формы.",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/{attachmentID}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Помечает вложение и все связи как удаленные",
+        "tags": [
+          "Attachments"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentDownload**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Идентификатор вложения",
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Размер эскиза (будет возвращен ближайший больший эскиз и доступных)",
+            "in": "query",
+            "name": "thumbnailSize",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Признак указывающий на то, что ссылку на файл необходимо передать в теле ответа на запрос",
+            "in": "query",
+            "name": "noRedirect",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "307": {
+            "description": "Temporary Redirect"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Возвращает TemporartRedirect на временную ссылку для скачки файла",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/{attachmentID}/publish": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentPublish**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.PublishResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.PublishResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.PublishResult"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод публикации файла для ообщего доступа",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/{attachmentID}/roles": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **RoleAttachmentsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список ролей, для которых эксклюзивно доступен вложенный файл",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/{attachmentID}/this": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentsList**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attachments.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения данных вложения",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/Attachments/{attachmentID}/unpublish": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttachmentPublish**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attachmentID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод публикации файла для ообщего доступа",
+        "tags": [
+          "Attachments"
+        ]
+      }
+    },
+    "/AttributeListOfValues": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeListOfValueMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.MergeData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.AttributeListOfValue.MergeData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод сохранения списка допустимых значений",
+        "tags": [
+          "AttributeListOfValues"
+        ]
+      }
+    },
+    "/AttributeTypes": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeTypeList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод возвращает список доступных типов (доп.полей) атрибутов",
+        "tags": [
+          "AttributeTypes"
+        ]
+      }
+    },
+    "/AttributeTypes/v2": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeTypeList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ExtListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ExtListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.AttributeTypes.ExtListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает плоский список типов атрибутов (доп.полей) с доменами, если существует такое сопоставление",
+        "tags": [
+          "AttributeTypes"
+        ]
+      }
+    },
+    "/Attributes": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод удаления атрибутов",
+        "tags": [
+          "Attributes"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак возвращения только удаленных атрибутов",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возрващения только публичных атрибутов",
+            "in": "query",
+            "name": "isPublic",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с задачими",
+            "in": "query",
+            "name": "isRelevantForTask",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с оборудованием",
+            "in": "query",
+            "name": "isRelevantForAsset",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с чек-листами",
+            "in": "query",
+            "name": "isRelevantForCheckList",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с выполненными работами",
+            "in": "query",
+            "name": "isRelevantForCompletedWork",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с компаниями",
+            "in": "query",
+            "name": "isRelevantForCompany",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с договорами",
+            "in": "query",
+            "name": "isRelevantForContract",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с заказчиками",
+            "in": "query",
+            "name": "IsRelevantForCustomer",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак возвращения атрибутов, связанных с сотрудниками",
+            "in": "query",
+            "name": "IsRelevantForTechnician",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultList"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultList"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultList"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения данных атрибута",
+        "tags": [
+          "Attributes"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.AddData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод создания атрибута",
+        "tags": [
+          "Attributes"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Attribute.UpdateData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод изменения атрибутов",
+        "tags": [
+          "Attributes"
+        ]
+      }
+    },
+    "/Attributes/{attributeID}": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attributeID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultGet"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultGet"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Attributes.AttributeResultGet"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения данных атрибута",
+        "tags": [
+          "Attributes"
+        ]
+      }
+    },
+    "/Attributes/{attributeID}/listOfValues": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeListOfValuesList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attributeID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения допустимых значений для атрибута",
+        "tags": [
+          "Attributes"
+        ]
+      }
+    },
+    "/Attributes/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **AttributeDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод удаления атрибута",
+        "tags": [
+          "Attributes"
+        ]
+      }
+    },
+    "/Banks": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **BankList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак активности банка",
+            "in": "query",
+            "name": "isActive",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка банков",
+        "tags": [
+          "Banks"
+        ]
+      }
+    },
+    "/Banks/{bankId}": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **BankGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bankId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Banks.BankResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Метод получения данных банка",
+        "tags": [
+          "Banks"
+        ]
+      }
+    },
+    "/Contacts": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactDelete**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод удаления контактов",
+        "tags": [
+          "Contacts"
+        ]
+      },
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак удаления контакта",
+            "in": "query",
+            "name": "isDeleted",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Идентификаторы контактов, по которым будет отфильтрован результат",
+            "in": "query",
+            "name": "contactID",
+            "schema": {
+              "default": null,
+              "type": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения данных контакта",
+        "tags": [
+          "Contacts"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.AddData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.AddData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод создания контакта",
+        "tags": [
+          "Contacts"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactUpdate**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.UpdateData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.COMMON.Contact.UpdateData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод изменения контактов",
+        "tags": [
+          "Contacts"
+        ]
+      }
+    },
+    "/Contacts/{contactID}": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contactID",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.GetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.GetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Contacts.GetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Метод получения данных контакта",
+        "tags": [
+          "Contacts"
+        ]
+      }
+    },
+    "/Contacts/{id}": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ContactDelete**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод удаления контакта",
+        "tags": [
+          "Contacts"
+        ]
+      }
+    },
+    "/Countries": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **CountriesList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Countries.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Countries.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Countries.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка стран",
+        "tags": [
+          "Countries"
+        ]
+      }
+    },
+    "/Currencies": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **CurrenciesList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Currencies.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Currencies.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Currencies.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка валют",
+        "tags": [
+          "Currencies"
+        ]
+      }
+    },
+    "/Events": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **EventList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Тип отправки событий, выдаваемых в списке",
+            "in": "query",
+            "name": "eventTransportTypeID",
+            "schema": {
+              "default": null,
+              "type": "int16"
+            }
+          },
+          {
+            "description": "Признак включения в список только системных событий",
+            "in": "query",
+            "name": "isSystem",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак включения в список скрытых событий",
+            "in": "query",
+            "name": "isHidden",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Events.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Events.ListResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Events.ListResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка доступных событий",
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/MeasurementUnits": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **MeasurementUnitList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Common.MeasurementUnitResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка единиц измерения",
+        "tags": [
+          "MeasurementUnits"
+        ]
+      }
+    },
+    "/PowerBIReports": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **PowerBIReportList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения информации по PowerBI отчетам",
+        "tags": [
+          "PowerBIReports"
+        ]
+      }
+    },
+    "/PowerBIReports/{id}": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **PowerBIReportGet**",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.PowerBiReports.PowerBIReportResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Метод получения данных отчета",
+        "tags": [
+          "PowerBIReports"
+        ]
+      }
+    },
+    "/SystemTags": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TagsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка доступных системных тэгов",
+        "tags": [
+          "SystemTags"
+        ]
+      }
+    },
+    "/Tags": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TagsList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Тексовый поиск по тэгам (like-синтаксис)",
+            "in": "query",
+            "name": "searchText",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка доступных тэгов",
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/Timezones": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TimezonesList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения списка временных зон",
+        "tags": [
+          "Timezones"
+        ]
+      }
+    },
+    "/Timezones/info": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **TimezonesList**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "timezoneId",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.TimezoneGetResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.TimezoneGetResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.COMMON.Api.Results.Timezones.TimezoneGetResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Метод получения часового пояса тенанта",
+        "tags": [
+          "Timezones"
+        ]
+      }
+    }
+  }
+}

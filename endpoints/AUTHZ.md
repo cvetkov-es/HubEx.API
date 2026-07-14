@@ -1,0 +1,36 @@
+# AUTHZ — справочник ручек
+
+> **Что здесь:** все ручки сервиса AUTHZ (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHZ.md. Сгенерировано из swagger.
+> **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTHZ.md`; грабли — `notes/AUTHZ.md` (если есть).
+> **Источник:** `snapshots/AUTHZ.json` · файл генерируется пайплайном — руками не править.
+
+Base: `{BASE_URL}/AUTHZ`
+
+## AccessTokens
+- `POST /AccessTokens` — Обновляет токен доступа к  ресурсам
+  ← body: RefreshData → JwtResultBase
+  Выполнение данного метода резрешино от **анонимного пользователя**.
+
+## Accounts
+- `POST /Accounts/authorize` — Авторизация учетной записи в тенанте
+  ← body: AuthorizeData → TenantMemberAuthorizationResult
+  Для выполнения данного метода пользователь должен быть **Authenticated**.
+
+## RefreshTokens
+- `GET /RefreshTokens` — Возвращает refresh-токен с параметрами по умолчанию.
+  → JwtResultBase
+  Для выполнения данного метода пользователь должен быть **TenantMember**.
+- `POST /RefreshTokens` — Генерирует обновляющий токен и возвращает его
+  ← body: GenerateData → JwtResultBase
+  Для выполнения данного метода пользователь должен быть **TenantMember**.
+
+## ServiceTokens
+- `POST /ServiceTokens` — Генерирует новый токен доступа и возвращает его · права: ServiceTokenAdd
+  ← body: int[] → PostResult
+- `DELETE /ServiceTokens` — Удаляет токен доступа · права: ServiceTokenRemove
+  ← body: int[]
+
+## Tokens
+- `POST /Tokens/renew` — Обновление JWT
+  → JwtResultBase
+  Для выполнения данного метода пользователь должен быть **TenantMember**.

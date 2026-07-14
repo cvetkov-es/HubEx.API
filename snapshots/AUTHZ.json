@@ -1,0 +1,896 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData": {
+        "additionalProperties": false,
+        "description": "Класс, принимающий JWT для обновления JWT доступа к ресурсам.",
+        "properties": {
+          "accessJwt": {
+            "description": "JWT access-токен (опциональный, необходим для определения включены ли в access-токен какие-либо расщирения, если включены новый токен будет сгенерирован с учетогм их)",
+            "nullable": true,
+            "type": "string"
+          },
+          "jwt": {
+            "deprecated": true,
+            "description": "JWT refresh-токен",
+            "nullable": true,
+            "type": "string"
+          },
+          "oneTimeLoginToken": {
+            "description": "Токен для одноразовой авторизации в тенанте",
+            "nullable": true,
+            "type": "string"
+          },
+          "refreshJwt": {
+            "description": "JWT refresh-токен",
+            "nullable": true,
+            "type": "string"
+          },
+          "serviceToken": {
+            "description": "Сервисный токен для упрощенной авторизации",
+            "nullable": true,
+            "type": "string"
+          },
+          "tenantID": {
+            "description": "Идентификатор тенанта, в который будет произведен вход по HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData.OneTimeLoginToken",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Data.Account.AuthorizeData": {
+        "additionalProperties": false,
+        "description": "Данные для авторизации",
+        "properties": {
+          "tenantID": {
+            "description": "ИД тенанта, в который будет авторизован пользователь.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "tenantMemberID": {
+            "description": "ИД члена тенанта, в который этот член будет авторизован.",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tenantID",
+          "tenantMemberID"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Data.RefreshTokens.GenerateData": {
+        "additionalProperties": false,
+        "description": "Параметры генерации токена",
+        "properties": {
+          "validity": {
+            "description": "Срок действия токена",
+            "format": "date-span",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Accounts.TenantLicenseCurrentResult": {
+        "additionalProperties": false,
+        "description": "Данные текущей лицензии тенанта",
+        "properties": {
+          "dateFrom": {
+            "description": "Дата начала лицензии",
+            "format": "date-time",
+            "type": "string"
+          },
+          "dateTill": {
+            "description": "Дата окончания лицензии",
+            "format": "date-time",
+            "type": "string"
+          },
+          "isTrialPeriod": {
+            "description": "Флаг пробного периода",
+            "type": "boolean"
+          },
+          "license": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "trialPeriodDays": {
+            "description": "Длина пробного периода в днях",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberAuthorizationResult": {
+        "additionalProperties": false,
+        "description": "Авторизация члена тенанта",
+        "properties": {
+          "access_token": {
+            "description": "JWT-токен для доступа к ресурсам",
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "expires_in": {
+            "description": "Количество секунд, через которой токен будет просрочен",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "featureFlags": {
+            "description": "Список флагов нового функционала, доступных тенанту",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "jwtValidTill": {
+            "description": "Метка времени в UTC, до которой действует JWT",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "permissions": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "description": "Данные пользователя как члена тенанта.",
+            "nullable": true,
+            "type": "object"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.UserProfileResult"
+          },
+          "refreshToken": {
+            "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+          },
+          "refresh_token": {
+            "description": "JWT-токен для обновления JWT-токена для доступа к ресурсам",
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "roleTaskAttribute": {
+            "description": "Список доступных атрибутов для ролей пользователя по заявке",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "tenant": {
+            "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantResult"
+          },
+          "tenantLicenses": {
+            "description": "Данные лицензий тенанта",
+            "items": {
+              "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantLicenseCurrentResult"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "tenantMember": {
+            "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberResult"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberResult": {
+        "additionalProperties": false,
+        "description": "Данные члена тенанта",
+        "properties": {
+          "accountID": {
+            "description": "Идентификатор учетной записи",
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": {
+            "description": "Описание",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "userID": {
+            "description": "Идентификатор пользователя",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Accounts.TenantResult": {
+        "additionalProperties": false,
+        "description": "Данные тенанта",
+        "properties": {
+          "fullName": {
+            "description": "Полное название тенанта",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "uriName": {
+            "description": "Uri-постфикс",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Accounts.UserProfileResult": {
+        "additionalProperties": false,
+        "description": "Профиль пользователя",
+        "properties": {
+          "accountDomainLogin": {
+            "description": "Domain login аккаунта пользователя",
+            "nullable": true,
+            "type": "string"
+          },
+          "avatarUrl": {
+            "description": "Ссылка на аватар пользователя",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPageMobile": {
+            "description": "Стартовая страница для МП инженера",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPageWeb": {
+            "description": "Стартовая страница для WEB",
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "Адрес эл.почты",
+            "nullable": true,
+            "type": "string"
+          },
+          "firstName": {
+            "description": "Имя",
+            "nullable": true,
+            "type": "string"
+          },
+          "geoTrackingMode": {
+            "$ref": "#/components/schemas/SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+          },
+          "lastName": {
+            "description": "Фамилия",
+            "nullable": true,
+            "type": "string"
+          },
+          "middleName": {
+            "description": "Отчество",
+            "nullable": true,
+            "type": "string"
+          },
+          "mobilePhone": {
+            "description": "Мобильный телефон",
+            "nullable": true,
+            "type": "string"
+          },
+          "otherPhone": {
+            "description": "Другой телефон",
+            "nullable": true,
+            "type": "string"
+          },
+          "userID": {
+            "description": "Идентификатор пользователя",
+            "format": "int32",
+            "type": "integer"
+          },
+          "workPhone": {
+            "description": "Рабочий телефон",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase": {
+        "additionalProperties": false,
+        "description": "Данные JWT",
+        "properties": {
+          "access_token": {
+            "description": "JWT-токен для доступа к ресурсам",
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "expires_in": {
+            "description": "Количество секунд, через которой токен будет просрочен",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "jwtValidTill": {
+            "description": "Метка времени в UTC, до которой действует JWT",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "refresh_token": {
+            "description": "JWT-токен для обновления JWT-токена для доступа к ресурсам",
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HubEx.Service.AUTHZ.Api.Results.ServiceTokens.PostResult": {
+        "additionalProperties": false,
+        "description": "Результат генерации сервисного токена",
+        "properties": {
+          "created": {
+            "description": "Метка времени создания токена",
+            "format": "date-time",
+            "type": "string"
+          },
+          "token": {
+            "description": "Токен",
+            "nullable": true,
+            "type": "string"
+          },
+          "validTill": {
+            "description": "Срок действия токена",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdCodeNameResult`1[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.Results.IdNameResult`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Performs all of the operations, necessary to authenticate and authorize a user as a valid tenant member. Offers an API for registering, verifying e-mail, changing password, etc.",
+    "title": "Authenticatin and authorization API for HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/AccessTokens": {
+      "post": {
+        "description": "<br />* Выполнение данного метода резрешино от **анонимного пользователя**.",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.AccessToken.RefreshData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "summary": "Обновляет токен доступа к  ресурсам",
+        "tags": [
+          "AccessTokens"
+        ]
+      }
+    },
+    "/Accounts/authorize": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода пользователь должен быть **Authenticated**.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.Account.AuthorizeData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.Account.AuthorizeData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.Account.AuthorizeData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.Account.AuthorizeData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberAuthorizationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberAuthorizationResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Accounts.TenantMemberAuthorizationResult"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Авторизация учетной записи в тенанте",
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/RefreshTokens": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода пользователь должен быть **TenantMember**.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает refresh-токен с параметрами по умолчанию.",
+        "tags": [
+          "RefreshTokens"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода пользователь должен быть **TenantMember**.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.RefreshTokens.GenerateData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.RefreshTokens.GenerateData"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.RefreshTokens.GenerateData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Data.RefreshTokens.GenerateData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Генерирует обновляющий токен и возвращает его",
+        "tags": [
+          "RefreshTokens"
+        ]
+      }
+    },
+    "/ServiceTokens": {
+      "delete": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ServiceTokenRemove**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Удаляет токен доступа",
+        "tags": [
+          "ServiceTokens"
+        ]
+      },
+      "post": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ServiceTokenAdd**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.ServiceTokens.PostResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.ServiceTokens.PostResult"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.ServiceTokens.PostResult"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Генерирует новый токен доступа и возвращает его",
+        "tags": [
+          "ServiceTokens"
+        ]
+      }
+    },
+    "/Tokens/renew": {
+      "post": {
+        "description": "<br />* Для выполнения данного метода пользователь должен быть **TenantMember**.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubEx.Service.AUTHZ.Api.Results.Base.JwtResultBase"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Обновление JWT",
+        "tags": [
+          "Tokens"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "components": {
+    "schemas": {
+      "HubEx.DataProvider.Api.Data.NEWS.MergeDeliveryData": {
+        "additionalProperties": false,
+        "properties": {
+          "articleID": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "articleID"
+        ],
+        "type": "object"
+      },
+      "HubEx.Service.NEWS.Api.Results.Articles.ListResult": {
+        "additionalProperties": false,
+        "description": "Список новостей",
+        "properties": {
+          "footer": {
+            "description": "Нижний колонтитул новости",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "text": {
+            "description": "Содержание новости, разметка",
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "description": "Заголовок новости",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SmartService.Common.ExceptionHandling.Models.ErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "arguments": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "object"
+          },
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "traceIdentifier": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "fmbackend@melston.ru",
+      "name": "SmartService Backend Team"
+    },
+    "description": "Service offers various methods for managing news and advertisements",
+    "title": "API for managing news and advertisements in HubEx",
+    "version": "v1.0.0.0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/Articles": {
+      "get": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ArticleListForTenantMember**<br />* Метод поддерживает диапазонный запрос через строку или заголовок запроса.",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Формат: items=FROM-TILL , где FROM - начальный элемент (включая), TILL - конечный элемент (включая)",
+            "in": "header",
+            "name": "Range",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество элементов, которое нобходимо пропустить",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "количество эементов, которое необходимо вернуть",
+            "in": "query",
+            "name": "fetch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Признак чтения статьи",
+            "in": "query",
+            "name": "isRead",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Признак публикации статьи",
+            "in": "query",
+            "name": "isPublished",
+            "schema": {
+              "default": null,
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.NEWS.Api.Results.Articles.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.NEWS.Api.Results.Articles.ListResult"
+                  },
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/HubEx.Service.NEWS.Api.Results.Articles.ListResult"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "206": {
+            "description": "PartialContent",
+            "headers": {
+              "Content-Range": {
+                "description": "items=FROM-TILL/OF , где FROM - начальный элемент (включая), TILL - конечный элемент (включая) OF - общее количество элементов",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Возвращает список доступных пользователю новостей.",
+        "tags": [
+          "Articles"
+        ]
+      },
+      "put": {
+        "description": "<br />* Для выполнения данного метода требуется любое из перечисленных полномочий: **ArticleDeliveryMerge**",
+        "parameters": [
+          {
+            "description": "Bearer",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.NEWS.MergeDeliveryData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.NEWS.MergeDeliveryData"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.NEWS.MergeDeliveryData"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/HubEx.DataProvider.Api.Data.NEWS.MergeDeliveryData"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SmartService.Common.ExceptionHandling.Models.ErrorModel"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Conflict"
+          }
+        },
+        "summary": "Помечет новость как прочитанную у текущего пользователя",
+        "tags": [
+          "Articles"
+        ]
+      }
+    }
+  }
+}
