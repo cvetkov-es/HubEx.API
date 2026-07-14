@@ -1,0 +1,6 @@
+[submodule "tools"]
+	path = tools
+	url = ../HubEx.API.Pipeline.git
+[submodule "cli"]
+	path = cli
+	url = ../HubEx.API.CLI.git
