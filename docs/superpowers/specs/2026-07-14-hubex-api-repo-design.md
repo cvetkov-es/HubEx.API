@@ -53,7 +53,7 @@ HubEx.API/
 └── cli/                 ← сабмодуль (пуст без init)
 ```
 
-**HubEx.API.Pipeline** (`tools/`): `api_cli.py` (подкоманда `update`), `update/` (manifest · fetch · diff · endpoints_gen · notes_patch · guard · model_client · report · pipeline · prompts/), `lint/check_links.py`, `tests/`, `conftest.py`, `pytest.ini` (`testpaths = tests`), `requirements.txt`, `README.md`, `.gitignore` (`update/drafts/`, `__pycache__/`, `*.pyc`, `.pytest_cache/`), `docs/superpowers/` (specs/plans, включая эту спеку).
+**HubEx.API.Pipeline** (`tools/`): `api_cli.py` (подкоманда `update`), `update/` (api_manifest · api_fetch · api_diff · swagger_slice · snapshot_store · endpoints_gen · llms_txt · notes_patch · recompress_guard · model_client · report · pipeline · prompts/), `lint/check_links.py`, `tests/`, `conftest.py`, `pytest.ini` (`testpaths = tests`), `requirements.txt`, `README.md`, `.gitignore` (`update/drafts/`, `__pycache__/`, `*.pyc`, `.pytest_cache/`), `docs/superpowers/` (specs/plans, включая эту спеку).
 
 **HubEx.API.CLI** (`cli/`): `hubex_cli.py` (команды `api get/write`, `tenants sync/list` — без `db`), `hubex_core/` (auth · api · config · safety · tenants — **без db.py**), `tenant_base_url_overrides.yaml`, `tenant_notes.yaml`, safety-правила (перенос `knowledge/rules/safety.md` в README или `SAFETY.md`), свои `tests/`, `requirements.txt`, `README.md`.
 
