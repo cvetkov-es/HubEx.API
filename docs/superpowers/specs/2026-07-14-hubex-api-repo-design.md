@@ -28,6 +28,7 @@
 | Монорепа | **не трогаем вообще** | Как при выделении вики; переход монорепы на сабмодули — отдельный будущий цикл |
 | Хостинг | **host-agnostic**, относительные submodule-URL `../HubEx.API.Pipeline`, `../HubEx.API.CLI`; все репо у одного владельца; первый хост — GitHub | Как у вики: URL резолвится от origin суперпроекта, перенос хоста не трогает `.gitmodules` |
 | Формат `endpoints/` | **утверждается пилотом** (§9) до массового засева | Требование мейнтейнера: обработать один сервис тестово, посмотреть и переделать |
+| llms.txt | **генерится пайплайном**: `llms.txt` (индекс по [llmstxt.org](https://llmstxt.org)) + `llms-full.txt` (склейка `endpoints/`) в корне контент-репо | Запрошено мейнтейнером: параллельная выдача в формате llms.txt для внешнего использования |
 
 **Явно вне среза:** домен БД (`HubEx.DB`); комбо-репозитории; правки монорепы; cron/CI и submodule-авторизация в CI; бенчмарки качества; авто-коммит; генерализация пайплайна с вики-пайплайном (у них разные источники и швы; общие модули `report`/`model_client` — осознанный форк, как решено для вики).
 
@@ -44,6 +45,8 @@ HubEx.API/
 ├── endpoints/<SVC>.md   ← полный детерминированный справочник ручек (22 файла)
 ├── notes/<SVC>.md       ← курируемые заметки практики (грабли, правила, связки)
 ├── snapshots/<SVC>.json ← канонические swagger (вербатим; целиком не читать)
+├── llms.txt             ← индекс по llmstxt.org (генерится пайплайном)
+├── llms-full.txt        ← полная склейка endpoints/ одним файлом (генерится)
 ├── .gitignore           ← .superpowers/, __pycache__/, .pytest_cache/
 ├── .gitmodules          ← tools → ../HubEx.API.Pipeline · cli → ../HubEx.API.CLI
 ├── tools/               ← сабмодуль (пуст без init)
@@ -117,6 +120,7 @@ update
   → манифест doc.hubex.ru (urls[] Swagger UI) → [(service, swagger_url)]
   → per service: fetch → normalize (canonical JSON) → дифф со snapshots/<SVC>.json
        → перезаписать снапшот + ПЕРЕГЕНЕРИРОВАТЬ endpoints/<SVC>.md (детерминированно)
+  → если были изменения: перегенерировать llms.txt + llms-full.txt из endpoints/
   → report: added/removed/changed по ручкам и схемам; напоминание проверить
     notes/<SVC>.md, overview.md, entity-map.md при затронутых топ-ручках
 --recompress (модельный шаг):
@@ -156,6 +160,7 @@ update
 - `git clone --recursive` → в `tools/` и `cli/` офлайн-тесты зелёные; `python3 tools/api_cli.py update` печатает отчёт (сеть); повторный прогон сразу после засева → все unchanged, рабочее дерево чистое (идемпотентность).
 - `python3 cli/hubex_cli.py api get ...` работает на тестовом тенанте; `db` -команды отсутствуют.
 - Каждый `endpoints/<SVC>.md` содержит все ручки снапшота (guard/тест на полноту); объём файла в разумных пределах (< ~100К).
+- `llms.txt` ссылается на все 22 файла `endpoints/`; `llms-full.txt` склеен из них же.
 - `git submodule status` показывает пины обоих сабмодулей.
 
 ## 12. Риски
