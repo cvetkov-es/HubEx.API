@@ -1,7 +1,7 @@
 # NEWS — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса NEWS. Ручки, ссылающиеся на них — `endpoints/NEWS.md`.
-> **Источник:** `snapshots/NEWS.json` · файл генерируется пайплайном — руками не править.
+> **Источник:** swagger сервиса NEWS · файл генерируется пайплайном — руками не править.
 
 ```
 type ErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifier?: str }

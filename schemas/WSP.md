@@ -1,7 +1,7 @@
 # WSP — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса WSP. Ручки, ссылающиеся на них — `endpoints/WSP.md`.
-> **Источник:** `snapshots/WSP.json` · файл генерируется пайплайном — руками не править.
+> **Источник:** swagger сервиса WSP · файл генерируется пайплайном — руками не править.
 
 ```
 type ErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifier?: str }

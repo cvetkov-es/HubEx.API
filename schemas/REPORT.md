@@ -1,7 +1,7 @@
 # REPORT — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса REPORT. Ручки, ссылающиеся на них — `endpoints/REPORT.md`.
-> **Источник:** `snapshots/REPORT.json` · файл генерируется пайплайном — руками не править.
+> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
 
 ```
 type AssetResult { deleted?: datetime, host?: IdNameDeletedResult<Int32>, id?: int, name?: str, parentID?: int }

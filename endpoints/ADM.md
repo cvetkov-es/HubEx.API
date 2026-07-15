@@ -2,12 +2,12 @@
 
 > **Что здесь:** все ручки сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md. Сгенерировано из swagger.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ADM.md`; грабли — `notes/ADM.md` (если есть).
-> **Источник:** `snapshots/ADM.json` · файл генерируется пайплайном — руками не править.
+> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/ADM`
 
 ## BanReasons
-- `GET /BanReasons` — Получить список причин блокировки пользователя
+- `GET /BanReasons` — Получить список причин блокировки пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsBanReasonsListResult>
   ## Пример запроса:
 
@@ -30,7 +30,7 @@ GET /banreasons
 ```
 
 ## Capabilities
-- `GET /Capabilities` — Получить список возможностей работы с элементами интерфейса
+- `GET /Capabilities` — Получить список возможностей работы с элементами интерфейса · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsCapabilitiesListResult>
   ## Пример запроса:
 
@@ -53,7 +53,7 @@ GET /capabilities
 ```
 
 ## DefaultPages
-- `GET /DefaultPages` — Получить список доступных стартовых страниц
+- `GET /DefaultPages` — Получить список доступных стартовых страниц · коды: 200, 204, 400
   ← query: applicationID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsDefaultPagesAllowedPageResult[]
   ## Пример запроса:
             
@@ -82,7 +82,7 @@ GET /defaultpages?applicationID=3
 ```
 
 ## GeolocationSettings
-- `GET /GeolocationSettings/coordinateAccuracy` — Получить список настроек точности сбора геокоординат
+- `GET /GeolocationSettings/coordinateAccuracy` — Получить список настроек точности сбора геокоординат · коды: 200, 204
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → IdNameDescriptionEntityOfByte[]
   ## Пример запроса:
 
@@ -105,9 +105,9 @@ GET /geolocationsettings/coordinateAccuracy
 ```
 
 ## Invitations
-- `GET /Invitations` · paginated
+- `GET /Invitations` · paginated · коды: 200, 204, 206
   ← query: userTemplateID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsInvitationsGetResult>
-- `POST /Invitations` — Создать приглашения
+- `POST /Invitations` — Создать приглашения · коды: 201, 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMInvitationAddData[] → ResultsInvitationsAddResult[]
   ## Пример запроса:
 
@@ -134,7 +134,7 @@ POST /invitations
   }
 ]
 ```
-- `PUT /Invitations` — Обновить приглашения
+- `PUT /Invitations` — Обновить приглашения · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMInvitationUpdateData[]
   ## Пример запроса:
 
@@ -153,7 +153,7 @@ PUT /invitations
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Invitations` — Удалить приглашения
+- `DELETE /Invitations` — Удалить приглашения · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: uuid[]
   ## Пример запроса:
 
@@ -169,7 +169,7 @@ DELETE /invitations
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Invitations/{id}` — Получить расширенную информацию о приглашении
+- `GET /Invitations/{id}` — Получить расширенную информацию о приглашении · коды: 200
   ← path: id:uuid; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsInvitationsGetResult
   ## Пример запроса:
 
@@ -189,7 +189,7 @@ GET /invitations/123e4567-e89b-12d3-a456-426614174000
   "validTill": "2025-12-31T23:59:59Z"
 }
 ```
-- `DELETE /Invitations/{id}` — Удалить приглашение
+- `DELETE /Invitations/{id}` — Удалить приглашение · коды: 202
   ← path: id:uuid; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -198,7 +198,7 @@ DELETE /invitations/123e4567-e89b-12d3-a456-426614174000
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Invitations/{id}/short` — Получить сокращенную информацию о приглашении
+- `GET /Invitations/{id}/short` — Получить сокращенную информацию о приглашении · коды: 200
   ← path: id:uuid; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsInvitationsGetShortResult
   ## Пример запроса:
 
@@ -222,7 +222,7 @@ GET /invitations/123e4567-e89b-12d3-a456-426614174000/short
 Этот метод доступен без аутентификации.
 
 ## PermissionApiTags
-- `GET /PermissionApiTags` — Получить список тегов API-полномочий
+- `GET /PermissionApiTags` — Получить список тегов API-полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsApiTagListResult[]>
   ## Пример запроса:
 
@@ -247,7 +247,7 @@ GET /permissionapitags
 ```
 
 ## PermissionExtTags
-- `GET /PermissionExtTags` — Получить список тегов расширенных полномочий
+- `GET /PermissionExtTags` — Получить список тегов расширенных полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsExtTagListResult[]>
   ## Пример запроса:
 
@@ -272,7 +272,7 @@ GET /permissionexttags
 ```
 
 ## PermissionsApi
-- `GET /PermissionsApi` — Получить список API-полномочий
+- `GET /PermissionsApi` — Получить список API-полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsApiListResult>
   ## Пример запроса:
 
@@ -293,15 +293,15 @@ GET /permissionsapi
 ```
 
 ## PermissionsExt
-- `GET /PermissionsExt` — Получить список расширенных полномочий
+- `GET /PermissionsExt` — Получить список расширенных полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsExtListResult>
 
 ## PermissionsUi
-- `GET /PermissionsUi` — Получить список UI полномочий
+- `GET /PermissionsUi` — Получить список UI полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsUiGetResult>
-- `POST /PermissionsUi` — Создать UI полномочия
+- `POST /PermissionsUi` — Создать UI полномочия · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMPermissionUiAddData[] → int[]
-- `PUT /PermissionsUi` — Обновить UI полномочия
+- `PUT /PermissionsUi` — Обновить UI полномочия · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMPermissionUiUpdateData[]
   ## Пример запроса:
 
@@ -320,7 +320,7 @@ PUT /permissionsui
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /PermissionsUi` — Удалить UI полномочия
+- `DELETE /PermissionsUi` — Удалить UI полномочия · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -333,9 +333,9 @@ DELETE /permissionsui
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /PermissionsUi/{id}` — Получить данные UI полномочия
+- `GET /PermissionsUi/{id}` — Получить данные UI полномочия · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsPermissionsUiGetResult
-- `DELETE /PermissionsUi/{id}` — Удалить UI полномочие
+- `DELETE /PermissionsUi/{id}` — Удалить UI полномочие · коды: 202
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -346,7 +346,7 @@ DELETE /permissionsui/1
 HTTP 202 Accepted
 
 ## RoleApplications
-- `POST /RoleApplications` — Добавить или обновить приложения для ролей
+- `POST /RoleApplications` — Добавить или обновить приложения для ролей · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: RoleApplicationBaseBaseData[] → ResultsRoleApplicationMergeResult[]
   ## Пример запроса:
 
@@ -382,7 +382,7 @@ POST /roleapplications
   }
 ]
 ```
-- `DELETE /RoleApplications` — Удалить приложения для ролей
+- `DELETE /RoleApplications` — Удалить приложения для ролей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: RoleApplicationBaseBaseData[]
   ## Пример запроса:
 
@@ -403,7 +403,7 @@ DELETE /roleapplications
 HTTP 202 Accepted
 
 ## RoleAttachments
-- `POST /RoleAttachments` — Добавить роли для доступа к файлам
+- `POST /RoleAttachments` — Добавить роли для доступа к файлам · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleAttachmentAddData[] → ResultsRoleAttachmentsPostResult[]
   ## Пример запроса:
 
@@ -435,7 +435,7 @@ POST /roleattachments
   }
 ]
 ```
-- `DELETE /RoleAttachments` — Удалить доступ ролей к файлам
+- `DELETE /RoleAttachments` — Удалить доступ ролей к файлам · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleAttachmentDeleteData[]
   ## Пример запроса:
 
@@ -455,7 +455,7 @@ DELETE /roleattachments
 HTTP 202 Accepted
 
 ## RolePermissionsApi
-- `POST /RolePermissionsApi` — Создать связи роли с API-полномочиями
+- `POST /RolePermissionsApi` — Создать связи роли с API-полномочиями · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionApiAddData[] → ResultsRolePermissionsApiPostResult[]
   ## Пример запроса:
 
@@ -487,7 +487,7 @@ POST /rolepermissionsapi
   }
 ]
 ```
-- `DELETE /RolePermissionsApi` — Удалить связи роли с API-полномочиями
+- `DELETE /RolePermissionsApi` — Удалить связи роли с API-полномочиями · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionApiDeleteData[]
   ## Пример запроса:
 
@@ -507,7 +507,7 @@ DELETE /rolepermissionsapi
 HTTP 202 Accepted
 
 ## RolePermissionsExt
-- `POST /RolePermissionsExt` — Создать связи роли с Ext-полномочиями
+- `POST /RolePermissionsExt` — Создать связи роли с Ext-полномочиями · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionExtAddData[] → ResultsRolePermissionsExtPostResult[]
   ## Пример запроса:
 
@@ -539,7 +539,7 @@ POST /rolepermissionsext
   }
 ]
 ```
-- `DELETE /RolePermissionsExt` — Удалить связи роли с Ext-полномочиями
+- `DELETE /RolePermissionsExt` — Удалить связи роли с Ext-полномочиями · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionExtDeleteData[]
   ## Пример запроса:
 
@@ -559,7 +559,7 @@ DELETE /rolepermissionsext
 HTTP 202 Accepted
 
 ## RolePermissionsUi
-- `POST /RolePermissionsUi` — Создать связи роли с UI-полномочиями
+- `POST /RolePermissionsUi` — Создать связи роли с UI-полномочиями · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionUiAddData[] → ResultsRolePermissionsUiPostResult[]
   ## Пример запроса:
 
@@ -591,7 +591,7 @@ POST /rolepermissionsui
   }
 ]
 ```
-- `DELETE /RolePermissionsUi` — Удалить связи роли с UI-полномочиями
+- `DELETE /RolePermissionsUi` — Удалить связи роли с UI-полномочиями · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePermissionUiDeleteData[]
   ## Пример запроса:
 
@@ -611,7 +611,7 @@ DELETE /rolepermissionsui
 HTTP 202 Accepted
 
 ## RoleTaskListQueries
-- `POST /RoleTaskListQueries` — Добавить сохраненные запросы заявок для роли
+- `POST /RoleTaskListQueries` — Добавить сохраненные запросы заявок для роли · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleTaskListQueryAddData[] → ResultsRoleTaskListQueriesPostResult[]
   ## Пример запроса:
 
@@ -643,7 +643,7 @@ POST /roletasklistqueries
   }
 ]
 ```
-- `DELETE /RoleTaskListQueries` — Удалить сохраненные запросы заявок у роли
+- `DELETE /RoleTaskListQueries` — Удалить сохраненные запросы заявок у роли · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleTaskListQueryDeleteData[]
   ## Пример запроса:
 
@@ -663,9 +663,9 @@ DELETE /roletasklistqueries
 HTTP 202 Accepted
 
 ## RoleTaskPropertiesAccess
-- `GET /RoleTaskPropertiesAccess/attributes` · paginated
+- `GET /RoleTaskPropertiesAccess/attributes` · paginated · коды: 200, 204, 206
   ← query: roleID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsRoleTaskAttributeRoleTaskAttributeSettings[]
-- `POST /RoleTaskPropertiesAccess/attributes` — Добавить настройки доступности атрибутов задач для ролей
+- `POST /RoleTaskPropertiesAccess/attributes` — Добавить настройки доступности атрибутов задач для ролей · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataADMRoleTaskAttributeDto[]
   ## Пример запроса:
 
@@ -685,7 +685,7 @@ POST /roletaskpropertiesaccess/attributes
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /RoleTaskPropertiesAccess/attributes` — Обновить настройки доступности атрибутов задач для ролей
+- `PUT /RoleTaskPropertiesAccess/attributes` — Обновить настройки доступности атрибутов задач для ролей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataADMRoleTaskAttributeDto[]
   ## Пример запроса:
 
@@ -707,7 +707,7 @@ PUT /roletaskpropertiesaccess/attributes
 HTTP 202 Accepted
 
 ## Roles
-- `GET /Roles` — Получить список ролей тенанта
+- `GET /Roles` — Получить список ролей тенанта · коды: 200, 204, 206
   ← query: isDeleted?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRolesGetResult>
   ## Пример запроса:
 
@@ -730,7 +730,7 @@ GET /roles?isDeleted=false
   }
 ]
 ```
-- `POST /Roles` — Создать роли
+- `POST /Roles` — Создать роли · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleAddData[] → int[]
   ## Пример запроса:
 
@@ -749,7 +749,7 @@ POST /roles
 ```json
 [1, 2]
 ```
-- `PUT /Roles` — Обновить роли
+- `PUT /Roles` — Обновить роли · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleUpdateData[]
   ## Пример запроса:
 
@@ -768,7 +768,7 @@ PUT /roles
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Roles` — Удалить роли
+- `DELETE /Roles` — Удалить роли · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -781,7 +781,7 @@ DELETE /roles
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `POST /Roles/copy` — Копировать роли
+- `POST /Roles/copy` — Копировать роли · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRoleCopyData[] → int[]
   ## Пример запроса:
 
@@ -800,7 +800,7 @@ POST /roles/copy
 ```json
 [3]
 ```
-- `GET /Roles/{id}` — Получить информацию о роли
+- `GET /Roles/{id}` — Получить информацию о роли · коды: 200, 204
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsRolesGetResult
   ## Пример запроса:
 
@@ -820,7 +820,7 @@ GET /roles/1
   ]
 }
 ```
-- `DELETE /Roles/{id}` — Удалить роль
+- `DELETE /Roles/{id}` — Удалить роль · коды: 202
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -829,7 +829,7 @@ DELETE /roles/1
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Roles/{roleID}/applications` — Получить список приложений роли
+- `GET /Roles/{roleID}/applications` — Получить список приложений роли · коды: 200, 204, 206
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRoleApplicationListResult>
   ## Пример запроса:
 
@@ -848,7 +848,7 @@ GET /roles/1/applications
   }
 }
 ```
-- `GET /Roles/{roleID}/attachments` — Получить список вложенных файлов роли
+- `GET /Roles/{roleID}/attachments` — Получить список вложенных файлов роли · коды: 200, 204, 206
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsCommonAttachmentResult[]
   ## Пример запроса:
 
@@ -868,7 +868,7 @@ GET /roles/1/attachments
   }
 }
 ```
-- `GET /Roles/{roleID}/packages` — Получить список расширений роли
+- `GET /Roles/{roleID}/packages` — Получить список расширений роли · коды: 200, 204, 206
   ← path: roleID:int; query: searchText?:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRolePackagesListResult[]>
   ## Пример запроса:
 
@@ -889,7 +889,7 @@ GET /roles/1/packages?searchText=модуль
   }
 }
 ```
-- `POST /Roles/{roleID}/packages` — Добавить расширения к роли
+- `POST /Roles/{roleID}/packages` — Добавить расширения к роли · коды: 201, 400
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMRolePackageAddData[] → ResultsRolePackagesPostResult[]
   ## Пример запроса:
 
@@ -915,7 +915,7 @@ POST /roles/1/packages
   }
 ]
 ```
-- `DELETE /Roles/{roleID}/packages` — Удалить расширения роли
+- `DELETE /Roles/{roleID}/packages` — Удалить расширения роли · коды: 202, 400
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -928,7 +928,7 @@ DELETE /roles/1/packages
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `PUT /Roles/{roleID}/packages/activate` — Активировать расширения роли
+- `PUT /Roles/{roleID}/packages/activate` — Активировать расширения роли · коды: 202, 400
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -941,7 +941,7 @@ PUT /roles/1/packages/activate
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `PUT /Roles/{roleID}/packages/deactivate` — Деактивировать расширения роли
+- `PUT /Roles/{roleID}/packages/deactivate` — Деактивировать расширения роли · коды: 202, 400
   ← path: roleID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -954,7 +954,7 @@ PUT /roles/1/packages/deactivate
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Roles/{roleID}/permissionsApi` — Получить список API-полномочий роли
+- `GET /Roles/{roleID}/permissionsApi` — Получить список API-полномочий роли · коды: 200, 204, 206
   ← path: roleID:int; query: systemTagID?:str, isCheckedPermission?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRolePermissionsApiListResult[]>
   ## Пример запроса:
 
@@ -977,7 +977,7 @@ GET /roles/1/permissionsApi?isCheckedPermission=true
   ]
 }
 ```
-- `GET /Roles/{roleID}/permissionsExt` — Получить список Ext-полномочий роли
+- `GET /Roles/{roleID}/permissionsExt` — Получить список Ext-полномочий роли · коды: 200, 204, 206
   ← path: roleID:int; query: systemTagID?:str, isCheckedPermission?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRolePermissionsExtListResult[]>
   ## Пример запроса:
 
@@ -1000,7 +1000,7 @@ GET /roles/1/permissionsExt?isCheckedPermission=true
   ]
 }
 ```
-- `GET /Roles/{roleID}/permissionsUi` — Получить список UI-полномочий роли
+- `GET /Roles/{roleID}/permissionsUi` — Получить список UI-полномочий роли · коды: 200, 204, 206
   ← path: roleID:int; query: systemTagID?:int, isCheckedPermission?:bool, isSystemPermission?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsRolePermissionsUiListResult[]>
   ## Пример запроса:
 
@@ -1027,7 +1027,7 @@ GET /roles/1/permissionsUi?isCheckedPermission=true
 ```
 
 ## SystemPermissionUiTags
-- `GET /SystemPermissionUiTags` — Получить список тегов системных UI-полномочий
+- `GET /SystemPermissionUiTags` — Получить список тегов системных UI-полномочий · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsPermissionsUiTagListResult[]>
   ## Пример запроса:
 
@@ -1052,7 +1052,7 @@ GET /systempermissionuitags
 ```
 
 ## TenantCreationRequests
-- `POST /TenantCreationRequests` — Создать запрос на создание тенанта
+- `POST /TenantCreationRequests` — Создать запрос на создание тенанта · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantCreationRequestAddData → ResultsTenantCreationRequestsPostResult
   ## Пример запроса:
 
@@ -1073,7 +1073,7 @@ POST /tenantcreationrequests
   "id": "abc123"
 }
 ```
-- `GET /TenantCreationRequests/{id}` — Получить запрос на создание тенанта
+- `GET /TenantCreationRequests/{id}` — Получить запрос на создание тенанта · коды: 200
   ← path: id:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantCreationRequestsGetResult
   ## Пример запроса:
 
@@ -1093,7 +1093,7 @@ GET /tenantcreationrequests/abc123
 ```
 
 Этот метод доступен без аутентификации.
-- `PUT /TenantCreationRequests/{id}/approve` — Утвердить запрос на создание тенанта
+- `PUT /TenantCreationRequests/{id}/approve` — Утвердить запрос на создание тенанта · коды: 202, 400
   ← path: id:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1104,7 +1104,7 @@ PUT /tenantcreationrequests/abc123/approve
 HTTP 202 Accepted
 
 Доступно только для кросс-тенантных администраторов.
-- `PUT /TenantCreationRequests/{id}/reject` — Отклонить запрос на создание тенанта
+- `PUT /TenantCreationRequests/{id}/reject` — Отклонить запрос на создание тенанта · коды: 202, 400
   ← path: id:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantCreationRequestRejectData
   ## Пример запроса:
 
@@ -1123,9 +1123,9 @@ HTTP 202 Accepted
 Доступно только для кросс-тенантных администраторов.
 
 ## TenantMembers
-- `GET /TenantMembers` · paginated
+- `GET /TenantMembers` · paginated · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsTenantMembersListResult>
-- `POST /TenantMembers` — Создать члена тенанта
+- `POST /TenantMembers` — Создать члена тенанта · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantMemberAddData[] → int[]
   ## Пример запроса:
 
@@ -1146,7 +1146,7 @@ POST /tenantmembers
 ```json
 [123]
 ```
-- `PUT /TenantMembers` — Обновить данные члена тенанта
+- `PUT /TenantMembers` — Обновить данные члена тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantMemberUpdateData[]
   ## Пример запроса:
 
@@ -1165,7 +1165,7 @@ PUT /tenantmembers
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /TenantMembers` — Удалить членов тенанта
+- `DELETE /TenantMembers` — Удалить членов тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -1178,7 +1178,7 @@ DELETE /tenantmembers
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /TenantMembers/anonymousUser` — Получить анонимного пользователя в текущем тенанте
+- `GET /TenantMembers/anonymousUser` — Получить анонимного пользователя в текущем тенанте · коды: 200, 204
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantMembersListResult
   ## Пример запроса:
 
@@ -1193,7 +1193,7 @@ GET /tenantmembers/anonymousUser
   "description": "Анонимный пользователь"
 }
 ```
-- `GET /TenantMembers/apiUser` — Получить пользователя API в текущем тенанте
+- `GET /TenantMembers/apiUser` — Получить пользователя API в текущем тенанте · коды: 200, 204
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantMembersListResult
   ## Пример запроса:
 
@@ -1208,7 +1208,7 @@ GET /tenantmembers/apiUser
   "description": "API пользователь"
 }
 ```
-- `GET /TenantMembers/this` — Получить данные текущего члена тенанта
+- `GET /TenantMembers/this` — Получить данные текущего члена тенанта · коды: 200
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantMembersGetResult
   ## Пример запроса:
 
@@ -1224,7 +1224,7 @@ GET /tenantmembers/this
   "validTill": "2025-12-31T23:59:59Z"
 }
 ```
-- `GET /TenantMembers/{tenantMemberID}` — Получить данные члена тенанта
+- `GET /TenantMembers/{tenantMemberID}` — Получить данные члена тенанта · коды: 200, 500
   ← path: tenantMemberID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantMembersGetResult
   ## Пример запроса:
 
@@ -1261,7 +1261,7 @@ GET /tenantmembers/123
   }
 ]
 ```
-- `DELETE /TenantMembers/{tenantMemberID}` — Удалить члена тенанта
+- `DELETE /TenantMembers/{tenantMemberID}` — Удалить члена тенанта · коды: 202
   ← path: tenantMemberID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1272,7 +1272,7 @@ DELETE /tenantmembers/123
 HTTP 202 Accepted
 
 ## TenantSettings
-- `GET /TenantSettings` — Получить настройки тенанта
+- `GET /TenantSettings` — Получить настройки тенанта · коды: 200, 204, 500
   ← query: tenantMemberId?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantSettingsGetResult
   ## Пример запроса:
 
@@ -1306,7 +1306,7 @@ GET /tenantsettings?tenantMemberId=123
   }
 ]
 ```
-- `GET /TenantSettings/plateUrl` — Получить кастомный URL текущего тенанта
+- `GET /TenantSettings/plateUrl` — Получить кастомный URL текущего тенанта · коды: 200, 204
   ← query: taskTemplateID?:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → str
   ## Пример запроса:
 
@@ -1316,7 +1316,7 @@ GET /tenantsettings/this/plateUrl?taskTemplateID=123
 ```json
 "https://plate.hubex.ru"
 ```
-- `PUT /TenantSettings/plateUrl` — Обновить кастомный URL текущего тенанта
+- `PUT /TenantSettings/plateUrl` — Обновить кастомный URL текущего тенанта · коды: 202
   ← query: plateUrl?:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1330,7 +1330,7 @@ PUT /tenantsettings/this/plateUrl?plateUrl=https://client-domain.ru
 HTTP 202 Accepted
 
 ## Tenants
-- `GET /Tenants` — Получить список тенантов
+- `GET /Tenants` — Получить список тенантов · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantsListResult[]
   ## Пример запроса:
 
@@ -1357,7 +1357,7 @@ GET /tenants
   }
 ]
 ```
-- `PUT /Tenants/licenses` — Обновить лицензию тенанта
+- `PUT /Tenants/licenses` — Обновить лицензию тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantLicenseUpdateData
   ## Пример запроса:
 
@@ -1378,7 +1378,7 @@ PUT /tenants/licenses
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Tenants/templates` — Получить список шаблонных тенантов
+- `GET /Tenants/templates` — Получить список шаблонных тенантов · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → InterfacesEntitiesITenantEntity[]
   ## Пример запроса:
 
@@ -1394,7 +1394,7 @@ GET /tenants/templates
   }
 ]
 ```
-- `GET /Tenants/this` — Получить данные текущего тенанта
+- `GET /Tenants/this` — Получить данные текущего тенанта · коды: 200
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantsGetResult
   ## Пример запроса:
 
@@ -1414,7 +1414,7 @@ GET /tenants/this
   }
 }
 ```
-- `GET /Tenants/this/featureFlags` — Получить список флагов функций тенанта
+- `GET /Tenants/this/featureFlags` — Получить список флагов функций тенанта · коды: 200, 204
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → str[]
   ## Пример запроса:
 
@@ -1428,7 +1428,7 @@ GET /tenants/this/featureFlags
   "FEATURE_MOBILE_APP"
 ]
 ```
-- `GET /Tenants/this/licenses` — Получить список лицензий тенанта
+- `GET /Tenants/this/licenses` — Получить список лицензий тенанта · коды: 200, 204
   ← query: validOn?:datetime; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantLicenseListTenantLicenseResult
   ## Пример запроса:
 
@@ -1464,7 +1464,7 @@ GET /tenants/this/licenses?validOn=2024-01-15T00:00:00Z
   }
 ]
 ```
-- `POST /Tenants/this/licenses` — Добавить лицензию для тенанта
+- `POST /Tenants/this/licenses` — Добавить лицензию для тенанта · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantLicenseAddData
   ## Пример запроса:
 
@@ -1486,7 +1486,7 @@ POST /tenants/this/licenses
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `DELETE /Tenants/this/licenses` — Удалить лицензии тенанта
+- `DELETE /Tenants/this/licenses` — Удалить лицензии тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -1499,7 +1499,7 @@ DELETE /tenants/this/licenses
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `POST /Tenants/this/licenses/renewal` — Отправить запрос на продление лицензии
+- `POST /Tenants/this/licenses/renewal` — Отправить запрос на продление лицензии · коды: 200, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1519,7 +1519,7 @@ HTTP 200 OK
   }
 ]
 ```
-- `DELETE /Tenants/this/licenses/{id}` — Удалить лицензию тенанта
+- `DELETE /Tenants/this/licenses/{id}` — Удалить лицензию тенанта · коды: 202
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1528,7 +1528,7 @@ DELETE /tenants/this/licenses/1
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Tenants/this/meta` — Получить метаданные тенанта
+- `GET /Tenants/this/meta` — Получить метаданные тенанта · коды: 200, 204
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1545,10 +1545,10 @@ GET /tenants/this/meta
   }
 }
 ```
-- `GET /Tenants/this/packages` · paginated
+- `GET /Tenants/this/packages` · paginated · коды: 200, 204, 206
   ← query: resourceID?:int[]; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsTenantPackagesListResult[]
   Для выполнения данного метода пользователь должен быть **TenantMember**.
-- `POST /Tenants/this/packages` — Добавить расширение (только для кросс-тенантных администраторов)
+- `POST /Tenants/this/packages` — Добавить расширение (только для кросс-тенантных администраторов) · коды: 200, 204, 206, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADDONPackageAddData → ResultsTenantPackagesListResult[]
   ## Пример запроса:
 
@@ -1574,7 +1574,7 @@ POST /tenants/this/packages
   }
 ]
 ```
-- `PATCH /Tenants/this/packages` — Обновить расширение (только для кросс-тенантных администраторов)
+- `PATCH /Tenants/this/packages` — Обновить расширение (только для кросс-тенантных администраторов) · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADDONPackageUpdateData
   ## Пример запроса:
 
@@ -1591,7 +1591,7 @@ PATCH /tenants/this/packages
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Tenants/this/packages` — Удалить расширение (только для кросс-тенантных администраторов)
+- `DELETE /Tenants/this/packages` — Удалить расширение (только для кросс-тенантных администраторов) · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADDONPackagePackageIdentifier
   ## Пример запроса:
 
@@ -1607,7 +1607,7 @@ DELETE /tenants/this/packages
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `POST /Tenants/this/packages/tenant` — Добавить расширение для тенанта
+- `POST /Tenants/this/packages/tenant` — Добавить расширение для тенанта · коды: 200, 204, 206, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADDONPackageAddTenantPackageData → ResultsTenantPackagesListResult[]
   ## Пример запроса:
 
@@ -1633,7 +1633,7 @@ POST /tenants/this/packages/tenant
   }
 ]
 ```
-- `DELETE /Tenants/this/packages/tenant` — Удалить расширение для тенанта
+- `DELETE /Tenants/this/packages/tenant` — Удалить расширение для тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADDONPackagePackageIdentifier
   ## Пример запроса:
 
@@ -1649,7 +1649,7 @@ DELETE /tenants/this/packages/tenant
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Tenants/this/variables` — Получить список переменных окружения тенанта
+- `GET /Tenants/this/variables` — Получить список переменных окружения тенанта · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsTenantVariablesListResult>
   ## Пример запроса:
 
@@ -1670,7 +1670,7 @@ GET /tenants/this/variables
   }
 }
 ```
-- `POST /Tenants/this/variables` — Добавить переменные окружения тенанта
+- `POST /Tenants/this/variables` — Добавить переменные окружения тенанта · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantVariableAddData[]
   ## Пример запроса:
 
@@ -1694,7 +1694,7 @@ POST /tenants/this/variables
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /Tenants/this/variables` — Обновить переменные окружения тенанта
+- `PUT /Tenants/this/variables` — Обновить переменные окружения тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMTenantVariableUpdateData[]
   ## Пример запроса:
 
@@ -1713,7 +1713,7 @@ PUT /tenants/this/variables
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Tenants/this/variables` — Удалить переменные окружения тенанта
+- `DELETE /Tenants/this/variables` — Удалить переменные окружения тенанта · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: str[]
   ## Пример запроса:
 
@@ -1726,7 +1726,7 @@ DELETE /tenants/this/variables
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Tenants/this/variables/{name}` — Удалить переменную окружения тенанта
+- `DELETE /Tenants/this/variables/{name}` — Удалить переменную окружения тенанта · коды: 202
   ← path: name:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -1737,7 +1737,7 @@ DELETE /tenants/this/variables/API_URL
 HTTP 202 Accepted
 
 ## UserAssetListQueries
-- `POST /UserAssetListQueries` — Добавить сохраненные запросы объектов пользователям
+- `POST /UserAssetListQueries` — Добавить сохраненные запросы объектов пользователям · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAssetListQueryAddData[] → ResultsUserAssetListQueriesPostResult[]
   ## Пример запроса:
 
@@ -1773,7 +1773,7 @@ POST /userassetlistqueries
   }
 ]
 ```
-- `DELETE /UserAssetListQueries` — Удалить сохраненные запросы объектов у пользователей
+- `DELETE /UserAssetListQueries` — Удалить сохраненные запросы объектов у пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAssetListQueryDeleteData[]
   ## Пример запроса:
 
@@ -1791,7 +1791,7 @@ DELETE /userassetlistqueries
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `POST /UserAssetListQueries/{userID}` — Добавить сохраненные запросы объектов пользователю
+- `POST /UserAssetListQueries/{userID}` — Добавить сохраненные запросы объектов пользователю · коды: 201, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[] → ResultsUserAssetListQueriesPostResult[]
   ## Пример запроса:
 
@@ -1818,7 +1818,7 @@ POST /userassetlistqueries/123
   }
 ]
 ```
-- `DELETE /UserAssetListQueries/{userID}` — Удалить сохраненные запросы объектов у пользователя
+- `DELETE /UserAssetListQueries/{userID}` — Удалить сохраненные запросы объектов у пользователя · коды: 202, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -1833,18 +1833,18 @@ DELETE /userassetlistqueries/123
 HTTP 202 Accepted
 
 ## UserCompanyListQueries
-- `POST /UserCompanyListQueries` — Добавляет сохраненные запросы пользователям
+- `POST /UserCompanyListQueries` — Добавляет сохраненные запросы пользователям · коды: 201
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserCompanyListQueryAddData[] → ResultsUserCompanyListQueriesPostResult[]
-- `DELETE /UserCompanyListQueries` — Помечает как удалённые сохраненные запросы для пользователей
+- `DELETE /UserCompanyListQueries` — Помечает как удалённые сохраненные запросы для пользователей · коды: 202
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserCompanyListQueryDeleteData[]
-- `POST /UserCompanyListQueries/{userID}` — Добавляет сохраненные запросы пользователю
+- `POST /UserCompanyListQueries/{userID}` — Добавляет сохраненные запросы пользователю · коды: 201
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[] → ResultsUserCompanyListQueriesPostResult[]
-- `DELETE /UserCompanyListQueries/{userID}` — Помечает как удалённые сохраненные запросы для пользователя
+- `DELETE /UserCompanyListQueries/{userID}` — Помечает как удалённые сохраненные запросы для пользователя · коды: 202
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
 
 ## UserDisabledNotifications
-- `POST /UserDisabledNotifications` — Изменить настройки уведомлений пользователя
-  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserDisabledNotificationsPostData
+- `POST /UserDisabledNotifications` — Изменить настройки уведомлений пользователя · коды: 202, 204, 400, 500
+  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserDisabledNotificationsPostData → ResultsUserDisabledNotificationsMergeResult[]
   ## Пример запроса:
 
 POST /userdisablednotifications
@@ -1891,7 +1891,7 @@ POST /userdisablednotifications
 ```
 
 ## UserDistricts
-- `POST /UserDistricts` — Добавить участки пользователю
+- `POST /UserDistricts` — Добавить участки пользователю · коды: 201, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: OperationDataOfAddData
   ## Пример запроса:
 
@@ -1930,7 +1930,7 @@ POST /userdistricts
   }
 ]
 ```
-- `PUT /UserDistricts` — Обновить участки у пользователя
+- `PUT /UserDistricts` — Обновить участки у пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: OperationDataOfUpdateData
   ## Пример запроса:
 
@@ -1962,7 +1962,7 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `DELETE /UserDistricts` — Удалить участки у пользователя
+- `DELETE /UserDistricts` — Удалить участки у пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: OperationDataOfShort
   ## Пример запроса:
 
@@ -1991,7 +1991,7 @@ HTTP 202 Accepted
 ```
 
 ## UserOrderBy
-- `GET /UserOrderBy` — Получить список методов сортировки сотрудников
+- `GET /UserOrderBy` — Получить список методов сортировки сотрудников · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUserOrderByListResult>
   ## Пример запроса:
 
@@ -2012,7 +2012,7 @@ GET /userorderby
 ```
 
 ## UserRoles
-- `POST /UserRoles` — Добавить роли пользователю
+- `POST /UserRoles` — Добавить роли пользователю · коды: 201, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserRolesPostData[]
   ## Пример запроса:
 
@@ -2049,7 +2049,7 @@ POST /userroles
   }
 ]
 ```
-- `DELETE /UserRoles` — Удалить роли у пользователя
+- `DELETE /UserRoles` — Удалить роли у пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserRolesDeleteData[]
   ## Пример запроса:
 
@@ -2080,7 +2080,7 @@ HTTP 202 Accepted
 ```
 
 ## UserTags
-- `POST /UserTags` — Добавить теги пользователю
+- `POST /UserTags` — Добавить теги пользователю · коды: 201, 400, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserTagsPostData[] → ResultsUserTagAddResult[]
   ## Пример запроса:
 
@@ -2119,7 +2119,7 @@ POST /usertags
   }
 ]
 ```
-- `DELETE /UserTags` — Удалить теги пользователя
+- `DELETE /UserTags` — Удалить теги пользователя · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUserTagsDeleteData[]
   ## Пример запроса:
 
@@ -2139,7 +2139,7 @@ DELETE /usertags
 HTTP 202 Accepted
 
 ## UserTaskListQueries
-- `POST /UserTaskListQueries` — Добавить сохраненные запросы заявок пользователям
+- `POST /UserTaskListQueries` — Добавить сохраненные запросы заявок пользователям · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserTaskListQueryAddData[] → ResultsUserTaskListQueriesPostResult[]
   ## Пример запроса:
 
@@ -2171,7 +2171,7 @@ POST /usertasklistqueries
   }
 ]
 ```
-- `DELETE /UserTaskListQueries` — Удалить сохраненные запросы заявок у пользователей
+- `DELETE /UserTaskListQueries` — Удалить сохраненные запросы заявок у пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserTaskListQueryDeleteData[]
   ## Пример запроса:
 
@@ -2191,7 +2191,7 @@ DELETE /usertasklistqueries
 HTTP 202 Accepted
 
 ## UserTemplateDistricts
-- `POST /UserTemplateDistricts` — Добавить участки к шаблону пользователя
+- `POST /UserTemplateDistricts` — Добавить участки к шаблону пользователя · коды: 201, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ActionDataOfShort[]
   ## Пример запроса:
 
@@ -2228,7 +2228,7 @@ POST /usertemplatedistricts
   }
 ]
 ```
-- `DELETE /UserTemplateDistricts/remove` — Удалить участки из шаблона пользователя
+- `DELETE /UserTemplateDistricts/remove` — Удалить участки из шаблона пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ActionDataOfShort[]
   ## Пример запроса:
 
@@ -2259,7 +2259,7 @@ HTTP 202 Accepted
 ```
 
 ## UserTemplateRoles
-- `POST /UserTemplateRoles` — Добавить роли к шаблону пользователя
+- `POST /UserTemplateRoles` — Добавить роли к шаблону пользователя · коды: 201, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ActionDataOfShort[]
   ## Пример запроса:
 
@@ -2296,7 +2296,7 @@ POST /usertemplateroles
   }
 ]
 ```
-- `DELETE /UserTemplateRoles/remove` — Удалить роли из шаблона пользователя
+- `DELETE /UserTemplateRoles/remove` — Удалить роли из шаблона пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ActionDataOfShort[]
   ## Пример запроса:
 
@@ -2327,9 +2327,9 @@ HTTP 202 Accepted
 ```
 
 ## UserTemplates
-- `GET /UserTemplates` · paginated
+- `GET /UserTemplates` · paginated · коды: 200, 204, 206
   ← query: searchText?:str, isTechnician?:bool, roleID?:int, districtID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUserTemplatesListResult>
-- `POST /UserTemplates` — Создать шаблон пользователя
+- `POST /UserTemplates` — Создать шаблон пользователя · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserTemplateAddData[] → int[]
   ## Пример запроса:
 
@@ -2350,7 +2350,7 @@ POST /usertemplates
 ```json
 [1]
 ```
-- `PUT /UserTemplates` — Обновить шаблон пользователя
+- `PUT /UserTemplates` — Обновить шаблон пользователя · коды: 202, 400, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserTemplateUpdateData[]
   ## Пример запроса:
 
@@ -2381,7 +2381,7 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `DELETE /UserTemplates` — Удалить шаблоны пользователя
+- `DELETE /UserTemplates` — Удалить шаблоны пользователя · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -2394,7 +2394,7 @@ DELETE /usertemplates
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /UserTemplates/{id}` — Получить шаблон пользователя
+- `GET /UserTemplates/{id}` — Получить шаблон пользователя · коды: 200, 204
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserTemplatesGetResult
   ## Пример запроса:
 
@@ -2423,7 +2423,7 @@ GET /usertemplates/1
   }
 }
 ```
-- `DELETE /UserTemplates/{id}` — Удалить шаблон пользователя
+- `DELETE /UserTemplates/{id}` — Удалить шаблон пользователя · коды: 202
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -2432,7 +2432,7 @@ DELETE /usertemplates/1
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /UserTemplates/{id}/districts` — Получить список участков шаблона пользователя
+- `GET /UserTemplates/{id}/districts` — Получить список участков шаблона пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → IdNameResultOfShort[]
   ## Пример запроса:
 
@@ -2451,7 +2451,7 @@ GET /usertemplates/1/districts
   }
 ]
 ```
-- `GET /UserTemplates/{id}/roles` — Получить список ролей шаблона пользователя
+- `GET /UserTemplates/{id}/roles` — Получить список ролей шаблона пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → IdNameResultOfShort[]
   ## Пример запроса:
 
@@ -2472,7 +2472,7 @@ GET /usertemplates/1/roles
 ```
 
 ## UserWarehouses
-- `POST /UserWarehouses` — Добавить склады пользователю
+- `POST /UserWarehouses` — Добавить склады пользователю · коды: 201, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: WHWarehouseUserUserWarehousesData[]
   ## Пример запроса:
 
@@ -2510,7 +2510,7 @@ POST /userwarehouses
 ```
 
 ⚠️ **Устаревший метод**: Используйте POST /WH/WarehouseUser/s
-- `DELETE /UserWarehouses` — Удалить склады у пользователя
+- `DELETE /UserWarehouses` — Удалить склады у пользователя · коды: 202, 400, 500
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: WHWarehouseUserUserWarehousesData[]
   ## Пример запроса:
 
@@ -2543,9 +2543,9 @@ HTTP 202 Accepted
 ⚠️ **Устаревший метод**: Используйте DELETE /WH/WarehouseUser/
 
 ## Users
-- `GET /Users` — Возвращает список пользователей · paginated
+- `GET /Users` — Возвращает список пользователей · paginated · коды: 200, 206
   ← query: searchText?:str, includeTaskActuality?:bool, includeDistricts?:bool, needForAllowedTasks?:bool, orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, isBanned?:bool, isOnShift?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, companyID?:int, orderBy?:int, sortDirection?:int, erpID?:str, roleID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersUserResult>
-- `POST /Users` — Добавить нового пользователя
+- `POST /Users` — Добавить нового пользователя · коды: 201, 400, 409
   ← query: skipAccountVerification?:bool, skipAccountVerification?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAddData → ProjectionsADMUserAddProjection
   ## Пример запроса:
 
@@ -2595,7 +2595,7 @@ POST /users?skipAccountVerification=false
   }
 ]
 ```
-- `DELETE /Users` — Удалить нескольких пользователей
+- `DELETE /Users` — Удалить нескольких пользователей · коды: 202, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -2619,9 +2619,9 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `HEAD /Users` — Возвращает заголовок запроса пользователей с количеством данных, удовлетворяющих фильтру
+- `HEAD /Users` — Возвращает заголовок запроса пользователей с количеством данных, удовлетворяющих фильтру · коды: 200
   ← query: orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, erpID?:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
-- `POST /Users/addbyintegration` — Добавить нового пользователя через интеграцию
+- `POST /Users/addbyintegration` — Добавить нового пользователя через интеграцию · коды: 200, 400, 409
   ← query: skipAccountVerification?:bool, skipAccountVerification?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAddData → ProjectionsADMUserRoleAddProjection[]
   ## Пример запроса:
 
@@ -2672,7 +2672,7 @@ POST /users/addbyintegration?skipAccountVerification=false
   }
 ]
 ```
-- `POST /Users/anonymous` — Создать анонимного пользователя в тенанте
+- `POST /Users/anonymous` — Создать анонимного пользователя в тенанте · коды: 201
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → DataUsersServiceUserResult
   ## Пример запроса:
 
@@ -2685,7 +2685,7 @@ POST /users/anonymous
   "tenantMemberID": 456
 }
 ```
-- `POST /Users/api` — Создать API-пользователя в тенанте
+- `POST /Users/api` — Создать API-пользователя в тенанте · коды: 201
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → DataUsersServiceUserResult
   ## Пример запроса:
 
@@ -2698,7 +2698,7 @@ POST /users/api
   "tenantMemberID": 456
 }
 ```
-- `GET /Users/attributes` — Получить список атрибутов пользователей
+- `GET /Users/attributes` — Получить список атрибутов пользователей · коды: 200, 204, 206
   ← query: attributeID?:int, userID?:int, IsRelevantForCustomer?:bool, IsRelevantForTechnician?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserAttributeUserAttributesResult[]
   ## Пример запроса:
 
@@ -2721,7 +2721,7 @@ GET /users/attributes?userID=123&attributeID=1
   }
 ]
 ```
-- `POST /Users/attributes` — Создать атрибуты для пользователей
+- `POST /Users/attributes` — Создать атрибуты для пользователей · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: UserActionDataOfAttributeData[]
   ## Пример запроса:
 
@@ -2742,7 +2742,7 @@ POST /users/attributes
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /Users/attributes` — Обновить атрибуты пользователей
+- `PUT /Users/attributes` — Обновить атрибуты пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: UserActionDataOfAttributeData[]
   ## Пример запроса:
 
@@ -2763,7 +2763,7 @@ PUT /users/attributes
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Users/attributes` — Удалить атрибуты пользователей
+- `DELETE /Users/attributes` — Удалить атрибуты пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: UserActionDataOfShort[]
   ## Пример запроса:
 
@@ -2781,9 +2781,9 @@ DELETE /users/attributes
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Users/avatar` — Удаляет аватку для указанного списка пользователей.
+- `DELETE /Users/avatar` — Удаляет аватку для указанного списка пользователей. · коды: 202
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
-- `POST /Users/changeToCustomer` — Изменить тип пользователя на заказчика
+- `POST /Users/changeToCustomer` — Изменить тип пользователя на заказчика · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -2805,7 +2805,7 @@ HTTP 202 Accepted
   "message": "Пользователь с ID 999 не найден"
 }
 ```
-- `POST /Users/changeToStaff` — Изменить тип пользователя на сотрудника
+- `POST /Users/changeToStaff` — Изменить тип пользователя на сотрудника · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -2827,7 +2827,7 @@ HTTP 202 Accepted
   "message": "Пользователь с ID 999 не найден"
 }
 ```
-- `POST /Users/defaultPages` — Добавить стартовые страницы пользователей
+- `POST /Users/defaultPages` — Добавить стартовые страницы пользователей · коды: 201, 400, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserDefaultPagesUserStartPageDto[]
   ## Пример запроса:
 
@@ -2851,7 +2851,7 @@ POST /users/defaultPages
 ## Успешный ответ
 
 HTTP 201 Created, без тела.
-- `PUT /Users/defaultPages` — Изменить стартовые страницы пользователей
+- `PUT /Users/defaultPages` — Изменить стартовые страницы пользователей · коды: 202, 400, 404
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserDefaultPagesUserStartPageDto[]
   ## Пример запроса:
             
@@ -2875,7 +2875,7 @@ PUT /users/defaultPages
 ## Успешный ответ
             
 HTTP 202 Accepted, без тела.
-- `DELETE /Users/defaultPages` — Сбросить стартовые страницы у пользователей
+- `DELETE /Users/defaultPages` — Сбросить стартовые страницы у пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -2888,7 +2888,7 @@ DELETE /users/defaultPages
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Users/geolocation` — Получить список настроек точности сбора геокоординат для пользователей
+- `GET /Users/geolocation` — Получить список настроек точности сбора геокоординат для пользователей · коды: 200, 204, 206
   ← query: userID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsCoordinateAccuracyUserGeolocationSettings[]
   ## Пример запроса:
 
@@ -2907,7 +2907,7 @@ GET /users/geolocation?userID=123
   }
 ]
 ```
-- `POST /Users/geolocation` — Добавить настройки точности сбора геокоординат для пользователей
+- `POST /Users/geolocation` — Добавить настройки точности сбора геокоординат для пользователей · коды: 201, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataADMUserGeolocationDto[]
   ## Пример запроса:
 
@@ -2925,7 +2925,7 @@ POST /users/geolocation
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /Users/geolocation` — Обновить настройки точности сбора геокоординат для пользователей
+- `PUT /Users/geolocation` — Обновить настройки точности сбора геокоординат для пользователей · коды: 202, 400
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataADMUserGeolocationDto[]
   ## Пример запроса:
 
@@ -2943,7 +2943,7 @@ PUT /users/geolocation
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Users/profile` — Получить профиль пользователя
+- `GET /Users/profile` — Получить профиль пользователя · коды: 200, 404
   ← query: tenantMemberId?:int, userId?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersUserProfileResult
   ## Пример запроса:
 
@@ -2995,7 +2995,7 @@ GET /users/profile?tenantMemberId=1&userId=123
   "message": "Пользователь не найден"
 }
 ```
-- `POST /Users/registration` — Саморегистрация пользователя по приглашению
+- `POST /Users/registration` — Саморегистрация пользователя по приглашению · коды: 201, 202, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUsersRegisterData → ResultsUsersSelfRegisterResult
   ## Пример запроса:
 
@@ -3033,8 +3033,8 @@ POST /users/registration
   }
 ]
 ```
-- `POST /Users/registration/verify` — Подтвердить регистрацию пользователя
-  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUsersRegistrationVerifyData
+- `POST /Users/registration/verify` — Подтвердить регистрацию пользователя · коды: 202
+  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataUsersRegistrationVerifyData → ResultsUsersSelfRegisterResult
   ## Пример запроса:
 
 POST /users/registration/verify
@@ -3055,9 +3055,9 @@ POST /users/registration/verify
   "verificationCodeRepeatTimeout": 60
 }
 ```
-- `GET /Users/relevance` — Возвращает список пользователей по их релевантности к заявке · paginated
+- `GET /Users/relevance` — Возвращает список пользователей по их релевантности к заявке · paginated · коды: 200, 206
   ← query: searchText?:str, includeTaskActuality?:bool, includeDistricts?:bool, assetID?:int, districtID?:int, workTypeID?:int, skillID?:int, levelOnShift?:bool, dateOnShift?:datetime, userTypeID?:int, isDeleted?:bool, isCustomer?:bool, isTechnician?:bool, isBanned?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersUserResult>
-- `PUT /Users/restore` — Восстановить нескольких пользователей из удаленных
+- `PUT /Users/restore` — Восстановить нескольких пользователей из удаленных · коды: 202, 409
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -3081,9 +3081,9 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `GET /Users/short` — Возвращает список пользователей с усеченным набором полей (для справочников и ниспадающих списков) · paginated
+- `GET /Users/short` — Возвращает список пользователей с усеченным набором полей (для справочников и ниспадающих списков) · paginated · коды: 200, 206
   ← query: searchText?:str, orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, isBanned?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, erpID?:str, roleID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersUserShortResult>
-- `GET /Users/this/assetListQueries` — Получить список сохраненных запросов по объектам текущего пользователя
+- `GET /Users/this/assetListQueries` — Получить список сохраненных запросов по объектам текущего пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersAssetListQueryResult>
   ## Пример запроса:
 
@@ -3100,15 +3100,15 @@ GET /users/this/assetListQueries
   }
 }
 ```
-- `DELETE /Users/this/avatar` — Удаляет аватку текущего пользователя.
+- `DELETE /Users/this/avatar` — Удаляет аватку текущего пользователя. · коды: 202
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
-- `PUT /Users/this/avatar/upload/fromBody` — Загружает изображение JPG не менее 128x128 используемое в качестве аватарки текущего пользователя. Данные будут получены из тела запроса (base64).
-  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataAttachmentsFromBodyUploadData
-- `PUT /Users/this/avatar/upload/fromForm` — Загружает изображение JPG не менее 128x128 используемое в качестве аватарки для текущего пользователя. Данные будут получены из формы.
-  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid }
-- `GET /Users/this/companyListQueries` — Возвращает список запросов по компаниям, доступных текущему пользователю
+- `PUT /Users/this/avatar/upload/fromBody` — Загружает изображение JPG не менее 128x128 используемое в качестве аватарки текущего пользователя. Данные будут получены из тела запроса (base64). · коды: 202
+  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataAttachmentsFromBodyUploadData → ResultsUsersUserProfileResult
+- `PUT /Users/this/avatar/upload/fromForm` — Загружает изображение JPG не менее 128x128 используемое в качестве аватарки для текущего пользователя. Данные будут получены из формы. · коды: 202
+  ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → ResultsUsersUserProfileResult
+- `GET /Users/this/companyListQueries` — Возвращает список запросов по компаниям, доступных текущему пользователю · коды: 200
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersCompanyListQueryResult>
-- `GET /Users/this/geolocation` — Получить настройку точности сбора геокоординат текущего пользователя
+- `GET /Users/this/geolocation` — Получить настройку точности сбора геокоординат текущего пользователя · коды: 200, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsCoordinateAccuracyUserGeolocationSettings
   ## Пример запроса:
 
@@ -3126,7 +3126,7 @@ GET /users/this/geolocation
   }
 }
 ```
-- `GET /Users/this/notifications` — Получить список настроек уведомлений текущего пользователя
+- `GET /Users/this/notifications` — Получить список настроек уведомлений текущего пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserDisabledNotificationsListResult
   ## Пример запроса:
 
@@ -3148,7 +3148,7 @@ GET /users/this/notifications
   ]
 }
 ```
-- `GET /Users/this/permissions/ext` — Получить список расширенных полномочий текущего пользователя
+- `GET /Users/this/permissions/ext` — Получить список расширенных полномочий текущего пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<str>
   ## Пример запроса:
 
@@ -3162,7 +3162,7 @@ GET /users/this/permissions/ext
   "3": "REPORT_VIEW"
 }
 ```
-- `GET /Users/this/permissions/ui` — Получить список UI полномочий текущего пользователя
+- `GET /Users/this/permissions/ui` — Получить список UI полномочий текущего пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<str>
   ## Пример запроса:
 
@@ -3176,7 +3176,7 @@ GET /users/this/permissions/ui
   "TASK_CREATE": "READ"
 }
 ```
-- `GET /Users/this/profile` — Получить профиль текущего пользователя
+- `GET /Users/this/profile` — Получить профиль текущего пользователя · коды: 200
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersUserProfileResult
   ## Пример запроса:
 
@@ -3219,7 +3219,7 @@ GET /users/this/profile
   }
 }
 ```
-- `GET /Users/this/taskListQueries` — Получить список сохраненных запросов по заявкам текущего пользователя
+- `GET /Users/this/taskListQueries` — Получить список сохраненных запросов по заявкам текущего пользователя · коды: 200, 204, 206
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersTaskListQueryResult>
   ## Пример запроса:
 
@@ -3236,7 +3236,7 @@ GET /users/this/taskListQueries
   }
 }
 ```
-- `GET /Users/{UserID}/ratings` — Получить рейтинг инженера
+- `GET /Users/{UserID}/ratings` — Получить рейтинг инженера · коды: 200, 204, 206
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersRatingTechnicianResult
   ## Пример запроса:
 
@@ -3264,7 +3264,7 @@ GET /users/123/ratings
   ]
 }
 ```
-- `GET /Users/{id}` — Получить детальную информацию о пользователе
+- `GET /Users/{id}` — Получить детальную информацию о пользователе · коды: 200, 400, 404
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersDetailedInfoResult
   ## Пример запроса:
 
@@ -3335,7 +3335,7 @@ GET /users/123
   "message": "Пользователь с ID 999 не найден"
 }
 ```
-- `PUT /Users/{id}` — Обновить данные пользователя
+- `PUT /Users/{id}` — Обновить данные пользователя · коды: 202, 400, 404
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserUpdateData
   ## Пример запроса:
 
@@ -3370,7 +3370,7 @@ HTTP 202 Accepted
   "message": "Пользователь с ID 999 не найден"
 }
 ```
-- `GET /Users/{id}/assetListQueries` — Получить список сохраненных запросов по объектам пользователя
+- `GET /Users/{id}/assetListQueries` — Получить список сохраненных запросов по объектам пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersAssetListQueryResult>
   ## Пример запроса:
 
@@ -3387,15 +3387,15 @@ GET /users/123/assetListQueries
   }
 }
 ```
-- `DELETE /Users/{id}/avatar` — Удаляет аватку указаного пользователя.
+- `DELETE /Users/{id}/avatar` — Удаляет аватку указаного пользователя. · коды: 202
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
-- `PUT /Users/{id}/avatar/upload/fromBody` — Загружает изображение JPG не менее 256x256 используемое в качестве аватарки для указанного пользователя. Данные будут получены из тела запроса (base64).
-  ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataAttachmentsFromBodyUploadData
-- `PUT /Users/{id}/avatar/upload/fromForm` — Загружает изображение JPG не менее 256x256 используемое в качестве аватарки для указанного пользователя. Данные будут получены из формы.
-  ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid }
-- `GET /Users/{id}/companyListQueries` — Возвращает список запросов по компаниям, доступных пользователю
+- `PUT /Users/{id}/avatar/upload/fromBody` — Загружает изображение JPG не менее 256x256 используемое в качестве аватарки для указанного пользователя. Данные будут получены из тела запроса (base64). · коды: 202
+  ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: DataAttachmentsFromBodyUploadData → ResultsUsersUserProfileResult
+- `PUT /Users/{id}/avatar/upload/fromForm` — Загружает изображение JPG не менее 256x256 используемое в качестве аватарки для указанного пользователя. Данные будут получены из формы. · коды: 202
+  ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → ResultsUsersUserProfileResult
+- `GET /Users/{id}/companyListQueries` — Возвращает список запросов по компаниям, доступных пользователю · коды: 200
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersCompanyListQueryResult>
-- `GET /Users/{id}/districts` — Получить список участков пользователя
+- `GET /Users/{id}/districts` — Получить список участков пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<IdNameResultOfShort>
   ## Пример запроса:
 
@@ -3416,7 +3416,7 @@ GET /users/123/districts
   }
 }
 ```
-- `GET /Users/{id}/notifications` — Получить список настроек уведомлений пользователя
+- `GET /Users/{id}/notifications` — Получить список настроек уведомлений пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserDisabledNotificationsListResult
   ## Пример запроса:
 
@@ -3438,7 +3438,7 @@ GET /users/123/notifications
   ]
 }
 ```
-- `GET /Users/{id}/profile` — Получить профиль пользователя
+- `GET /Users/{id}/profile` — Получить профиль пользователя · коды: 200, 404
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersUserProfileResult
   ## Пример запроса:
 
@@ -3490,7 +3490,7 @@ GET /users/123/profile
   "message": "Пользователь не найден"
 }
 ```
-- `GET /Users/{id}/roles` — Получить список ролей пользователя
+- `GET /Users/{id}/roles` — Получить список ролей пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<IdNameResultOfShort>
   ## Пример запроса:
 
@@ -3511,7 +3511,7 @@ GET /users/123/roles
   ]
 }
 ```
-- `GET /Users/{id}/taskListQueries` — Получить список сохраненных запросов по заявкам пользователя
+- `GET /Users/{id}/taskListQueries` — Получить список сохраненных запросов по заявкам пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsUsersTaskListQueryResult>
   ## Пример запроса:
 
@@ -3528,7 +3528,7 @@ GET /users/123/taskListQueries
   }
 }
 ```
-- `GET /Users/{id}/warehouses` — Получить список складов пользователя
+- `GET /Users/{id}/warehouses` — Получить список складов пользователя · коды: 200, 204, 206
   ← path: id:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<IdNameErpIDResultOfShort>
   ## Пример запроса:
 
@@ -3549,7 +3549,7 @@ GET /users/123/warehouses
   }
 ]
 ```
-- `DELETE /Users/{userID}` — Удалить пользователя
+- `DELETE /Users/{userID}` — Удалить пользователя · коды: 202, 409
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -3569,7 +3569,7 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `GET /Users/{userID}/assetAssignments` — Получить список объектов, назначенных пользователю
+- `GET /Users/{userID}/assetAssignments` — Получить список объектов, назначенных пользователю · коды: 200, 204, 206
   ← path: userID:int; query: assetID?:int, validOn?:datetime; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUsersAssetAssignmentResult[]
   ## Пример запроса:
 
@@ -3591,7 +3591,7 @@ GET /users/123/assetAssignments?validOn=2024-01-15T00:00:00Z
   }
 ]
 ```
-- `GET /Users/{userID}/attributes` — Получить атрибуты пользователя
+- `GET /Users/{userID}/attributes` — Получить атрибуты пользователя · коды: 200, 204, 206
   ← path: userID:int; query: attributeID?:int, IsRelevantForCustomer?:bool, IsRelevantForTechnician?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserAttributeUserAttributesResult[]
   ## Пример запроса:
 
@@ -3614,7 +3614,7 @@ GET /users/123/attributes?attributeID=1
   }
 ]
 ```
-- `POST /Users/{userID}/attributes` — Создать атрибуты пользователя
+- `POST /Users/{userID}/attributes` — Создать атрибуты пользователя · коды: 201, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAttributeAttributeData[]
   ## Пример запроса:
 
@@ -3632,7 +3632,7 @@ POST /users/123/attributes
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /Users/{userID}/attributes` — Обновить атрибуты пользователя
+- `PUT /Users/{userID}/attributes` — Обновить атрибуты пользователя · коды: 202, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ADMUserAttributeAttributeData[]
   ## Пример запроса:
 
@@ -3650,7 +3650,7 @@ PUT /users/123/attributes
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `DELETE /Users/{userID}/attributes` — Удалить атрибуты пользователя
+- `DELETE /Users/{userID}/attributes` — Удалить атрибуты пользователя · коды: 202, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
   ## Пример запроса:
 
@@ -3663,7 +3663,7 @@ DELETE /users/123/attributes
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `GET /Users/{userID}/defaultPages` — Получить текущие стартовые страницы пользователя
+- `GET /Users/{userID}/defaultPages` — Получить текущие стартовые страницы пользователя · коды: 200, 204, 400
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsUserDefaultPagesGetResult
   ## Пример запроса:
 
@@ -3680,7 +3680,7 @@ GET /users/123/defaultPages
   "mobilePageNameRu": "Задачи"
 }
 ```
-- `POST /Users/{userID}/geolocation` — Добавить настройку точности сбора геокоординат для пользователя
+- `POST /Users/{userID}/geolocation` — Добавить настройку точности сбора геокоординат для пользователя · коды: 201, 400
   ← path: userID:int; query: coordinateAccuracyID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -3689,7 +3689,7 @@ POST /users/123/geolocation?coordinateAccuracyID=1
 ## Пример успешного ответа:
 
 HTTP 201 Created
-- `PUT /Users/{userID}/geolocation` — Обновить настройку точности сбора геокоординат для пользователя
+- `PUT /Users/{userID}/geolocation` — Обновить настройку точности сбора геокоординат для пользователя · коды: 202, 400
   ← path: userID:int; query: coordinateAccuracyID?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -3698,7 +3698,7 @@ PUT /users/123/geolocation?coordinateAccuracyID=2
 ## Пример успешного ответа:
 
 HTTP 202 Accepted
-- `PUT /Users/{userID}/resendinvitation` — Повторно отправить приглашение пользователю
+- `PUT /Users/{userID}/resendinvitation` — Повторно отправить приглашение пользователю · коды: 202, 204
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -3716,7 +3716,7 @@ HTTP 202 Accepted
   "message": "Пользователь не найден"
 }
 ```
-- `PUT /Users/{userID}/restore` — Восстановить пользователя из удаленных
+- `PUT /Users/{userID}/restore` — Восстановить пользователя из удаленных · коды: 202, 409
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb)
   ## Пример запроса:
 
@@ -3736,7 +3736,7 @@ HTTP 202 Accepted
   }
 ]
 ```
-- `GET /Users/{userID}/skills` — Получить список навыков пользователя
+- `GET /Users/{userID}/skills` — Получить список навыков пользователя · коды: 200, 204, 206, 500
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsSkillsSkillResult>
   ## Пример запроса:
 
@@ -3757,7 +3757,7 @@ GET /users/123/skills
   }
 }
 ```
-- `GET /Users/{userID}/tags` — Получить список тегов пользователя
+- `GET /Users/{userID}/tags` — Получить список тегов пользователя · коды: 200, 204, 206
   ← path: userID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → str[]
   ## Пример запроса:
 
