@@ -13,6 +13,8 @@
 
 ⚠ На практике `GET /Tasks/{taskID}/completedWorks/technicians` отдаёт не одиночный `CWTechResult`, а `map<CWTechResult>`, ключ — `completedWorkID` (по одной записи на каждую Выполненную работу заявки). Если у заявки нет Выполненных работ с исполнителями — `204 No Content` (не пустой массив).
 
+⚠ У элементов списка `GET /Tasks` **нет поля `id`** — идентификатор заявки есть только в ключе map-ответа (проверено 2026-07-15: ключи `7102`, `7101`). Схеме это не противоречит — у `Tasks.ListResult` в swagger `id` тоже нет, — но на практике ловушка: клиент, разворачивающий map в массив через `Object.values()`, теряет идентификатор молча. Брать `Object.entries()` и класть ключ в `id`. Человекочитаемый идентификатор заявки — `number`. Для сравнения: у `GET /ES/Assets` (`AssetExtResult`) `id` лежит в теле значения. Перечень полей — [schemas/WORK.md](../schemas/WORK.md) (`Tasks.ListResult`).
+
 ## Наиболее используемые
 
 `GET /Tasks`, `POST /Tasks`, `GET /Tasks/{taskID}`, `PATCH /Tasks/{taskID}`, `POST /TaskStagingHistory`, `GET /Tasks/{taskID}/stages/next`, `POST /CompletedWorks` — расшифровка в [overview.md](../overview.md).
