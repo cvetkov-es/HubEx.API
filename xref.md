@@ -4,11 +4,6 @@
 > **Источник:** все снапшоты · файл генерируется пайплайном — руками не править.
 ## От сущности
 
-### Accounts (AUTH)
-
-- applications [DELETE, GET, PUT]
-- notifications [GET]
-
 ### Assets (ES)
 
 - assets [GET]
@@ -24,21 +19,10 @@
 - tags [GET]
 - worktypes [GET]
 
-### Assets (EXPORT)
-
-- extended [GET]
-
 ### AssetSchemas (ES)
 
-- asclist [GET]
-- asset [GET, POST, PUT]
-- attach [POST]
 - image [DELETE, GET, POST]
 - points [DELETE, GET, POST]
-
-### AssetSearchSettings (ES)
-
-- tenantmember [DELETE, POST]
 
 ### AssetTemplates (ES)
 
@@ -55,16 +39,11 @@
 
 ### Attachments (COMMON)
 
-- content [GET]
 - roles [GET]
 
 ### CheckLists (WORK)
 
 - items [GET]
-
-### Clients (CM)
-
-- locations [POST]
 
 ### Companies (ES)
 
@@ -73,22 +52,19 @@
 - attributes [GET, POST]
 - bankaccounts [DELETE, GET, POST, PUT]
 - contacts [DELETE, GET, POST]
-- dadata [GET]
 - locations [GET]
 
 ### DeadlineRules (SLA)
 
 - attributes [DELETE, GET, POST]
-- attrvalues [DELETE, POST]
 
 ### Issues (WH)
 
-- items [DELETE, GET, POST]
+- items [DELETE, GET]
 
 ### LayoutTemplates (UI)
 
 - attributes [GET]
-- bytype [GET]
 - components [GET]
 - tasktypes [DELETE, GET, PUT]
 
@@ -101,11 +77,7 @@
 
 - attachment [DELETE, GET]
 - attachments [DELETE, GET, POST]
-- barcodes [DELETE, GET, POST, PUT]
-
-### Notifications (MSG)
-
-- fields [GET]
+- barcodes [DELETE, GET]
 
 ### OrgUnits (ES)
 
@@ -113,15 +85,7 @@
 
 ### Receipts (WH)
 
-- items [DELETE, GET, POST]
-
-### RecipientSelectionRules (MSG)
-
-- recipients [GET]
-
-### Requirements (TSTG)
-
-- requirements [GET]
+- items [DELETE, GET]
 
 ### Roles (ADM)
 
@@ -132,22 +96,9 @@
 - permissionsext [GET]
 - permissionsui [GET]
 
-### RoleTaskPropertiesAccess (ADM)
-
-- attributes [GET, POST, PUT]
-
-### ScheduledTasks (PMP)
-
-- appointments [GET, HEAD]
-
-### ScheduleRules (WSP)
-
-- extend [PUT]
-
 ### Schedules (PMP)
 
 - appointments [DELETE, GET, POST]
-- asset [DELETE, POST]
 
 ### ServiceContract (SC)
 
@@ -157,48 +108,25 @@
 - attributes [GET]
 - contacts [DELETE, GET, POST, PUT]
 
-### TaskConversationDeliveries (WORK)
-
-- read [PUT]
-
-### Tasks (EXPORT)
-
-- extended [GET]
-
 ### Tasks (WORK)
 
 - assignments [GET]
-- attachment [DELETE, GET, POST]
+- attachment [GET]
 - attachments [GET]
-- attributes [DELETE, GET, PUT]
+- attributes [GET]
 - changes [GET]
 - checklists [DELETE, GET, POST, PUT]
 - completedworks [DELETE, GET, POST, PUT]
 - contacts [DELETE, GET]
 - conversation [POST]
 - conversations [GET, HEAD]
-- delivery [GET]
-- groupby [GET]
-- marking-codes [DELETE, GET, POST, PUT]
-- materials [DELETE, GET, POST, PUT]
-- new [GET]
+- marking-codes [GET]
+- materials [GET]
 - ratings [GET]
-- report [DELETE, GET, POST]
-- results [DELETE, GET, PUT]
 - skills [GET]
 - stages [GET]
 - tags [GET]
-- technicians [DELETE, GET, POST, PUT]
 - watchlists [GET]
-
-### TaskStageComponents (TSTG)
-
-- availability [GET]
-- templates [POST]
-
-### TaskStageLinks (TSTG)
-
-- overridings [DELETE, GET, POST, PUT]
 
 ### TaskStages (TSTG)
 
@@ -207,7 +135,6 @@
 
 ### TaskTemplates (WORK)
 
-- appointments [POST]
 - assignment [GET, POST]
 - excludedassets [DELETE, GET]
 - schedules [GET, POST, PUT]
@@ -220,22 +147,9 @@
 
 ### Technicians (PA)
 
-- appointments [GET]
 - rating [GET]
 - taskratings [GET]
-- taskschedules [GET]
 - workschedules [GET]
-
-### TemplateQuickResponse (WORK)
-
-- tasktypes [PUT]
-
-### Tenants (ADM)
-
-- licenses [DELETE, GET, POST, PUT]
-- packages [DELETE, GET, PATCH, POST]
-- templates [GET]
-- variables [DELETE, GET, POST, PUT]
 
 ### Triggers (MSG)
 
@@ -248,12 +162,10 @@
 - attributes [DELETE, GET, POST, PUT]
 - avatar [DELETE, PUT]
 - companylistqueries [GET]
-- defaultpages [DELETE, GET, POST, PUT]
+- defaultpages [GET]
 - districts [GET]
 - notifications [GET]
-- permissions [GET]
 - ratings [GET]
-- registration [POST]
 - roles [GET]
 - skills [GET]
 - tags [GET]
@@ -262,9 +174,6 @@
 
 ### Users (PA)
 
-- end [PUT]
-- onshift [DELETE, GET, POST, PUT]
-- schedules [GET]
 - worktypes [DELETE, GET, POST]
 
 ### UserTemplates (ADM)
@@ -275,11 +184,6 @@
 ### UserViews (UI)
 
 - applications [GET, POST, PUT]
-- users [GET, POST, PUT]
-
-### Views (UI)
-
-- applications [PUT]
 
 ### Warehouses (WH)
 
