@@ -6,6 +6,13 @@
 
 Base: `{BASE_URL}/AUTH`
 
+**Оглавление**
+
+- Accounts — строки 16–40
+- Messages — строки 42–51
+- Passwords — строки 53–56
+- VerificationCodes — строки 58–61
+
 ## Accounts
 - `GET /Accounts` — Возвращает данные учетной записи по учетным данным · права: AccountGet · коды: 200, 500
   ← query: credential?:str → GetResult

@@ -6,6 +6,14 @@
 
 Base: `{BASE_URL}/AUTHZ`
 
+**Оглавление**
+
+- AccessTokens — строки 17–20
+- Accounts — строки 22–25
+- RefreshTokens — строки 27–33
+- ServiceTokens — строки 35–39
+- Tokens — строки 41–44
+
 ## AccessTokens
 - `POST /AccessTokens` — Обновляет токен доступа к  ресурсам · коды: 200, 201
   ← body: RefreshData → JwtResultBase

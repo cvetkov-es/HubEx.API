@@ -6,6 +6,12 @@
 
 Base: `{BASE_URL}/PROXY`
 
+**Оглавление**
+
+- Bypass — строки 15–18
+- NavigateTo — строки 20–23
+- TaskTemplates — строки 25–28
+
 ## Bypass
 - `POST /Bypass` · коды: 200
   ← body: PostData → PostResult

@@ -6,6 +6,10 @@
 
 Base: `{BASE_URL}/NEWS`
 
+**Оглавление**
+
+- Articles — строки 13–17
+
 ## Articles
 - `GET /Articles` — Возвращает список доступных пользователю новостей. · права: ArticleListForTenantMember · paginated · коды: 200, 206
   ← query: isRead?:enum(true, false), isPublished?:enum(true, false) → map<ListResult>

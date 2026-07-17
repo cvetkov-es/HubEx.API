@@ -6,6 +6,11 @@
 
 Base: `{BASE_URL}/SC`
 
+**Оглавление**
+
+- ContractAttributes — строки 14–16
+- ServiceContract — строки 18–70
+
 ## ContractAttributes
 - `POST /ContractAttributes` — Обновляет сведения о пользовательских полях объектов · права: AssetAttributeMerge · коды: 202
   ← body: ActionData[]

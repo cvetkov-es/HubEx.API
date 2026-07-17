@@ -6,6 +6,11 @@
 
 Base: `{BASE_URL}/AUTHN`
 
+**Оглавление**
+
+- Accounts — строки 14–29
+- Passwords — строки 31–34
+
 ## Accounts
 - `POST /Accounts/login` — Аутентификация учетной записи по мобильному телефону, адресу электронной почты или логину и паролю через Basic-авторизацию · коды: 200
   → AuthenticationResult

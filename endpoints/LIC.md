@@ -6,6 +6,10 @@
 
 Base: `{BASE_URL}/LIC`
 
+**Оглавление**
+
+- LicenseScanner — строки 13–17
+
 ## LicenseScanner
 - `POST /LicenseScanner/Start` — Запускает сервис периодического мониторинга · права: LicenseServiceMonitorManagement · коды: 202
 - `GET /LicenseScanner/State` — Проверка состояния сервиса мониторинга лицензий · коды: 200

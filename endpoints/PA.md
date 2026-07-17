@@ -6,6 +6,21 @@
 
 Base: `{BASE_URL}/PA`
 
+**Оглавление**
+
+- AssetAssignments — строки 24–30
+- Employment — строки 32–40
+- GeoTrackingModes — строки 42–44
+- Moblities — строки 46–48
+- RatingCriteria — строки 50–62
+- Sexes — строки 64–66
+- Skills — строки 68–80
+- Technicians — строки 82–92
+- TenantSettings — строки 94–97
+- UserGroups — строки 99–101
+- UserSkills — строки 103–109
+- Users — строки 111–132
+
 ## AssetAssignments
 - `GET /AssetAssignments` — Возвращает Список назначенного оборудования для указанных пользователей или список пользователей, для которых назанчен указанный объект · права: AssetAssignmentList · paginated · коды: 200, 206
   ← query: userID?:any, assetID?:any, validOn?:any → AssetAssignments.ListResult[]

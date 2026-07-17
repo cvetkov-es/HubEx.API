@@ -6,6 +6,12 @@
 
 Base: `{BASE_URL}/SLA`
 
+**Оглавление**
+
+- Attributes — строки 15–17
+- Criticalities — строки 19–31
+- DeadlineRules — строки 33–63
+
 ## Attributes
 - `GET /Attributes` — Возвращает полный список атрибутов  SLA · права: AttributeSLAList · коды: 200
   → map<Attributes.ListResult>

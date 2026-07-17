@@ -6,6 +6,17 @@
 
 Base: `{BASE_URL}/UI`
 
+**Оглавление**
+
+- Components — строки 20–22
+- Filters — строки 24–28
+- LayoutTemplates — строки 30–64
+- Resources — строки 66–68
+- SubsystemView — строки 70–74
+- TaskViewTemplate — строки 76–78
+- UserViews — строки 80–90
+- Views — строки 92–96
+
 ## Components
 - `GET /Components` — Возвращает полный список компонентов · права: ComponentsList · paginated · коды: 200, 206
   → map<ComponentResult>
