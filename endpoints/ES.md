@@ -5,6 +5,40 @@
 > **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/ES`
+> Примеры ответов вынесены в [../examples/ES.md](../examples/ES.md).
+
+**Оглавление**
+
+- AssetAttachments — строки 43–53
+- AssetAttributes — строки 55–63
+- AssetClasses — строки 65–77
+- AssetDistricts — строки 79–83
+- AssetFilter — строки 85–89
+- AssetListQueries — строки 91–107
+- AssetLocations — строки 109–117
+- AssetSchemas — строки 119–155
+- AssetSearchSettings — строки 157–167
+- AssetSkills — строки 169–173
+- AssetTags — строки 175–179
+- AssetTemplateAttachments — строки 181–191
+- AssetTemplateAttributes — строки 193–195
+- AssetTemplateDistricts — строки 197–203
+- AssetTemplateSkills — строки 205–211
+- AssetTemplateWorkTypes — строки 213–219
+- AssetTemplates — строки 221–253
+- AssetTypes — строки 255–273
+- AssetWorkTypes — строки 275–279
+- Assets — строки 281–372
+- Companies — строки 374–427
+- CompanyAttachments — строки 429–437
+- CompanyContacts — строки 439–443
+- CompanyListQueries — строки 445–461
+- CompanyLocations — строки 463–471
+- CompanyRegistrationTypes — строки 473–475
+- Districts — строки 477–491
+- Locations — строки 493–511
+- OrgUnits — строки 513–522
+- PreferredTechnicians — строки 524–528
 
 ## AssetAttachments
 - `POST /AssetAttachments` — Свзяывает объект и вложение · коды: 201
@@ -19,155 +53,14 @@ Base: `{BASE_URL}/ES`
   ← query: AssetID?:int, Description?:str, IsPublic?:bool, IsIgnorePossibleDuplication?:bool, Roles?:int[], Coordinate?:str, FileName?:str, ContentType?:str, Uid?:uuid, ContentStream.CanRead?:bool, ContentStream.CanSeek?:bool, ContentStream.CanWrite?:bool, ContentStream.Capacity?:int, ContentStream.Length?:int, ContentStream.Position?:int, ContentStream.CanTimeout?:bool, ContentStream.ReadTimeout?:int, ContentStream.WriteTimeout?:int, Md5Hash?:str, ContentLength?:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: { File: file } → ResultsAssetAttachmentsUploadResult
 
 ## AssetAttributes
-- `POST /AssetAttributes` — Обновляет сведения о пользовательских полях объектов · коды: 202, 400
+- `POST /AssetAttributes` — Обновляет сведения о пользовательских полях объектов · коды: 202, 400 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ESAssetAttributeActionData[]
-  ## Пример запроса:
-`POST /AssetAttributes`
-            
-```json
-[
-  {
-    "assetID": 101,
-    "data": [
-      {
-        "attributeID": 2,
-        "value": "Значение атрибута",
-        "isPublic": true,
-        "sortOrder": 1
-      }
-    ]
-  }
-]
-```
-            
-## Пример успешного ответа (202):
-Пустое тело ответа.
-            
-## Негативные сценарии:
-- 400 BadRequest: некорректный формат запроса или отсутствуют обязательные поля.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetAttributeMerge`.
-- `DELETE /AssetAttributes` — Удаляет явно переданные пользовательские поля объектов (v2) · коды: 202, 400
+- `DELETE /AssetAttributes` — Удаляет явно переданные пользовательские поля объектов (v2) · коды: 202, 400 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ESAssetAttributeDeleteActionData[] → ResultsAssetAttributesAssetAttributeRejectedResult[]
-  ## Пример запроса:
-`DELETE /AssetAttributes`
-            
-```json
-[
-  {
-    "assetID": 101,
-    "data": [
-      {
-        "attributeID": 2
-      }
-    ]
-  }
-]
-```
-            
-## Пример успешного ответа (202):
-```json
-[
-  {
-    "tenantID": 105,
-    "assetID": 101,
-    "attributeID": 2,
-    "error": "InvalidDataFormat@AlreadyActive"
-  }
-]
-```
-Пустой массив — если все строки запроса обработаны успешно.
-            
-## Негативные сценарии:
-- 400 BadRequest: некорректный формат запроса или отсутствуют обязательные поля.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetAttributeDelete`.
-            
-Удаляются только явно переданные пары AssetID+AttributeID.
-Непереданные атрибуты объекта не затрагиваются.
-- `POST /AssetAttributes/v2` — Добавляет пользовательские поля объектов (v2) · коды: 202, 400
+- `POST /AssetAttributes/v2` — Добавляет пользовательские поля объектов (v2) · коды: 202, 400 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ESAssetAttributeActionV2Data[] → ResultsAssetAttributesAssetAttributeRejectedResult[]
-  ## Пример запроса:
-`POST /AssetAttributes/v2`
-            
-```json
-[
-  {
-    "assetID": 101,
-    "data": [
-      {
-        "attributeID": 2,
-        "value": "Новый атрибут",
-        "isPublic": true,
-        "sortOrder": 1
-      }
-    ]
-  }
-]
-```
-            
-## Пример успешного ответа (202):
-```json
-[
-  {
-    "tenantID": 105,
-    "assetID": 101,
-    "attributeID": 2,
-    "error": "InvalidDataFormat@AlreadyActive"
-  }
-]
-```
-Пустой массив — если все строки запроса обработаны успешно.
-            
-## Негативные сценарии:
-- 400 BadRequest: некорректный формат запроса или отсутствуют обязательные поля.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetAttributeAdd`.
-            
-Добавляются только явно переданные атрибуты.
-Пустое значение не создает запись значения атрибута.
-При отсутствии `SortOrder` значение по умолчанию обрабатывается на стороне backend.
-- `PUT /AssetAttributes/v2` — Обновляет пользовательские поля объектов (v2) · коды: 202, 400
+- `PUT /AssetAttributes/v2` — Обновляет пользовательские поля объектов (v2) · коды: 202, 400 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: ESAssetAttributeActionV2Data[] → ResultsAssetAttributesAssetAttributeRejectedResult[]
-  ## Пример запроса:
-`PUT /AssetAttributes/v2`
-            
-```json
-[
-  {
-    "assetID": 101,
-    "data": [
-      {
-        "attributeID": 2,
-        "value": "Обновленное значение",
-        "isPublic": false
-      }
-    ]
-  }
-]
-```
-            
-## Пример успешного ответа (202):
-```json
-[
-  {
-    "tenantID": 105,
-    "assetID": 101,
-    "attributeID": 2,
-    "error": "InvalidDataFormat@AlreadyActive"
-  }
-]
-```
-Пустой массив — если все строки запроса обработаны успешно.
-            
-## Негативные сценарии:
-- 400 BadRequest: некорректный формат запроса или отсутствуют обязательные поля.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetAttributeUpdate`.
-            
-Обновляются только явно переданные атрибуты.
-Если для атрибута передать пустое значение, его значение будет удалено.
-При отсутствии `SortOrder` значение по умолчанию обрабатывается на стороне backend.
 
 ## AssetClasses
 - `GET /AssetClasses` — Возвращает список классов объектов. · коды: 200, 500
@@ -262,106 +155,16 @@ Base: `{BASE_URL}/ES`
   ← path: schemaId:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[] → ResultsAssetSchemaSchemaTask[]
 
 ## AssetSearchSettings
-- `GET /AssetSearchSettings` — Получение списка полей поиска объекта для текущего пользователя · коды: 200, 204
+- `GET /AssetSearchSettings` — Получение списка полей поиска объекта для текущего пользователя · коды: 200, 204 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ProjectionsESAssetSearchFieldSettingsProjection[]
-  ## Пример запроса:
-`GET /AssetSearchSettings`
-            
-## Пример успешного ответа (200), пользователь ещё не сохранял выбор:
-```json
-[
-  {
-    "searchFieldID": 1,
-    "entityCode": "Asset",
-    "fieldCode": "Name",
-    "descriptionRu": "Название",
-    "isSelected": true,
-    "isSelectedByUser": false
-  },
-  {
-    "searchFieldID": 2,
-    "entityCode": "Asset",
-    "fieldCode": "SerialNumber",
-    "descriptionRu": "Серийный номер",
-    "isSelected": true,
-    "isSelectedByUser": false
-  }
-]
-```
-## Пример ответа после сохранения выбора (только SerialNumber):
-```json
-[
-  {
-    "searchFieldID": 1,
-    "entityCode": "Asset",
-    "fieldCode": "Name",
-    "descriptionRu": "Название",
-    "isSelected": false,
-    "isSelectedByUser": false
-  },
-  {
-    "searchFieldID": 2,
-    "entityCode": "Asset",
-    "fieldCode": "SerialNumber",
-    "descriptionRu": "Серийный номер",
-    "isSelected": true,
-    "isSelectedByUser": true
-  }
-]
-```
-`fieldCode` — технический код поля; `descriptionRu` — подпись для UI.
-`isSelected` — итоговое состояние чекбокса (при отсутствии сохранённых настроек все доступные поля `true`).
-`isSelectedByUser` — поле сохранено в `TenantMemberSearchField`; при первом сохранении у всех строк `false` — отправлять `POST /tenantMember` с отмеченными id.
-## Негативные сценарии:
-- 204 NoContent: для пользователя нет доступных полей поиска.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetSearchFieldListForTenantMember`.
-- `POST /AssetSearchSettings/tenant` — Добавление полей поиска объекта на уровне тенанта · коды: 202
+- `POST /AssetSearchSettings/tenant` — Добавление полей поиска объекта на уровне тенанта · коды: 202 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
-  ## Пример запроса:
-`POST /AssetSearchSettings/tenant`
-            
-```json
-[1,2,3]
-```
-## Негативные сценарии:
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetTenantSearchSettingsAdd`.
-- `DELETE /AssetSearchSettings/tenant` — Удаление полей поиска объекта на уровне тенанта · коды: 202
+- `DELETE /AssetSearchSettings/tenant` — Удаление полей поиска объекта на уровне тенанта · коды: 202 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
-  ## Пример запроса:
-`DELETE /AssetSearchSettings/tenant`
-            
-```json
-[2,3]
-```
-## Негативные сценарии:
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetTenantSearchSettingsDelete`.
-- `POST /AssetSearchSettings/tenantMember` — Добавление полей поиска объекта для текущего пользователя · коды: 202, 409
+- `POST /AssetSearchSettings/tenantMember` — Добавление полей поиска объекта для текущего пользователя · коды: 202, 409 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
-  ## Пример запроса:
-`POST /AssetSearchSettings/tenantMember`
-            
-```json
-[1,2]
-```
-## Негативные сценарии:
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetTenantMemberSearchSettingsAdd`.
-- 409 Conflict: поле поиска скрыто для компании (`SearchFieldNotAllowedForTenant`).
-- `DELETE /AssetSearchSettings/tenantMember` — Удаление полей поиска объекта для текущего пользователя · коды: 202, 409
+- `DELETE /AssetSearchSettings/tenantMember` — Удаление полей поиска объекта для текущего пользователя · коды: 202, 409 · примеры
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
-  ## Пример запроса:
-`DELETE /AssetSearchSettings/tenantMember`
-            
-```json
-[2]
-```
-## Негативные сценарии:
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetTenantMemberSearchSettingsDelete`.
-- 409 Conflict: поле поиска скрыто для компании (`SearchFieldNotAllowedForTenant`).
 
 ## AssetSkills
 - `POST /AssetSkills` — Добавляет навыки к объектам · коды: 201, 409
@@ -500,6 +303,9 @@ Base: `{BASE_URL}/ES`
   ← query: withNested?:bool; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb); body: int[]
 - `GET /Assets/root` — Возращает справочник корневых объектов, доступных пользователю. · коды: 200
   ← header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsAssetsAssetExtResult>
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
+AllDistricts или AllAssets. Корневой объект - объект не имеющий объекта более высого уровня среди 
+доступных пользователю.
 - `GET /Assets/{assetID}` — Детальная информация по объекту · коды: 200, 400
   ← path: assetID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → ResultsAssetsAssetDetailedInfoResult
 - `PUT /Assets/{assetID}` — Изменяет объект · коды: 202, 409
@@ -557,9 +363,13 @@ Base: `{BASE_URL}/ES`
 - `GET /Assets/{parentAssetID}/assets` — Возращает справочник дочерних объектов (один уровень иерархии), 
 доступных пользователю. · коды: 200
   ← path: parentAssetID:int; query: searchText?:str; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsAssetsAssetExtResult>
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
+AllDistricts или AllAssets.
 - `GET /Assets/{parentAssetID}/assets/all` — Возращает справочник всех дочерних объектов (вниз по иерархии до самого нижнего уровня), 
 доступных пользователю. · коды: 200
   ← path: parentAssetID:int; header: X-Application-ID?:enum(1=EngineerMobile, 2=CustomerMobile, 3=MainWeb, 4=AdminWeb, 5=Api, 6=PlateWeb) → map<ResultsAssetsAssetExtResult>
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
+AllDistricts или AllAssets.
 
 ## Companies
 - `GET /Companies` — Возвращает список доступных пользователю компаний. · коды: 200

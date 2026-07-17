@@ -6,6 +6,24 @@
 
 Base: `{BASE_URL}/COMMON`
 
+**Оглавление**
+
+- Applications — строки 27–29
+- Attachments — строки 31–58
+- AttributeListOfValues — строки 60–62
+- AttributeTypes — строки 64–68
+- Attributes — строки 70–84
+- Banks — строки 86–90
+- Contacts — строки 92–104
+- Countries — строки 106–108
+- Currencies — строки 110–112
+- Events — строки 114–116
+- MeasurementUnits — строки 118–120
+- PowerBIReports — строки 122–126
+- SystemTags — строки 128–130
+- Tags — строки 132–134
+- Timezones — строки 136–140
+
 ## Applications
 - `GET /Applications` — Возвращает список  веток · права: ApplicationList · paginated · коды: 200, 206
   → map<ApplicationResult>

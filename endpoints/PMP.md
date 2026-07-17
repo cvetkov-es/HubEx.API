@@ -6,6 +6,12 @@
 
 Base: `{BASE_URL}/PMP`
 
+**Оглавление**
+
+- FrequencyTypes — строки 15–17
+- ScheduledTasks — строки 19–35
+- Schedules — строки 37–61
+
 ## FrequencyTypes
 - `GET /FrequencyTypes` — Метод получения списка типов повторений расписаний · права: FrequencyTypeList · коды: 200
   ← path: scheduleID:int; query: dateFrom?:datetime, dateTill?:datetime → map<IdCodeNameResult<Byte>>[]

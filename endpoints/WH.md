@@ -6,6 +6,21 @@
 
 Base: `{BASE_URL}/WH`
 
+**Оглавление**
+
+- BarcodeTypes — строки 24–26
+- DocumentStatuses — строки 28–30
+- DocumentTypes — строки 32–34
+- Inventories — строки 36–48
+- Issues — строки 50–84
+- MaterialConsumptions — строки 86–88
+- Materials — строки 90–140
+- NumberSequences — строки 142–150
+- OperationTypes — строки 152–164
+- Receipts — строки 166–200
+- UserWarehouses — строки 202–212
+- Warehouses — строки 214–246
+
 ## BarcodeTypes
 - `GET /BarcodeTypes` — Возвращает полный список типов штрихкодов · права: BarcodeTypesList · коды: 200
   → map<BarcodeTypes.ListResult>

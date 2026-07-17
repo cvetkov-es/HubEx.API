@@ -6,6 +6,19 @@
 
 Base: `{BASE_URL}/REPORT`
 
+**Оглавление**
+
+- AssetMaintenance — строки 22–24
+- CompletionTime — строки 26–28
+- PowerBICustomReports — строки 30–32
+- ReactionTime — строки 34–36
+- TasksByAssets — строки 38–40
+- TasksByAssignees — строки 42–44
+- TasksByCompanies — строки 46–48
+- TasksByStages — строки 50–52
+- TasksByWorkTypes — строки 54–56
+- WorkingTime — строки 58–60
+
 ## AssetMaintenance
 - `GET /AssetMaintenance/planned` — Возвращае запланированные заявки на обслуживание объектов, доступных пользователю · права: PreventiveAssetMaintenanceList · коды: 200
   ← query: validFrom?:any, validTill?:any → PlannedMaintenanceResult[]

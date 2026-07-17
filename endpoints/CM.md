@@ -6,6 +6,10 @@
 
 Base: `{BASE_URL}/CM`
 
+**Оглавление**
+
+- Clients — строки 13–16
+
 ## Clients
 - `POST /Clients/locations` — Сохраняет данные о местоположении · коды: 200, 404
   ← body: PostData[]

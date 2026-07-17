@@ -6,6 +6,11 @@
 
 Base: `{BASE_URL}/WSP`
 
+**Оглавление**
+
+- ScheduleRules — строки 14–30
+- WorkSchedules — строки 32–36
+
 ## ScheduleRules
 - `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · права: ScheduleRulesList · paginated · коды: 200, 206
   → map<ListResult>

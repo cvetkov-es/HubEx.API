@@ -6,6 +6,21 @@
 
 Base: `{BASE_URL}/MSG`
 
+**Оглавление**
+
+- ContentTypes — строки 24–26
+- CriticalityForTriggers — строки 28–30
+- MailBoxes — строки 32–63
+- MessageTemplates — строки 65–79
+- NavigateTo — строки 81–83
+- Notifications — строки 85–96
+- Protocols — строки 98–100
+- Providers — строки 102–104
+- RecipientSelectionRules — строки 106–120
+- TriggerRecipientSelectionRules — строки 122–124
+- Triggers — строки 126–148
+- Webhooks — строки 150–168
+
 ## ContentTypes
 - `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206
   → ContentTypes.ListResult[]

@@ -6,6 +6,15 @@
 
 Base: `{BASE_URL}/EXPORT`
 
+**Оглавление**
+
+- Assets — строки 18–24
+- Companies — строки 26–28
+- MaterialConsumption — строки 30–32
+- Materials — строки 34–38
+- Tasks — строки 40–52
+- Users — строки 54–56
+
 ## Assets
 - `GET /Assets` — Экспортирует список объектов с учетом указанных фильтров · права: AssetsExport · коды: 200
   ← query: searchText?:str, parentID?:any, assetID?:any, responsiblePerson?:any, districtID?:any, workTypeID?:any, skillID?:any, companyID?:any, taskTypeID?:any, tag?:str, name?:str, isMobile?:enum(true, false), isAssigned?:any, isDeleted?:enum(true, false), isPublished?:enum(true, false), warrantyFrom?:any, warrantyTill?:any, checkListID?:any, startWithAssetID?:any, noData?:enum(true, false), erpID?:str
