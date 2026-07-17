@@ -1,0 +1,46 @@
+# Автопубликация read-линзы на orphan-ветку lens-dist при каждом изменении main.
+# Потребитель (read-only, напр. бот «Сова») тянет её:
+#   git clone --single-branch --branch lens-dist --depth 1 <этот-репо> lens
+#
+# ТРЕБУЕТСЯ РАЗОВО (иначе checkout приватного сабмодуля tools/ упадёт):
+#   1. Settings → Actions → включить Actions для репо.
+#   2. Создать секрет LENS_TOKEN — fine-grained PAT с доступом к ДВУМ репо:
+#        • HubEx.API.Pipeline (приватный сабмодуль tools/): Contents → Read
+#        • этот репо (push ветки lens-dist):               Contents → Read and write
+#      Settings → Secrets and variables → Actions → New repository secret → LENS_TOKEN.
+name: publish read-lens
+
+on:
+  push:
+    branches: [main]
+
+# GITHUB_TOKEN здесь не используется для push — пушит LENS_TOKEN (см. checkout ниже),
+# но объявляем write на случай, если политика репо требует явных прав.
+permissions:
+  contents: write
+
+# не запускать две публикации внахлёст; последняя важнее промежуточных
+concurrency:
+  group: publish-lens
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout контента + приватного сабмодуля tools/
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive          # нужен код пайплайна + снапшоты из tools/
+          token: ${{ secrets.LENS_TOKEN }}  # read к Pipeline (сабмодуль) + write сюда (push lens-dist)
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Runtime-зависимость (цепочка импорта api_cli тянет requests)
+        run: pip install requests
+
+      - name: Собрать и опубликовать линзу на ветку lens-dist
+        run: python3 tools/api_cli.py publish-lens
