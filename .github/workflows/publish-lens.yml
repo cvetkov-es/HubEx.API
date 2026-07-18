@@ -54,4 +54,11 @@ jobs:
         run: pip install requests
 
       - name: Собрать и опубликовать линзу на ветку lens-dist
+        # identity коммита-выкладки задаёт деплой (в CI нет ambient git config); git берёт
+        # эти env поверх конфига. Локально identity берётся из git config мейнтейнера.
+        env:
+          GIT_AUTHOR_NAME: HubEx lens bot
+          GIT_AUTHOR_EMAIL: lens-bot@users.noreply.github.com
+          GIT_COMMITTER_NAME: HubEx lens bot
+          GIT_COMMITTER_EMAIL: lens-bot@users.noreply.github.com
         run: python3 tools/api_cli.py publish-lens
