@@ -28,11 +28,22 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout контента + приватного сабмодуля tools/
+      - name: Checkout контента (сабмодули инициализируем вручную — cli не нужен)
         uses: actions/checkout@v4
         with:
-          submodules: recursive          # нужен код пайплайна + снапшоты из tools/
-          token: ${{ secrets.LENS_TOKEN }}  # read к Pipeline (сабмодуль) + write сюда (push lens-dist)
+          token: ${{ secrets.LENS_TOKEN }}  # write сюда (push lens-dist)
+
+      # Инициализируем ТОЛЬКО tools/ (код пайплайна + снапшоты). cli не трогаем: он не нужен
+      # для линзы, а LENS_TOKEN к нему прав не имеет (recursive падал бы на cli с 403).
+      # -c extraheader — тот же механизм авторизации сабмодуля, что и у actions/checkout;
+      # инлайн, не персистит, не мешает push origin в шаге ниже (там свой auth от checkout).
+      - name: Инициализировать сабмодуль tools/
+        env:
+          GH_AUTH: ${{ secrets.LENS_TOKEN }}
+        run: |
+          AUTH=$(printf 'x-access-token:%s' "$GH_AUTH" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" \
+              submodule update --init --depth 1 tools
 
       - name: Python
         uses: actions/setup-python@v5
