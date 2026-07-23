@@ -1,8 +1,7 @@
 # ES — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ES.md`; грабли — `notes/ES.md` (если есть).
-> **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/ES`
@@ -10,23 +9,23 @@ Base: `{BASE_URL}/ES`
 
 **Оглавление**
 
-- AssetClasses — строки 31–35
-- AssetFilter — строки 37–39
-- AssetListQueries — строки 41–45
-- AssetLocations — строки 47–49
-- AssetSchemas — строки 51–65
-- AssetSearchSettings — строки 67–69
-- AssetTemplates — строки 71–87
-- AssetTypes — строки 89–95
-- Assets — строки 97–143
-- Companies — строки 145–170
-- CompanyListQueries — строки 172–176
-- CompanyLocations — строки 178–180
-- CompanyRegistrationTypes — строки 182–184
-- Districts — строки 186–190
-- Locations — строки 192–198
-- OrgUnits — строки 200–209
-- PreferredTechnicians — строки 211–213
+- AssetClasses — строки 30–34
+- AssetFilter — строки 36–38
+- AssetListQueries — строки 40–44
+- AssetLocations — строки 46–48
+- AssetSchemas — строки 50–64
+- AssetSearchSettings — строки 66–68
+- AssetTemplates — строки 70–86
+- AssetTypes — строки 88–94
+- Assets — строки 96–142
+- Companies — строки 144–169
+- CompanyListQueries — строки 171–175
+- CompanyLocations — строки 177–179
+- CompanyRegistrationTypes — строки 181–183
+- Districts — строки 185–189
+- Locations — строки 191–197
+- OrgUnits — строки 199–208
+- PreferredTechnicians — строки 210–212
 
 ## AssetClasses
 - `GET /AssetClasses` — Возвращает список классов объектов. · коды: 200, 500

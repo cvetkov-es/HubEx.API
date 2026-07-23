@@ -1,15 +1,14 @@
 # SC — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/SC.md`; грабли — `notes/SC.md` (если есть).
-> **Источник:** swagger сервиса SC · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/SC`
 
 **Оглавление**
 
-- ServiceContract — строки 14–32
+- ServiceContract — строки 13–31
 
 ## ServiceContract
 - `GET /ServiceContract` — Метод получения списка договоров обслуживания · права: ContractList · paginated · коды: 200, 206

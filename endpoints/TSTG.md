@@ -1,8 +1,7 @@
 # TSTG — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса TSTG (API for task life cycle administration in HubEx): сигнатуры, параметры, права. Типы — schemas/TSTG.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса TSTG (API for task life cycle administration in HubEx): сигнатуры, параметры, права. Типы — schemas/TSTG.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/TSTG.md`; грабли — `notes/TSTG.md` (если есть).
-> **Источник:** swagger сервиса TSTG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/TSTG`
@@ -10,13 +9,13 @@ Base: `{BASE_URL}/TSTG`
 
 **Оглавление**
 
-- Action — строки 21–23
-- AssigneeSelectionRules — строки 25–29
-- Branches — строки 31–33
-- Requirements — строки 35–37
-- TaskStageComponents — строки 39–41
-- TaskStageLinks — строки 43–47
-- TaskStages — строки 49–59
+- Action — строки 20–22
+- AssigneeSelectionRules — строки 24–28
+- Branches — строки 30–32
+- Requirements — строки 34–36
+- TaskStageComponents — строки 38–40
+- TaskStageLinks — строки 42–46
+- TaskStages — строки 48–58
 
 ## Action
 - `GET /Action` — Метод получения списка  действий · права: ActionList · paginated · коды: 200, 206

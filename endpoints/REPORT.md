@@ -1,24 +1,23 @@
 # REPORT — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/REPORT.md`; грабли — `notes/REPORT.md` (если есть).
-> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/REPORT`
 
 **Оглавление**
 
-- AssetMaintenance — строки 23–25
-- CompletionTime — строки 27–29
-- PowerBICustomReports — строки 31–33
-- ReactionTime — строки 35–37
-- TasksByAssets — строки 39–41
-- TasksByAssignees — строки 43–45
-- TasksByCompanies — строки 47–49
-- TasksByStages — строки 51–53
-- TasksByWorkTypes — строки 55–57
-- WorkingTime — строки 59–61
+- AssetMaintenance — строки 22–24
+- CompletionTime — строки 26–28
+- PowerBICustomReports — строки 30–32
+- ReactionTime — строки 34–36
+- TasksByAssets — строки 38–40
+- TasksByAssignees — строки 42–44
+- TasksByCompanies — строки 46–48
+- TasksByStages — строки 50–52
+- TasksByWorkTypes — строки 54–56
+- WorkingTime — строки 58–60
 
 ## AssetMaintenance
 - `GET /AssetMaintenance/planned` — Возвращае запланированные заявки на обслуживание объектов, доступных пользователю · права: PreventiveAssetMaintenanceList · коды: 200

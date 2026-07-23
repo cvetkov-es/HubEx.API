@@ -1,24 +1,23 @@
 # MSG — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/MSG.md`; грабли — `notes/MSG.md` (если есть).
-> **Источник:** swagger сервиса MSG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/MSG`
 
 **Оглавление**
 
-- ContentTypes — строки 23–25
-- MailBoxes — строки 27–40
-- MessageTemplates — строки 42–46
-- NavigateTo — строки 48–50
-- Notifications — строки 52–58
-- Protocols — строки 60–62
-- Providers — строки 64–66
-- RecipientSelectionRules — строки 68–74
-- Triggers — строки 76–82
-- Webhooks — строки 84–88
+- ContentTypes — строки 22–24
+- MailBoxes — строки 26–39
+- MessageTemplates — строки 41–45
+- NavigateTo — строки 47–49
+- Notifications — строки 51–57
+- Protocols — строки 59–61
+- Providers — строки 63–65
+- RecipientSelectionRules — строки 67–73
+- Triggers — строки 75–81
+- Webhooks — строки 83–87
 
 ## ContentTypes
 - `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206

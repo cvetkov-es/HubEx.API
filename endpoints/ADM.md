@@ -1,8 +1,7 @@
 # ADM — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ADM.md`; грабли — `notes/ADM.md` (если есть).
-> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/ADM`
@@ -10,26 +9,26 @@ Base: `{BASE_URL}/ADM`
 
 **Оглавление**
 
-- BanReasons — строки 34–36
-- Capabilities — строки 38–40
-- DefaultPages — строки 42–44
-- GeolocationSettings — строки 46–48
-- Invitations — строки 50–56
-- PermissionApiTags — строки 58–60
-- PermissionExtTags — строки 62–64
-- PermissionsApi — строки 66–68
-- PermissionsExt — строки 70–72
-- PermissionsUi — строки 74–78
-- RoleTaskPropertiesAccess — строки 80–82
-- Roles — строки 84–100
-- SystemPermissionUiTags — строки 102–104
-- TenantCreationRequests — строки 106–108
-- TenantMembers — строки 110–120
-- TenantSettings — строки 122–126
-- Tenants — строки 128–144
-- UserOrderBy — строки 146–148
-- UserTemplates — строки 150–158
-- Users — строки 160–220
+- BanReasons — строки 33–35
+- Capabilities — строки 37–39
+- DefaultPages — строки 41–43
+- GeolocationSettings — строки 45–47
+- Invitations — строки 49–55
+- PermissionApiTags — строки 57–59
+- PermissionExtTags — строки 61–63
+- PermissionsApi — строки 65–67
+- PermissionsExt — строки 69–71
+- PermissionsUi — строки 73–77
+- RoleTaskPropertiesAccess — строки 79–81
+- Roles — строки 83–99
+- SystemPermissionUiTags — строки 101–103
+- TenantCreationRequests — строки 105–107
+- TenantMembers — строки 109–119
+- TenantSettings — строки 121–125
+- Tenants — строки 127–143
+- UserOrderBy — строки 145–147
+- UserTemplates — строки 149–157
+- Users — строки 159–219
 
 ## BanReasons
 - `GET /BanReasons` — Получить список причин блокировки пользователя · коды: 200, 204, 206 · примеры

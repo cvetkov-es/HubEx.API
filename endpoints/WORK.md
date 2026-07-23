@@ -1,8 +1,7 @@
 # WORK — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WORK.md`; грабли — `notes/WORK.md` (если есть).
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WORK`
@@ -10,20 +9,20 @@ Base: `{BASE_URL}/WORK`
 
 **Оглавление**
 
-- CheckLists — строки 28–34
-- RequestMethods — строки 36–38
-- TaskActualities — строки 40–44
-- TaskAttributes — строки 46–48
-- TaskConversations — строки 50–55
-- TaskFilter — строки 57–59
-- TaskListQueries — строки 61–65
-- TaskOrderBy — строки 67–69
-- TaskStatuses — строки 71–75
-- TaskTemplates — строки 77–97
-- TaskTypes — строки 99–109
-- Tasks — строки 111–230
-- TemplateQuickResponse — строки 232–236
-- WorkTypes — строки 238–250
+- CheckLists — строки 27–33
+- RequestMethods — строки 35–37
+- TaskActualities — строки 39–43
+- TaskAttributes — строки 45–47
+- TaskConversations — строки 49–54
+- TaskFilter — строки 56–58
+- TaskListQueries — строки 60–64
+- TaskOrderBy — строки 66–68
+- TaskStatuses — строки 70–74
+- TaskTemplates — строки 76–96
+- TaskTypes — строки 98–108
+- Tasks — строки 110–229
+- TemplateQuickResponse — строки 231–235
+- WorkTypes — строки 237–249
 
 ## CheckLists
 - `GET /CheckLists` — Возвращает список активных чек-листов · права: CheckListsList · paginated · коды: 200, 206

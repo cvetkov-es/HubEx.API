@@ -1,17 +1,16 @@
 # PMP — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PMP (API for PMP in HubEx): сигнатуры, параметры, права. Типы — schemas/PMP.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PMP (API for PMP in HubEx): сигнатуры, параметры, права. Типы — schemas/PMP.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PMP.md`; грабли — `notes/PMP.md` (если есть).
-> **Источник:** swagger сервиса PMP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PMP`
 
 **Оглавление**
 
-- FrequencyTypes — строки 16–18
-- ScheduledTasks — строки 20–36
-- Schedules — строки 38–48
+- FrequencyTypes — строки 15–17
+- ScheduledTasks — строки 19–35
+- Schedules — строки 37–47
 
 ## FrequencyTypes
 - `GET /FrequencyTypes` — Метод получения списка типов повторений расписаний · права: FrequencyTypeList · коды: 200

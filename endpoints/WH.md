@@ -1,26 +1,25 @@
 # WH — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WH (API for WH in HubEx): сигнатуры, параметры, права. Типы — schemas/WH.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WH (API for WH in HubEx): сигнатуры, параметры, права. Типы — schemas/WH.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WH.md`; грабли — `notes/WH.md` (если есть).
-> **Источник:** swagger сервиса WH · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WH`
 
 **Оглавление**
 
-- BarcodeTypes — строки 25–27
-- DocumentStatuses — строки 29–31
-- DocumentTypes — строки 33–35
-- Inventories — строки 37–41
-- Issues — строки 43–51
-- MaterialConsumptions — строки 53–55
-- Materials — строки 57–77
-- NumberSequences — строки 79–83
-- OperationTypes — строки 85–89
-- Receipts — строки 91–99
-- UserWarehouses — строки 101–103
-- Warehouses — строки 105–117
+- BarcodeTypes — строки 24–26
+- DocumentStatuses — строки 28–30
+- DocumentTypes — строки 32–34
+- Inventories — строки 36–40
+- Issues — строки 42–50
+- MaterialConsumptions — строки 52–54
+- Materials — строки 56–76
+- NumberSequences — строки 78–82
+- OperationTypes — строки 84–88
+- Receipts — строки 90–98
+- UserWarehouses — строки 100–102
+- Warehouses — строки 104–116
 
 ## BarcodeTypes
 - `GET /BarcodeTypes` — Возвращает полный список типов штрихкодов · права: BarcodeTypesList · коды: 200

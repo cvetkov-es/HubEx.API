@@ -1,16 +1,15 @@
 # PROXY — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PROXY (API for remote calling 3rd party services.): сигнатуры, параметры, права. Типы — schemas/PROXY.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PROXY (API for remote calling 3rd party services.): сигнатуры, параметры, права. Типы — schemas/PROXY.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PROXY.md`; грабли — `notes/PROXY.md` (если есть).
-> **Источник:** swagger сервиса PROXY · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PROXY`
 
 **Оглавление**
 
-- NavigateTo — строки 15–18
-- TaskTemplates — строки 20–23
+- NavigateTo — строки 14–17
+- TaskTemplates — строки 19–22
 
 ## NavigateTo
 - `GET /NavigateTo/{appCode}` · коды: 200

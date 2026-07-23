@@ -1,16 +1,15 @@
 # WSP — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WSP (API for work schedule managing for HubEx): сигнатуры, параметры, права. Типы — schemas/WSP.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WSP (API for work schedule managing for HubEx): сигнатуры, параметры, права. Типы — schemas/WSP.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WSP.md`; грабли — `notes/WSP.md` (если есть).
-> **Источник:** swagger сервиса WSP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WSP`
 
 **Оглавление**
 
-- ScheduleRules — строки 15–21
-- WorkSchedules — строки 23–27
+- ScheduleRules — строки 14–20
+- WorkSchedules — строки 22–26
 
 ## ScheduleRules
 - `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · права: ScheduleRulesList · paginated · коды: 200, 206

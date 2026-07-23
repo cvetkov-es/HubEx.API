@@ -1,21 +1,20 @@
 # UI — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса UI (API for UI information): сигнатуры, параметры, права. Типы — schemas/UI.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса UI (API for UI information): сигнатуры, параметры, права. Типы — schemas/UI.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/UI.md`; грабли — `notes/UI.md` (если есть).
-> **Источник:** swagger сервиса UI · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/UI`
 
 **Оглавление**
 
-- Components — строки 20–22
-- Filters — строки 24–26
-- LayoutTemplates — строки 28–45
-- Resources — строки 47–49
-- SubsystemView — строки 51–55
-- TaskViewTemplate — строки 57–59
-- UserViews — строки 61–65
+- Components — строки 19–21
+- Filters — строки 23–25
+- LayoutTemplates — строки 27–44
+- Resources — строки 46–48
+- SubsystemView — строки 50–54
+- TaskViewTemplate — строки 56–58
+- UserViews — строки 60–64
 
 ## Components
 - `GET /Components` — Возвращает полный список компонентов · права: ComponentsList · paginated · коды: 200, 206

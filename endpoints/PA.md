@@ -1,25 +1,24 @@
 # PA — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PA (API for personnel administration in HubEx): сигнатуры, параметры, права. Типы — schemas/PA.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PA (API for personnel administration in HubEx): сигнатуры, параметры, права. Типы — schemas/PA.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PA.md`; грабли — `notes/PA.md` (если есть).
-> **Источник:** swagger сервиса PA · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PA`
 
 **Оглавление**
 
-- AssetAssignments — строки 24–26
-- Employment — строки 28–30
-- GeoTrackingModes — строки 32–34
-- Moblities — строки 36–38
-- RatingCriteria — строки 40–44
-- Sexes — строки 46–48
-- Skills — строки 50–54
-- Technicians — строки 56–66
-- TenantSettings — строки 68–71
-- UserGroups — строки 73–75
-- Users — строки 77–83
+- AssetAssignments — строки 23–25
+- Employment — строки 27–29
+- GeoTrackingModes — строки 31–33
+- Moblities — строки 35–37
+- RatingCriteria — строки 39–43
+- Sexes — строки 45–47
+- Skills — строки 49–53
+- Technicians — строки 55–65
+- TenantSettings — строки 67–70
+- UserGroups — строки 72–74
+- Users — строки 76–82
 
 ## AssetAssignments
 - `GET /AssetAssignments` — Возвращает Список назначенного оборудования для указанных пользователей или список пользователей, для которых назанчен указанный объект · права: AssetAssignmentList · paginated · коды: 200, 206

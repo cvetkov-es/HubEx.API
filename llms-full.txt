@@ -1,8 +1,7 @@
 # ADM — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ADM.md`; грабли — `notes/ADM.md` (если есть).
-> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/ADM`
@@ -10,26 +9,26 @@ Base: `{BASE_URL}/ADM`
 
 **Оглавление**
 
-- BanReasons — строки 34–36
-- Capabilities — строки 38–40
-- DefaultPages — строки 42–44
-- GeolocationSettings — строки 46–48
-- Invitations — строки 50–56
-- PermissionApiTags — строки 58–60
-- PermissionExtTags — строки 62–64
-- PermissionsApi — строки 66–68
-- PermissionsExt — строки 70–72
-- PermissionsUi — строки 74–78
-- RoleTaskPropertiesAccess — строки 80–82
-- Roles — строки 84–100
-- SystemPermissionUiTags — строки 102–104
-- TenantCreationRequests — строки 106–108
-- TenantMembers — строки 110–120
-- TenantSettings — строки 122–126
-- Tenants — строки 128–144
-- UserOrderBy — строки 146–148
-- UserTemplates — строки 150–158
-- Users — строки 160–220
+- BanReasons — строки 33–35
+- Capabilities — строки 37–39
+- DefaultPages — строки 41–43
+- GeolocationSettings — строки 45–47
+- Invitations — строки 49–55
+- PermissionApiTags — строки 57–59
+- PermissionExtTags — строки 61–63
+- PermissionsApi — строки 65–67
+- PermissionsExt — строки 69–71
+- PermissionsUi — строки 73–77
+- RoleTaskPropertiesAccess — строки 79–81
+- Roles — строки 83–99
+- SystemPermissionUiTags — строки 101–103
+- TenantCreationRequests — строки 105–107
+- TenantMembers — строки 109–119
+- TenantSettings — строки 121–125
+- Tenants — строки 127–143
+- UserOrderBy — строки 145–147
+- UserTemplates — строки 149–157
+- Users — строки 159–219
 
 ## BanReasons
 - `GET /BanReasons` — Получить список причин блокировки пользователя · коды: 200, 204, 206 · примеры
@@ -221,16 +220,15 @@ Base: `{BASE_URL}/ADM`
 
 # AUTH — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTH (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTH (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTH.md`; грабли — `notes/AUTH.md` (если есть).
-> **Источник:** swagger сервиса AUTH · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/AUTH`
 
 **Оглавление**
 
-- Accounts — строки 14–23
+- Accounts — строки 13–22
 
 ## Accounts
 - `GET /Accounts` — Возвращает данные учетной записи по учетным данным · права: AccountGet · коды: 200, 500
@@ -245,16 +243,15 @@ Base: `{BASE_URL}/AUTH`
 
 # AUTHZ — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTHZ (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHZ.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTHZ (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHZ.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTHZ.md`; грабли — `notes/AUTHZ.md` (если есть).
-> **Источник:** swagger сервиса AUTHZ · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/AUTHZ`
 
 **Оглавление**
 
-- RefreshTokens — строки 14–17
+- RefreshTokens — строки 13–16
 
 ## RefreshTokens
 - `GET /RefreshTokens` — Возвращает refresh-токен с параметрами по умолчанию. · коды: 200
@@ -263,29 +260,28 @@ Base: `{BASE_URL}/AUTHZ`
 
 # COMMON — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса COMMON (API for managing common dictionaries in HubEx): сигнатуры, параметры, права. Типы — schemas/COMMON.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса COMMON (API for managing common dictionaries in HubEx): сигнатуры, параметры, права. Типы — schemas/COMMON.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/COMMON.md`; грабли — `notes/COMMON.md` (если есть).
-> **Источник:** swagger сервиса COMMON · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/COMMON`
 
 **Оглавление**
 
-- Applications — строки 27–29
-- Attachments — строки 31–44
-- AttributeTypes — строки 46–50
-- Attributes — строки 52–58
-- Banks — строки 60–64
-- Contacts — строки 66–70
-- Countries — строки 72–74
-- Currencies — строки 76–78
-- Events — строки 80–82
-- MeasurementUnits — строки 84–86
-- PowerBIReports — строки 88–92
-- SystemTags — строки 94–96
-- Tags — строки 98–100
-- Timezones — строки 102–106
+- Applications — строки 26–28
+- Attachments — строки 30–43
+- AttributeTypes — строки 45–49
+- Attributes — строки 51–57
+- Banks — строки 59–63
+- Contacts — строки 65–69
+- Countries — строки 71–73
+- Currencies — строки 75–77
+- Events — строки 79–81
+- MeasurementUnits — строки 83–85
+- PowerBIReports — строки 87–91
+- SystemTags — строки 93–95
+- Tags — строки 97–99
+- Timezones — строки 101–105
 
 ## Applications
 - `GET /Applications` — Возвращает список  веток · права: ApplicationList · paginated · коды: 200, 206
@@ -370,9 +366,8 @@ Base: `{BASE_URL}/COMMON`
 
 # ES — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ES.md`; грабли — `notes/ES.md` (если есть).
-> **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/ES`
@@ -380,23 +375,23 @@ Base: `{BASE_URL}/ES`
 
 **Оглавление**
 
-- AssetClasses — строки 31–35
-- AssetFilter — строки 37–39
-- AssetListQueries — строки 41–45
-- AssetLocations — строки 47–49
-- AssetSchemas — строки 51–65
-- AssetSearchSettings — строки 67–69
-- AssetTemplates — строки 71–87
-- AssetTypes — строки 89–95
-- Assets — строки 97–143
-- Companies — строки 145–170
-- CompanyListQueries — строки 172–176
-- CompanyLocations — строки 178–180
-- CompanyRegistrationTypes — строки 182–184
-- Districts — строки 186–190
-- Locations — строки 192–198
-- OrgUnits — строки 200–209
-- PreferredTechnicians — строки 211–213
+- AssetClasses — строки 30–34
+- AssetFilter — строки 36–38
+- AssetListQueries — строки 40–44
+- AssetLocations — строки 46–48
+- AssetSchemas — строки 50–64
+- AssetSearchSettings — строки 66–68
+- AssetTemplates — строки 70–86
+- AssetTypes — строки 88–94
+- Assets — строки 96–142
+- Companies — строки 144–169
+- CompanyListQueries — строки 171–175
+- CompanyLocations — строки 177–179
+- CompanyRegistrationTypes — строки 181–183
+- Districts — строки 185–189
+- Locations — строки 191–197
+- OrgUnits — строки 199–208
+- PreferredTechnicians — строки 210–212
 
 ## AssetClasses
 - `GET /AssetClasses` — Возвращает список классов объектов. · коды: 200, 500
@@ -584,21 +579,20 @@ AllDistricts или AllAssets.
 
 # EXPORT — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса EXPORT (API for data exporting in HubEx): сигнатуры, параметры, права. Типы — schemas/EXPORT.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса EXPORT (API for data exporting in HubEx): сигнатуры, параметры, права. Типы — schemas/EXPORT.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/EXPORT.md`; грабли — `notes/EXPORT.md` (если есть).
-> **Источник:** swagger сервиса EXPORT · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/EXPORT`
 
 **Оглавление**
 
-- Assets — строки 19–25
-- Companies — строки 27–29
-- MaterialConsumption — строки 31–33
-- Materials — строки 35–39
-- Tasks — строки 41–53
-- Users — строки 55–57
+- Assets — строки 18–24
+- Companies — строки 26–28
+- MaterialConsumption — строки 30–32
+- Materials — строки 34–38
+- Tasks — строки 40–52
+- Users — строки 54–56
 
 ## Assets
 - `GET /Assets` — Экспортирует список объектов с учетом указанных фильтров · права: AssetsExport · коды: 200
@@ -642,16 +636,15 @@ Base: `{BASE_URL}/EXPORT`
 
 # LIC — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса LIC (API for LIC in HubEx): сигнатуры, параметры, права. Типы — schemas/LIC.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса LIC (API for LIC in HubEx): сигнатуры, параметры, права. Типы — schemas/LIC.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/LIC.md`; грабли — `notes/LIC.md` (если есть).
-> **Источник:** swagger сервиса LIC · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/LIC`
 
 **Оглавление**
 
-- LicenseScanner — строки 14–16
+- LicenseScanner — строки 13–15
 
 ## LicenseScanner
 - `GET /LicenseScanner/State` — Проверка состояния сервиса мониторинга лицензий · коды: 200
@@ -659,25 +652,24 @@ Base: `{BASE_URL}/LIC`
 
 # MSG — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/MSG.md`; грабли — `notes/MSG.md` (если есть).
-> **Источник:** swagger сервиса MSG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/MSG`
 
 **Оглавление**
 
-- ContentTypes — строки 23–25
-- MailBoxes — строки 27–40
-- MessageTemplates — строки 42–46
-- NavigateTo — строки 48–50
-- Notifications — строки 52–58
-- Protocols — строки 60–62
-- Providers — строки 64–66
-- RecipientSelectionRules — строки 68–74
-- Triggers — строки 76–82
-- Webhooks — строки 84–88
+- ContentTypes — строки 22–24
+- MailBoxes — строки 26–39
+- MessageTemplates — строки 41–45
+- NavigateTo — строки 47–49
+- Notifications — строки 51–57
+- Protocols — строки 59–61
+- Providers — строки 63–65
+- RecipientSelectionRules — строки 67–73
+- Triggers — строки 75–81
+- Webhooks — строки 83–87
 
 ## ContentTypes
 - `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206
@@ -748,16 +740,15 @@ Base: `{BASE_URL}/MSG`
 
 # NEWS — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса NEWS (API for managing news and advertisements in HubEx): сигнатуры, параметры, права. Типы — schemas/NEWS.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса NEWS (API for managing news and advertisements in HubEx): сигнатуры, параметры, права. Типы — schemas/NEWS.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/NEWS.md`; грабли — `notes/NEWS.md` (если есть).
-> **Источник:** swagger сервиса NEWS · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/NEWS`
 
 **Оглавление**
 
-- Articles — строки 14–16
+- Articles — строки 13–15
 
 ## Articles
 - `GET /Articles` — Возвращает список доступных пользователю новостей. · права: ArticleListForTenantMember · paginated · коды: 200, 206
@@ -765,26 +756,25 @@ Base: `{BASE_URL}/NEWS`
 
 # PA — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PA (API for personnel administration in HubEx): сигнатуры, параметры, права. Типы — schemas/PA.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PA (API for personnel administration in HubEx): сигнатуры, параметры, права. Типы — schemas/PA.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PA.md`; грабли — `notes/PA.md` (если есть).
-> **Источник:** swagger сервиса PA · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PA`
 
 **Оглавление**
 
-- AssetAssignments — строки 24–26
-- Employment — строки 28–30
-- GeoTrackingModes — строки 32–34
-- Moblities — строки 36–38
-- RatingCriteria — строки 40–44
-- Sexes — строки 46–48
-- Skills — строки 50–54
-- Technicians — строки 56–66
-- TenantSettings — строки 68–71
-- UserGroups — строки 73–75
-- Users — строки 77–83
+- AssetAssignments — строки 23–25
+- Employment — строки 27–29
+- GeoTrackingModes — строки 31–33
+- Moblities — строки 35–37
+- RatingCriteria — строки 39–43
+- Sexes — строки 45–47
+- Skills — строки 49–53
+- Technicians — строки 55–65
+- TenantSettings — строки 67–70
+- UserGroups — строки 72–74
+- Users — строки 76–82
 
 ## AssetAssignments
 - `GET /AssetAssignments` — Возвращает Список назначенного оборудования для указанных пользователей или список пользователей, для которых назанчен указанный объект · права: AssetAssignmentList · paginated · коды: 200, 206
@@ -849,18 +839,17 @@ Base: `{BASE_URL}/PA`
 
 # PMP — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PMP (API for PMP in HubEx): сигнатуры, параметры, права. Типы — schemas/PMP.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PMP (API for PMP in HubEx): сигнатуры, параметры, права. Типы — schemas/PMP.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PMP.md`; грабли — `notes/PMP.md` (если есть).
-> **Источник:** swagger сервиса PMP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PMP`
 
 **Оглавление**
 
-- FrequencyTypes — строки 16–18
-- ScheduledTasks — строки 20–36
-- Schedules — строки 38–48
+- FrequencyTypes — строки 15–17
+- ScheduledTasks — строки 19–35
+- Schedules — строки 37–47
 
 ## FrequencyTypes
 - `GET /FrequencyTypes` — Метод получения списка типов повторений расписаний · права: FrequencyTypeList · коды: 200
@@ -898,17 +887,16 @@ Base: `{BASE_URL}/PMP`
 
 # PROXY — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса PROXY (API for remote calling 3rd party services.): сигнатуры, параметры, права. Типы — schemas/PROXY.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса PROXY (API for remote calling 3rd party services.): сигнатуры, параметры, права. Типы — schemas/PROXY.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PROXY.md`; грабли — `notes/PROXY.md` (если есть).
-> **Источник:** swagger сервиса PROXY · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/PROXY`
 
 **Оглавление**
 
-- NavigateTo — строки 15–18
-- TaskTemplates — строки 20–23
+- NavigateTo — строки 14–17
+- TaskTemplates — строки 19–22
 
 ## NavigateTo
 - `GET /NavigateTo/{appCode}` · коды: 200
@@ -922,25 +910,24 @@ Base: `{BASE_URL}/PROXY`
 
 # REPORT — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/REPORT.md`; грабли — `notes/REPORT.md` (если есть).
-> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/REPORT`
 
 **Оглавление**
 
-- AssetMaintenance — строки 23–25
-- CompletionTime — строки 27–29
-- PowerBICustomReports — строки 31–33
-- ReactionTime — строки 35–37
-- TasksByAssets — строки 39–41
-- TasksByAssignees — строки 43–45
-- TasksByCompanies — строки 47–49
-- TasksByStages — строки 51–53
-- TasksByWorkTypes — строки 55–57
-- WorkingTime — строки 59–61
+- AssetMaintenance — строки 22–24
+- CompletionTime — строки 26–28
+- PowerBICustomReports — строки 30–32
+- ReactionTime — строки 34–36
+- TasksByAssets — строки 38–40
+- TasksByAssignees — строки 42–44
+- TasksByCompanies — строки 46–48
+- TasksByStages — строки 50–52
+- TasksByWorkTypes — строки 54–56
+- WorkingTime — строки 58–60
 
 ## AssetMaintenance
 - `GET /AssetMaintenance/planned` — Возвращае запланированные заявки на обслуживание объектов, доступных пользователю · права: PreventiveAssetMaintenanceList · коды: 200
@@ -984,16 +971,15 @@ Base: `{BASE_URL}/REPORT`
 
 # SC — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/SC.md`; грабли — `notes/SC.md` (если есть).
-> **Источник:** swagger сервиса SC · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/SC`
 
 **Оглавление**
 
-- ServiceContract — строки 14–32
+- ServiceContract — строки 13–31
 
 ## ServiceContract
 - `GET /ServiceContract` — Метод получения списка договоров обслуживания · права: ContractList · paginated · коды: 200, 206
@@ -1017,18 +1003,17 @@ Base: `{BASE_URL}/SC`
 
 # SLA — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса SLA (API for SLA in HubEx): сигнатуры, параметры, права. Типы — schemas/SLA.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса SLA (API for SLA in HubEx): сигнатуры, параметры, права. Типы — schemas/SLA.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/SLA.md`; грабли — `notes/SLA.md` (если есть).
-> **Источник:** swagger сервиса SLA · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/SLA`
 
 **Оглавление**
 
-- Attributes — строки 16–18
-- Criticalities — строки 20–24
-- DeadlineRules — строки 26–32
+- Attributes — строки 15–17
+- Criticalities — строки 19–23
+- DeadlineRules — строки 25–31
 
 ## Attributes
 - `GET /Attributes` — Возвращает полный список атрибутов  SLA · права: AttributeSLAList · коды: 200
@@ -1050,9 +1035,8 @@ Base: `{BASE_URL}/SLA`
 
 # TSTG — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса TSTG (API for task life cycle administration in HubEx): сигнатуры, параметры, права. Типы — schemas/TSTG.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса TSTG (API for task life cycle administration in HubEx): сигнатуры, параметры, права. Типы — schemas/TSTG.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/TSTG.md`; грабли — `notes/TSTG.md` (если есть).
-> **Источник:** swagger сервиса TSTG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/TSTG`
@@ -1060,13 +1044,13 @@ Base: `{BASE_URL}/TSTG`
 
 **Оглавление**
 
-- Action — строки 21–23
-- AssigneeSelectionRules — строки 25–29
-- Branches — строки 31–33
-- Requirements — строки 35–37
-- TaskStageComponents — строки 39–41
-- TaskStageLinks — строки 43–47
-- TaskStages — строки 49–59
+- Action — строки 20–22
+- AssigneeSelectionRules — строки 24–28
+- Branches — строки 30–32
+- Requirements — строки 34–36
+- TaskStageComponents — строки 38–40
+- TaskStageLinks — строки 42–46
+- TaskStages — строки 48–58
 
 ## Action
 - `GET /Action` — Метод получения списка  действий · права: ActionList · paginated · коды: 200, 206
@@ -1110,22 +1094,21 @@ Base: `{BASE_URL}/TSTG`
 
 # UI — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса UI (API for UI information): сигнатуры, параметры, права. Типы — schemas/UI.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса UI (API for UI information): сигнатуры, параметры, права. Типы — schemas/UI.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/UI.md`; грабли — `notes/UI.md` (если есть).
-> **Источник:** swagger сервиса UI · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/UI`
 
 **Оглавление**
 
-- Components — строки 20–22
-- Filters — строки 24–26
-- LayoutTemplates — строки 28–45
-- Resources — строки 47–49
-- SubsystemView — строки 51–55
-- TaskViewTemplate — строки 57–59
-- UserViews — строки 61–65
+- Components — строки 19–21
+- Filters — строки 23–25
+- LayoutTemplates — строки 27–44
+- Resources — строки 46–48
+- SubsystemView — строки 50–54
+- TaskViewTemplate — строки 56–58
+- UserViews — строки 60–64
 
 ## Components
 - `GET /Components` — Возвращает полный список компонентов · права: ComponentsList · paginated · коды: 200, 206
@@ -1176,27 +1159,26 @@ Base: `{BASE_URL}/UI`
 
 # WH — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WH (API for WH in HubEx): сигнатуры, параметры, права. Типы — schemas/WH.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WH (API for WH in HubEx): сигнатуры, параметры, права. Типы — schemas/WH.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WH.md`; грабли — `notes/WH.md` (если есть).
-> **Источник:** swagger сервиса WH · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WH`
 
 **Оглавление**
 
-- BarcodeTypes — строки 25–27
-- DocumentStatuses — строки 29–31
-- DocumentTypes — строки 33–35
-- Inventories — строки 37–41
-- Issues — строки 43–51
-- MaterialConsumptions — строки 53–55
-- Materials — строки 57–77
-- NumberSequences — строки 79–83
-- OperationTypes — строки 85–89
-- Receipts — строки 91–99
-- UserWarehouses — строки 101–103
-- Warehouses — строки 105–117
+- BarcodeTypes — строки 24–26
+- DocumentStatuses — строки 28–30
+- DocumentTypes — строки 32–34
+- Inventories — строки 36–40
+- Issues — строки 42–50
+- MaterialConsumptions — строки 52–54
+- Materials — строки 56–76
+- NumberSequences — строки 78–82
+- OperationTypes — строки 84–88
+- Receipts — строки 90–98
+- UserWarehouses — строки 100–102
+- Warehouses — строки 104–116
 
 ## BarcodeTypes
 - `GET /BarcodeTypes` — Возвращает полный список типов штрихкодов · права: BarcodeTypesList · коды: 200
@@ -1294,9 +1276,8 @@ Base: `{BASE_URL}/WH`
 
 # WORK — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WORK.md`; грабли — `notes/WORK.md` (если есть).
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WORK`
@@ -1304,20 +1285,20 @@ Base: `{BASE_URL}/WORK`
 
 **Оглавление**
 
-- CheckLists — строки 28–34
-- RequestMethods — строки 36–38
-- TaskActualities — строки 40–44
-- TaskAttributes — строки 46–48
-- TaskConversations — строки 50–55
-- TaskFilter — строки 57–59
-- TaskListQueries — строки 61–65
-- TaskOrderBy — строки 67–69
-- TaskStatuses — строки 71–75
-- TaskTemplates — строки 77–97
-- TaskTypes — строки 99–109
-- Tasks — строки 111–230
-- TemplateQuickResponse — строки 232–236
-- WorkTypes — строки 238–250
+- CheckLists — строки 27–33
+- RequestMethods — строки 35–37
+- TaskActualities — строки 39–43
+- TaskAttributes — строки 45–47
+- TaskConversations — строки 49–54
+- TaskFilter — строки 56–58
+- TaskListQueries — строки 60–64
+- TaskOrderBy — строки 66–68
+- TaskStatuses — строки 70–74
+- TaskTemplates — строки 76–96
+- TaskTypes — строки 98–108
+- Tasks — строки 110–229
+- TemplateQuickResponse — строки 231–235
+- WorkTypes — строки 237–249
 
 ## CheckLists
 - `GET /CheckLists` — Возвращает список активных чек-листов · права: CheckListsList · paginated · коды: 200, 206
@@ -1545,17 +1526,16 @@ Base: `{BASE_URL}/WORK`
 
 # WSP — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса WSP (API for work schedule managing for HubEx): сигнатуры, параметры, права. Типы — schemas/WSP.md. Сгенерировано из swagger.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса WSP (API for work schedule managing for HubEx): сигнатуры, параметры, права. Типы — schemas/WSP.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WSP.md`; грабли — `notes/WSP.md` (если есть).
-> **Источник:** swagger сервиса WSP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/WSP`
 
 **Оглавление**
 
-- ScheduleRules — строки 15–21
-- WorkSchedules — строки 23–27
+- ScheduleRules — строки 14–20
+- WorkSchedules — строки 22–26
 
 ## ScheduleRules
 - `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · права: ScheduleRulesList · paginated · коды: 200, 206
@@ -1574,7 +1554,6 @@ Base: `{BASE_URL}/WSP`
 # ADM — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса ADM. Ручки, ссылающиеся на них — `endpoints/ADM.md`.
-> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1683,7 +1662,6 @@ type WORKAuxiliaryTaskFlagFilter { hasAssigneeCheckedIn?: bool, isAssigned?: boo
 # AUTH — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса AUTH. Ручки, ссылающиеся на них — `endpoints/AUTH.md`.
-> **Источник:** swagger сервиса AUTH · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1701,7 +1679,6 @@ type SocialProfileResult { dateFrom?: datetime /* Дата начала испо
 # AUTHZ — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса AUTHZ. Ручки, ссылающиеся на них — `endpoints/AUTHZ.md`.
-> **Источник:** swagger сервиса AUTHZ · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1711,7 +1688,6 @@ type JwtResultBase { access_token?: str /* JWT-токен для доступа 
 # COMMON — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса COMMON. Ручки, ссылающиеся на них — `endpoints/COMMON.md`.
-> **Источник:** swagger сервиса COMMON · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1746,7 +1722,6 @@ type Timezones.ListResult { name?: str /* Название временной з
 # ES — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса ES. Ручки, ссылающиеся на них — `endpoints/ES.md`.
-> **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1838,7 +1813,6 @@ type ResultsLocationsTimeZoneResult { id?: int, name?: str, utcOffsetMinutes?: i
 # EXPORT — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса EXPORT. Ручки, ссылающиеся на них — `endpoints/EXPORT.md`.
-> **Источник:** swagger сервиса EXPORT · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1848,7 +1822,6 @@ type FieldResult { code?: str /* Код поля */, description?: str /* Опи
 # LIC — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса LIC. Ручки, ссылающиеся на них — `endpoints/LIC.md`.
-> **Источник:** swagger сервиса LIC · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1858,7 +1831,6 @@ type WatcherStateEnum enum(Stopped, Started)
 # MSG — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса MSG. Ручки, ссылающиеся на них — `endpoints/MSG.md`.
-> **Источник:** swagger сервиса MSG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1900,7 +1872,6 @@ type Webhook.ListResult { callsRemaining?: int /* Осталось попыто�
 # NEWS — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса NEWS. Ручки, ссылающиеся на них — `endpoints/NEWS.md`.
-> **Источник:** swagger сервиса NEWS · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1910,7 +1881,6 @@ type ListResult { footer?: str /* Нижний колонтитул новост
 # PA — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса PA. Ручки, ссылающиеся на них — `endpoints/PA.md`.
-> **Источник:** swagger сервиса PA · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1953,7 +1923,6 @@ type WorkTypesListResult { workClass?: IdNameResult<Int16>, workType?: IdNameDes
 # PMP — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса PMP. Ручки, ссылающиеся на них — `endpoints/PMP.md`.
-> **Источник:** swagger сервиса PMP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1979,7 +1948,6 @@ type ScheduledTasks.ListResult { description?: str /* Описание план�
 # PROXY — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса PROXY. Ручки, ссылающиеся на них — `endpoints/PROXY.md`.
-> **Источник:** swagger сервиса PROXY · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -1989,7 +1957,6 @@ type GetResult { url?: str }
 # REPORT — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса REPORT. Ручки, ссылающиеся на них — `endpoints/REPORT.md`.
-> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2012,7 +1979,6 @@ type UserResult { avatarUrl?: str, deleted?: datetime, firstName?: str, id?: int
 # SC — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса SC. Ручки, ссылающиеся на них — `endpoints/SC.md`.
-> **Источник:** swagger сервиса SC · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2033,7 +1999,6 @@ type MeasurementUnitResult { abbreviation?: str /* Аббревиатура ед
 # SLA — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса SLA. Ручки, ссылающиеся на них — `endpoints/SLA.md`.
-> **Источник:** swagger сервиса SLA · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2047,7 +2012,6 @@ type ErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifi
 # TSTG — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса TSTG. Ручки, ссылающиеся на них — `endpoints/TSTG.md`.
-> **Источник:** swagger сервиса TSTG · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2078,7 +2042,6 @@ type TaskStages.ListResult { action?: IdNameResult<Byte>, assignToRole?: IdNameR
 # UI — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса UI. Ручки, ссылающиеся на них — `endpoints/UI.md`.
-> **Источник:** swagger сервиса UI · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2101,7 +2064,6 @@ type UserFilterFavouriteEntity { applicationID?: int, filterCode?: str, resource
 # WH — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса WH. Ручки, ссылающиеся на них — `endpoints/WH.md`.
-> **Источник:** swagger сервиса WH · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2149,7 +2111,6 @@ type WarehouseUserListResult { userFullName?: str /* Полное имя пол�
 # WORK — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса WORK. Ручки, ссылающиеся на них — `endpoints/WORK.md`.
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2294,7 +2255,6 @@ type WorkTypes.ListResult { closeMinutes?: int /* Промежуток врем�
 # WSP — схемы
 
 > **Что здесь:** определения типов read-ответов (GET/HEAD) сервиса WSP. Ручки, ссылающиеся на них — `endpoints/WSP.md`.
-> **Источник:** swagger сервиса WSP · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
@@ -2312,7 +2272,6 @@ type WorkScheduleDailyItemResult { dateWork?: datetime /* Дата работы 
 # ADM — примеры
 
 > **Что здесь:** блоки примеров запросов/ответов ручек сервиса ADM, вынесенные из `endpoints/ADM.md`. Сигнатуры и типы — там же и в `schemas/ADM.md`.
-> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 
 ## BanReasons
 
@@ -3861,25 +3820,9 @@ GET /users/123/tags
 ]
 ```
 
-# AUTH — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса AUTH, вынесенные из `endpoints/AUTH.md`. Сигнатуры и типы — там же и в `schemas/AUTH.md`.
-> **Источник:** swagger сервиса AUTH · файл генерируется пайплайном — руками не править.
-
-# AUTHZ — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса AUTHZ, вынесенные из `endpoints/AUTHZ.md`. Сигнатуры и типы — там же и в `schemas/AUTHZ.md`.
-> **Источник:** swagger сервиса AUTHZ · файл генерируется пайплайном — руками не править.
-
-# COMMON — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса COMMON, вынесенные из `endpoints/COMMON.md`. Сигнатуры и типы — там же и в `schemas/COMMON.md`.
-> **Источник:** swagger сервиса COMMON · файл генерируется пайплайном — руками не править.
-
 # ES — примеры
 
 > **Что здесь:** блоки примеров запросов/ответов ручек сервиса ES, вынесенные из `endpoints/ES.md`. Сигнатуры и типы — там же и в `schemas/ES.md`.
-> **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 
 ## AssetSearchSettings
 
@@ -3938,60 +3881,9 @@ GET /users/123/tags
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `AssetSearchFieldListForTenantMember`.
 
-# EXPORT — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса EXPORT, вынесенные из `endpoints/EXPORT.md`. Сигнатуры и типы — там же и в `schemas/EXPORT.md`.
-> **Источник:** swagger сервиса EXPORT · файл генерируется пайплайном — руками не править.
-
-# LIC — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса LIC, вынесенные из `endpoints/LIC.md`. Сигнатуры и типы — там же и в `schemas/LIC.md`.
-> **Источник:** swagger сервиса LIC · файл генерируется пайплайном — руками не править.
-
-# MSG — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса MSG, вынесенные из `endpoints/MSG.md`. Сигнатуры и типы — там же и в `schemas/MSG.md`.
-> **Источник:** swagger сервиса MSG · файл генерируется пайплайном — руками не править.
-
-# NEWS — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса NEWS, вынесенные из `endpoints/NEWS.md`. Сигнатуры и типы — там же и в `schemas/NEWS.md`.
-> **Источник:** swagger сервиса NEWS · файл генерируется пайплайном — руками не править.
-
-# PA — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса PA, вынесенные из `endpoints/PA.md`. Сигнатуры и типы — там же и в `schemas/PA.md`.
-> **Источник:** swagger сервиса PA · файл генерируется пайплайном — руками не править.
-
-# PMP — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса PMP, вынесенные из `endpoints/PMP.md`. Сигнатуры и типы — там же и в `schemas/PMP.md`.
-> **Источник:** swagger сервиса PMP · файл генерируется пайплайном — руками не править.
-
-# PROXY — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса PROXY, вынесенные из `endpoints/PROXY.md`. Сигнатуры и типы — там же и в `schemas/PROXY.md`.
-> **Источник:** swagger сервиса PROXY · файл генерируется пайплайном — руками не править.
-
-# REPORT — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса REPORT, вынесенные из `endpoints/REPORT.md`. Сигнатуры и типы — там же и в `schemas/REPORT.md`.
-> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
-
-# SC — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса SC, вынесенные из `endpoints/SC.md`. Сигнатуры и типы — там же и в `schemas/SC.md`.
-> **Источник:** swagger сервиса SC · файл генерируется пайплайном — руками не править.
-
-# SLA — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса SLA, вынесенные из `endpoints/SLA.md`. Сигнатуры и типы — там же и в `schemas/SLA.md`.
-> **Источник:** swagger сервиса SLA · файл генерируется пайплайном — руками не править.
-
 # TSTG — примеры
 
 > **Что здесь:** блоки примеров запросов/ответов ручек сервиса TSTG, вынесенные из `endpoints/TSTG.md`. Сигнатуры и типы — там же и в `schemas/TSTG.md`.
-> **Источник:** swagger сервиса TSTG · файл генерируется пайплайном — руками не править.
 
 ## TaskStageLinks
 
@@ -4027,20 +3919,9 @@ GET /users/123/tags
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `TaskStageLinkList`.
 
-# UI — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса UI, вынесенные из `endpoints/UI.md`. Сигнатуры и типы — там же и в `schemas/UI.md`.
-> **Источник:** swagger сервиса UI · файл генерируется пайплайном — руками не править.
-
-# WH — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса WH, вынесенные из `endpoints/WH.md`. Сигнатуры и типы — там же и в `schemas/WH.md`.
-> **Источник:** swagger сервиса WH · файл генерируется пайплайном — руками не править.
-
 # WORK — примеры
 
 > **Что здесь:** блоки примеров запросов/ответов ручек сервиса WORK, вынесенные из `endpoints/WORK.md`. Сигнатуры и типы — там же и в `schemas/WORK.md`.
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 
 ## Tasks
 
@@ -4169,15 +4050,9 @@ GET /tasks/123/marking-codes
             
 Заголовки: `X-Last-Lsn` (`LastLsnHeader`) поддерживается для совместимости. Для операции чтения значение может не измениться.
 
-# WSP — примеры
-
-> **Что здесь:** блоки примеров запросов/ответов ручек сервиса WSP, вынесенные из `endpoints/WSP.md`. Сигнатуры и типы — там же и в `schemas/WSP.md`.
-> **Источник:** swagger сервиса WSP · файл генерируется пайплайном — руками не править.
-
 # HubEx API — кросс-индекс ресурсов
 
 > **Что здесь:** где read-ручка (GET/HEAD) дёргает ресурс во ВСЕХ сервисах (от ресурса) и что можно у сущности (от сущности). Указатели ведут в `endpoints/<SVC>.md`; типы — `schemas/<SVC>.md`.
-> **Источник:** все снапшоты · файл генерируется пайплайном — руками не править.
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 ## От сущности
 
