@@ -17,7 +17,7 @@ POST {BASE_URL}/AUTHZ/AccessTokens  body: {"serviceToken": "..."}  ->  access_to
 - Если пользователь уже дал готовый JWT access_token (не serviceToken) — шаг `POST /AccessTokens` не нужен, использовать токен напрямую как `Bearer`. Токены живут ~30 минут (`exp - iat`) — при долгой задаче считать бюджет времени и не тянуть с запросами.
 
 Дополнительные заголовки:
-- ⚠ `X-Application-ID: int` — **обязателен на каждом запросе**: без него любой эндпоинт отвечает `403` (проверено живым вызовом 2026-07-14: `GET /WORK/Tasks` без заголовка → `403`, с ним → `206`). Значение — идентификатор приложения-клиента; на чтение сервер к нему нетребователен (`1`, `3`, `4` дали одинаковый `206`), но передавать заголовок надо всегда. Референсное значение — `3`.
+- ⚠ `X-Application-ID: 3` — **обязателен на каждом запросе** (без него любой эндпоинт → `403`).
 - Пагинация: заголовок `Range: "items=FROM-TILL"`, либо query `offset`, `fetch`. Ответ `206` = частичный контент.
 - Любой эндпоинт может вернуть `401`/`403`.
 
@@ -59,7 +59,7 @@ POST {BASE_URL}/AUTHZ/AccessTokens  body: {"serviceToken": "..."}  ->  access_to
 | `assetID` | плагин размещён на странице объекта | идентификатор объекта → `GET /ES/Assets/{assetID}` |
 | `taskID` | плагин размещён на форме заявки | идентификатор заявки → `GET /WORK/Tasks/{taskID}` |
 
-Дальше — обычные вызовы API: `Authorization: Bearer {access_token}` + обязательный `X-Application-ID` (см. выше; для веб-интерфейса — `3`). Шаг `POST /AUTHZ/AccessTokens` не нужен — токен уже готовый.
+Дальше — обычные вызовы API: `Authorization: Bearer {access_token}` + обязательный `X-Application-ID: 3` (см. выше). Шаг `POST /AUTHZ/AccessTokens` не нужен — токен уже готовый.
 
 - CORS открыт полностью — API отдаёт `Access-Control-Allow-Origin: *`, браузерный плагин ходит в API напрямую, свой прокси не нужен.
 - ⚠ Этих параметров **нет в swagger** (справочник описывает только сам REST API, не контракт встраивания) — источник: мейнтейнер, 2026-07-15. В `endpoints/` их не ищи.
@@ -94,7 +94,7 @@ POST {BASE_URL}/AUTHZ/AccessTokens  body: {"serviceToken": "..."}  ->  access_to
 - ⚠ Логин — именно **Basic-заголовок**, не поля в теле (иначе `409 ParameterNull [authorization]`).
 - ⚠ `tenantMemberID` для кросс-тенант админа — **всегда `1`**, хардкожено в `cli/hubex_core/api.py` (`resolve_bearer_token`), не читается из `tenantEntities`/`tenants.json`. Кешированный в `tenants.json` `tenantMemberID` (из `tenantEntities`) может указывать на другое членство без прав чтения — весь API отвечает `403` при валидной авторизации (проверено 2026-07-06: тенант 1 vessel-service, кешированный `378` → `403` на `WORK/Tasks`/`ADM/Users`; `1` → `200`). CLI-флаг `--member-id` (`api get/write` в `cli/hubex_cli.py`) остаётся как явный оверрайд на крайний случай, но по умолчанию не нужен.
 - ⚠ `isCrossTenantAdmin` может быть `false`, но `tenantEntities` всё равно полный — ориентируйся на него, не на флаг.
-- Обязателен заголовок `X-Application-ID: 4`; пагинация — `Range: items=FROM-TILL`, ответ `206` + `Content-Range: .../{total}`.
+- Обязателен заголовок `X-Application-ID: 3`; пагинация — `Range: items=FROM-TILL`, ответ `206` + `Content-Range: .../{total}`.
 - Если готовый `access_token` тенанта уже дан — оба шага пропускаются, токен идёт как `Bearer` напрямую.
 
 ## Сервисы
