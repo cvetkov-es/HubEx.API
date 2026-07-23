@@ -1,7 +1,6 @@
 # CM — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса CM. Ручки, ссылающиеся на них — `endpoints/CM.md`.
-> **Источник:** swagger сервиса CM · файл генерируется пайплайном — руками не править.
 
 ```
 type CoordinateData { accuracy?: float /* Точность */, altitude?: float /* Высота */, bearing?: float /* Азимут */, latitude?: float /* Широта */, longitude?: float /* Долгота */, speed?: float /* Скорость */ }

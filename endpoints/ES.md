@@ -1,44 +1,43 @@
 # ES — справочник ручек
 
-> **Что здесь:** все ручки сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса ES (API for managing enterprise structure in HubEx): сигнатуры, параметры, права. Типы — schemas/ES.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ES.md`; грабли — `notes/ES.md` (если есть).
-> **Источник:** swagger сервиса ES · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/ES`
 > Примеры ответов вынесены в [../examples/ES.md](../examples/ES.md).
 
 **Оглавление**
 
-- AssetAttachments — строки 43–53
-- AssetAttributes — строки 55–63
-- AssetClasses — строки 65–77
-- AssetDistricts — строки 79–83
-- AssetFilter — строки 85–89
-- AssetListQueries — строки 91–107
-- AssetLocations — строки 109–117
-- AssetSchemas — строки 119–155
-- AssetSearchSettings — строки 157–167
-- AssetSkills — строки 169–173
-- AssetTags — строки 175–179
-- AssetTemplateAttachments — строки 181–191
-- AssetTemplateAttributes — строки 193–195
-- AssetTemplateDistricts — строки 197–203
-- AssetTemplateSkills — строки 205–211
-- AssetTemplateWorkTypes — строки 213–219
-- AssetTemplates — строки 221–253
-- AssetTypes — строки 255–273
-- AssetWorkTypes — строки 275–279
-- Assets — строки 281–371
-- Companies — строки 373–426
-- CompanyAttachments — строки 428–436
-- CompanyContacts — строки 438–442
-- CompanyListQueries — строки 444–460
-- CompanyLocations — строки 462–470
-- CompanyRegistrationTypes — строки 472–474
-- Districts — строки 476–490
-- Locations — строки 492–510
-- OrgUnits — строки 512–521
-- PreferredTechnicians — строки 523–527
+- AssetAttachments — строки 42–52
+- AssetAttributes — строки 54–62
+- AssetClasses — строки 64–76
+- AssetDistricts — строки 78–82
+- AssetFilter — строки 84–88
+- AssetListQueries — строки 90–106
+- AssetLocations — строки 108–116
+- AssetSchemas — строки 118–154
+- AssetSearchSettings — строки 156–166
+- AssetSkills — строки 168–172
+- AssetTags — строки 174–178
+- AssetTemplateAttachments — строки 180–190
+- AssetTemplateAttributes — строки 192–194
+- AssetTemplateDistricts — строки 196–202
+- AssetTemplateSkills — строки 204–210
+- AssetTemplateWorkTypes — строки 212–218
+- AssetTemplates — строки 220–252
+- AssetTypes — строки 254–272
+- AssetWorkTypes — строки 274–278
+- Assets — строки 280–370
+- Companies — строки 372–425
+- CompanyAttachments — строки 427–435
+- CompanyContacts — строки 437–441
+- CompanyListQueries — строки 443–459
+- CompanyLocations — строки 461–469
+- CompanyRegistrationTypes — строки 471–473
+- Districts — строки 475–489
+- Locations — строки 491–509
+- OrgUnits — строки 511–520
+- PreferredTechnicians — строки 522–526
 
 ## AssetAttachments
 - `POST /AssetAttachments` — Свзяывает объект и вложение · коды: 201

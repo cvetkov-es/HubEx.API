@@ -1,28 +1,27 @@
 # COMMON — справочник ручек
 
-> **Что здесь:** все ручки сервиса COMMON (API for managing common dictionaries in HubEx): сигнатуры, параметры, права. Типы — schemas/COMMON.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса COMMON (API for managing common dictionaries in HubEx): сигнатуры, параметры, права. Типы — schemas/COMMON.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/COMMON.md`; грабли — `notes/COMMON.md` (если есть).
-> **Источник:** swagger сервиса COMMON · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/COMMON`
 
 **Оглавление**
 
-- Applications — строки 27–29
-- Attachments — строки 31–58
-- AttributeListOfValues — строки 60–62
-- AttributeTypes — строки 64–68
-- Attributes — строки 70–84
-- Banks — строки 86–90
-- Contacts — строки 92–104
-- Countries — строки 106–108
-- Currencies — строки 110–112
-- Events — строки 114–116
-- MeasurementUnits — строки 118–120
-- PowerBIReports — строки 122–126
-- SystemTags — строки 128–130
-- Tags — строки 132–134
-- Timezones — строки 136–140
+- Applications — строки 26–28
+- Attachments — строки 30–57
+- AttributeListOfValues — строки 59–61
+- AttributeTypes — строки 63–67
+- Attributes — строки 69–83
+- Banks — строки 85–89
+- Contacts — строки 91–103
+- Countries — строки 105–107
+- Currencies — строки 109–111
+- Events — строки 113–115
+- MeasurementUnits — строки 117–119
+- PowerBIReports — строки 121–125
+- SystemTags — строки 127–129
+- Tags — строки 131–133
+- Timezones — строки 135–139
 
 ## Applications
 - `GET /Applications` — Возвращает список  веток · права: ApplicationList · paginated · коды: 200, 206

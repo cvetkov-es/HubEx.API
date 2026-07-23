@@ -1,15 +1,14 @@
 # SC — справочник ручек
 
-> **Что здесь:** все ручки сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса SC (HubEx SC APIs): сигнатуры, параметры, права. Типы — schemas/SC.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/SC.md`; грабли — `notes/SC.md` (если есть).
-> **Источник:** swagger сервиса SC · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/SC`
 
 **Оглавление**
 
-- ContractAttributes — строки 14–16
-- ServiceContract — строки 18–70
+- ContractAttributes — строки 13–15
+- ServiceContract — строки 17–69
 
 ## ContractAttributes
 - `POST /ContractAttributes` — Обновляет сведения о пользовательских полях объектов · права: AssetAttributeMerge · коды: 202

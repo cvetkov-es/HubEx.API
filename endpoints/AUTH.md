@@ -1,17 +1,16 @@
 # AUTH — справочник ручек
 
-> **Что здесь:** все ручки сервиса AUTH (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса AUTH (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTH.md`; грабли — `notes/AUTH.md` (если есть).
-> **Источник:** swagger сервиса AUTH · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/AUTH`
 
 **Оглавление**
 
-- Accounts — строки 16–40
-- Messages — строки 42–51
-- Passwords — строки 53–56
-- VerificationCodes — строки 58–61
+- Accounts — строки 15–39
+- Messages — строки 41–50
+- Passwords — строки 52–55
+- VerificationCodes — строки 57–60
 
 ## Accounts
 - `GET /Accounts` — Возвращает данные учетной записи по учетным данным · права: AccountGet · коды: 200, 500

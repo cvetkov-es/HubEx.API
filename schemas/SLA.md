@@ -1,7 +1,6 @@
 # SLA — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса SLA. Ручки, ссылающиеся на них — `endpoints/SLA.md`.
-> **Источник:** swagger сервиса SLA · файл генерируется пайплайном — руками не править.
 
 ```
 type AddData { color: str, erpID?: str, isDefault: bool, name: str, sortOrder?: int }

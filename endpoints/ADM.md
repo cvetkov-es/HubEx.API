@@ -1,50 +1,49 @@
 # ADM — справочник ручек
 
-> **Что здесь:** все ручки сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса ADM (HubEx ADM APIs): сигнатуры, параметры, права. Типы — schemas/ADM.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/ADM.md`; грабли — `notes/ADM.md` (если есть).
-> **Источник:** swagger сервиса ADM · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/ADM`
 > Примеры ответов вынесены в [../examples/ADM.md](../examples/ADM.md).
 
 **Оглавление**
 
-- BanReasons — строки 49–51
-- Capabilities — строки 53–55
-- DefaultPages — строки 57–59
-- GeolocationSettings — строки 61–63
-- Invitations — строки 65–79
-- PermissionApiTags — строки 81–83
-- PermissionExtTags — строки 85–87
-- PermissionsApi — строки 89–91
-- PermissionsExt — строки 93–95
-- PermissionsUi — строки 97–109
-- RoleApplications — строки 111–115
-- RoleAttachments — строки 117–121
-- RolePermissionsApi — строки 123–127
-- RolePermissionsExt — строки 129–133
-- RolePermissionsUi — строки 135–139
-- RoleTaskListQueries — строки 141–145
-- RoleTaskPropertiesAccess — строки 147–153
-- Roles — строки 155–189
-- SystemPermissionUiTags — строки 191–193
-- TenantCreationRequests — строки 195–203
-- TenantMembers — строки 205–223
-- TenantSettings — строки 225–231
-- Tenants — строки 233–276
-- UserAssetListQueries — строки 278–286
-- UserCompanyListQueries — строки 288–296
-- UserDisabledNotifications — строки 298–300
-- UserDistricts — строки 302–308
-- UserOrderBy — строки 310–312
-- UserRoles — строки 314–318
-- UserTags — строки 320–324
-- UserTaskListQueries — строки 326–330
-- UserTemplateDistricts — строки 332–336
-- UserTemplateRoles — строки 338–342
-- UserTemplates — строки 344–360
-- UserWarehouses — строки 362–366
-- Users — строки 368–495
+- BanReasons — строки 48–50
+- Capabilities — строки 52–54
+- DefaultPages — строки 56–58
+- GeolocationSettings — строки 60–62
+- Invitations — строки 64–78
+- PermissionApiTags — строки 80–82
+- PermissionExtTags — строки 84–86
+- PermissionsApi — строки 88–90
+- PermissionsExt — строки 92–94
+- PermissionsUi — строки 96–108
+- RoleApplications — строки 110–114
+- RoleAttachments — строки 116–120
+- RolePermissionsApi — строки 122–126
+- RolePermissionsExt — строки 128–132
+- RolePermissionsUi — строки 134–138
+- RoleTaskListQueries — строки 140–144
+- RoleTaskPropertiesAccess — строки 146–152
+- Roles — строки 154–188
+- SystemPermissionUiTags — строки 190–192
+- TenantCreationRequests — строки 194–202
+- TenantMembers — строки 204–222
+- TenantSettings — строки 224–230
+- Tenants — строки 232–275
+- UserAssetListQueries — строки 277–285
+- UserCompanyListQueries — строки 287–295
+- UserDisabledNotifications — строки 297–299
+- UserDistricts — строки 301–307
+- UserOrderBy — строки 309–311
+- UserRoles — строки 313–317
+- UserTags — строки 319–323
+- UserTaskListQueries — строки 325–329
+- UserTemplateDistricts — строки 331–335
+- UserTemplateRoles — строки 337–341
+- UserTemplates — строки 343–359
+- UserWarehouses — строки 361–365
+- Users — строки 367–494
 
 ## BanReasons
 - `GET /BanReasons` — Получить список причин блокировки пользователя · коды: 200, 204, 206 · примеры

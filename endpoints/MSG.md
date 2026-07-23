@@ -1,25 +1,24 @@
 # MSG — справочник ручек
 
-> **Что здесь:** все ручки сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса MSG (API for MSG in HubEx): сигнатуры, параметры, права. Типы — schemas/MSG.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/MSG.md`; грабли — `notes/MSG.md` (если есть).
-> **Источник:** swagger сервиса MSG · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/MSG`
 
 **Оглавление**
 
-- ContentTypes — строки 24–26
-- CriticalityForTriggers — строки 28–30
-- MailBoxes — строки 32–63
-- MessageTemplates — строки 65–79
-- NavigateTo — строки 81–83
-- Notifications — строки 85–96
-- Protocols — строки 98–100
-- Providers — строки 102–104
-- RecipientSelectionRules — строки 106–120
-- TriggerRecipientSelectionRules — строки 122–124
-- Triggers — строки 126–148
-- Webhooks — строки 150–168
+- ContentTypes — строки 23–25
+- CriticalityForTriggers — строки 27–29
+- MailBoxes — строки 31–62
+- MessageTemplates — строки 64–78
+- NavigateTo — строки 80–82
+- Notifications — строки 84–95
+- Protocols — строки 97–99
+- Providers — строки 101–103
+- RecipientSelectionRules — строки 105–119
+- TriggerRecipientSelectionRules — строки 121–123
+- Triggers — строки 125–147
+- Webhooks — строки 149–167
 
 ## ContentTypes
 - `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206

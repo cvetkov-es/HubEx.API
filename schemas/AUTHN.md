@@ -1,7 +1,6 @@
 # AUTHN — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса AUTHN. Ручки, ссылающиеся на них — `endpoints/AUTHN.md`.
-> **Источник:** swagger сервиса AUTHN · файл генерируется пайплайном — руками не править.
 
 ```
 type AccountRealmResult { realm?: str, tenantID?: int, tenantName?: str }

@@ -1,16 +1,15 @@
 # SLA — справочник ручек
 
-> **Что здесь:** все ручки сервиса SLA (API for SLA in HubEx): сигнатуры, параметры, права. Типы — schemas/SLA.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса SLA (API for SLA in HubEx): сигнатуры, параметры, права. Типы — schemas/SLA.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/SLA.md`; грабли — `notes/SLA.md` (если есть).
-> **Источник:** swagger сервиса SLA · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/SLA`
 
 **Оглавление**
 
-- Attributes — строки 15–17
-- Criticalities — строки 19–31
-- DeadlineRules — строки 33–63
+- Attributes — строки 14–16
+- Criticalities — строки 18–30
+- DeadlineRules — строки 32–62
 
 ## Attributes
 - `GET /Attributes` — Возвращает полный список атрибутов  SLA · права: AttributeSLAList · коды: 200

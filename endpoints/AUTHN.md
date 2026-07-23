@@ -1,15 +1,14 @@
 # AUTHN — справочник ручек
 
-> **Что здесь:** все ручки сервиса AUTHN (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHN.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса AUTHN (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHN.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTHN.md`; грабли — `notes/AUTHN.md` (если есть).
-> **Источник:** swagger сервиса AUTHN · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/AUTHN`
 
 **Оглавление**
 
-- Accounts — строки 14–29
-- Passwords — строки 31–34
+- Accounts — строки 13–28
+- Passwords — строки 30–33
 
 ## Accounts
 - `POST /Accounts/login` — Аутентификация учетной записи по мобильному телефону, адресу электронной почты или логину и паролю через Basic-авторизацию · коды: 200

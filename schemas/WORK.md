@@ -1,7 +1,6 @@
 # WORK — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса WORK. Ручки, ссылающиеся на них — `endpoints/WORK.md`.
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 
 ```
 type ActionData { data: TaskAttribute.MergeData[], taskID: int }

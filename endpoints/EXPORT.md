@@ -1,19 +1,18 @@
 # EXPORT — справочник ручек
 
-> **Что здесь:** все ручки сервиса EXPORT (API for data exporting in HubEx): сигнатуры, параметры, права. Типы — schemas/EXPORT.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса EXPORT (API for data exporting in HubEx): сигнатуры, параметры, права. Типы — schemas/EXPORT.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/EXPORT.md`; грабли — `notes/EXPORT.md` (если есть).
-> **Источник:** swagger сервиса EXPORT · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/EXPORT`
 
 **Оглавление**
 
-- Assets — строки 18–24
-- Companies — строки 26–28
-- MaterialConsumption — строки 30–32
-- Materials — строки 34–38
-- Tasks — строки 40–52
-- Users — строки 54–56
+- Assets — строки 17–23
+- Companies — строки 25–27
+- MaterialConsumption — строки 29–31
+- Materials — строки 33–37
+- Tasks — строки 39–51
+- Users — строки 53–55
 
 ## Assets
 - `GET /Assets` — Экспортирует список объектов с учетом указанных фильтров · права: AssetsExport · коды: 200

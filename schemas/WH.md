@@ -1,7 +1,6 @@
 # WH — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса WH. Ручки, ссылающиеся на них — `endpoints/WH.md`.
-> **Источник:** swagger сервиса WH · файл генерируется пайплайном — руками не править.
 
 ```
 type AssetResult { deleted?: datetime, host?: IdNameDeletedResult<Int32>, id?: int, name?: str }
