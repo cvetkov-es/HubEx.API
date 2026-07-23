@@ -1,45 +1,44 @@
 # WORK — справочник ручек
 
-> **Что здесь:** все ручки сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса WORK (API for managing tasks and works in HubEx): сигнатуры, параметры, права. Типы — schemas/WORK.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/WORK.md`; грабли — `notes/WORK.md` (если есть).
-> **Источник:** swagger сервиса WORK · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/WORK`
 > Примеры ответов вынесены в [../examples/WORK.md](../examples/WORK.md).
 
 **Оглавление**
 
-- CheckListItems — строки 44–48
-- CheckLists — строки 50–68
-- CompletedWorkAttachments — строки 70–78
-- CompletedWorks — строки 80–86
-- RequestMethods — строки 88–90
-- TaskActualities — строки 92–104
-- TaskAssignmentHistory — строки 106–108
-- TaskAttachments — строки 110–118
-- TaskAttributes — строки 120–124
-- TaskContacts — строки 126–130
-- TaskConversationDeliveries — строки 132–135
-- TaskConversations — строки 137–146
-- TaskFilter — строки 148–152
-- TaskListQueries — строки 154–170
-- TaskMaterials — строки 172–182
-- TaskOrderBy — строки 184–186
-- TaskRatings — строки 188–190
-- TaskSkills — строки 192–196
-- TaskStagingHistory — строки 198–204
-- TaskStatuses — строки 206–218
-- TaskTags — строки 220–224
-- TaskTemplateExcludedAssets — строки 226–230
-- TaskTemplates — строки 232–274
-- TaskTypeDistrict — строки 276–278
-- TaskTypeRoutes — строки 280–288
-- TaskTypes — строки 290–312
-- TaskWatchLists — строки 314–318
-- Tasks — строки 320–531
-- TemplateQuickResponse — строки 533–545
-- UserTaskFavourites — строки 547–551
-- WorkTypes — строки 553–593
+- CheckListItems — строки 43–47
+- CheckLists — строки 49–67
+- CompletedWorkAttachments — строки 69–77
+- CompletedWorks — строки 79–85
+- RequestMethods — строки 87–89
+- TaskActualities — строки 91–103
+- TaskAssignmentHistory — строки 105–107
+- TaskAttachments — строки 109–117
+- TaskAttributes — строки 119–123
+- TaskContacts — строки 125–129
+- TaskConversationDeliveries — строки 131–134
+- TaskConversations — строки 136–145
+- TaskFilter — строки 147–151
+- TaskListQueries — строки 153–169
+- TaskMaterials — строки 171–181
+- TaskOrderBy — строки 183–185
+- TaskRatings — строки 187–189
+- TaskSkills — строки 191–195
+- TaskStagingHistory — строки 197–203
+- TaskStatuses — строки 205–217
+- TaskTags — строки 219–223
+- TaskTemplateExcludedAssets — строки 225–229
+- TaskTemplates — строки 231–273
+- TaskTypeDistrict — строки 275–277
+- TaskTypeRoutes — строки 279–287
+- TaskTypes — строки 289–311
+- TaskWatchLists — строки 313–317
+- Tasks — строки 319–530
+- TemplateQuickResponse — строки 532–544
+- UserTaskFavourites — строки 546–550
+- WorkTypes — строки 552–592
 
 ## CheckListItems
 - `POST /CheckListItems` — Изменяет элементы чек-листов · права: CheckListItemMerge · коды: 202

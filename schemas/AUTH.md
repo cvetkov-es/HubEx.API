@@ -1,7 +1,6 @@
 # AUTH — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса AUTH. Ручки, ссылающиеся на них — `endpoints/AUTH.md`.
-> **Источник:** swagger сервиса AUTH · файл генерируется пайплайном — руками не править.
 
 ```
 type AccountAddResultEntity { id?: int, isEmailVerified?: bool, isMobilePhoneVerified?: bool, isNewAccount?: bool, isPasswordDefined?: bool, verificationRequestValidTill?: datetime }

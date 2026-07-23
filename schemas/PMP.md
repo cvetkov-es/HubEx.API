@@ -1,7 +1,6 @@
 # PMP — схемы
 
 > **Что здесь:** определения типов запросов/ответов сервиса PMP. Ручки, ссылающиеся на них — `endpoints/PMP.md`.
-> **Источник:** swagger сервиса PMP · файл генерируется пайплайном — руками не править.
 
 ```
 type AppointmentResult { appointment?: datetime /* Дата и время создания плановой заявки */, appointmentID?: int /* Идентификатор точки срабатывания */, assetAssigns?: ScheduleAppointmentAssign.AssetAssignResult[] /* Список оборудования для точки расписание с исполнителями */ }

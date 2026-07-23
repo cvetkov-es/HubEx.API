@@ -1,23 +1,22 @@
 # REPORT — справочник ручек
 
-> **Что здесь:** все ручки сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса REPORT (API for REPORT in HubEx): сигнатуры, параметры, права. Типы — schemas/REPORT.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/REPORT.md`; грабли — `notes/REPORT.md` (если есть).
-> **Источник:** swagger сервиса REPORT · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/REPORT`
 
 **Оглавление**
 
-- AssetMaintenance — строки 22–24
-- CompletionTime — строки 26–28
-- PowerBICustomReports — строки 30–32
-- ReactionTime — строки 34–36
-- TasksByAssets — строки 38–40
-- TasksByAssignees — строки 42–44
-- TasksByCompanies — строки 46–48
-- TasksByStages — строки 50–52
-- TasksByWorkTypes — строки 54–56
-- WorkingTime — строки 58–60
+- AssetMaintenance — строки 21–23
+- CompletionTime — строки 25–27
+- PowerBICustomReports — строки 29–31
+- ReactionTime — строки 33–35
+- TasksByAssets — строки 37–39
+- TasksByAssignees — строки 41–43
+- TasksByCompanies — строки 45–47
+- TasksByStages — строки 49–51
+- TasksByWorkTypes — строки 53–55
+- WorkingTime — строки 57–59
 
 ## AssetMaintenance
 - `GET /AssetMaintenance/planned` — Возвращае запланированные заявки на обслуживание объектов, доступных пользователю · права: PreventiveAssetMaintenanceList · коды: 200

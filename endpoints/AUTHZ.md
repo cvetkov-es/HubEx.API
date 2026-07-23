@@ -1,18 +1,17 @@
 # AUTHZ — справочник ручек
 
-> **Что здесь:** все ручки сервиса AUTHZ (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHZ.md. Сгенерировано из swagger.
+> **Что здесь:** все ручки сервиса AUTHZ (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTHZ.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTHZ.md`; грабли — `notes/AUTHZ.md` (если есть).
-> **Источник:** swagger сервиса AUTHZ · файл генерируется пайплайном — руками не править.
 
 Base: `{BASE_URL}/AUTHZ`
 
 **Оглавление**
 
-- AccessTokens — строки 17–20
-- Accounts — строки 22–25
-- RefreshTokens — строки 27–33
-- ServiceTokens — строки 35–39
-- Tokens — строки 41–44
+- AccessTokens — строки 16–19
+- Accounts — строки 21–24
+- RefreshTokens — строки 26–32
+- ServiceTokens — строки 34–38
+- Tokens — строки 40–43
 
 ## AccessTokens
 - `POST /AccessTokens` — Обновляет токен доступа к  ресурсам · коды: 200, 201
