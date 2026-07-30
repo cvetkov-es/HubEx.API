@@ -32,10 +32,10 @@
 ⚠ `git submodule update --init tools` оставляет `tools/` в detached HEAD — снапшоты (`tools/snapshots/`) теперь коммитятся туда же, и коммит из detached HEAD молча теряется при следующем `submodule update`. Перед `update`/`regen`: `git -C tools checkout main`.
 
 python3 tools/api_cli.py update [--service WORK ...] [--recompress]   # забрать swagger, обновить снапшоты пайплайна и endpoints/schemas/examples/xref.md (детали: tools/README.md)
-python3 tools/api_cli.py export-llms [--out dist]                     # экспорт llms.txt/llms-full.txt + копии в dist/ (не коммитится)
+python3 tools/api_cli.py export-llms [--out dist] [--base-url URL]     # экспорт llms.txt + копии в dist/ (не коммитится)
 python3 cli/hubex_cli.py api get --tenant N /WORK/Tasks               # живой доступ (детали: cli/README.md)
 
-`export-llms` — операция мейнтейнера: собирает в `dist/` (в `.gitignore`) самодостаточный набор в формате [llmstxt.org](https://llmstxt.org) для отдачи по HTTP. В самом репозитории llms не хранятся — это производный артефакт, генерируется перед выкладкой.
+`export-llms` — операция мейнтейнера: собирает в `dist/` (в `.gitignore`) самодостаточный набор в формате [llmstxt.org](https://llmstxt.org) для отдачи по HTTP: `llms.txt` — индекс, где у каждого сервиса в его строке собраны ссылки на `endpoints`/`schemas`/`examples`/`notes`; `--base-url` делает эти ссылки абсолютными. В самом репозитории llms не хранятся — это производный артефакт, генерируется перед выкладкой.
 
 Провенанс: пин сабмодуля `tools` — единственное, что связывает версию справочника с версией снапшотов, и держится дисциплиной коммитера. Проверка мейнтейнера, что контент воспроизводим из запиненных снапшотов: `python3 tools/api_cli.py regen && git diff --exit-code endpoints schemas examples xref.md` (пусто = контент и пин синхронны).
 
