@@ -148,6 +148,10 @@
 - taskratings [GET]
 - workschedules [GET]
 
+### Transfers (WH)
+
+- items [GET]
+
 ### Triggers (MSG)
 
 - criticalities [GET]
@@ -309,7 +313,7 @@
 
 - [ES · GET /Companies/{companyID}/attachment/{attachmentID}](endpoints/ES.md) → ES:ResultsCommonGetAttachmentResult
 - [SC · GET /ServiceContract/{contractID}/attachment/{attachmentID}](endpoints/SC.md) → SC:AttachmentResult
-- [WH · GET /Materials/{materialID}/attachment/{attachmentID}](endpoints/WH.md) → WH:MaterialAttachmentResult
+- [WH · GET /Materials/{materialID}/attachment/{attachmentID}](endpoints/WH.md) → WH:ResultsMaterialAttachmentsMaterialAttachmentResult
 - [WORK · GET /Tasks/{taskID}/attachment/{attachmentID}](endpoints/WORK.md) → WORK:GetAttachmentResult
 - [WORK · GET /Tasks/{taskID}/completedWorks/report/attachment](endpoints/WORK.md)
 
@@ -329,7 +333,7 @@
 - [SC · GET /ServiceContract/{contractID}/attachments/{attachmentID}](endpoints/SC.md)
 - [SC · GET /ServiceContract/{contractID}/attachments](endpoints/SC.md) → SC:map<AttachmentListResult>
 - [WH · GET /Materials/{materialID}/attachments/{attachmentID}](endpoints/WH.md)
-- [WH · GET /Materials/{materialID}/attachments](endpoints/WH.md) → WH:map<MaterialAttachmentListResult>
+- [WH · GET /Materials/{materialID}/attachments](endpoints/WH.md) → WH:map<ResultsMaterialAttachmentsMaterialAttachmentListResult>
 - [WORK · GET /Tasks/{taskID}/attachments/{attachmentID}](endpoints/WORK.md)
 - [WORK · GET /Tasks/{taskID}/attachments](endpoints/WORK.md) → WORK:map<Common.ListAttachmentResult>
 - [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/attachments](endpoints/WORK.md) → WORK:map<Common.ListAttachmentResult>
@@ -386,11 +390,11 @@
 
 ### barcodes
 
-- [WH · GET /Materials/{materialID}/barcodes](endpoints/WH.md) → WH:map<MaterialBarcodes.ListResult[]>
+- [WH · GET /Materials/{materialID}/barcodes](endpoints/WH.md) → WH:map<ResultsMaterialBarcodesListResult[]>
 
 ### barcodetypes
 
-- [WH · GET /BarcodeTypes](endpoints/WH.md) → WH:map<BarcodeTypes.ListResult>
+- [WH · GET /BarcodeTypes](endpoints/WH.md) → WH:map<ResultsBarcodeTypesListResult>
 
 ### branches
 
@@ -521,13 +525,17 @@
 - [ES · GET /Districts](endpoints/ES.md) → ES:ResultsDistrictsDistrictListForTenantMemberResult[]
 - [WORK · GET /TaskTypes/{id}/districts](endpoints/WORK.md) → WORK:map<TaskTypeDistrictList>
 
+### documents
+
+- [WH · GET /Documents](endpoints/WH.md) → WH:ResultsDocumentsDocumentResult[]
+
 ### documentstatuses
 
-- [WH · GET /DocumentStatuses](endpoints/WH.md) → WH:map<DocumentStatuses.ListResult>
+- [WH · GET /DocumentStatuses](endpoints/WH.md) → WH:map<ResultsDocumentStatusesListResult>
 
 ### documenttypes
 
-- [WH · GET /DocumentTypes](endpoints/WH.md) → WH:map<DocumentTypes.ListResult>
+- [WH · GET /DocumentTypes](endpoints/WH.md) → WH:map<ResultsDocumentTypesListResult>
 
 ### employment
 
@@ -584,8 +592,8 @@
 
 ### inventories
 
-- [WH · GET /Inventories/actual](endpoints/WH.md) → WH:Inventories.ListResult
-- [WH · GET /Inventories](endpoints/WH.md) → WH:map<Inventories.ListResult>
+- [WH · GET /Inventories/actual](endpoints/WH.md) → WH:ResultsInventoriesListResult
+- [WH · GET /Inventories](endpoints/WH.md) → WH:map<ResultsInventoriesListResult>
 
 ### invitations
 
@@ -595,14 +603,15 @@
 
 ### issues
 
-- [WH · GET /Issues/{id}](endpoints/WH.md) → WH:IssueResult
-- [WH · GET /Issues](endpoints/WH.md) → WH:map<IssueResult>
-- [WH · HEAD /Issues](endpoints/WH.md) → WH:map<IssueResult>
+- [WH · GET /Issues/{id}](endpoints/WH.md) → WH:ResultsIssuesIssueResult
+- [WH · GET /Issues](endpoints/WH.md) → WH:map<ResultsIssuesIssueResult>
+- [WH · HEAD /Issues](endpoints/WH.md)
 
 ### items
 
-- [WH · GET /Issues/{issueID}/items](endpoints/WH.md) → WH:IssueItems.ListResult[]
-- [WH · GET /Receipts/{receiptID}/items](endpoints/WH.md) → WH:ReceiptItems.ListResult[]
+- [WH · GET /Issues/{issueID}/items](endpoints/WH.md) → WH:ResultsIssueItemsListResult[]
+- [WH · GET /Receipts/{receiptID}/items](endpoints/WH.md) → WH:ResultsReceiptItemsListResult[]
+- [WH · GET /Transfers/{transferID}/items](endpoints/WH.md) → WH:ResultsTransferItemsListResult[]
 - [WORK · GET /CheckLists/{checkListID}/items](endpoints/WORK.md) → WORK:map<CheckListItemResult>
 
 ### layouttemplates
@@ -645,17 +654,17 @@
 
 ### materialconsumptions
 
-- [WH · GET /MaterialConsumptions](endpoints/WH.md) → WH:map<MaterialInventoryResult>
+- [WH · GET /MaterialConsumptions](endpoints/WH.md) → WH:map<ResultsMaterialConsumptionsMaterialInventoryResult>
 
 ### materials
 
 - [EXPORT · GET /Materials/v2.0](endpoints/EXPORT.md)
 - [EXPORT · GET /Materials](endpoints/EXPORT.md)
-- [WH · GET /Materials/v2](endpoints/WH.md) → WH:map<MaterialListResult>
-- [WH · GET /Materials/{id}](endpoints/WH.md) → WH:MaterialResult
-- [WH · GET /Materials/{required}](endpoints/WH.md) → WH:ListRequiredResult[]
-- [WH · GET /Materials](endpoints/WH.md) → WH:Materials.ListResult[]
-- [WH · HEAD /Materials](endpoints/WH.md) → WH:map<MaterialListResult>
+- [WH · GET /Materials/v2](endpoints/WH.md) → WH:map<ResultsMaterialsMaterialListResult>
+- [WH · GET /Materials/{id}](endpoints/WH.md) → WH:ResultsMaterialsMaterialResult
+- [WH · GET /Materials/{required}](endpoints/WH.md) → WH:ResultsMaterialsListRequiredResult[]
+- [WH · GET /Materials](endpoints/WH.md) → WH:ResultsMaterialsListResult[]
+- [WH · HEAD /Materials](endpoints/WH.md) → WH:map<ResultsMaterialsMaterialListResult>
 - [WORK · GET /Tasks/{taskID}/completedWorks/materials](endpoints/WORK.md) → WORK:map<CompletedWorkMaterialResult>
 - [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/materials](endpoints/WORK.md) → WORK:CompletedWorkMaterialResult
 - [WORK · GET /Tasks/{taskID}/materials](endpoints/WORK.md) → WORK:map<TaskMaterials.ListResult>
@@ -696,8 +705,8 @@
 
 ### numbersequences
 
-- [WH · GET /NumberSequences/{documentTypeId}](endpoints/WH.md) → WH:NumberSequenceResult
-- [WH · GET /NumberSequences](endpoints/WH.md) → WH:NumberSequenceResult[]
+- [WH · GET /NumberSequences/{documentTypeId}](endpoints/WH.md) → WH:ResultsNumberSequencesNumberSequenceResult
+- [WH · GET /NumberSequences](endpoints/WH.md) → WH:ResultsNumberSequencesNumberSequenceResult[]
 
 ### onshift
 
@@ -705,8 +714,8 @@
 
 ### operationtypes
 
-- [WH · GET /OperationTypes/{id}](endpoints/WH.md) → WH:OperationTypeResult
-- [WH · GET /OperationTypes](endpoints/WH.md) → WH:map<OperationTypeResult>
+- [WH · GET /OperationTypes/{id}](endpoints/WH.md) → WH:ResultsOperationTypesOperationTypeResult
+- [WH · GET /OperationTypes](endpoints/WH.md) → WH:map<ResultsOperationTypesOperationTypeResult>
 
 ### orgunits
 
@@ -798,9 +807,9 @@
 
 ### receipts
 
-- [WH · GET /Receipts/{id}](endpoints/WH.md) → WH:ReceiptResult
-- [WH · GET /Receipts](endpoints/WH.md) → WH:map<ReceiptResult>
-- [WH · HEAD /Receipts](endpoints/WH.md) → WH:map<ReceiptResult>
+- [WH · GET /Receipts/{id}](endpoints/WH.md) → WH:ResultsReceiptsReceiptResult
+- [WH · GET /Receipts](endpoints/WH.md) → WH:map<ResultsReceiptsReceiptResult>
+- [WH · HEAD /Receipts](endpoints/WH.md)
 
 ### recipients
 
@@ -1066,6 +1075,12 @@
 - [COMMON · GET /Timezones/info](endpoints/COMMON.md) → COMMON:TimezoneGetResult
 - [COMMON · GET /Timezones](endpoints/COMMON.md) → COMMON:map<Timezones.ListResult>
 
+### transfers
+
+- [WH · GET /Transfers/{id}](endpoints/WH.md) → WH:ResultsTransfersTransferResult
+- [WH · GET /Transfers](endpoints/WH.md) → WH:map<ResultsTransfersTransferResult>
+- [WH · HEAD /Transfers](endpoints/WH.md)
+
 ### triggers
 
 - [MSG · GET /Triggers/{id}](endpoints/MSG.md) → MSG:map<Triggers.GetResult>
@@ -1093,7 +1108,7 @@
 - [ADM · HEAD /Users](endpoints/ADM.md)
 - [EXPORT · GET /Users](endpoints/EXPORT.md)
 - [UI · GET /UserViews/Users/{id}](endpoints/UI.md) → UI:TaskViewProjection[]
-- [WH · GET /Warehouses/{id}/users](endpoints/WH.md) → WH:WarehouseUserListResult[]
+- [WH · GET /Warehouses/{id}/users](endpoints/WH.md) → WH:ResultsWarehouseUsersWarehouseUserListResult[]
 
 ### usertemplates
 
@@ -1102,7 +1117,7 @@
 
 ### userwarehouses
 
-- [WH · GET /UserWarehouses/{id}](endpoints/WH.md) → WH:UserWarehouseListResult[]
+- [WH · GET /UserWarehouses/{id}](endpoints/WH.md) → WH:ResultsWarehouseUsersUserWarehouseListResult[]
 
 ### variables
 
@@ -1111,11 +1126,11 @@
 ### warehouses
 
 - [ADM · GET /Users/{id}/warehouses](endpoints/ADM.md) → ADM:map<IdNameErpIDResultOfShort>
-- [WH · GET /Warehouses/V2](endpoints/WH.md) → WH:map<Warehouses.ListResult>
-- [WH · GET /Warehouses/short](endpoints/WH.md) → WH:map<ListShortResult>
-- [WH · GET /Warehouses/{id}](endpoints/WH.md) → WH:GetResult
-- [WH · GET /Warehouses](endpoints/WH.md) → WH:map<ListShortResult>
-- [WH · HEAD /Warehouses](endpoints/WH.md) → WH:map<Warehouses.ListResult>
+- [WH · GET /Warehouses/V2](endpoints/WH.md) → WH:map<ResultsWarehousesListResult>
+- [WH · GET /Warehouses/short](endpoints/WH.md) → WH:map<ResultsWarehousesListShortResult>
+- [WH · GET /Warehouses/{id}](endpoints/WH.md) → WH:ResultsWarehousesGetResult
+- [WH · GET /Warehouses](endpoints/WH.md) → WH:map<ResultsWarehousesListShortResult>
+- [WH · HEAD /Warehouses](endpoints/WH.md) → WH:map<ResultsWarehousesListResult>
 
 ### watchlists
 
