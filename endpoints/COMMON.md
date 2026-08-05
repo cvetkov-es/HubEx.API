@@ -29,12 +29,12 @@ Base: `{BASE_URL}/COMMON`
 
 ## Attachments
 - `GET /Attachments` — Список вложенных файлов, доступных пользователю · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: assetID?:any, taskID?:any, assetTemplateID?:any, attachmentID?:any, isDeleted?:enum(true, false) → map<Attachments.ListResult>
+  ← query: assetID?:int, taskID?:int, assetTemplateID?:int, attachmentID?:int, isDeleted?:enum(true, false) → map<Attachments.ListResult>
 - `GET /Attachments/content/{container}/{filePath}` · коды: 200
   ← path: filePath:str, container:str; query: temp_url_sig?:str, temp_url_expires?:int, filename?:str
   Выполнение данного метода резрешино от **анонимного пользователя**.
 - `GET /Attachments/downloadLink` — Получить URL и список необходимых данных, для возможности скачивания архива с файлами для заявок (не более 100) · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: taskID?:any, isDeleted?:enum(true, false) → DownloadLinkResult
+  ← query: taskID?:int, isDeleted?:enum(true, false) → DownloadLinkResult
 - `GET /Attachments/{attachmentID}` — Возвращает TemporartRedirect на временную ссылку для скачки файла · права: AttachmentDownload · paginated · коды: 206, 307, 500
   ← path: attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
 - `GET /Attachments/{attachmentID}/roles` — Возвращает список ролей, для которых эксклюзивно доступен вложенный файл · права: RoleAttachmentsList · paginated · коды: 200, 206
@@ -64,7 +64,7 @@ Base: `{BASE_URL}/COMMON`
 
 ## Contacts
 - `GET /Contacts` — Метод получения данных контакта · права: ContactsList · paginated · коды: 200, 204, 206
-  ← query: searchText?:str, isDeleted?:enum(true, false), contactID?:any → map<Contacts.ListResult>
+  ← query: searchText?:str, isDeleted?:enum(true, false), contactID?:int → map<Contacts.ListResult>
 - `GET /Contacts/{contactID}` — Метод получения данных контакта · права: ContactGet · коды: 200, 204, 404
   ← path: contactID:int → Contacts.GetResult
 
@@ -78,7 +78,7 @@ Base: `{BASE_URL}/COMMON`
 
 ## Events
 - `GET /Events` — Метод получения списка доступных событий · права: EventList · paginated · коды: 200, 206
-  ← query: eventTransportTypeID?:any, isSystem?:enum(true, false), isHidden?:enum(true, false) → Events.ListResult[]
+  ← query: eventTransportTypeID?:int, isSystem?:enum(true, false), isHidden?:enum(true, false) → Events.ListResult[]
 
 ## MeasurementUnits
 - `GET /MeasurementUnits` — Метод получения списка единиц измерения · права: MeasurementUnitList · paginated · коды: 200, 206

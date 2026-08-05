@@ -12,9 +12,9 @@ Base: `{BASE_URL}/SC`
 
 ## ServiceContract
 - `GET /ServiceContract` — Метод получения списка договоров обслуживания · права: ContractList · paginated · коды: 200, 206
-  ← query: searchText?:str, taskID?:any, assetID?:any, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:any, contactID?:any, validFrom?:any, validTill?:any, searchText?:str → map<ContractListResult>
+  ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime, searchText?:str → map<ContractListResult>
 - `HEAD /ServiceContract` — Метод получения общего количества договоров обслуживания · права: ContractList · коды: 200
-  ← query: searchText?:str, taskID?:any, assetID?:any, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:any, contactID?:any, validFrom?:any, validTill?:any, searchText?:str
+  ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime, searchText?:str
 - `GET /ServiceContract/{contractID}` — Метод получения договора обслуживания по ID · права: ContractGet · коды: 200
   ← path: contractID:int → ContractGetResult
 - `GET /ServiceContract/{contractID}/assets` — Метод получения списка объектов сервисного договора · права: ContractAssetsList · paginated · коды: 200, 206, 400

@@ -41,13 +41,13 @@ Base: `{BASE_URL}/TSTG`
 
 ## TaskStageLinks
 - `GET /TaskStageLinks` — Получение списка переходов между стадиями заявок · права: TaskStageLinkList · paginated · коды: 200, 204, 206 · примеры
-  ← query: taskTypeID?:any, taskStageFromID?:any, taskStageToID?:any, userID?:any, roleID?:any → TaskStageLinks.ListResult[]
+  ← query: taskTypeID?:int, taskStageFromID?:int, taskStageToID?:int, userID?:int, roleID?:int → TaskStageLinks.ListResult[]
 - `GET /TaskStageLinks/overridings` — Возвращает список переопределений переходов для стадий заявки · права: TaskStageLinkOverrideList · paginated · коды: 200, 206
-  ← query: taskTypeID?:any, taskStageFromID?:any, taskStageToID?:any → OverrideListResult[]
+  ← query: taskTypeID?:int, taskStageFromID?:int, taskStageToID?:int → OverrideListResult[]
 
 ## TaskStages
 - `GET /TaskStages` — Возвращает справочник существующихъ в тенанте стадий заявок. Ключ - идентификаторъ стадии. · права: TaskStagesList · paginated · коды: 200, 206
-  ← query: triggerID?:any → TaskStages.ListResult[]
+  ← query: triggerID?:int → TaskStages.ListResult[]
 - `HEAD /TaskStages` — Возвращает список стадий заявки с автораспределением · права: TaskStageAutoAssignmentList · коды: 200
   ← query: isAutoAssignmentExists?:bool
 - `GET /TaskStages/{id}` — Возвращает стадию заявки · права: TaskStageGet · коды: 200

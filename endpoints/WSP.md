@@ -21,6 +21,6 @@ Base: `{BASE_URL}/WSP`
 
 ## WorkSchedules
 - `GET /WorkSchedules` — Возвращает график рабочего времени на заданный период · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:any, validFrom?:any, scheduleRuleID?:any → map<WorkScheduleDailyItemResult>
+  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult>
 - `GET /WorkSchedules/daily` — Возвращает график рабочего времени на заданный период по суткам · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:any, validFrom?:any, scheduleRuleID?:any → map<WorkScheduleDailyItemResult[]>
+  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult[]>

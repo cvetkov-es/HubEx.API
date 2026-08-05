@@ -32,7 +32,7 @@ Base: `{BASE_URL}/MSG`
 - `GET /MailBoxes/{id}` — Получение детальной информации о mailbox'е по идентификатору · права: MailBoxGet · коды: 200
   ← path: id:int → MailBox.GetResult
 - `GET /MailBoxes/{id}/errors` — Получение информации об ошибках, возникших при чтении mailbox'ов · права: MailBoxErrorsList · paginated · коды: 200, 206
-  ← path: id:int; query: occurredFrom?:any, occurredTill?:any → MailBox.GetResult
+  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBox.GetResult
 - `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список sender'ов mailbox-ов · права: MailBoxSenderList · paginated · коды: 200, 206
   ← path: mailBoxID:int → map<MailBoxSender.ListResult>
 - `GET /MailBoxes/{mailBoxID}/senders/{senderID}` — Получение детальной информации о sender'e mailbox'a по идентификатору · права: MailBoxSenderGet · коды: 200
@@ -66,7 +66,7 @@ Base: `{BASE_URL}/MSG`
 
 ## RecipientSelectionRules
 - `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя · права: RecipientSelectionRuleList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), triggerID?:any → map<RecipientSelectionRules.ListResult>
+  ← query: isDeleted?:enum(true, false), triggerID?:int → map<RecipientSelectionRules.ListResult>
 - `GET /RecipientSelectionRules/recipients` — Возвращает список получателей уведомлений · права: RecipientList · paginated · коды: 200, 206
   ← query: isHidden?:enum(true, false) → RecipientListResult[]
 - `GET /RecipientSelectionRules/{id}` — Возвращает правило выбора получателя · права: RecipientSelectionRuleGet · коды: 200
