@@ -51,7 +51,7 @@ Base: `{BASE_URL}/MSG`
 - `DELETE /MailBoxes/{id}` — Помечает mailbox как удаленный · права: MailBoxDelete · коды: 202
   ← path: id:int
 - `GET /MailBoxes/{id}/errors` — Получение информации об ошибках, возникших при чтении mailbox'ов · права: MailBoxErrorsList · paginated · коды: 200, 206
-  ← path: id:int; query: occurredFrom?:any, occurredTill?:any → MailBox.GetResult
+  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBox.GetResult
 - `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список sender'ов mailbox-ов · права: MailBoxSenderList · paginated · коды: 200, 206
   ← path: mailBoxID:int → map<MailBoxSender.ListResult>
 - `DELETE /MailBoxes/{mailBoxID}/senders` — Помечает sender'ы mailbox'a как удаленные · права: MailBoxSenderDelete · коды: 202
@@ -104,7 +104,7 @@ Base: `{BASE_URL}/MSG`
 
 ## RecipientSelectionRules
 - `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя · права: RecipientSelectionRuleList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), triggerID?:any → map<RecipientSelectionRules.ListResult>
+  ← query: isDeleted?:enum(true, false), triggerID?:int → map<RecipientSelectionRules.ListResult>
 - `POST /RecipientSelectionRules` — Создает правила выбора получателя · права: RecipientSelectionRuleAdd · коды: 201
   ← body: RecipientSelectionRule.AddData[] → int[]
 - `PUT /RecipientSelectionRules` — Изменяет правила выбора получателя · права: RecipientSelectionRuleUpdate · коды: 202

@@ -29,14 +29,14 @@ Base: `{BASE_URL}/COMMON`
 
 ## Attachments
 - `GET /Attachments` — Список вложенных файлов, доступных пользователю · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: assetID?:any, taskID?:any, assetTemplateID?:any, attachmentID?:any, isDeleted?:enum(true, false) → map<Attachments.ListResult>
+  ← query: assetID?:int, taskID?:int, assetTemplateID?:int, attachmentID?:int, isDeleted?:enum(true, false) → map<Attachments.ListResult>
 - `DELETE /Attachments` — Помечает вложения и все связи как удаленные · права: AttachmentDelete · коды: 202, 500
   ← body: int[]
 - `GET /Attachments/content/{container}/{filePath}` · коды: 200
   ← path: filePath:str, container:str; query: temp_url_sig?:str, temp_url_expires?:int, filename?:str
   Выполнение данного метода резрешино от **анонимного пользователя**.
 - `GET /Attachments/downloadLink` — Получить URL и список необходимых данных, для возможности скачивания архива с файлами для заявок (не более 100) · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: taskID?:any, isDeleted?:enum(true, false) → DownloadLinkResult
+  ← query: taskID?:int, isDeleted?:enum(true, false) → DownloadLinkResult
 - `POST /Attachments/upload/fromBody` — Загружает файл на файловый сервер. Данные будут получены из тела запроса. · права: AttachmentUpload · коды: 201, 500
   ← body: FromBodyUploadData → UploadResult
 - `POST /Attachments/upload/fromForm` — Загружает файл на файловый сервер. Данные будут получены из формы. · права: AttachmentUpload · коды: 201, 500
@@ -90,7 +90,7 @@ Base: `{BASE_URL}/COMMON`
 
 ## Contacts
 - `GET /Contacts` — Метод получения данных контакта · права: ContactsList · paginated · коды: 200, 204, 206
-  ← query: searchText?:str, isDeleted?:enum(true, false), contactID?:any → map<Contacts.ListResult>
+  ← query: searchText?:str, isDeleted?:enum(true, false), contactID?:int → map<Contacts.ListResult>
 - `POST /Contacts` — Метод создания контакта · права: ContactAdd · коды: 201
   ← body: Contact.AddData[]
 - `PUT /Contacts` — Метод изменения контактов · права: ContactUpdate · коды: 202
@@ -112,7 +112,7 @@ Base: `{BASE_URL}/COMMON`
 
 ## Events
 - `GET /Events` — Метод получения списка доступных событий · права: EventList · paginated · коды: 200, 206
-  ← query: eventTransportTypeID?:any, isSystem?:enum(true, false), isHidden?:enum(true, false) → Events.ListResult[]
+  ← query: eventTransportTypeID?:int, isSystem?:enum(true, false), isHidden?:enum(true, false) → Events.ListResult[]
 
 ## MeasurementUnits
 - `GET /MeasurementUnits` — Метод получения списка единиц измерения · права: MeasurementUnitList · paginated · коды: 200, 206

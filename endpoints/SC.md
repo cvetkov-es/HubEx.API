@@ -16,7 +16,7 @@ Base: `{BASE_URL}/SC`
 
 ## ServiceContract
 - `GET /ServiceContract` — Метод получения списка договоров обслуживания · права: ContractList · paginated · коды: 200, 206
-  ← query: searchText?:str, taskID?:any, assetID?:any, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:any, contactID?:any, validFrom?:any, validTill?:any, searchText?:str → map<ContractListResult>
+  ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime, searchText?:str → map<ContractListResult>
 - `POST /ServiceContract` — Метод для создания или обновления договора/договоров обслуживания · права: ContractMerge · коды: 201
   ← body: ContractMergeData[] → int[]
 - `PUT /ServiceContract` — Метод изменения существующей заявки(ок) · права: ContractMerge · коды: 202
@@ -24,7 +24,7 @@ Base: `{BASE_URL}/SC`
 - `DELETE /ServiceContract` — Метод для удаления договоров · права: ContractDelete · коды: 202
   ← body: int[]
 - `HEAD /ServiceContract` — Метод получения общего количества договоров обслуживания · права: ContractList · коды: 200
-  ← query: searchText?:str, taskID?:any, assetID?:any, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:any, contactID?:any, validFrom?:any, validTill?:any, searchText?:str
+  ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:enum(true, false), companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime, searchText?:str
 - `GET /ServiceContract/{contractID}` — Метод получения договора обслуживания по ID · права: ContractGet · коды: 200
   ← path: contractID:int → ContractGetResult
 - `GET /ServiceContract/{contractID}/assets` — Метод получения списка объектов сервисного договора · права: ContractAssetsList · paginated · коды: 200, 206, 400

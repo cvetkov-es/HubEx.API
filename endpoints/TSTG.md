@@ -54,7 +54,7 @@ Base: `{BASE_URL}/TSTG`
 
 ## TaskStageLinks
 - `GET /TaskStageLinks` — Получение списка переходов между стадиями заявок · права: TaskStageLinkList · paginated · коды: 200, 204, 206 · примеры
-  ← query: taskTypeID?:any, taskStageFromID?:any, taskStageToID?:any, userID?:any, roleID?:any → TaskStageLinks.ListResult[]
+  ← query: taskTypeID?:int, taskStageFromID?:int, taskStageToID?:int, userID?:int, roleID?:int → TaskStageLinks.ListResult[]
 - `POST /TaskStageLinks` — Создание переходов между стадиями заявок · права: TaskStageLinkAdd · коды: 201, 400 · примеры
   ← body: TaskStageLink.AddData[] → int[]
 - `PUT /TaskStageLinks` — Обновление переходов между стадиями заявок · права: TaskStageLinkUpdate · коды: 202, 400 · примеры
@@ -64,7 +64,7 @@ Base: `{BASE_URL}/TSTG`
 - `POST /TaskStageLinks/copy` — Копирование переходов стадий заявок из одного типа заявок в другой · права: TaskStageLinkAdd · коды: 201, 400 · примеры
   ← body: TaskStageLink.CopyData[]
 - `GET /TaskStageLinks/overridings` — Возвращает список переопределений переходов для стадий заявки · права: TaskStageLinkOverrideList · paginated · коды: 200, 206
-  ← query: taskTypeID?:any, taskStageFromID?:any, taskStageToID?:any → OverrideListResult[]
+  ← query: taskTypeID?:int, taskStageFromID?:int, taskStageToID?:int → OverrideListResult[]
 - `POST /TaskStageLinks/overridings` — Создает переходы стадий заявок · права: TaskStageLinkOverrideAdd · коды: 201
   ← body: TaskStageLinkOverride.AddData[] → int[]
 - `PUT /TaskStageLinks/overridings` — Изменяет переходы стадий заявок · права: TaskStageLinkOverrideUpdate · коды: 202
@@ -84,7 +84,7 @@ Base: `{BASE_URL}/TSTG`
 
 ## TaskStages
 - `GET /TaskStages` — Возвращает справочник существующихъ в тенанте стадий заявок. Ключ - идентификаторъ стадии. · права: TaskStagesList · paginated · коды: 200, 206
-  ← query: triggerID?:any → TaskStages.ListResult[]
+  ← query: triggerID?:int → TaskStages.ListResult[]
 - `POST /TaskStages` — Создает стадии заявок · права: TaskStageAdd · коды: 201
   ← body: TaskStage.AddData[] → int[]
 - `PUT /TaskStages` — Изменяет стадии заявок · права: TaskStageUpdate · коды: 202
