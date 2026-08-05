@@ -22,7 +22,7 @@ Base: `{BASE_URL}/PA`
 
 ## AssetAssignments
 - `GET /AssetAssignments` — Возвращает Список назначенного оборудования для указанных пользователей или список пользователей, для которых назанчен указанный объект · права: AssetAssignmentList · paginated · коды: 200, 206
-  ← query: userID?:any, assetID?:any, validOn?:any → AssetAssignments.ListResult[]
+  ← query: userID?:int, assetID?:int, validOn?:datetime → AssetAssignments.ListResult[]
 - `POST /AssetAssignments` — Добавляет или изменяет назначение объекта для пользователя · права: AssetAssignmentMerge · коды: 201, 202
   ← body: MergeData[]
 - `DELETE /AssetAssignments` — Удаляет назначение объекта для пользователя · права: AssetAssignmentDelete · коды: 202
@@ -36,7 +36,7 @@ Base: `{BASE_URL}/PA`
 - `DELETE /Employment` — Удаляет набор записей о трудоустройстве пользователя · права: EmploymentRemove · коды: 202
   ← body: ComplexActionData<RemoveData>
 - `GET /Employment/{userID}` — Возвращает полный список трудоустройств пользователя · права: EmploymentList · paginated · коды: 200, 206
-  ← path: userID:int; query: validFrom?:any, validTill?:any → EmploymentGetResult[]
+  ← path: userID:int; query: validFrom?:datetime, validTill?:datetime → EmploymentGetResult[]
 
 ## GeoTrackingModes
 - `GET /GeoTrackingModes` — Возвращает список режимов геотрекинга · права: GeoTrackingModesList · paginated · коды: 200, 206
@@ -80,15 +80,15 @@ Base: `{BASE_URL}/PA`
 
 ## Technicians
 - `GET /Technicians/taskSchedules` — Расписание специалиста на дату с заявками для диаграммы Ганта · права: ScheduleTaskListForTenantMember · коды: 200
-  ← query: validOn?:any, userID?:any, taskID?:any, validFrom?:any, validTill?:any, isCompleted?:enum(true, false) → ScheduleTaskResult[]
+  ← query: validOn?:datetime, userID?:int, taskID?:int, validFrom?:datetime, validTill?:datetime, isCompleted?:enum(true, false) → ScheduleTaskResult[]
 - `GET /Technicians/{userID}/rating` — Статистика по рейтингу мобильного инженера · права: TechnicianRatingGet · коды: 200
   ← path: userID:int → TechnicianRatingResult[]
 - `GET /Technicians/{userID}/taskRatings` — Рейтинги инжененра по заявкам · права: TaskTechnicianRatingList · paginated · коды: 200, 206
   ← path: userID:int → TechnicianRatingResult[]
 - `GET /Technicians/{userID}/workSchedules` — Расписание специалиста · права: TechnicianWorkScheduleListForTenantMember · коды: 200
-  ← path: userID:int; query: validOn?:any, userID?:any, validFrom?:any, validTill?:any → WorkScheduleResult[]
+  ← path: userID:int; query: validOn?:datetime, userID?:int, validFrom?:datetime, validTill?:datetime → WorkScheduleResult[]
 - `GET /Technicians/{userID}/workSchedules/appointments` — Расписание специалиста на дату с заявками · права: ScheduleTaskListForTenantMember · коды: 200
-  ← path: userID:int; query: showTransitionalAppointments?:bool, showWholeDayEvents?:bool, validOn?:any, userID?:any, taskID?:any, validFrom?:any, validTill?:any, isCompleted?:enum(true, false), showTransitionalAppointments?:enum(true, false), showWholeDayEvents?:enum(true, false) → AppointmentResult[]
+  ← path: userID:int; query: showTransitionalAppointments?:bool, showWholeDayEvents?:bool, validOn?:datetime, userID?:int, taskID?:int, validFrom?:datetime, validTill?:datetime, isCompleted?:enum(true, false), showTransitionalAppointments?:enum(true, false), showWholeDayEvents?:enum(true, false) → AppointmentResult[]
 
 ## TenantSettings
 - `GET /TenantSettings` — Возвращает список групп пользователей. · коды: 200
@@ -111,11 +111,11 @@ Base: `{BASE_URL}/PA`
 - `PUT /Users/onshift/end/{userID}` — Метод позволяющий пользователю досрочно завершить смену · права: UserWorkShiftOnShift · коды: 202, 409
   ← path: userID:int; body: datetime → WorkShiftFlatProjection
 - `GET /Users/onshift/schedules` — Структурированный список представляющий график рабочих смен пользователя · права: UserWorkShiftList · коды: 200
-  ← query: userID?:any, validFrom?:any, validTill?:any → map<WorkShiftScheduleDailyItemResult[]>
+  ← query: userID?:int, validFrom?:datetime, validTill?:datetime → map<WorkShiftScheduleDailyItemResult[]>
 - `PUT /Users/onshift/start/{userID}` — Метод "На Смене" позволяет начать (создать новую смену) · права: UserWorkShiftOnShift · коды: 202, 409
   ← path: userID:int; body: WorkShiftSimpleData → WorkShiftFlatProjection[]
 - `GET /Users/onshift/status` — Проверка статусов пользователей "на смене" - на момент вызова · права: UserWorkShiftList · коды: 200
-  ← query: userID?:any → WorkShiftScheduleUserStatusResult[]
+  ← query: userID?:int → WorkShiftScheduleUserStatusResult[]
 - `POST /Users/onshift/{userID}` — Сформировать произвольный график рабочих смен
 Смены, переданные в качестве параметра, будут перезаписывать существующие
 Обновления не предусмотрено · права: UserWorkShiftAdd · коды: 201, 409

@@ -48,7 +48,7 @@ Base: `{BASE_URL}/WORK`
 
 ## CheckLists
 - `GET /CheckLists` — Возвращает список активных чек-листов · права: CheckListsList · paginated · коды: 200, 206
-  ← query: searchText?:str, assetID?:any, workTypeID?:any, isAssignedToAsset?:enum(true, false), isAssignedToWorkType?:enum(true, false), searchText?:str → map<CheckLists.ListResult>
+  ← query: searchText?:str, assetID?:int, workTypeID?:int, isAssignedToAsset?:enum(true, false), isAssignedToWorkType?:enum(true, false), searchText?:str → map<CheckLists.ListResult>
 - `POST /CheckLists` — Создает чек-листы · права: CheckListAdd · коды: 201
   ← body: CheckList.AddData[] → int[]
 - `PUT /CheckLists` — Изменяет чек-листы · права: CheckListUpdate · коды: 202
@@ -118,7 +118,7 @@ Base: `{BASE_URL}/WORK`
 
 ## TaskAttributes
 - `GET /TaskAttributes` — Возвращает значения атрибутов по заявкам · права: TaskAttributeGet · paginated · коды: 200, 206
-  ← query: taskID?:any, attributeID?:any → TaskAttributesResult[]
+  ← query: taskID?:int, attributeID?:int → TaskAttributesResult[]
 - `POST /TaskAttributes` — Изменяет значения атрибутов по заявкам · права: TaskAttributeMerge · коды: 202
   ← body: ActionData[]
 
@@ -230,7 +230,7 @@ Base: `{BASE_URL}/WORK`
 
 ## TaskTemplates
 - `GET /TaskTemplates` — Возвращает список шаблонов заявок. · права: TaskTemlatesList · paginated · коды: 200, 206
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:any, assetTypeID?:any, taskTypeID?:any, workTypeID?:any, companyID?:any, contractID?:any, criticalityID?:any, frequencyTypeID?:any, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), taskTemplateID?:str → map<TaskTemplates.ListResult>
+  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, assetTypeID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), taskTemplateID?:str → map<TaskTemplates.ListResult>
 - `POST /TaskTemplates` — Создает шаблоны заявок. · права: TaskTemplateAdd · коды: 201, 500
   ← body: TaskTemplate.AddData[] → str[]
 - `PUT /TaskTemplates` — Обновляет шаблоны заявок. · права: TaskTemplateUpdate · коды: 202, 500
@@ -238,9 +238,9 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /TaskTemplates` — Помечает шаблоны заявок, как удаленные. · права: TaskTemplateDelete · коды: 202, 500
   ← body: str[]
 - `HEAD /TaskTemplates` — Возвращает заголовок списка шаблонов заявок. · права: TaskTemlatesList · коды: 200
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:any, taskTypeID?:any, workTypeID?:any, companyID?:any, contractID?:any, criticalityID?:any, frequencyTypeID?:any, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), startWithAssetID?:any
+  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), startWithAssetID?:int
 - `GET /TaskTemplates/download` — Возвращает архив qr-кодов в формате svg в соответствии с заданными фильтрами · права: TaskTemlatesList · paginated · коды: 200, 206
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:any, taskTypeID?:any, workTypeID?:any, companyID?:any, contractID?:any, criticalityID?:any, frequencyTypeID?:any, isScheduled?:enum(true, false), isScheduleActive?:enum(true, false)
+  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isScheduled?:enum(true, false), isScheduleActive?:enum(true, false)
 - `GET /TaskTemplates/{id}` — Возвращает шаблон заявки · права: TaskTemplateGet · коды: 200
   ← path: id:str → TaskTemplates.GetResult
 - `GET /TaskTemplates/{id}/assignment` — Возвращает список исполнителей, связанных с шаблоном · коды: 200, 500
@@ -288,7 +288,7 @@ Base: `{BASE_URL}/WORK`
 
 ## TaskTypes
 - `GET /TaskTypes` — Возвращает список типов заявок, доступных пользователю. Доступность определяется привязкой пользователя к участкам. · права: TaskTypesList · paginated · коды: 200, 206, 500
-  ← query: companyID?:any, districtID?:any, assetID?:any, workTypeID?:any → map<TaskTypes.ListResult>
+  ← query: companyID?:int, districtID?:int, assetID?:int, workTypeID?:int → map<TaskTypes.ListResult>
 - `POST /TaskTypes` — Создает тип заявки · права: TaskTypeAdd · коды: 201
   ← query: relatedToAnyWorkType?:bool, relatedToAnyWorkType?:enum(true, false); body: TaskType.AddData[] → int[]
 - `PUT /TaskTypes` — Изменяет типы заявок · права: TaskTypeUpdate · коды: 202
@@ -318,13 +318,13 @@ Base: `{BASE_URL}/WORK`
 
 ## Tasks
 - `GET /Tasks` — Возвращает список заявок, доступных пользователю. · права: TasksList · paginated · коды: 200, 206
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, ratingCriteriaId?:any, taskTemplateID?:str, requestMethodID?:any, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), topLevelTasksForHierarchy?:enum(true, false), assetTypeID?:any, assetClassID?:any, districtID?:any, assetResponsibleUserID?:any, branchID?:any, erpID?:str, parentID?:any, assetSchemaID?:any, attributeValues?:str, lastModifiedFrom?:any, lastModifiedTill?:any, contactID?:any, payeeCompanyID?:any → map<Tasks.ListResult>
+  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), topLevelTasksForHierarchy?:enum(true, false), assetTypeID?:int, assetClassID?:int, districtID?:int, assetResponsibleUserID?:int, branchID?:int, erpID?:str, parentID?:int, assetSchemaID?:int, attributeValues?:str, lastModifiedFrom?:datetime, lastModifiedTill?:datetime, contactID?:int, payeeCompanyID?:int → map<Tasks.ListResult>
 - `POST /Tasks` — Создаёт заявку · права: TaskAdd · коды: 201, 400, 409, 422 · примеры
   ← body: Task.AddData → Auxiliary.IdResult<System.Int32>
 - `DELETE /Tasks` — Помечает заявку как удаленную · права: TaskDelete · коды: 202
   ← body: int[] → TaskDeleteResult[]
 - `HEAD /Tasks` — Возвращает заголовок списка заявок для получения количества заявок, удовлетворяющих фильтру. · права: TasksList · коды: 200
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, ratingCriteriaId?:any, taskTemplateID?:str, requestMethodID?:any, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:any, assetClassID?:any, erpID?:str, parentID?:any, branchID?:any, assetSchemaID?:any, contactID?:any
+  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:int, assetClassID?:int, erpID?:str, parentID?:int, branchID?:int, assetSchemaID?:int, contactID?:int
 - `GET /Tasks/changeTypes` — Возвращает список поддерживаемых в логировании разделов (Tab) и секций этих разделов (Sections) · права: TaskGet · коды: 200, 500
   → ChangeTypeResult[]
 - `PUT /Tasks/completedWorks/attributes` — Устанавливает результаты для доп.полей по выполненной работе по заявкам · права: CompletedWorkAttributeMerge · коды: 202
@@ -348,15 +348,15 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /Tasks/completedWorks/technicians` — Удаляет исполнителей у выполненных работ по заявке · права: CompletedWorkMaterialDelete · коды: 202, 409
   ← body: TaskActionData<CompletedWorkTechnicianData<Int32>>[]
 - `GET /Tasks/count` — Возвращает количество заявок по дням · права: TasksList · коды: 200
-  ← query: dateFrom?:datetime, dateTill?:datetime, searchText?:str, isRated?:enum(true, false), requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, ratingCriteriaId?:any, taskTemplateID?:str, requestMethodID?:any, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:any, assetClassID?:any, districtID?:any, assetResponsibleUserID?:any, branchID?:any, erpID?:str, parentID?:any → map<ListCountResult>
+  ← query: dateFrom?:datetime, dateTill?:datetime, searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:int, assetClassID?:int, districtID?:int, assetResponsibleUserID?:int, branchID?:int, erpID?:str, parentID?:int → map<ListCountResult>
 - `GET /Tasks/groupBy/geoHash` — Возвращает краткий список заявок, сгрупированных по хэш-коду геоообласти (кластеризация) · права: TasksList · коды: 200
-  ← query: searchText?:str, zoomLevel?:float, disableClustering?:bool, clusteringMode?:ClusteringMode, requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, taskTemplateID?:str, requestMethodID?:any, disableClustering?:enum(true, false), clusteringMode?:any → TaskGroupByResult<ClusterResult>[]
+  ← query: searchText?:str, zoomLevel?:float, disableClustering?:bool, clusteringMode?:ClusteringMode, requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, taskTemplateID?:str, requestMethodID?:int, disableClustering?:enum(true, false), clusteringMode?:any → TaskGroupByResult<ClusterResult>[]
 - `GET /Tasks/new/meta` — Возвращает метаданные для формы заявки. · права: TaskMetadataGet · коды: 200, 500
   ← query: taskTypeID?:int[] → map<TaskTypeFormMetadataResult>
 - `PUT /Tasks/restore` — Воскрешает удаленные заявки · права: TaskRestore · коды: 202, 409
   ← body: int[]
 - `GET /Tasks/short` — Возвращает краткий список заявок, доступных пользователю. · права: TasksList · paginated · коды: 200, 206
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:any, assignedTo?:any, approvalWith?:any, escalatedTo?:any, assetID?:any, startWithAssetID?:any, taskID?:any, taskNumber?:str, taskTypeID?:any, workTypeID?:any, taskStageID?:any, taskStatusID?:any, creationFrom?:any, creationTill?:any, assignationFrom?:any, assignationTill?:any, completionFrom?:any, completionTill?:any, closingFrom?:any, closingTill?:any, deadlineFrom?:any, deadlineTill?:any, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:any, contractID?:any, criticalityID?:any, orderBy?:any, sortDirection?:any, pointNorthEast?:any, pointSouthWest?:any, pointCenter?:any, radius?:any, geoHash?:str, ratingCriteriaId?:any, taskTemplateID?:str, requestMethodID?:any, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), branchID?:any, assetTypeID?:any, assetClassID?:any, erpID?:str, parentID?:any, assetSchemaID?:any, contactID?:any → map<ListShortResult>
+  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), branchID?:int, assetTypeID?:int, assetClassID?:int, erpID?:str, parentID?:int, assetSchemaID?:int, contactID?:int → map<ListShortResult>
 - `GET /Tasks/stages/next` — Возвращает список доступных стадий, на котрые могут быть переведены заявки из списка. · права: TaskStagesList · коды: 200, 500
   ← query: id?:int[] → map<ListStagesResult>
 - `GET /Tasks/{taskID}` — Возвращает детальные сведения по заявке · права: TaskGet · коды: 200
@@ -384,7 +384,7 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /Tasks/{taskID}/autoStaginging` — Прекращает запланированный автоматический переход по стадиям заявки · права: TaskStageMoverTerminate · paginated · коды: 200, 206, 404
   ← path: taskID:int
 - `GET /Tasks/{taskID}/changes` — Возвращает историю изменения заявки · права: TaskGet · paginated · коды: 200, 206, 500
-  ← path: taskID:int; query: dateRangeFrom?:any, dateRangeTill?:any, userID?:any, tab?:str, section?:str → HistoryResult[]
+  ← path: taskID:int; query: dateRangeFrom?:datetime, dateRangeTill?:datetime, userID?:int, tab?:str, section?:str → HistoryResult[]
 - `GET /Tasks/{taskID}/checkCompanyCodeUsed` — Возвращает информацию используется ли код компании при генерации номера заявки · права: IfUsedInTaskNumberGet · коды: 200
   ← path: taskID:int → bool
 - `GET /Tasks/{taskID}/checkLists` — Возвращает список чек-листов в заявке · права: TaskCheckListsList · paginated · коды: 200, 206
@@ -422,7 +422,7 @@ Base: `{BASE_URL}/WORK`
 - `GET /Tasks/{taskID}/completedWorks/attachments` — Возвращает список вложенных файлов во все выполненные работы в заявке · права: CompletedWorkAttachmentList · paginated · коды: 200, 206, 500
   ← path: taskID:int; query: thumbnailSize?:int → ListAttachmentForCompletedWorkResult[]
 - `GET /Tasks/{taskID}/completedWorks/attributes` — Возвращает доп.поля для выполненных работ по заявке · права: CompletedWorkAttributeList · paginated · коды: 200, 206
-  ← path: taskID:int; query: completedWorkID?:any → CompletedWorkAttributeResult[]
+  ← path: taskID:int; query: completedWorkID?:int → CompletedWorkAttributeResult[]
 - `GET /Tasks/{taskID}/completedWorks/materials` — Список израсходованных материалов для выполненных работ по заявке · права: CompletedWorkMaterialsList · paginated · коды: 200, 204, 206, 500
   ← path: taskID:int → map<CompletedWorkMaterialResult>
 - `GET /Tasks/{taskID}/completedWorks/materialsWithCodes` — Список израсходованных материалов для выполненных работ по заявке (включая коды маркировки). · права: CompletedWorkMaterialsList · paginated · коды: 200, 204, 206, 500
@@ -448,7 +448,7 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes` — Помечает атрибуты выполенной работы заявки удаленный · права: CompletedWorkAttributeDelete · коды: 202
   ← path: taskID:int, completedWorkID:int; body: int[]
 - `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/attachments` — Возвращает список файлов прикрепленных к атрибутам выполенной работы по заявке · права: CompletedWorkAttributeAttachmentList · paginated · коды: 200, 206, 400
-  ← path: taskID:int, completedWorkID:int; query: thumbnailSize?:int, attributeID?:any → map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
+  ← path: taskID:int, completedWorkID:int; query: thumbnailSize?:int, attributeID?:int → map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
 - `DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}` — Помечает атрибут выполенной работы заявки удаленный · права: CompletedWorkAttributeDelete · коды: 202
   ← path: taskID:int, completedWorkID:int, attributeID:int
 - `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}/attachments` — Возвращает список файлов прикрепленных к атрибуту выполненной работы по заявке · права: CompletedWorkAttributeAttachmentList · paginated · коды: 200, 206, 400
@@ -519,7 +519,7 @@ Base: `{BASE_URL}/WORK`
 - `DELETE /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/marking-codes` — Пакетное удаление привязанных кодов маркировки у материалов выбранной выполненной работы. · права: CompletedWorkMaterialDelete · коды: 200, 400, 404, 409 · примеры
   ← path: taskId:int, completedWorkId:int; body: CompletedWorkMaterialsMarkingCodesDeleteRequest → CompletedWorkMaterialsMarkingCodesDeleteResult
 - `GET /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/{materialID}/marking-codes` — Возвращает коды маркировки для конкретного материала в выполненной работе. · права: CompletedWorkMaterialsList · коды: 200, 204 · примеры
-  ← path: taskId:int, completedWorkId:int, materialId:int; query: warehouseID?:any → MarkingCodesListResult
+  ← path: taskId:int, completedWorkId:int, materialId:int; query: warehouseID?:int → MarkingCodesListResult
 - `POST /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/{materialID}/marking-codes` — Пакетная привязка кодов маркировки к материалу. · права: CompletedWorkMaterialUpdate · коды: 200, 400, 404, 409 · примеры
   ← path: taskId:int, completedWorkId:int, materialId:int; body: MarkingCodesUpsertForMaterialRequest → MarkingCodesUpsertResult
 - `PUT /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/{materialID}/marking-codes` — Пакетная перепривязка (перенос) существующих активных кодов маркировки на указанный материал. · права: CompletedWorkMaterialUpdate · коды: 200, 400, 404, 409 · примеры
@@ -531,7 +531,7 @@ Base: `{BASE_URL}/WORK`
 
 ## TemplateQuickResponse
 - `GET /TemplateQuickResponse` — Возвращает список быстрых ответов · права: QuickResponseList · paginated · коды: 200, 206
-  ← query: searchText?:str, isDeleted?:enum(true, false), taskTypeID?:any → map<TemplateQuickResponse.ListResult>
+  ← query: searchText?:str, isDeleted?:enum(true, false), taskTypeID?:int → map<TemplateQuickResponse.ListResult>
 - `POST /TemplateQuickResponse` — Создаёт новый быстрый ответ · права: QuickResponseAdd · коды: 201, 409
   ← body: TemplateQuickResponse.AddData[] → int[]
 - `PUT /TemplateQuickResponse` — Обновляет быстрый ответ. · права: QuickResponseUpdate · коды: 202, 500
@@ -551,7 +551,7 @@ Base: `{BASE_URL}/WORK`
 
 ## WorkTypes
 - `GET /WorkTypes` — Возвращает список видов работ. · права: WorkTypeList · paginated · коды: 200, 206
-  ← query: searchText?:str, assetID?:any, taskTypeID?:any, workTypeID?:any, contractID?:any, criticalityID?:any, checkListID?:any, isPublished?:enum(true, false), erpID?:str → map<WorkTypes.ListResult>
+  ← query: searchText?:str, assetID?:int, taskTypeID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false), erpID?:str → map<WorkTypes.ListResult>
 - `POST /WorkTypes` — Создает вид работ · права: WorkTypeAdd · коды: 201
   ← query: relatedToAnyTaskType?:bool, relatedToAnyAsset?:bool, relatedToAnyTaskType?:enum(true, false); body: WorkType.AddData[] → int[]
 - `PUT /WorkTypes` — Изменяет виды работ · права: WorkTypeUpdate · коды: 202
@@ -577,9 +577,9 @@ Base: `{BASE_URL}/WORK`
 - `PUT /WorkTypes/{id}/unpublish` — Помечает вид работ как опубликованный · права: WorkTypeUnpublish · коды: 202
   ← path: id:int
 - `GET /WorkTypes/{parentWorkTypeID}/workTypes` — Возвращает список дочерних видов работ (вниз по графу). · права: WorkTypeList · paginated · коды: 200, 206, 500
-  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:any, workTypeID?:any, contractID?:any, criticalityID?:any, checkListID?:any, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
+  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
 - `GET /WorkTypes/{parentWorkTypeID}/workTypes/all` — Возвращает список всех дочерних видов работ (вниз по графу). · права: WorkTypeList · paginated · коды: 200, 206, 500
-  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:any, workTypeID?:any, contractID?:any, criticalityID?:any, checkListID?:any, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
+  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
 - `GET /WorkTypes/{workTypeID}/checkLists` — Возвращает список чек-листов вида работ · права: WorkTypeCheckListList · paginated · коды: 200, 206
   ← path: workTypeID:int → map<CheckLists.GetResult[]>
 - `POST /WorkTypes/{workTypeID}/checkLists` — Добавляет чек-листы к типу работ · права: WorkTypeCheckListAdd · коды: 202
