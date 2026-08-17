@@ -195,7 +195,7 @@ Base: `{BASE_URL}/WORK`
   ← body: TaskActionData<Int32>[]
 
 ## TaskStagingHistory
-- `POST /TaskStagingHistory` — Добавляет актуальную запись в историю прохождения заявки по стадиям. · права: TaskStagingHistoryAdd · коды: 201, 500
+- `POST /TaskStagingHistory` — Добавляет актуальную запись в историю прохождения заявки по стадиям. · права: TaskStagingHistoryAdd · коды: 201, 404, 409, 500
   ← body: TaskStagingHistory.PostData
 - `POST /TaskStagingHistory/batch` — Массовый перевод заявок по стадиям. · права: TaskStagingHistoryAdd · коды: 202, 409, 500
   ← body: BatchRequestPostData → BatchRequestResult
@@ -415,7 +415,7 @@ Base: `{BASE_URL}/WORK`
   ← path: taskID:int, taskCheckListID:int, taskChecklistResultID:int, attachmentID:int
 - `POST /Tasks/{taskID}/checkLists/{taskCheckListID}/upload/fromForm` — Загружает файл на файловый сервер и привязывает его к чек-листу по заявке. Данные будут получены из формы. · права: TaskCheckListResultAttachmentUpload · коды: 201, 500
   ← path: taskID:int, taskCheckListID:int; body: { Attachments?: TaskCheckListResultAttachment[] /* Вложения в чек- листе по заявке */, TaskCheckListID?: int /* Идентификатор чек- листа по заявке */, TaskCheckListResultID?: int /* Идентификатор результата чек- листа по заявке */ } → TaskCheckListResultAttachment.UploadResult
-- `PUT /Tasks/{taskID}/complete` — Помечает заявку, как выполненную · права: TaskComplete · коды: 202
+- `PUT /Tasks/{taskID}/complete` — Помечает заявку, как выполненную · права: TaskComplete · коды: 202, 404, 409
   ← path: taskID:int; body: TaskCompletion.AddData
 - `GET /Tasks/{taskID}/completedWorks` — Возвращает список выполненных работ по заявке · права: CompletedWorkList · paginated · коды: 200, 206, 500
   ← path: taskID:int → CompletedWorkResult[]

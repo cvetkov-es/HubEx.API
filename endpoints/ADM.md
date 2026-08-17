@@ -436,7 +436,7 @@ Base: `{BASE_URL}/ADM`
   → map<str>
 - `GET /Users/this/profile` — Получить профиль текущего пользователя · коды: 200 · примеры
   → ResultsUsersUserProfileResult
-- `GET /Users/this/taskListQueries` — Получить список сохраненных запросов по заявкам текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/taskListQueries` · paginated · коды: 200, 204, 206
   → map<ResultsUsersTaskListQueryResult>
 - `GET /Users/{UserID}/ratings` — Получить рейтинг инженера · коды: 200, 204, 206 · примеры
   ← path: userID:int → ResultsUsersRatingTechnicianResult
@@ -462,7 +462,7 @@ Base: `{BASE_URL}/ADM`
   ← path: id:int → ResultsUsersUserProfileResult
 - `GET /Users/{id}/roles` — Получить список ролей пользователя · коды: 200, 204, 206 · примеры
   ← path: id:int → map<IdNameResultOfShort>
-- `GET /Users/{id}/taskListQueries` — Получить список сохраненных запросов по заявкам пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/taskListQueries` · paginated · коды: 200, 204, 206
   ← path: id:int → map<ResultsUsersTaskListQueryResult>
 - `GET /Users/{id}/warehouses` — Получить список складов пользователя · коды: 200, 204, 206 · примеры
   ← path: id:int → map<IdNameErpIDResultOfShort>

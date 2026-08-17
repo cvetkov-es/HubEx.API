@@ -1421,7 +1421,10 @@ GET /tenantsettings?tenantMemberId=123
   },
   "defaultTimezoneID": 1,
   "defaultMailBoxID": 1,
-  "realm": "example"
+  "realm": "example",
+  "managerFullName": "Иванов Иван",
+  "managerPhone": "+79998887766",
+  "managerEmail": "manager@hubex.ru"
 }
 ```
 
@@ -2301,12 +2304,12 @@ POST /usertasklistqueries
 ```json
 [
   {
-    "userID": 123,
-    "taskListQueryID": 10
+    "userID": 616,
+    "data": [94]
   },
   {
     "userID": 123,
-    "taskListQueryID": 11
+    "data": [10, 11]
   }
 ]
 ```
@@ -2314,6 +2317,10 @@ POST /usertasklistqueries
 ## Пример успешного ответа:
 ```json
 [
+  {
+    "taskListQueryID": 94,
+    "userID": 616
+  },
   {
     "taskListQueryID": 10,
     "userID": 123
@@ -2334,8 +2341,8 @@ DELETE /usertasklistqueries
 ```json
 [
   {
-    "userID": 123,
-    "taskListQueryID": 10
+    "userID": 616,
+    "data": [94]
   }
 ]
 ```
@@ -3394,24 +3401,6 @@ GET /users/this/profile
 }
 ```
 
-### `GET /Users/this/taskListQueries`
-
-## Пример запроса:
-
-GET /users/this/taskListQueries
-
-## Пример успешного ответа:
-```json
-{
-  "1": {
-    "id": 1,
-    "name": "Мои заявки",
-    "isDefault": true,
-    "isFavorite": false
-  }
-}
-```
-
 ### `GET /Users/{UserID}/ratings`
 
 ## Пример запроса:
@@ -3684,24 +3673,6 @@ GET /users/123/roles
       "name": "Менеджер"
     }
   ]
-}
-```
-
-### `GET /Users/{id}/taskListQueries`
-
-## Пример запроса:
-
-GET /users/123/taskListQueries
-
-## Пример успешного ответа:
-```json
-{
-  "1": {
-    "id": 1,
-    "name": "Мои заявки",
-    "isDefault": true,
-    "isFavorite": false
-  }
 }
 ```
 
