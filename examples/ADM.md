@@ -637,7 +637,10 @@ GET /tenantsettings?tenantMemberId=123
   },
   "defaultTimezoneID": 1,
   "defaultMailBoxID": 1,
-  "realm": "example"
+  "realm": "example",
+  "managerFullName": "Иванов Иван",
+  "managerPhone": "+79998887766",
+  "managerEmail": "manager@hubex.ru"
 }
 ```
 
@@ -1150,24 +1153,6 @@ GET /users/this/profile
 }
 ```
 
-### `GET /Users/this/taskListQueries`
-
-## Пример запроса:
-
-GET /users/this/taskListQueries
-
-## Пример успешного ответа:
-```json
-{
-  "1": {
-    "id": 1,
-    "name": "Мои заявки",
-    "isDefault": true,
-    "isFavorite": false
-  }
-}
-```
-
 ### `GET /Users/{UserID}/ratings`
 
 ## Пример запроса:
@@ -1404,24 +1389,6 @@ GET /users/123/roles
       "name": "Менеджер"
     }
   ]
-}
-```
-
-### `GET /Users/{id}/taskListQueries`
-
-## Пример запроса:
-
-GET /users/123/taskListQueries
-
-## Пример успешного ответа:
-```json
-{
-  "1": {
-    "id": 1,
-    "name": "Мои заявки",
-    "isDefault": true,
-    "isFavorite": false
-  }
 }
 ```
 
