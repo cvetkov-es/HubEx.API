@@ -39,7 +39,7 @@ python3 cli/hubex_cli.py api get --tenant N /WORK/Tasks               # живо
 
 ## Ночной автоперезабор
 
-На машине мейнтейнера крон каждую ночь в 00:00 МСК (21:00 UTC) гонит:
+На машине мейнтейнера крон каждую ночь в 00:15 МСК (21:15 UTC) гонит:
 
 ```
 python3 tools/api_cli.py sync [--dry-run]
