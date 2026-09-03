@@ -248,7 +248,35 @@ POST /tasks/123/completedWorks/1/materials/marking-codes
     { "materialID": 888, "warehouseID": 10, "inventoryID": 555002, "code": "010...", "action": "UPDATE" }
   ],
   "errors": [
-    { "materialID": 999, "warehouseID": 10, "inventoryID": null, "code": "010...", "reason": "MaterialContextNotFound", "message": "Material context was not found in the selected completed work." }
+    {
+      "materialID": 777,
+      "materialName": "Масло моторное 5W-40",
+      "warehouseID": 54,
+      "inventoryID": 18,
+      "code": "010...",
+      "taskNumber": "33927",
+      "reason": "MarkingCodeAlreadyExists",
+      "message": "Код маркировки уже используется.",
+      "existing": {
+        "taskID": 33929,
+        "taskNumber": "33929",
+        "completedWorkID": 2,
+        "materialID": 49,
+        "materialName": "Фильтр масляный",
+        "warehouseID": 54,
+        "inventoryID": 18,
+        "code": "010..."
+      }
+    },
+    {
+      "materialID": 999,
+      "warehouseID": 10,
+      "inventoryID": null,
+      "code": "010...",
+      "taskNumber": "33927",
+      "reason": "MaterialContextNotFound",
+      "message": "Material context was not found in the selected completed work."
+    }
   ]
 }
 ```
@@ -447,7 +475,23 @@ POST /tasks/123/completedWorks/1/materials/777/marking-codes
     { "code": "010...", "action": "UPDATE" }
   ],
   "errors": [
-    { "code": "010...", "reason": "MarkingCodeAlreadyExists", "message": "The marking code is already in use." }
+    {
+      "code": "010...",
+      "taskNumber": "33927",
+      "materialName": "Масло моторное 5W-40",
+      "reason": "MarkingCodeAlreadyExists",
+      "message": "Код маркировки уже используется.",
+      "existing": {
+        "taskID": 33929,
+        "taskNumber": "33929",
+        "completedWorkID": 2,
+        "materialID": 49,
+        "materialName": "Фильтр масляный",
+        "warehouseID": 54,
+        "inventoryID": 18,
+        "code": "010..."
+      }
+    }
   ]
 }
 ```
