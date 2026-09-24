@@ -5,83 +5,601 @@
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/MSG`
+> Примеры ответов вынесены в [../examples/MSG.md](../examples/MSG.md).
 
 **Оглавление**
 
-- ContentTypes — строки 22–24
-- MailBoxes — строки 26–39
-- MessageTemplates — строки 41–45
-- NavigateTo — строки 47–49
-- Notifications — строки 51–57
-- Protocols — строки 59–61
-- Providers — строки 63–65
-- RecipientSelectionRules — строки 67–73
-- Triggers — строки 75–81
-- Webhooks — строки 83–87
+- ContentTypes — строки 90–93
+- Пример запроса: — строки 95–100
+- Пример успешного ответа (200): — строки 102–111
+- Пример успешного ответа (206): — строки 113–114
+- Негативные сценарии: — строки 116–118
+- MailBoxes — строки 120–123
+- Пример запроса: — строки 125–130
+- Пример успешного ответа (200): — строки 132–144
+- Пример успешного ответа (206): — строки 146–147
+- Негативные сценарии: — строки 149–155
+- Пример запроса: — строки 157–162
+- Пример успешного ответа (200): — строки 164–172
+- Пример успешного ответа (206): — строки 174–175
+- Негативные сценарии: — строки 177–184
+- Пример запроса: — строки 186–191
+- Пример успешного ответа (200): — строки 193–205
+- Пример успешного ответа (206): — строки 207–208
+- Негативные сценарии: — строки 210–215
+- Пример запроса: — строки 217–222
+- Пример успешного ответа (200): — строки 224–242
+- Пример успешного ответа (206): — строки 244–245
+- Негативные сценарии: — строки 247–251
+- MessageTemplates — строки 253–256
+- Пример запроса: — строки 258–263
+- Пример успешного ответа (200): — строки 265–268
+- Пример успешного ответа (206): — строки 270–271
+- Негативные сценарии: — строки 273–279
+- Пример запроса: — строки 281–285
+- Пример успешного ответа (200): — строки 287–290
+- Негативные сценарии: — строки 292–295
+- NavigateTo — строки 297–300
+- Пример запроса: — строки 302–307
+- Пример успешного ответа (200): — строки 309–318
+- Пример успешного ответа (206): — строки 320–321
+- Негативные сценарии: — строки 323–325
+- Notifications — строки 327–330
+- Пример запроса: — строки 332–337
+- Пример успешного ответа (200): — строки 339–355
+- Пример успешного ответа (206): — строки 357–358
+- Негативные сценарии: — строки 360–367
+- Пример запроса: — строки 369–374
+- Пример успешного ответа (200): — строки 376–382
+- Пример успешного ответа (206): — строки 384–385
+- Негативные сценарии: — строки 387–389
+- Protocols — строки 391–394
+- Пример запроса: — строки 396–401
+- Пример успешного ответа (200): — строки 403–411
+- Пример успешного ответа (206): — строки 413–414
+- Негативные сценарии: — строки 416–418
+- Providers — строки 420–423
+- Пример запроса: — строки 425–430
+- Пример успешного ответа (200): — строки 432–442
+- Пример успешного ответа (206): — строки 444–445
+- Негативные сценарии: — строки 447–449
+- RecipientSelectionRules — строки 451–454
+- Пример запроса: — строки 456–461
+- Пример успешного ответа (200): — строки 463–466
+- Пример успешного ответа (206): — строки 468–469
+- Негативные сценарии: — строки 471–476
+- Пример запроса: — строки 478–483
+- Пример успешного ответа (200): — строки 485–488
+- Пример успешного ответа (206): — строки 490–491
+- Негативные сценарии: — строки 493–497
+- Triggers — строки 499–502
+- Пример запроса: — строки 504–509
+- Пример успешного ответа (200): — строки 511–539
+- Пример успешного ответа (206): — строки 541–542
+- Негативные сценарии: — строки 544–551
+- Пример запроса: — строки 553–558
+- Пример успешного ответа (200): — строки 560–572
+- Пример успешного ответа (206): — строки 574–575
+- Негативные сценарии: — строки 577–579
+- Webhooks — строки 581–584
+- Пример запроса: — строки 586–591
+- Пример успешного ответа (200): — строки 593–596
+- Пример успешного ответа (206): — строки 598–599
+- Негативные сценарии: — строки 601–605
 
 ## ContentTypes
-- `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206
-  → ContentTypes.ListResult[]
+- `GET /ContentTypes` — Возвращает список типов контента. · коды: 200, 204, 206
+  → map<RCTListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /ContentTypes
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "HTML",
+    "code": "HTML"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — типы контента не найдены.
 
 ## MailBoxes
-- `GET /MailBoxes` — Возвращает список mailbox-ов · права: MailBoxList · paginated · коды: 200, 206
-  → map<MailBox.ListResult>
-- `GET /MailBoxes/regexactions` — Метод возвращает список действий, которые необходимо выполнить при неудачном применении 
-регулярного выражения для темы или тела email-сообщения · права: RegexNotMatchActionList · paginated · коды: 200, 206
-  → map<RegexNotMatchAction.ListResult>
-- `GET /MailBoxes/{id}` — Получение детальной информации о mailbox'е по идентификатору · права: MailBoxGet · коды: 200
-  ← path: id:int → MailBox.GetResult
-- `GET /MailBoxes/{id}/errors` — Получение информации об ошибках, возникших при чтении mailbox'ов · права: MailBoxErrorsList · paginated · коды: 200, 206
-  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBox.GetResult
-- `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список sender'ов mailbox-ов · права: MailBoxSenderList · paginated · коды: 200, 206
-  ← path: mailBoxID:int → map<MailBoxSender.ListResult>
-- `GET /MailBoxes/{mailBoxID}/senders/{senderID}` — Получение детальной информации о sender'e mailbox'a по идентификатору · права: MailBoxSenderGet · коды: 200
-  ← path: mailBoxID:int, senderID:int → MailBoxSender.GetResult
+- `GET /MailBoxes` — Возвращает список почтовых ящиков. · коды: 200, 204, 206
+  → map<RMBListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "Support inbox",
+    "isActive": true,
+    "email": "support@example.com",
+    "calls": { "remaining": 2, "total": 5 },
+    "lastCall": { "completed": "2026-08-20T10:00:00Z", "exception": null, "hasError": false }
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — почтовые ящики не найдены.
+- `GET /MailBoxes/regexactions` — Возвращает список действий при неудачном применении регулярного выражения. · коды: 200, 204, 206
+  → map<RRNMAListResult>
+  Справочник действий, которые выполняются, если регулярное выражение для темы или тела письма не совпало.
+Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/regexactions
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "Пропустить"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — действия не найдены.
+- `GET /MailBoxes/{id}` — Возвращает почтовый ящик по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RMBGetResult
+- `GET /MailBoxes/{id}/errors` — Возвращает ошибки чтения почтового ящика. · коды: 200, 204, 206
+  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBoxErrorsEntity[]
+  Поддерживает фильтрацию по дате возникновения ошибки и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/1/errors?occurredFrom=2026-08-01T00:00:00Z&occurredTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "tenantID": 1,
+    "mailBoxID": 1,
+    "name": "Support inbox",
+    "email": "support@example.com",
+    "occurred": "2026-08-20T10:00:00Z",
+    "error": "Connection timeout"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — ошибки не найдены.
+- `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список отправителей почтового ящика. · коды: 200, 204, 206
+  ← path: mailBoxID:int → map<RMBSListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/1/senders
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "10": {
+    "id": 10,
+    "mailBoxID": 1,
+    "recipient": "sender@example.com",
+    "taskTemplateID": "TMPL-001",
+    "isActive": true,
+    "sendResponse": true,
+    "taskSubjectRegex": ".*",
+    "taskTextBodyRegex": ".*",
+    "regexNotMatchAction": { "id": 1, "name": "Skip" },
+    "lastTask": { "id": 100, "number": "T-100" },
+    "calls": { "remaining": 1, "total": 3 },
+    "lastCall": { "started": "2026-08-20T10:00:00Z", "completed": "2026-08-20T10:00:01Z", "exception": null, "hasError": false, "lastRecipient": "sender@example.com" }
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — отправители не найдены.
+- `GET /MailBoxes/{mailBoxID}/senders/{senderID}` — Возвращает отправителя почтового ящика по идентификатору. · коды: 200, 204 · примеры
+  ← path: mailBoxID:int, senderID:int → RMBSGetResult
 
 ## MessageTemplates
-- `GET /MessageTemplates` — Возвращает список активных шаблонов уведоплений · права: MessageTemplateList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false) → map<MessageTemplates.ListResult>
-- `GET /MessageTemplates/{id}` — Возвращает шаблон уведомлений · права: MessageTemplateGet · коды: 200
-  ← path: id:int → map<MessageTemplates.GetResult>
+- `GET /MessageTemplates` — Возвращает список шаблонов уведомлений. · коды: 200, 204, 206
+  ← query: isDeleted?:bool → map<RMTListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MessageTemplates?isDeleted=false
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "description": "Welcome", "subject": "Hello", "validated": "2026-08-20T10:00:00Z", "isValid": true, "providerID": 1, "applicationID": 2, "navigateToID": 3, "contentTypeID": 1 } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `MessageTemplateList`.
+- 204 — шаблоны по фильтрам не найдены.
+- `GET /MessageTemplates/{id}` — Возвращает шаблон уведомлений по идентификатору. · коды: 200, 204
+  ← path: id:int → RMTGetResult
+  Используется для просмотра и редактирования карточки шаблона уведомления.
+            
+## Пример запроса:
+```text
+GET /MessageTemplates/1
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "id": 1, "description": "Welcome", "subject": "Hello", "content": "<p>Hi</p>", "validated": "2026-08-20T10:00:00Z", "isValid": true, "provider": { "id": 1, "code": "Email", "name": "Email" }, "application": { "id": 2, "code": "Portal", "name": "Portal" }, "navigateTo": { "id": 3, "code": "Task", "name": "Task" }, "contentType": { "id": 1, "code": "Html", "name": "HTML" }, "deleted": null }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `MessageTemplateGet`.
+- 204 — шаблон с указанным идентификатором не найден.
 
 ## NavigateTo
-- `GET /NavigateTo` — Метод получения списка переходов · права: NavigateToList · paginated · коды: 200, 206
-  → NavigateTo.ListResult[]
+- `GET /NavigateTo` — Возвращает список переходов. · коды: 200, 204, 206
+  → map<RNTListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /NavigateTo
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "code": "TASK",
+    "name": "Заявка"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — переходы не найдены.
 
 ## Notifications
-- `GET /Notifications` — Возвращает список уведомлений пользователя · права: NotificationLogList · paginated · коды: 200, 206
-  ← query: includeIsViewed?:bool → map<Notification.ListResult>
-- `HEAD /Notifications` — Возвращает заголовок запроса списка уведомлений пользователя с количеством данных · права: NotificationLogList · коды: 200
+- `GET /Notifications` — Возвращает список уведомлений пользователя. · коды: 200, 204, 206
+  ← query: includeIsViewed?:bool → map<RNListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Notifications?includeIsViewed=false
+Authorization: Bearer <token>
+Range: items=0-24
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "101": {
+    "id": 101,
+    "providerID": 1,
+    "subject": "Новая заявка",
+    "content": "Создана заявка №123",
+    "contentTypeID": 1,
+    "created": "2026-08-20T10:00:00Z",
+    "sent": "2026-08-20T10:00:01Z",
+    "navigateTo": 3,
+    "taskID": 123,
+    "isViewed": false
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — уведомления не найдены.
+- `HEAD /Notifications` — Возвращает заголовок с количеством уведомлений пользователя. · коды: 200 · примеры
   ← query: includeIsViewed?:bool
-- `GET /Notifications/fields` — Получение списка полей, используемых для уведомлений · права: NotificationFieldsList · paginated · коды: 200, 206
+- `GET /Notifications/fields` — Возвращает список полей, используемых в шаблонах уведомлений. · коды: 200, 204, 206
   → map<str>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Notifications/fields
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "TaskNumber": "Номер заявки",
+  "UserName": "Имя пользователя"
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — поля не найдены.
 
 ## Protocols
-- `GET /Protocols` — Возвращает список протоколов · права: ProtocolList · paginated · коды: 200, 206
-  → map<Protocols.ListResult>
+- `GET /Protocols` — Возвращает список протоколов. · коды: 200, 204, 206
+  → map<RProtocolsListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Protocols
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "SMTP"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — протоколы не найдены.
 
 ## Providers
-- `GET /Providers` — Метод получения списка провайдеров · права: ProviderList · paginated · коды: 200, 206
-  → Providers.ListResult[]
+- `GET /Providers` — Возвращает список провайдеров сообщений. · коды: 200, 204, 206
+  → map<RProvidersListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Providers
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "SMS",
+    "code": "SMS",
+    "descriptionRu": "SMS-провайдер"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — провайдеры не найдены.
 
 ## RecipientSelectionRules
-- `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя · права: RecipientSelectionRuleList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), triggerID?:int → map<RecipientSelectionRules.ListResult>
-- `GET /RecipientSelectionRules/recipients` — Возвращает список получателей уведомлений · права: RecipientList · paginated · коды: 200, 206
-  ← query: isHidden?:enum(true, false) → RecipientListResult[]
-- `GET /RecipientSelectionRules/{id}` — Возвращает правило выбора получателя · права: RecipientSelectionRuleGet · коды: 200
-  ← path: id:int → map<RecipientSelectionRules.GetResult>
+- `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя. · коды: 200, 204, 206
+  ← query: isDeleted?:bool, triggerID?:int → map<RRSRListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /RecipientSelectionRules?isDeleted=false&triggerID=10
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "description": "Исполнитель и руководитель", "isCaller": false, "isTaskRequestor": true, "isTaskAssignee": true, "isPreviousTaskAssignee": false, "isTaskAssigneeManager": true, "isTaskContact": false, "isTaskAssetResponsiblePerson": false, "isTenantPowerUser": false, "isTaskWatchList": false, "isForRelevantUsers": false, "isForRelevantUsersByWorkType": false, "deleted": null } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — правила по фильтрам не найдены.
+- `GET /RecipientSelectionRules/recipients` — Возвращает список получателей уведомлений. · коды: 200, 204, 206
+  ← query: isHidden?:bool → map<RecipientListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /RecipientSelectionRules/recipients?isHidden=false
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "code": "TaskAssignee", "name": "Исполнитель заявки" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — получатели по фильтрам не найдены.
+- `GET /RecipientSelectionRules/{id}` — Возвращает правило выбора получателя по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RRSRGetResult
 
 ## Triggers
-- `GET /Triggers` — Возвращает список активных триггеров · права: TriggerList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), isEnabled?:enum(true, false) → map<Triggers.ListResult>
-- `GET /Triggers/{id}` — Возвращает триггер · права: TriggerGet · коды: 200
-  ← path: id:int → map<Triggers.GetResult>
-- `GET /Triggers/{id}/criticalities` — Метод получения списка критичностей для триггера · права: CriticalityForTriggerList · paginated · коды: 200, 206
-  ← path: id:int → Triggers.ListResult[]
+- `GET /Triggers` — Возвращает список триггеров. · коды: 200, 204, 206
+  ← query: isDeleted?:bool, isEnabled?:bool → map<RTListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Triggers?isDeleted=false&isEnabled=true
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "timeoutSeconds": 60,
+    "description": "Уведомление при создании заявки",
+    "isNotifyDuringWorkHours": true,
+    "isNotifyDuringDutyHours": false,
+    "isNotifyDuringOtherHours": false,
+    "isEnabled": true,
+    "provider": {
+      "id": 1,
+      "name": "Email",
+      "description": "Email-провайдер"
+    },
+    "event": {
+      "id": 2,
+      "name": "Создание заявки"
+    },
+    "messageTemplate": {
+      "id": 3,
+      "name": null,
+      "description": "Шаблон уведомления"
+    },
+    "deleted": null
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — триггеры по фильтрам не найдены.
+- `GET /Triggers/{id}` — Возвращает триггер по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RTGetResult
+- `GET /Triggers/{id}/criticalities` — Возвращает список критичностей для триггера. · коды: 200, 204, 206
+  ← path: id:int → IdNameResultOfShort[]
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Triggers/1/criticalities
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "name": "Низкая"
+  },
+  {
+    "id": 2,
+    "name": "Высокая"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — критичности для триггера не найдены.
 
 ## Webhooks
-- `GET /Webhooks` — Возвращает список webhook-ов · права: WebhookList · paginated · коды: 200, 206
-  → map<Webhook.ListResult>
-- `GET /Webhooks/{id}` — Получение детальной информации о webhook'е по идентификатору · права: WebhookGet · коды: 200
-  ← path: id:int → Webhook.GetResult
+- `GET /Webhooks` — Возвращает список webhook-ов. · коды: 200, 204, 206
+  → map<RWListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Webhooks
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "name": "Hook", "isActive": true, "callsRemaining": 3, "lastCall": { "completed": "2026-08-20T10:00:00Z", "exception": null } } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — webhook-и не найдены.
+- `GET /Webhooks/{id}` — Возвращает детальную информацию о webhook-е по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RWGetResult

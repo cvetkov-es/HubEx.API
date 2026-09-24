@@ -4,5 +4,5 @@
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 ```
-type ListResult { footer?: str /* Нижний колонтитул новости */, id?: int, text?: str /* Содержание новости, разметка */, title?: str /* Заголовок новости */ }
+type ResultsArticlesListResult { footer?: str /* Нижний колонтитул новости */, id?: int, text?: str /* Содержание новости, разметка */, title?: str /* Заголовок новости */ }
 ```

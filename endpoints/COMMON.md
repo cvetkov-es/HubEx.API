@@ -8,98 +8,725 @@ Base: `{BASE_URL}/COMMON`
 
 **Оглавление**
 
-- Applications — строки 26–28
-- Attachments — строки 30–43
-- AttributeTypes — строки 45–49
-- Attributes — строки 51–57
-- Banks — строки 59–63
-- Contacts — строки 65–69
-- Countries — строки 71–73
-- Currencies — строки 75–77
-- Events — строки 79–81
-- MeasurementUnits — строки 83–85
-- PowerBIReports — строки 87–91
-- SystemTags — строки 93–95
-- Tags — строки 97–99
-- Timezones — строки 101–105
+- Applications — строки 121–125
+- Пример запроса: — строки 127–132
+- Пример успешного ответа (200): — строки 134–137
+- Пример успешного ответа (206): — строки 139–140
+- Негативные сценарии: — строки 142–145
+- Attachments — строки 147–150
+- Пример запроса: — строки 152–157
+- Пример успешного ответа (200): — строки 159–173
+- Пример успешного ответа (206): — строки 175–176
+- Негативные сценарии: — строки 178–184
+- Пример запроса: — строки 186–187
+- Успешный сценарий: — строки 189–190
+- Негативные сценарии: — строки 192–197
+- Пример запроса: — строки 199–203
+- Пример успешного ответа (200): — строки 205–214
+- Негативные сценарии: — строки 216–223
+- Пример запроса: — строки 225–227
+- Пример успешного ответа: — строки 229–231
+- Негативные сценарии: — строки 233–241
+- Пример запроса: — строки 243–248
+- Пример успешного ответа (200): — строки 250–253
+- Пример успешного ответа (206): — строки 255–256
+- Негативные сценарии: — строки 258–264
+- Пример запроса: — строки 266–270
+- Пример успешного ответа (200): — строки 272–284
+- Негативные сценарии: — строки 286–289
+- AttributeTypes — строки 291–295
+- Пример запроса: — строки 297–302
+- Пример успешного ответа (200): — строки 304–307
+- Пример успешного ответа (206): — строки 309–310
+- Негативные сценарии: — строки 312–318
+- Пример запроса: — строки 320–325
+- Пример успешного ответа (200): — строки 327–330
+- Пример успешного ответа (206): — строки 332–333
+- Негативные сценарии: — строки 335–337
+- Attributes — строки 339–342
+- Пример запроса: — строки 344–347
+- Пример успешного ответа (200): — строки 349–350
+- Пример успешного ответа (206): — строки 352–353
+- Негативные сценарии: — строки 355–361
+- Пример запроса: — строки 363–365
+- Пример успешного ответа (200): — строки 367–368
+- Негативные сценарии: — строки 370–377
+- Пример запроса: — строки 379–384
+- Пример успешного ответа (200): — строки 386–389
+- Пример успешного ответа (206): — строки 391–392
+- Негативные сценарии: — строки 394–397
+- Banks — строки 399–402
+- Пример запроса: — строки 404–409
+- Пример успешного ответа (200): — строки 411–414
+- Пример успешного ответа (206): — строки 416–417
+- Негативные сценарии: — строки 419–425
+- Пример запроса: — строки 427–431
+- Пример успешного ответа (200): — строки 433–436
+- Негативные сценарии: — строки 438–441
+- Contacts — строки 443–447
+- Пример запроса: — строки 449–454
+- Пример успешного ответа (200): — строки 456–459
+- Пример успешного ответа (206): — строки 461–462
+- Негативные сценарии: — строки 464–470
+- Пример запроса: — строки 472–476
+- Пример успешного ответа (200): — строки 478–481
+- Негативные сценарии: — строки 483–486
+- Countries — строки 488–492
+- Пример запроса: — строки 494–499
+- Пример успешного ответа (200): — строки 501–504
+- Пример успешного ответа (206): — строки 506–507
+- Негативные сценарии: — строки 509–512
+- Currencies — строки 514–518
+- Пример запроса: — строки 520–525
+- Пример успешного ответа (200): — строки 527–530
+- Пример успешного ответа (206): — строки 532–533
+- Негативные сценарии: — строки 535–538
+- Events — строки 540–544
+- Пример запроса: — строки 546–551
+- Пример успешного ответа (200): — строки 553–556
+- Пример успешного ответа (206): — строки 558–559
+- Негативные сценарии: — строки 561–564
+- MeasurementUnits — строки 566–570
+- Пример запроса: — строки 572–577
+- Пример успешного ответа (200): — строки 579–582
+- Пример успешного ответа (206): — строки 584–585
+- Негативные сценарии: — строки 587–590
+- PowerBIReports — строки 592–596
+- Пример запроса: — строки 598–603
+- Пример успешного ответа (200): — строки 605–608
+- Пример успешного ответа (206): — строки 610–611
+- Негативные сценарии: — строки 613–619
+- Пример запроса: — строки 621–625
+- Пример успешного ответа (200): — строки 627–630
+- Негативные сценарии: — строки 632–635
+- SystemTags — строки 637–641
+- Пример запроса: — строки 643–648
+- Пример успешного ответа (200): — строки 650–653
+- Пример успешного ответа (206): — строки 655–656
+- Негативные сценарии: — строки 658–661
+- Tags — строки 663–667
+- Пример запроса: — строки 669–674
+- Пример успешного ответа (200): — строки 676–679
+- Пример успешного ответа (206): — строки 681–682
+- Негативные сценарии: — строки 684–687
+- Timezones — строки 689–693
+- Пример запроса: — строки 695–700
+- Пример успешного ответа (200): — строки 702–705
+- Пример успешного ответа (206): — строки 707–708
+- Негативные сценарии: — строки 710–716
+- Пример запроса: — строки 718–722
+- Пример успешного ответа (200): — строки 724–727
+- Негативные сценарии: — строки 729–732
 
 ## Applications
-- `GET /Applications` — Возвращает список  веток · права: ApplicationList · paginated · коды: 200, 206
+- `GET /Applications` — Возвращает список приложений. · коды: 200, 204, 206
   → map<ApplicationResult>
+  Метод используется для получения справочника приложений.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Applications
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "code": "LIC", "nameRu": "Лицензия" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `ApplicationList`.
+- 204 — справочник приложений пуст.
 
 ## Attachments
-- `GET /Attachments` — Список вложенных файлов, доступных пользователю · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: assetID?:int, taskID?:int, assetTemplateID?:int, attachmentID?:int, isDeleted?:enum(true, false) → map<Attachments.ListResult>
-- `GET /Attachments/content/{container}/{filePath}` · коды: 200
+- `GET /Attachments` — Возвращает список вложений. · коды: 200, 204, 206
+  ← query: assetID?:int, taskID?:int, assetTemplateID?:int, attachmentID?:int, isDeleted?:bool → map<RAListResult>
+  Поддерживает фильтрацию по связанным сущностям и флагам, а также ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /attachments?taskID=1001&isDeleted=false
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "123": {
+    "id": 123,
+    "fileName": "photo.png",
+    "description": "Фото для тестов",
+    "publicUrl": "https://files.example.com/attachments/123",
+    "isUploaded": false,
+    "isProtected": false,
+    "size": 1024,
+    "created": "2026-08-19T10:44:42Z"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttachmentsList`.
+- 204 — вложения по указанным критериям не найдены.
+- `GET /Attachments/content/{container}/{filePath}` — Скачивает файл по временной подписи файлового хранилища. · коды: 200, 500
   ← path: filePath:str, container:str; query: temp_url_sig?:str, temp_url_expires?:int, filename?:str
-  Выполнение данного метода резрешино от **анонимного пользователя**.
-- `GET /Attachments/downloadLink` — Получить URL и список необходимых данных, для возможности скачивания архива с файлами для заявок (не более 100) · права: AttachmentsList · paginated · коды: 200, 206
-  ← query: taskID?:int, isDeleted?:enum(true, false) → DownloadLinkResult
-- `GET /Attachments/{attachmentID}` — Возвращает TemporartRedirect на временную ссылку для скачки файла · права: AttachmentDownload · paginated · коды: 206, 307, 500
+  Метод доступен без авторизации, так как использует временную подпись файлового сервера.
+            
+## Пример запроса:
+GET /attachments/content/container1/path/to/file.png?temp_url_sig=<sig>&temp_url_expires=1730000000&filename=file.png
+            
+## Успешный сценарий:
+- 200 — бинарное содержимое файла.
+            
+## Негативные сценарии:
+- 500 — внутренняя ошибка при скачивании файла (ошибка во время подготовки/загрузки).
+- `GET /Attachments/downloadLink` — Подготавливает данные для скачивания архива вложений по заявкам. · коды: 200, 204, 206, 500
+  ← query: taskID?:int, isDeleted?:bool → FSRDownloadLinkResult
+  Используется для формирования архива файлов по списку заявок.
+В одном запросе поддерживается не более 100 заявок.
+            
+## Пример запроса:
+```text
+GET /attachments/downloadLink?taskID=1001&taskID=1002&isDeleted=false
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "downloadUrl": "https://storage.example.com/container/folder.zip",
+  "headers": [
+    { "name": "X-Auth-Token", "value": "token-example" }
+  ],
+  "expiresAfter": "2026-08-19T14:32:00Z"
+}
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttachmentsList`.
+- 204 — для указанных заявок не найдено вложений или не передан ни один `taskID`.
+- 500 — внутренняя ошибка при подготовке архива.
+- `GET /Attachments/{attachmentID}` — Возвращает временную ссылку для скачивания вложения. · коды: 200, 307, 400, 500
   ← path: attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /Attachments/{attachmentID}/roles` — Возвращает список ролей, для которых эксклюзивно доступен вложенный файл · права: RoleAttachmentsList · paginated · коды: 200, 206
+  В зависимости от параметра `noRedirect` метод либо возвращает редирект на файл, либо отдает ссылку в теле ответа.
+            
+## Пример запроса:
+GET /attachments/123?thumbnailSize=128&noRedirect=false
+Authorization: Bearer <token>
+            
+## Пример успешного ответа:
+- 307 — редирект на временную ссылку на скачивание (noRedirect=false).
+- 200 — если noRedirect=true: ссылка на файл отдается в теле ответа (формат зависит от DownloadAttachmentAsync2).
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttachmentDownload`.
+- 400 — некорректный thumbnailSize.
+- 500 — ошибка при подготовке ссылки.
+- `GET /Attachments/{attachmentID}/roles` — Возвращает роли, имеющие доступ к вложению. · коды: 200, 204, 206
   ← path: attachmentID:int → map<str>
-- `GET /Attachments/{attachmentID}/this` — Метод получения данных вложения · права: AttachmentsList · коды: 200
-  ← path: attachmentID:int → Attachments.GetResult
+  Метод возвращает роли, для которых вложение доступно как защищенный файл.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /attachments/123/roles
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": "Админ", "2": "Пользователь" }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `RoleAttachmentsList`.
+- 204 — для вложения не настроены роли доступа.
+- `GET /Attachments/{attachmentID}/this` — Возвращает данные вложения. · коды: 200, 204
+  ← path: attachmentID:int → RAGetResult
+  Возвращает метаданные вложения без скачивания бинарного содержимого.
+            
+## Пример запроса:
+```text
+GET /attachments/123/this
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "id": 123,
+  "fileName": "photo.png",
+  "description": "Фото для тестов",
+  "publicUrl": "https://files.example.com/attachments/123",
+  "isUploaded": false,
+  "isProtected": false,
+  "size": 1024,
+  "created": "2026-08-19T10:44:42Z"
+}
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttachmentsList`.
+- 204 — вложение не найдено.
 
 ## AttributeTypes
-- `GET /AttributeTypes` — Метод возвращает список доступных типов (доп.полей) атрибутов · права: AttributeTypeList · paginated · коды: 200, 206
-  → map<AttributeTypes.ListResult>
-- `GET /AttributeTypes/v2` — Возвращает плоский список типов атрибутов (доп.полей) с доменами, если существует такое сопоставление · права: AttributeTypeList · paginated · коды: 200, 206
+- `GET /AttributeTypes` — Возвращает список типов атрибутов. · коды: 200, 206
+  → map<RATListResult>
+  Возвращает сгруппированный справочник типов пользовательских полей.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /AttributeTypes
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "3": { "code": "TASK_ATTR", "name": "Атрибут задачи" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttributeTypeList`.
+- `GET /AttributeTypes/v2` — Возвращает плоский список типов атрибутов с доменами. · коды: 200, 206
   → ExtListResult[]
+  В отличие от базового метода, возвращает записи в плоском виде, включая связанный домен, если он есть.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /AttributeTypes/v2
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+[ { "id": 3, "code": "TASK_ATTR", "name": "Атрибут задачи", "domain": { "id": 1, "name": "Задача", "code": "TASK" } } ]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttributeTypeList`.
 
 ## Attributes
-- `GET /Attributes` — Метод получения данных атрибута · права: AttributeList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), isPublic?:enum(true, false), isRelevantForTask?:enum(true, false), isRelevantForAsset?:enum(true, false), isRelevantForCheckList?:enum(true, false), isRelevantForCompletedWork?:enum(true, false), isRelevantForCompany?:enum(true, false), isRelevantForContract?:enum(true, false), IsRelevantForCustomer?:enum(true, false), IsRelevantForTechnician?:enum(true, false) → map<AttributeResultList>
-- `GET /Attributes/{attributeID}` — Метод получения данных атрибута · права: AttributeGet · коды: 200
+- `GET /Attributes` — Возвращает список атрибутов. · коды: 200, 204, 206
+  ← query: isDeleted?:bool, isPublic?:bool, isRelevantForTask?:bool, isRelevantForAsset?:bool, isRelevantForCheckList?:bool, isRelevantForCompletedWork?:bool, isRelevantForCompany?:bool, isRelevantForContract?:bool, IsRelevantForCustomer?:bool, IsRelevantForTechnician?:bool → map<AttributeResultList>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+GET /Attributes?isDeleted=false&isPublic=true&isRelevantForTask=true
+Authorization: Bearer <token>
+Range: items=1-50
+            
+## Пример успешного ответа (200):
+{ "12": { "name": "Договор №", "type": { "id": 5, "code": "DOC_NUM", "name": "Номер договора" }, "domain": { "id": 2, "name": "Договор", "code": "CONTRACT" }, "isPublic": true, "deleted": null, "relevantFor": { "task": true, "asset": false, "checkList": false, "completedWork": false, "contract": true, "company": false, "customer": false, "technician": false }, "listOfValues": { "VAL_1": "Значение 1" } } }
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttributeList`.
+- 204 — атрибуты по фильтрам не найдены.
+- `GET /Attributes/{attributeID}` — Возвращает атрибут по идентификатору. · коды: 200, 204
   ← path: attributeID:int → AttributeResultGet
-- `GET /Attributes/{attributeID}/listOfValues` — Метод получения допустимых значений для атрибута · права: AttributeListOfValuesList · paginated · коды: 200, 206
+  Возвращает пользовательское поле вместе со списком допустимых значений, если они настроены.
+            
+## Пример запроса:
+GET /Attributes/12
+Authorization: Bearer <token>
+            
+## Пример успешного ответа (200):
+{ "name": "Договор №", "type": { "id": 5, "code": "DOC_NUM", "name": "Номер договора" }, "domain": { "id": 2, "name": "Договор", "code": "CONTRACT" }, "isPublic": true, "measurementUnit": null, "deleted": null, "relevantFor": { "task": true, "asset": false, "checkList": false, "completedWork": false, "contract": true, "company": false, "customer": false, "technician": false }, "listOfValues": [ { "key": "VAL_1", "value": "Значение 1", "deleted": null } ] }
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttributeGet`.
+- 204 — атрибут не найден/не доступен в текущем тенанте.
+- `GET /Attributes/{attributeID}/listOfValues` — Возвращает допустимые значения атрибута. · коды: 200, 204, 206
   ← path: attributeID:int → map<str>
+  Метод используется для пользовательских полей со списком значений.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Attributes/12/listOfValues
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "VAL_1": "Значение 1", "VAL_2": "Значение 2" }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `AttributeListOfValuesList`.
+- 204 — для атрибута не найдено допустимых значений.
 
 ## Banks
-- `GET /Banks` — Метод получения списка банков · права: BankList · paginated · коды: 200, 204, 206
-  ← query: searchText?:str, isActive?:enum(true, false) → map<BankResult>
-- `GET /Banks/{bankId}` — Метод получения данных банка · права: BankGet · коды: 200, 404
+- `GET /Banks` — Возвращает список банков. · коды: 200, 204, 206
+  ← query: searchText?:str, isActive?:bool → map<BankResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Banks?searchText=central
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "name": "Центральный банк", "bic": "044525225", "correspondingAccount": "30101810400000000225", "swift": "SWIFT", "phone": "+74950001122", "eMail": "bank@example.com", "address": "Россия, Москва", "isActive": true } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `BankList`.
+- 204 — банки по фильтрам не найдены.
+- `GET /Banks/{bankId}` — Возвращает данные банка по идентификатору. · коды: 200, 404
   ← path: bankId:int → BankResult
+  Используется для открытия карточки банка или проверки существования записи.
+            
+## Пример запроса:
+```text
+GET /Banks/1
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "id": 1, "name": "Центральный банк", "bic": "044525225", "correspondingAccount": "30101810400000000225", "swift": "SABRRUMM", "phone": "+74951234567", "eMail": "info@sberbank.ru", "address": "Москва, ул. Тестовая, 1", "isActive": true }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `BankGet`.
+- 404 — банк с указанным id не найден.
 
 ## Contacts
-- `GET /Contacts` — Метод получения данных контакта · права: ContactsList · paginated · коды: 200, 204, 206
-  ← query: searchText?:str, isDeleted?:enum(true, false), contactID?:int → map<Contacts.ListResult>
-- `GET /Contacts/{contactID}` — Метод получения данных контакта · права: ContactGet · коды: 200, 204, 404
-  ← path: contactID:int → Contacts.GetResult
+- `GET /Contacts` — Возвращает список контактов. · коды: 200, 204, 206
+  ← query: searchText?:str, isDeleted?:bool, contactID?:int → map<RContactsListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+Если диапазон не передан, применяется стандартное ограничение на размер выборки.
+            
+## Пример запроса:
+```text
+GET /Contacts?searchText=ivan
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "fullName": "Иван Иванов", "email": "ivan@example.com", "phone": "+79990001122", "position": "Менеджер", "description": "Описание", "deleted": null, "isUsed": true } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `ContactsList`.
+- 204 — подходящие контакты не найдены.
+- `GET /Contacts/{contactID}` — Возвращает контакт по идентификатору. · коды: 200, 204
+  ← path: contactID:int → RCGetResult
+  Используется для открытия карточки контакта.
+            
+## Пример запроса:
+```text
+GET /Contacts/123
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "id": 123, "fullName": "Иван Иванов", "email": "ivan@example.com", "phone": "+79990001122", "position": "Менеджер", "description": "Описание", "deleted": null }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `ContactGet`.
+- 204 — контакт недоступен/отсутствует.
 
 ## Countries
-- `GET /Countries` — Метод получения списка стран · права: CountriesList · paginated · коды: 200, 206
-  → map<Countries.ListResult>
+- `GET /Countries` — Возвращает список стран. · коды: 200, 204, 206
+  → map<RCountriesListResult>
+  Метод используется для заполнения справочников стран.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Countries
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "name": "Россия", "twoSymbolCode": "RU", "threeSymbolCode": "RUS" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `CountriesList`.
+- 204 — список стран пуст (нет записей).
 
 ## Currencies
-- `GET /Currencies` — Метод получения списка валют · права: CurrenciesList · paginated · коды: 200, 206
-  → map<Currencies.ListResult>
+- `GET /Currencies` — Возвращает список валют. · коды: 200, 204, 206
+  → map<RCurrenciesListResult>
+  Используется для заполнения справочников валют в интерфейсах HubEx.
+При передаче заголовка диапазона возвращает частичный набор записей.
+            
+## Пример запроса:
+```text
+GET /Currencies
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "name": "Российский рубль", "shortName": "RUB", "asciiCode": "RUB" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `CurrenciesList`.
+- 204 — справочник валют пуст (записей нет).
 
 ## Events
-- `GET /Events` — Метод получения списка доступных событий · права: EventList · paginated · коды: 200, 206
-  ← query: eventTransportTypeID?:int, isSystem?:enum(true, false), isHidden?:enum(true, false) → Events.ListResult[]
+- `GET /Events` — Возвращает список событий. · коды: 200, 204, 206
+  ← query: eventTransportTypeID?:int, isSystem?:bool, isHidden?:bool → map<REListResult>
+  Позволяет отфильтровать события по типу транспорта, системному признаку и признаку скрытия.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Events?eventTransportTypeID=1&isSystem=true&isHidden=false
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "10": { "id": 10, "name": "Событие", "code": "EVENT_1" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `EventList`.
+- 204 — подходящие события не найдены.
 
 ## MeasurementUnits
-- `GET /MeasurementUnits` — Метод получения списка единиц измерения · права: MeasurementUnitList · paginated · коды: 200, 206
+- `GET /MeasurementUnits` — Возвращает список единиц измерения. · коды: 200, 204, 206
   → map<MeasurementUnitResult>
+  Используется для вывода справочника единиц измерения.
+При наличии заголовка диапазона возвращает частичный результат.
+            
+## Пример запроса:
+```text
+GET /MeasurementUnits
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "name": "штука", "abbreviation": "шт", "designation": "piece" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `MeasurementUnitList`.
+- 204 — справочник единиц измерения пуст.
 
 ## PowerBIReports
-- `GET /PowerBIReports` — Метод получения информации по PowerBI отчетам · права: PowerBIReportList · paginated · коды: 200, 206
+- `GET /PowerBIReports` — Возвращает список Power BI отчетов. · коды: 200, 204, 206
   → PowerBIReportResult[]
-- `GET /PowerBIReports/{id}` — Метод получения данных отчета · права: PowerBIReportGet · коды: 200, 404
+  Используется для получения списка отчетов, доступных пользователю.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /PowerBIReports
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+[ { "id": 1, "name": "Отчет по продажам", "reportID": "RPT_001", "reportType": { "id": 2, "name": "Sales" } } ]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `PowerBIReportList`.
+- 204 — отчетов по доступности нет.
+- `GET /PowerBIReports/{id}` — Возвращает Power BI отчет по идентификатору. · коды: 200, 404
   ← path: id:int → PowerBIReportResult
+  Используется для получения детальной информации о конкретном отчете.
+            
+## Пример запроса:
+```text
+GET /PowerBIReports/1
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "id": 1, "name": "Отчет по продажам", "reportID": "RPT_001", "reportType": { "id": 2, "name": "Sales" } }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `PowerBIReportGet`.
+- 404 — отчет с указанным id не найден.
 
 ## SystemTags
-- `GET /SystemTags` — Метод получения списка доступных системных тэгов · права: TagsList · paginated · коды: 200, 206
-  → IdNameResult<Int16>[]
+- `GET /SystemTags` — Возвращает список системных тегов. · коды: 200, 204, 206
+  → IdNameResultOfShort[]
+  Метод отдает системные теги, доступные пользователю в текущем тенанте.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /SystemTags
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+[ { "id": 1, "name": "Системный тег" } ]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `TagsList`.
+- 204 — системных тегов для текущего тенанта нет.
 
 ## Tags
-- `GET /Tags` — Метод получения списка доступных тэгов · права: TagsList · paginated · коды: 200, 206
+- `GET /Tags` — Возвращает список тегов. · коды: 200, 204, 206
   ← query: searchText?:str → str[]
+  Если указан `searchText`, в ответ попадают только теги, соответствующие условию поиска.
+Поддерживается ограничение диапазоном через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Tags?searchText=finance
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+[ "finance", "bank", "reporting" ]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `TagsList`.
+- 204 — подходящие теги не найдены.
 
 ## Timezones
-- `GET /Timezones` — Метод получения списка временных зон · права: TimezonesList · paginated · коды: 200, 206
-  → map<Timezones.ListResult>
-- `GET /Timezones/info` — Метод получения часового пояса тенанта · права: TimezonesList · paginated · коды: 200, 206
+- `GET /Timezones` — Возвращает список часовых поясов. · коды: 200, 204, 206
+  → map<RTListResult>
+  Метод отдает справочник доступных часовых поясов.
+Поддерживает диапазон через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Timezones
+Authorization: Bearer <token>
+Range: items=1-50
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "name": "Москва", "utcTimeOffset": "+03:00" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `TimezonesList`.
+- 204 — часовые пояса не найдены.
+- `GET /Timezones/info` — Возвращает информацию о часовом поясе. · коды: 200, 204
   ← query: timezoneId?:int → TimezoneGetResult
+  Метод возвращает детальную информацию по часовому поясу по его идентификатору.
+            
+## Пример запроса:
+```text
+GET /Timezones/info?timezoneId=1
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "name": "Москва", "utcTimeOffsetMinutes": 180 }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized — отсутствует или некорректен Bearer-токен.
+- 403 Forbidden — недостаточно прав `TimezonesList`.
+- 204 — часовой пояс не найден.

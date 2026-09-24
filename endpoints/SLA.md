@@ -5,27 +5,28 @@
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/SLA`
+> Примеры ответов вынесены в [../examples/SLA.md](../examples/SLA.md).
 
 **Оглавление**
 
-- Attributes — строки 15–17
-- Criticalities — строки 19–23
-- DeadlineRules — строки 25–31
+- Attributes — строки 16–18
+- Criticalities — строки 20–24
+- DeadlineRules — строки 26–32
 
 ## Attributes
-- `GET /Attributes` — Возвращает полный список атрибутов  SLA · права: AttributeSLAList · коды: 200
-  → map<Attributes.ListResult>
+- `GET /Attributes` — Получение списка атрибутов SLA · коды: 200, 204 · примеры
+  → map<ResultsAttributesListResult>
 
 ## Criticalities
-- `GET /Criticalities` — Возвращает полный список критичностей · права: CriticalitiesList · коды: 200, 500
-  ← query: contractID?:int[], workTypeID?:int[] → map<Criticalities.GetResult>
-- `GET /Criticalities/{id}` — Возвращает критичность · права: CriticalityGet · коды: 200
-  ← path: id:int → Criticalities.GetResult
+- `GET /Criticalities` — Получение списка критичностей · коды: 200, 204 · примеры
+  ← query: contractID?:int[], workTypeID?:int[] → map<ResultsCriticalitiesGetResult>
+- `GET /Criticalities/{id}` — Получение критичности · коды: 200, 204 · примеры
+  ← path: id:int → ResultsCriticalitiesGetResult
 
 ## DeadlineRules
-- `GET /DeadlineRules` — Возвращает полный список правил планового закрытия заявки · права: DeadlineRuleList · paginated · коды: 200, 206, 500
-  → map<DeadlineRules.ListResult>
-- `GET /DeadlineRules/{DeadlineRuleID}` — Детальная информация по правилу планового закрытия заявки · права: DeadlineRuleGet · коды: 200, 400
-  ← path: DeadlineRuleID:int → DeadlineRules.GetResult
-- `GET /DeadlineRules/{deadlineRuleID}/attributes` — Возвращает список действующих атрибутов для правила планового закрытия заявки · права: DeadlineRuleAttributeList · коды: 200, 400
+- `GET /DeadlineRules` — Получение списка правил планового закрытия заявки · коды: 200, 204, 206 · примеры
+  → map<ResultsDeadlineRulesListResult>
+- `GET /DeadlineRules/{DeadlineRuleID}` — Получение правила планового закрытия заявки · коды: 200, 204, 400 · примеры
+  ← path: DeadlineRuleID:int → ResultsDeadlineRulesGetResult
+- `GET /DeadlineRules/{deadlineRuleID}/attributes` — Получение атрибутов правила планового закрытия заявки · коды: 200, 204, 400 · примеры
   ← path: deadlineRuleID:int → map<int[]>

@@ -5,11 +5,12 @@
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/NEWS`
+> Примеры ответов вынесены в [../examples/NEWS.md](../examples/NEWS.md).
 
 **Оглавление**
 
-- Articles — строки 13–15
+- Articles — строки 14–16
 
 ## Articles
-- `GET /Articles` — Возвращает список доступных пользователю новостей. · права: ArticleListForTenantMember · paginated · коды: 200, 206
-  ← query: isRead?:enum(true, false), isPublished?:enum(true, false) → map<ListResult>
+- `GET /Articles` — Получение списка доступных пользователю новостей · коды: 200, 204, 206 · примеры
+  ← query: isRead?:bool, isPublished?:bool → map<ResultsArticlesListResult>

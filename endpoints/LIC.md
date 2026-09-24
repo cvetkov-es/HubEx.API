@@ -5,11 +5,12 @@
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/LIC`
+> Примеры ответов вынесены в [../examples/LIC.md](../examples/LIC.md).
 
 **Оглавление**
 
-- LicenseScanner — строки 13–15
+- LicenseScanner — строки 14–16
 
 ## LicenseScanner
-- `GET /LicenseScanner/State` — Проверка состояния сервиса мониторинга лицензий · коды: 200
+- `GET /LicenseScanner/State` — Получение состояния сервиса мониторинга лицензий · коды: 200 · примеры
   → WatcherStateEnum

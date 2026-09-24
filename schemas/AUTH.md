@@ -6,11 +6,10 @@
 ```
 type ApplicationListResult { application?: ApplicationResult, client?: ClientResult, pushToken?: str /* Токен push-уведомлений */, timestamp?: datetime /* Метка времени актуальности данных */ }
 type ApplicationResult { id?: int, name?: str, version?: str /* Версия */ }
-type BanResult { banReason?: IdNameResult<Byte>, dateTill?: datetime /* Срок действия бана */ }
-type ClientResult { agent?: str /* Операционная система */, clientType?: IdNameResult<Byte>, id?: int /* Идентификатор */, uniqueClientIdentifier?: str /* UniqueClientIdentifier */ }
-type ErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifier?: str }
+type BanResult { banReason?: IdNameResultOfByte, dateTill?: datetime /* Срок действия бана */ }
+type ClientResult { agent?: str /* Операционная система */, clientType?: IdNameResultOfByte, id?: int /* Идентификатор */, uniqueClientIdentifier?: str /* UniqueClientIdentifier */ }
 type GetResult { ban?: BanResult, credential?: str /* Учетные данные */, domainLogin?: str /* Логин домена аккаунта пользователя */, id?: int /* Идентификатор учетной записи */, isAnonymous?: bool, isCrossTenantAdmin?: bool, socialProfiles?: SocialProfileResult[] /* Связь с социальными профилями */ }
-type IdNameResult<Byte> { id?: int, name?: str }
-type ListResult { content?: str /* Содержимое уведомления */, created?: datetime /* Дата и время создания уведомления */, notificationID?: int /* дентификатор уведомления */, providerID?: int /* Идентификатор метода отсылки уведомления */, sent?: datetime /* Дата и время отправки уведомления */, subject?: str /* Тема уведомления */ }
+type IdNameResultOfByte { id?: int, name?: str }
+type ListResult { content?: str /* Содержимое уведомления */, created?: datetime /* Дата и время создания уведомления */, notificationID?: int /* Идентификатор уведомления */, providerID?: int /* Идентификатор метода отсылки уведомления */, sent?: datetime /* Дата и время отправки уведомления */, subject?: str /* Тема уведомления */ }
 type SocialProfileResult { dateFrom?: datetime /* Дата начала использования соц.сети для аутентификации */, dateTill?: datetime /* Дата окончания использования соц.сети для аутентификации */, id?: int, name?: str }
 ```

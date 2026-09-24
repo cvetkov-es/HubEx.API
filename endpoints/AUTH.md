@@ -1,22 +1,88 @@
 # AUTH — справочник ручек
 
-> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTH (Authenticatin and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md.
+> **Что здесь:** только read-ручки (GET/HEAD) сервиса AUTH (Authentication and authorization API for HubEx): сигнатуры, параметры, права. Типы — schemas/AUTH.md.
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/AUTH.md`; грабли — `notes/AUTH.md` (если есть).
 > **Линза read-only:** здесь только GET/HEAD. Write-ручки (POST/PUT/PATCH/DELETE) и их типы в API **существуют**, но в эту линзу не входят — не делай из их отсутствия здесь вывода, что их нет в API.
 
 Base: `{BASE_URL}/AUTH`
+> Примеры ответов вынесены в [../examples/AUTH.md](../examples/AUTH.md).
 
 **Оглавление**
 
-- Accounts — строки 13–22
+- Accounts — строки 22–29
+- Пример запроса: — строки 31–32
+- Пример успешного ответа (200): — строки 34–53
+- Пример успешного ответа (206): — строки 55–56
+- Негативные сценарии: — строки 58–64
+- Пример запроса: — строки 66–67
+- Пример успешного ответа (200): — строки 69–80
+- Пример успешного ответа (206): — строки 82–83
+- Негативные сценарии: — строки 85–88
 
 ## Accounts
-- `GET /Accounts` — Возвращает данные учетной записи по учетным данным · права: AccountGet · коды: 200, 500
+- `GET /Accounts` — Возвращает данные учетной записи по учетным данным · коды: 200, 204 · примеры
   ← query: credential?:str → GetResult
-- `HEAD /Accounts` — Проверяет присутствие учетной записи по указанным полномочийм · коды: 200, 404
+- `HEAD /Accounts` — Проверяет присутствие учетной записи по указанным полномочиям · коды: 200, 404, 409 · примеры
   ← query: credential?:str
-  Выполнение данного метода резрешино от **анонимного пользователя**.
-- `GET /Accounts/this/applications` — Приложения учетной записи · права: AccountClientApplicationList · paginated · коды: 200, 206
+- `GET /Accounts/this/applications` — Приложения учетной записи · коды: 200, 204, 206
   → ApplicationListResult[]
-- `GET /Accounts/this/notifications` — Список уведомлений из лога · права: NotificationLogList · paginated · коды: 200, 206
+  Поддерживает ограничение результата через query-параметры `offset` и `fetch`.
+            
+## Пример запроса:
+`GET /Accounts/this/applications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "client": {
+      "id": 1,
+      "uniqueClientIdentifier": "abc-123-def-456",
+      "agent": "Android 14",
+      "clientType": { "id": 1, "name": "Mobile" }
+    },
+    "application": {
+      "id": 2,
+      "name": "HubEx Mobile",
+      "version": "3.5.0"
+    },
+    "pushToken": "fcm-token-xyz",
+    "timestamp": "2026-08-21T08:00:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: приложения не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AccountClientApplicationList`.
+- `GET /Accounts/this/notifications` — Список уведомлений из лога · коды: 200, 204, 206
   → ListResult[]
+  Поддерживает ограничение результата через query-параметры `offset` и `fetch`.
+            
+## Пример запроса:
+`GET /Accounts/this/notifications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "notificationID": 501,
+    "providerID": 1,
+    "subject": "Подтверждение адреса электронной почты",
+    "content": "Для подтверждения перейдите по ссылке...",
+    "sent": "2026-08-21T08:01:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: уведомления не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `NotificationLogList`.
