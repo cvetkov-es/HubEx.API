@@ -220,16 +220,16 @@
 
 ### action
 
-- [TSTG · GET /Action](endpoints/TSTG.md) → TSTG:map<ActionResult>
+- [TSTG · GET /Action](endpoints/TSTG.md) → TSTG:map<ActionsResult>
 
 ### applications
 
-- [ADM · GET /Roles/{roleID}/applications](endpoints/ADM.md) → ADM:map<ResultsRoleApplicationListResult>
+- [ADM · GET /Roles/{roleID}/applications](endpoints/ADM.md) → ADM:map<RRAListResult>
 - [AUTH · DELETE /Accounts/this/applications](endpoints/AUTH.md)
 - [AUTH · GET /Accounts/this/applications](endpoints/AUTH.md) → AUTH:ApplicationListResult[]
 - [AUTH · PUT /Accounts/this/applications](endpoints/AUTH.md)
 - [COMMON · GET /Applications](endpoints/COMMON.md) → COMMON:map<ApplicationResult>
-- [UI · GET /UserViews/Users/{userID}/Applications/{applicationID}/{code}](endpoints/UI.md) → UI:TaskViewProjection
+- [UI · GET /UserViews/Users/{userID}/Applications/{applicationID}/{code}](endpoints/UI.md) → UI:ProjectionsUITaskViewProjection
 - [UI · POST /UserViews/Users/{userID}/Applications/{applicationID}/{code}](endpoints/UI.md)
 - [UI · PUT /UserViews/Users/{userID}/Applications/{applicationID}/{code}/reset](endpoints/UI.md)
 - [UI · PUT /UserViews/Users/{userID}/Applications/{applicationID}/{code}](endpoints/UI.md)
@@ -240,18 +240,18 @@
 
 - [PA · GET /Technicians/{userID}/workSchedules/appointments](endpoints/PA.md) → PA:AppointmentResult[]
 - [PMP · DELETE /Schedules/appointments/assign](endpoints/PMP.md)
-- [PMP · GET /ScheduledTasks/appointments](endpoints/PMP.md) → PMP:AppointmentResult<AssetAssignResult>[]
-- [PMP · GET /ScheduledTasks/v2/appointments](endpoints/PMP.md) → PMP:AppointmentResult<AssetAssignResultV2>[]
-- [PMP · GET /Schedules/appointments/assign](endpoints/PMP.md) → PMP:map<ScheduleAppointmentAssignListResult[]>
-- [PMP · GET /Schedules/{scheduleID}/appointments/assign](endpoints/PMP.md) → PMP:map<ScheduleAppointmentAssignListResult[]>
-- [PMP · GET /Schedules/{scheduleID}/appointments](endpoints/PMP.md) → PMP:ScheduleAppointments.ListResult[]
+- [PMP · GET /ScheduledTasks/appointments](endpoints/PMP.md) → PMP:AppointmentResultOfRSTAssetAssignResult[]
+- [PMP · GET /ScheduledTasks/v2/appointments](endpoints/PMP.md) → PMP:AppointmentResultOfAssetAssignResultV2[]
+- [PMP · GET /Schedules/appointments/assign](endpoints/PMP.md) → PMP:map<ScheduleAppointmentAssignListResult>
+- [PMP · GET /Schedules/{scheduleID}/appointments/assign](endpoints/PMP.md) → PMP:map<ScheduleAppointmentAssignListResult>
+- [PMP · GET /Schedules/{scheduleID}/appointments](endpoints/PMP.md) → PMP:RSAListResult[]
 - [PMP · HEAD /ScheduledTasks/appointments](endpoints/PMP.md)
 - [PMP · POST /Schedules/appointments/assign](endpoints/PMP.md)
 - [WORK · POST /TaskTemplates/{taskTemplateId}/schedules/{scheduleId}/appointments](endpoints/WORK.md)
 
 ### articles
 
-- [NEWS · GET /Articles](endpoints/NEWS.md) → NEWS:map<ListResult>
+- [NEWS · GET /Articles](endpoints/NEWS.md) → NEWS:map<ResultsArticlesListResult>
 - [NEWS · PUT /Articles](endpoints/NEWS.md)
 
 ### asclist
@@ -268,9 +268,9 @@
 
 ### assetassignments
 
-- [ADM · GET /Users/{userID}/assetAssignments](endpoints/ADM.md) → ADM:ResultsUsersAssetAssignmentResult[]
+- [ADM · GET /Users/{userID}/assetAssignments](endpoints/ADM.md) → ADM:AssetAssignmentResult[]
 - [PA · DELETE /AssetAssignments](endpoints/PA.md)
-- [PA · GET /AssetAssignments](endpoints/PA.md) → PA:AssetAssignments.ListResult[]
+- [PA · GET /AssetAssignments](endpoints/PA.md) → PA:RAAListResult[]
 - [PA · POST /AssetAssignments](endpoints/PA.md)
 
 ### assetattachments
@@ -309,27 +309,27 @@
 
 ### assetlistqueries
 
-- [ADM · GET /Users/this/assetListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersAssetListQueryResult>
-- [ADM · GET /Users/{id}/assetListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersAssetListQueryResult>
+- [ADM · GET /Users/this/assetListQueries](endpoints/ADM.md) → ADM:map<AssetListQueryResult>
+- [ADM · GET /Users/{id}/assetListQueries](endpoints/ADM.md) → ADM:map<AssetListQueryResult>
 - [ES · DELETE /AssetListQueries/remove](endpoints/ES.md)
 - [ES · DELETE /AssetListQueries/{id}/remove](endpoints/ES.md)
 - [ES · DELETE /AssetListQueries/{id}](endpoints/ES.md)
 - [ES · DELETE /AssetListQueries](endpoints/ES.md)
-- [ES · GET /AssetListQueries/{id}](endpoints/ES.md) → ES:map<ResultsAssetListQueriesAssetListQueryResult>
-- [ES · GET /AssetListQueries](endpoints/ES.md) → ES:map<ResultsAssetListQueriesAssetListQueryResult>[]
+- [ES · GET /AssetListQueries/{id}](endpoints/ES.md) → ES:ResultsAssetListQueriesAssetListQueryGetResult
+- [ES · GET /AssetListQueries](endpoints/ES.md) → ES:map<ResultsAssetListQueriesAssetListQueryResult>
 - [ES · POST /AssetListQueries](endpoints/ES.md)
 - [ES · PUT /AssetListQueries](endpoints/ES.md)
 
 ### assetlocations
 
 - [ES · DELETE /AssetLocations](endpoints/ES.md)
-- [ES · GET /AssetLocations](endpoints/ES.md)
+- [ES · GET /AssetLocations](endpoints/ES.md) → ES:map<ResultsAssetsAssetLocationResult>
 - [ES · POST /AssetLocations](endpoints/ES.md)
 - [ES · PUT /AssetLocations](endpoints/ES.md)
 
 ### assetmaintenance
 
-- [REPORT · GET /AssetMaintenance/planned](endpoints/REPORT.md) → REPORT:PlannedMaintenanceResult[]
+- [REPORT · GET /AssetMaintenance/planned](endpoints/REPORT.md) → REPORT:ResultsAssetMaintenancePlannedMaintenanceResult[]
 
 ### assets
 
@@ -350,6 +350,7 @@
 - [ES · PUT /Assets/{assetID}](endpoints/ES.md)
 - [ES · PUT /Assets](endpoints/ES.md)
 - [EXPORT · GET /Assets](endpoints/EXPORT.md)
+- [IMPORT · POST /Assets](endpoints/IMPORT.md)
 - [SC · DELETE /ServiceContract/{contractID}/assets/{assetID}](endpoints/SC.md)
 - [SC · DELETE /ServiceContract/{contractID}/assets](endpoints/SC.md)
 - [SC · GET /ServiceContract/{contractID}/assets](endpoints/SC.md) → SC:map<AssetResultBase>
@@ -360,7 +361,7 @@
 
 - [ES · DELETE /AssetSchemas/{schemaId}](endpoints/ES.md)
 - [ES · GET /AssetSchemas/list](endpoints/ES.md) → ES:map<ResultsAssetSchemaSchemaBase>
-- [ES · GET /AssetSchemas/{schemaID}](endpoints/ES.md) → ES:ResultsAssetSchemaSchema
+- [ES · GET /AssetSchemas/{schemaId}](endpoints/ES.md) → ES:ResultsAssetSchemaSchema
 - [ES · POST /AssetSchemas/{schemaId}/bind](endpoints/ES.md)
 - [ES · PUT /AssetSchemas/{schemaId}/unbind](endpoints/ES.md)
 
@@ -423,7 +424,7 @@
 
 - [ES · DELETE /AssetTypes/{id}](endpoints/ES.md)
 - [ES · DELETE /AssetTypes](endpoints/ES.md)
-- [ES · GET /AssetTypes/{id}](endpoints/ES.md)
+- [ES · GET /AssetTypes/{id}](endpoints/ES.md) → ES:ResultsAssetTypesGetResult
 - [ES · GET /AssetTypes](endpoints/ES.md) → ES:map<ResultsAssetTypesGetResult>
 - [ES · POST /AssetTypes](endpoints/ES.md)
 - [ES · PUT /AssetTypes](endpoints/ES.md)
@@ -437,8 +438,8 @@
 
 - [TSTG · DELETE /AssigneeSelectionRules/{id}](endpoints/TSTG.md)
 - [TSTG · DELETE /AssigneeSelectionRules](endpoints/TSTG.md)
-- [TSTG · GET /AssigneeSelectionRules/{id}](endpoints/TSTG.md) → TSTG:AssigneeSelectionRule.GetResult
-- [TSTG · GET /AssigneeSelectionRules](endpoints/TSTG.md) → TSTG:map<AssigneeSelectionRule.ListResult>
+- [TSTG · GET /AssigneeSelectionRules/{id}](endpoints/TSTG.md) → TSTG:RASRGetResult
+- [TSTG · GET /AssigneeSelectionRules](endpoints/TSTG.md) → TSTG:map<RASRListResult>
 - [TSTG · POST /AssigneeSelectionRules](endpoints/TSTG.md)
 - [TSTG · PUT /AssigneeSelectionRules](endpoints/TSTG.md)
 
@@ -459,7 +460,7 @@
 ### attachment
 
 - [ES · GET /Companies/{companyID}/attachment/{attachmentID}](endpoints/ES.md) → ES:ResultsCommonGetAttachmentResult
-- [SC · GET /ServiceContract/{contractID}/attachment/{attachmentID}](endpoints/SC.md) → SC:AttachmentResult
+- [SC · GET /ServiceContract/{contractID}/attachment/{attachmentID}](endpoints/SC.md) → SC:RAAttachmentResult
 - [WH · DELETE /Materials/{materialID}/attachment/{attachmentID}](endpoints/WH.md)
 - [WH · GET /Materials/{materialID}/attachment/{attachmentID}](endpoints/WH.md) → WH:ResultsMaterialAttachmentsMaterialAttachmentResult
 - [WORK · DELETE /Tasks/{taskID}/completedWorks/report/attachment/{attachmentID}](endpoints/WORK.md)
@@ -472,13 +473,13 @@
 
 ### attachments
 
-- [ADM · GET /Roles/{roleID}/attachments](endpoints/ADM.md) → ADM:ResultsCommonAttachmentResult[]
+- [ADM · GET /Roles/{roleID}/attachments](endpoints/ADM.md) → ADM:RCAttachmentResult[]
 - [COMMON · DELETE /Attachments/{attachmentID}](endpoints/COMMON.md)
 - [COMMON · DELETE /Attachments](endpoints/COMMON.md)
-- [COMMON · GET /Attachments/downloadLink](endpoints/COMMON.md) → COMMON:DownloadLinkResult
-- [COMMON · GET /Attachments/{attachmentID}/this](endpoints/COMMON.md) → COMMON:Attachments.GetResult
+- [COMMON · GET /Attachments/downloadLink](endpoints/COMMON.md) → COMMON:FSRDownloadLinkResult
+- [COMMON · GET /Attachments/{attachmentID}/this](endpoints/COMMON.md) → COMMON:RAGetResult
 - [COMMON · GET /Attachments/{attachmentID}](endpoints/COMMON.md)
-- [COMMON · GET /Attachments](endpoints/COMMON.md) → COMMON:map<Attachments.ListResult>
+- [COMMON · GET /Attachments](endpoints/COMMON.md) → COMMON:map<RAListResult>
 - [COMMON · POST /Attachments/upload/fromBody](endpoints/COMMON.md)
 - [COMMON · POST /Attachments/upload/fromForm](endpoints/COMMON.md)
 - [COMMON · POST /Attachments/v2/upload/fromForm](endpoints/COMMON.md)
@@ -488,10 +489,10 @@
 - [ES · GET /AssetTemplates/{assetTemplateID}/attachments](endpoints/ES.md) → ES:map<ResultsCommonListAttachmentResult>
 - [ES · GET /Assets/{assetID}/attachments/{attachmentID}](endpoints/ES.md)
 - [ES · GET /Assets/{assetID}/attachments](endpoints/ES.md) → ES:map<ResultsCommonListAttachmentResult>
-- [ES · GET /Companies/{CompanyID}/attachments/{attachmentID}](endpoints/ES.md)
+- [ES · GET /Companies/{companyID}/attachments/{attachmentID}](endpoints/ES.md)
 - [ES · GET /Companies/{companyID}/attachments](endpoints/ES.md) → ES:map<ResultsCommonListAttachmentResult>
 - [SC · DELETE /ServiceContract/{contractID}/attachments](endpoints/SC.md)
-- [SC · GET /ServiceContract/{contractID}/attachments/{attachmentID}](endpoints/SC.md)
+- [SC · GET /ServiceContract/{contractID}/attachments/{attachmentID}](endpoints/SC.md) → SC:ANCRAttachmentResult
 - [SC · GET /ServiceContract/{contractID}/attachments](endpoints/SC.md) → SC:map<AttachmentListResult>
 - [SC · POST /ServiceContract/{contractID}/attachments/upload/fromBody](endpoints/SC.md)
 - [SC · POST /ServiceContract/{contractID}/attachments/upload/fromForm](endpoints/SC.md)
@@ -523,9 +524,9 @@
 
 - [ADM · DELETE /Users/attributes](endpoints/ADM.md)
 - [ADM · DELETE /Users/{userID}/attributes](endpoints/ADM.md)
-- [ADM · GET /RoleTaskPropertiesAccess/attributes](endpoints/ADM.md) → ADM:ResultsRoleTaskAttributeRoleTaskAttributeSettings[]
-- [ADM · GET /Users/attributes](endpoints/ADM.md) → ADM:ResultsUserAttributeUserAttributesResult[]
-- [ADM · GET /Users/{userID}/attributes](endpoints/ADM.md) → ADM:ResultsUserAttributeUserAttributesResult[]
+- [ADM · GET /RoleTaskPropertiesAccess/attributes](endpoints/ADM.md) → ADM:RoleTaskAttributeSettings[]
+- [ADM · GET /Users/attributes](endpoints/ADM.md) → ADM:UserAttributesResult[]
+- [ADM · GET /Users/{userID}/attributes](endpoints/ADM.md) → ADM:UserAttributesResult[]
 - [ADM · POST /RoleTaskPropertiesAccess/attributes](endpoints/ADM.md)
 - [ADM · POST /Users/attributes](endpoints/ADM.md)
 - [ADM · POST /Users/{userID}/attributes](endpoints/ADM.md)
@@ -546,10 +547,10 @@
 - [ES · POST /Companies/{companyID}/attributes](endpoints/ES.md)
 - [SC · GET /ServiceContract/{contractID}/attributes](endpoints/SC.md) → SC:ContractAttributeResult[]
 - [SLA · DELETE /DeadlineRules/attributes](endpoints/SLA.md)
-- [SLA · GET /Attributes](endpoints/SLA.md) → SLA:map<Attributes.ListResult>
+- [SLA · GET /Attributes](endpoints/SLA.md) → SLA:map<ResultsAttributesListResult>
 - [SLA · GET /DeadlineRules/{deadlineRuleID}/attributes](endpoints/SLA.md) → SLA:map<int[]>
 - [SLA · POST /DeadlineRules/attributes](endpoints/SLA.md)
-- [UI · GET /LayoutTemplates/{id}/Attributes](endpoints/UI.md) → UI:AttributeDto[]
+- [UI · GET /LayoutTemplates/{id}/Attributes](endpoints/UI.md) → UI:ApiDtoAttributeDto[]
 - [WORK · DELETE /Tasks/completedWorks/attributes](endpoints/WORK.md)
 - [WORK · DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}](endpoints/WORK.md)
 - [WORK · DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes](endpoints/WORK.md)
@@ -562,7 +563,7 @@
 ### attributetypes
 
 - [COMMON · GET /AttributeTypes/v2](endpoints/COMMON.md) → COMMON:ExtListResult[]
-- [COMMON · GET /AttributeTypes](endpoints/COMMON.md) → COMMON:map<AttributeTypes.ListResult>
+- [COMMON · GET /AttributeTypes](endpoints/COMMON.md) → COMMON:map<RATListResult>
 
 ### attrvalues
 
@@ -606,7 +607,7 @@
 
 ### banreasons
 
-- [ADM · GET /BanReasons](endpoints/ADM.md) → ADM:map<ResultsBanReasonsListResult>
+- [ADM · GET /BanReasons](endpoints/ADM.md) → ADM:map<RBRListResult>
 
 ### barcodes
 
@@ -630,11 +631,11 @@
 
 ### bytype
 
-- [UI · GET /LayoutTemplates/bytype/{id}](endpoints/UI.md) → UI:LayoutTemplateDto
+- [UI · GET /LayoutTemplates/bytype/{id}](endpoints/UI.md) → UI:ApiDtoLayoutTemplateDto
 
 ### capabilities
 
-- [ADM · GET /Capabilities](endpoints/ADM.md) → ADM:map<ResultsCapabilitiesListResult>
+- [ADM · GET /Capabilities](endpoints/ADM.md) → ADM:map<RCListResult>
 
 ### changes
 
@@ -683,6 +684,7 @@
 - [ES · PUT /Companies/restore](endpoints/ES.md)
 - [ES · PUT /Companies](endpoints/ES.md)
 - [EXPORT · GET /Companies](endpoints/EXPORT.md)
+- [IMPORT · POST /Companies](endpoints/IMPORT.md)
 
 ### companyattachments
 
@@ -698,8 +700,8 @@
 
 ### companylistqueries
 
-- [ADM · GET /Users/this/companyListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersCompanyListQueryResult>
-- [ADM · GET /Users/{id}/companyListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersCompanyListQueryResult>
+- [ADM · GET /Users/this/companyListQueries](endpoints/ADM.md) → ADM:map<CompanyListQueryResult>
+- [ADM · GET /Users/{id}/companyListQueries](endpoints/ADM.md) → ADM:map<CompanyListQueryResult>
 - [ES · DELETE /CompanyListQueries/remove](endpoints/ES.md)
 - [ES · DELETE /CompanyListQueries/{id}/remove](endpoints/ES.md)
 - [ES · DELETE /CompanyListQueries/{id}](endpoints/ES.md)
@@ -712,7 +714,7 @@
 ### companylocations
 
 - [ES · DELETE /CompanyLocations](endpoints/ES.md)
-- [ES · GET /CompanyLocations](endpoints/ES.md)
+- [ES · GET /CompanyLocations](endpoints/ES.md) → ES:map<ResultsCompaniesCompanyLocationResult>
 - [ES · POST /CompanyLocations](endpoints/ES.md)
 - [ES · PUT /CompanyLocations](endpoints/ES.md)
 
@@ -739,19 +741,19 @@
 
 ### completiontime
 
-- [REPORT · GET /CompletionTime](endpoints/REPORT.md) → REPORT:TaskListGroupByAssigneesResult[]
+- [REPORT · GET /CompletionTime](endpoints/REPORT.md) → REPORT:ResultsCompletionTimeCompletionTimeResult[]
 
 ### components
 
-- [UI · GET /Components](endpoints/UI.md) → UI:map<ComponentResult>
-- [UI · GET /LayoutTemplates/{id}/Components](endpoints/UI.md) → UI:ComponentDto[]
+- [UI · GET /Components](endpoints/UI.md) → UI:map<ResultsBaseComponentResult>
+- [UI · GET /LayoutTemplates/{id}/Components](endpoints/UI.md) → UI:ApiDtoComponentDto[]
 
 ### contacts
 
 - [COMMON · DELETE /Contacts/{id}](endpoints/COMMON.md)
 - [COMMON · DELETE /Contacts](endpoints/COMMON.md)
-- [COMMON · GET /Contacts/{contactID}](endpoints/COMMON.md) → COMMON:Contacts.GetResult
-- [COMMON · GET /Contacts](endpoints/COMMON.md) → COMMON:map<Contacts.ListResult>
+- [COMMON · GET /Contacts/{contactID}](endpoints/COMMON.md) → COMMON:RCGetResult
+- [COMMON · GET /Contacts](endpoints/COMMON.md) → COMMON:map<RContactsListResult>
 - [COMMON · POST /Contacts](endpoints/COMMON.md)
 - [COMMON · PUT /Contacts](endpoints/COMMON.md)
 - [ES · DELETE /Assets/contacts](endpoints/ES.md)
@@ -759,7 +761,7 @@
 - [ES · DELETE /Companies/contacts](endpoints/ES.md)
 - [ES · DELETE /Companies/{companyID}/contacts/{contactID}](endpoints/ES.md)
 - [ES · GET /Assets/{assetID}/contacts/{contactID}](endpoints/ES.md) → ES:ResultsAssetContactsGetResult
-- [ES · GET /Assets/{assetID}/contacts](endpoints/ES.md) → ES:ResultsAssetContactsListResult[]
+- [ES · GET /Assets/{assetID}/contacts](endpoints/ES.md) → ES:map<ResultsAssetContactsListResult>
 - [ES · GET /Companies/{companyID}/contacts/{contactID}](endpoints/ES.md) → ES:ResultsCompanyContactsGetResult
 - [ES · GET /Companies/{companyID}/contacts](endpoints/ES.md) → ES:map<ResultsCompanyContactsListResult>
 - [ES · POST /Assets/contacts](endpoints/ES.md)
@@ -781,7 +783,7 @@
 
 ### contenttypes
 
-- [MSG · GET /ContentTypes](endpoints/MSG.md) → MSG:ContentTypes.ListResult[]
+- [MSG · GET /ContentTypes](endpoints/MSG.md) → MSG:map<RCTListResult>
 
 ### contractattributes
 
@@ -800,15 +802,15 @@
 
 ### countries
 
-- [COMMON · GET /Countries](endpoints/COMMON.md) → COMMON:map<Countries.ListResult>
+- [COMMON · GET /Countries](endpoints/COMMON.md) → COMMON:map<RCountriesListResult>
 
 ### criticalities
 
-- [MSG · GET /Triggers/{id}/criticalities](endpoints/MSG.md) → MSG:Triggers.ListResult[]
+- [MSG · GET /Triggers/{id}/criticalities](endpoints/MSG.md) → MSG:IdNameResultOfShort[]
 - [SLA · DELETE /Criticalities/{id}](endpoints/SLA.md)
 - [SLA · DELETE /Criticalities](endpoints/SLA.md)
-- [SLA · GET /Criticalities/{id}](endpoints/SLA.md) → SLA:Criticalities.GetResult
-- [SLA · GET /Criticalities](endpoints/SLA.md) → SLA:map<Criticalities.GetResult>
+- [SLA · GET /Criticalities/{id}](endpoints/SLA.md) → SLA:ResultsCriticalitiesGetResult
+- [SLA · GET /Criticalities](endpoints/SLA.md) → SLA:map<ResultsCriticalitiesGetResult>
 - [SLA · POST /Criticalities](endpoints/SLA.md)
 - [SLA · PUT /Criticalities](endpoints/SLA.md)
 
@@ -818,7 +820,7 @@
 
 ### currencies
 
-- [COMMON · GET /Currencies](endpoints/COMMON.md) → COMMON:map<Currencies.ListResult>
+- [COMMON · GET /Currencies](endpoints/COMMON.md) → COMMON:map<RCurrenciesListResult>
 
 ### dadata
 
@@ -828,8 +830,8 @@
 
 - [SLA · DELETE /DeadlineRules/{DeadlineRuleID}](endpoints/SLA.md)
 - [SLA · DELETE /DeadlineRules](endpoints/SLA.md)
-- [SLA · GET /DeadlineRules/{DeadlineRuleID}](endpoints/SLA.md) → SLA:DeadlineRules.GetResult
-- [SLA · GET /DeadlineRules](endpoints/SLA.md) → SLA:map<DeadlineRules.ListResult>
+- [SLA · GET /DeadlineRules/{DeadlineRuleID}](endpoints/SLA.md) → SLA:ResultsDeadlineRulesGetResult
+- [SLA · GET /DeadlineRules](endpoints/SLA.md) → SLA:map<ResultsDeadlineRulesListResult>
 - [SLA · POST /DeadlineRules](endpoints/SLA.md)
 - [SLA · PUT /DeadlineRules/activate](endpoints/SLA.md)
 - [SLA · PUT /DeadlineRules/deactivate](endpoints/SLA.md)
@@ -840,8 +842,8 @@
 ### defaultpages
 
 - [ADM · DELETE /Users/defaultPages](endpoints/ADM.md)
-- [ADM · GET /DefaultPages](endpoints/ADM.md) → ADM:ResultsDefaultPagesAllowedPageResult[]
-- [ADM · GET /Users/{userID}/defaultPages](endpoints/ADM.md) → ADM:ResultsUserDefaultPagesGetResult
+- [ADM · GET /DefaultPages](endpoints/ADM.md) → ADM:AllowedPageResult[]
+- [ADM · GET /Users/{userID}/defaultPages](endpoints/ADM.md) → ADM:RUDPGetResult
 - [ADM · POST /Users/defaultPages](endpoints/ADM.md)
 - [ADM · PUT /Users/defaultPages](endpoints/ADM.md)
 
@@ -852,11 +854,11 @@
 ### districts
 
 - [ADM · GET /UserTemplates/{id}/districts](endpoints/ADM.md) → ADM:IdNameResultOfShort[]
-- [ADM · GET /Users/{id}/districts](endpoints/ADM.md) → ADM:map<IdNameResultOfShort>
+- [ADM · GET /Users/{id}/districts](endpoints/ADM.md) → ADM:map<ListDistrictResult>
 - [ES · DELETE /Districts/{id}](endpoints/ES.md)
 - [ES · DELETE /Districts](endpoints/ES.md)
-- [ES · GET /AssetTemplates/{assetTemplateID}/districts](endpoints/ES.md) → ES:int[]
-- [ES · GET /Assets/{assetID}/districts](endpoints/ES.md) → ES:ResultsCommonAssetDistrictResult[]
+- [ES · GET /AssetTemplates/{assetTemplateID}/districts](endpoints/ES.md) → ES:map<ResultsCommonAssetDistrictResult>
+- [ES · GET /Assets/{assetID}/districts](endpoints/ES.md) → ES:map<ResultsCommonAssetDistrictResult>
 - [ES · GET /Districts/{id}](endpoints/ES.md) → ES:ResultsDistrictsDistrictResult
 - [ES · GET /Districts](endpoints/ES.md) → ES:ResultsDistrictsDistrictListForTenantMemberResult[]
 - [ES · POST /Districts](endpoints/ES.md)
@@ -889,11 +891,11 @@
 
 ### errors
 
-- [MSG · GET /MailBoxes/{id}/errors](endpoints/MSG.md) → MSG:MailBox.GetResult
+- [MSG · GET /MailBoxes/{id}/errors](endpoints/MSG.md) → MSG:MailBoxErrorsEntity[]
 
 ### events
 
-- [COMMON · GET /Events](endpoints/COMMON.md) → COMMON:Events.ListResult[]
+- [COMMON · GET /Events](endpoints/COMMON.md) → COMMON:map<REListResult>
 
 ### excludedassets
 
@@ -918,12 +920,12 @@
 
 ### filters
 
-- [UI · GET /Filters](endpoints/UI.md) → UI:UserFilterFavouriteEntity[]
+- [UI · GET /Filters](endpoints/UI.md) → UI:EntitiesUIUserFilterFavouriteEntity[]
 - [UI · POST /Filters/{resource}](endpoints/UI.md)
 
 ### frequencytypes
 
-- [PMP · GET /FrequencyTypes](endpoints/PMP.md) → PMP:map<IdCodeNameResult<Byte>>[]
+- [PMP · GET /FrequencyTypes](endpoints/PMP.md) → PMP:map<IdCodeNameResultOfByte>
 
 ### geolocationsettings
 
@@ -931,7 +933,7 @@
 
 ### geotrackingmodes
 
-- [PA · GET /GeoTrackingModes](endpoints/PA.md) → PA:map<GeoTrackingModes.ListResult>
+- [PA · GET /GeoTrackingModes](endpoints/PA.md) → PA:map<RGTMListResult>
 
 ### groupby
 
@@ -957,9 +959,9 @@
 
 - [ADM · DELETE /Invitations/{id}](endpoints/ADM.md)
 - [ADM · DELETE /Invitations](endpoints/ADM.md)
-- [ADM · GET /Invitations/{id}/short](endpoints/ADM.md) → ADM:ResultsInvitationsGetShortResult
-- [ADM · GET /Invitations/{id}](endpoints/ADM.md) → ADM:ResultsInvitationsGetResult
-- [ADM · GET /Invitations](endpoints/ADM.md) → ADM:map<ResultsInvitationsGetResult>
+- [ADM · GET /Invitations/{id}/short](endpoints/ADM.md) → ADM:GetShortResult
+- [ADM · GET /Invitations/{id}](endpoints/ADM.md) → ADM:RIGetResult
+- [ADM · GET /Invitations](endpoints/ADM.md) → ADM:map<RIGetResult>
 - [ADM · POST /Invitations](endpoints/ADM.md)
 - [ADM · PUT /Invitations](endpoints/ADM.md)
 
@@ -998,9 +1000,9 @@
 ### layouttemplates
 
 - [UI · DELETE /LayoutTemplates/{id}](endpoints/UI.md)
-- [UI · GET /LayoutTemplates/default](endpoints/UI.md) → UI:LayoutTemplateDto
-- [UI · GET /LayoutTemplates/{id}](endpoints/UI.md) → UI:LayoutTemplateDto
-- [UI · GET /LayoutTemplates](endpoints/UI.md) → UI:LayoutTemplateDto[]
+- [UI · GET /LayoutTemplates/default](endpoints/UI.md) → UI:ApiDtoLayoutTemplateDto
+- [UI · GET /LayoutTemplates/{id}](endpoints/UI.md) → UI:ApiDtoLayoutTemplateDto
+- [UI · GET /LayoutTemplates](endpoints/UI.md) → UI:ApiDtoLayoutTemplateDto[]
 - [UI · POST /LayoutTemplates/default](endpoints/UI.md)
 - [UI · POST /LayoutTemplates](endpoints/UI.md)
 - [UI · PUT /LayoutTemplates/{id}/reset](endpoints/UI.md)
@@ -1010,7 +1012,7 @@
 
 - [ADM · DELETE /Tenants/this/licenses/{id}](endpoints/ADM.md)
 - [ADM · DELETE /Tenants/this/licenses](endpoints/ADM.md)
-- [ADM · GET /Tenants/this/licenses](endpoints/ADM.md) → ADM:ResultsTenantLicenseListTenantLicenseResult
+- [ADM · GET /Tenants/this/licenses](endpoints/ADM.md) → ADM:ListTenantLicenseResult[]
 - [ADM · POST /Tenants/this/licenses/renewal](endpoints/ADM.md)
 - [ADM · POST /Tenants/this/licenses](endpoints/ADM.md)
 - [ADM · PUT /Tenants/licenses](endpoints/ADM.md)
@@ -1030,7 +1032,7 @@
 - [ES · DELETE /Locations](endpoints/ES.md)
 - [ES · GET /Assets/{assetID}/locations/actual](endpoints/ES.md) → ES:ResultsCommonLocationResult
 - [ES · GET /Companies/{companyID}/locations/actual](endpoints/ES.md) → ES:ResultsCommonLocationResult
-- [ES · GET /Locations/{id}](endpoints/ES.md) → ES:map<ResultsLocationsLocationGetResult>
+- [ES · GET /Locations/{id}](endpoints/ES.md) → ES:ResultsLocationsLocationGetResult
 - [ES · GET /Locations](endpoints/ES.md) → ES:map<ResultsCommonLocationResult>
 - [ES · HEAD /Locations](endpoints/ES.md)
 - [ES · POST /Locations](endpoints/ES.md)
@@ -1040,9 +1042,9 @@
 
 - [MSG · DELETE /MailBoxes/{id}](endpoints/MSG.md)
 - [MSG · DELETE /MailBoxes](endpoints/MSG.md)
-- [MSG · GET /MailBoxes/regexactions](endpoints/MSG.md) → MSG:map<RegexNotMatchAction.ListResult>
-- [MSG · GET /MailBoxes/{id}](endpoints/MSG.md) → MSG:MailBox.GetResult
-- [MSG · GET /MailBoxes](endpoints/MSG.md) → MSG:map<MailBox.ListResult>
+- [MSG · GET /MailBoxes/regexactions](endpoints/MSG.md) → MSG:map<RRNMAListResult>
+- [MSG · GET /MailBoxes/{id}](endpoints/MSG.md) → MSG:RMBGetResult
+- [MSG · GET /MailBoxes](endpoints/MSG.md) → MSG:map<RMBListResult>
 - [MSG · POST /MailBoxes](endpoints/MSG.md)
 - [MSG · PUT /MailBoxes/activate/{id}](endpoints/MSG.md)
 - [MSG · PUT /MailBoxes/activate](endpoints/MSG.md)
@@ -1074,6 +1076,8 @@
 
 - [EXPORT · GET /Materials/v2.0](endpoints/EXPORT.md)
 - [EXPORT · GET /Materials](endpoints/EXPORT.md)
+- [IMPORT · POST /Materials/v2.0](endpoints/IMPORT.md)
+- [IMPORT · POST /Materials](endpoints/IMPORT.md)
 - [WH · DELETE /Materials/{id}](endpoints/WH.md)
 - [WH · DELETE /Materials](endpoints/WH.md)
 - [WH · GET /Materials/v2](endpoints/WH.md) → WH:map<ResultsMaterialsMaterialListResult>
@@ -1107,23 +1111,27 @@
 
 - [MSG · DELETE /MessageTemplates/{id}](endpoints/MSG.md)
 - [MSG · DELETE /MessageTemplates](endpoints/MSG.md)
-- [MSG · GET /MessageTemplates/{id}](endpoints/MSG.md) → MSG:map<MessageTemplates.GetResult>
-- [MSG · GET /MessageTemplates](endpoints/MSG.md) → MSG:map<MessageTemplates.ListResult>
+- [MSG · GET /MessageTemplates/{id}](endpoints/MSG.md) → MSG:RMTGetResult
+- [MSG · GET /MessageTemplates](endpoints/MSG.md) → MSG:map<RMTListResult>
 - [MSG · POST /MessageTemplates](endpoints/MSG.md)
 - [MSG · PUT /MessageTemplates/{id}/validate](endpoints/MSG.md)
 - [MSG · PUT /MessageTemplates](endpoints/MSG.md)
 
 ### messagetriggers
 
-- [TSTG · GET /TaskStages/{id}/messageTriggers](endpoints/TSTG.md) → TSTG:IdNameResult<Int16>[]
+- [TSTG · GET /TaskStages/{id}/messageTriggers](endpoints/TSTG.md) → TSTG:IdNameResultOfShort[]
+
+### mobilities
+
+- [PA · GET /Mobilities](endpoints/PA.md) → PA:map<RMListResult>
 
 ### moblities
 
-- [PA · GET /Moblities](endpoints/PA.md) → PA:map<Mobilities.ListResult>
+- [PA · GET /Moblities](endpoints/PA.md) → PA:map<RMListResult>
 
 ### navigateto
 
-- [MSG · GET /NavigateTo](endpoints/MSG.md) → MSG:NavigateTo.ListResult[]
+- [MSG · GET /NavigateTo](endpoints/MSG.md) → MSG:map<RNTListResult>
 - [PROXY · GET /NavigateTo/{appCode}](endpoints/PROXY.md) → PROXY:GetResult
 
 ### new
@@ -1132,10 +1140,10 @@
 
 ### notifications
 
-- [ADM · GET /Users/this/notifications](endpoints/ADM.md) → ADM:ResultsUserDisabledNotificationsListResult
-- [ADM · GET /Users/{id}/notifications](endpoints/ADM.md) → ADM:ResultsUserDisabledNotificationsListResult
+- [ADM · GET /Users/this/notifications](endpoints/ADM.md) → ADM:RUDNListResult
+- [ADM · GET /Users/{id}/notifications](endpoints/ADM.md) → ADM:RUDNListResult
 - [AUTH · GET /Accounts/this/notifications](endpoints/AUTH.md) → AUTH:ListResult[]
-- [MSG · GET /Notifications](endpoints/MSG.md) → MSG:map<Notification.ListResult>
+- [MSG · GET /Notifications](endpoints/MSG.md) → MSG:map<RNListResult>
 - [MSG · HEAD /Notifications](endpoints/MSG.md)
 - [MSG · POST /Notifications](endpoints/MSG.md)
 - [MSG · PUT /Notifications/all](endpoints/MSG.md)
@@ -1166,9 +1174,9 @@
 
 ### orgunits
 
-- [ES · GET /OrgUnits/root](endpoints/ES.md)
-- [ES · GET /OrgUnits/{id}/orgunits](endpoints/ES.md)
-- [ES · GET /OrgUnits](endpoints/ES.md)
+- [ES · GET /OrgUnits/root](endpoints/ES.md) → ES:map<ResultsOrgUnitsOrgUnitListResult>
+- [ES · GET /OrgUnits/{id}/orgunits](endpoints/ES.md) → ES:map<ResultsOrgUnitsOrgUnitListResult>
+- [ES · GET /OrgUnits](endpoints/ES.md) → ES:map<ResultsOrgUnitsOrgUnitListResult>
 
 ### overridings
 
@@ -1182,8 +1190,8 @@
 - [ADM · DELETE /Roles/{roleID}/packages](endpoints/ADM.md)
 - [ADM · DELETE /Tenants/this/packages/tenant](endpoints/ADM.md)
 - [ADM · DELETE /Tenants/this/packages](endpoints/ADM.md)
-- [ADM · GET /Roles/{roleID}/packages](endpoints/ADM.md) → ADM:map<ResultsRolePackagesListResult[]>
-- [ADM · GET /Tenants/this/packages](endpoints/ADM.md) → ADM:ResultsTenantPackagesListResult[]
+- [ADM · GET /Roles/{roleID}/packages](endpoints/ADM.md) → ADM:map<RRPListResult[]>
+- [ADM · GET /Tenants/this/packages](endpoints/ADM.md) → ADM:RTPListResult[]
 - [ADM · PATCH /Tenants/this/packages](endpoints/ADM.md)
 - [ADM · POST /Roles/{roleID}/packages](endpoints/ADM.md)
 - [ADM · POST /Tenants/this/packages/tenant](endpoints/ADM.md)
@@ -1198,11 +1206,11 @@
 
 ### permissionapitags
 
-- [ADM · GET /PermissionApiTags](endpoints/ADM.md) → ADM:map<ResultsPermissionsApiTagListResult[]>
+- [ADM · GET /PermissionApiTags](endpoints/ADM.md) → ADM:map<RPATListResult[]>
 
 ### permissionexttags
 
-- [ADM · GET /PermissionExtTags](endpoints/ADM.md) → ADM:map<ResultsPermissionsExtTagListResult[]>
+- [ADM · GET /PermissionExtTags](endpoints/ADM.md) → ADM:map<RPETListResult[]>
 
 ### permissions
 
@@ -1211,33 +1219,33 @@
 
 ### permissionsapi
 
-- [ADM · GET /PermissionsApi](endpoints/ADM.md) → ADM:map<ResultsPermissionsApiListResult>
-- [ADM · GET /Roles/{roleID}/permissionsApi](endpoints/ADM.md) → ADM:map<ResultsRolePermissionsApiListResult[]>
+- [ADM · GET /PermissionsApi](endpoints/ADM.md) → ADM:map<RPAListResult>
+- [ADM · GET /Roles/{roleID}/permissionsApi](endpoints/ADM.md) → ADM:map<RRPAListResult[]>
 
 ### permissionsext
 
-- [ADM · GET /PermissionsExt](endpoints/ADM.md) → ADM:map<ResultsPermissionsExtListResult>
-- [ADM · GET /Roles/{roleID}/permissionsExt](endpoints/ADM.md) → ADM:map<ResultsRolePermissionsExtListResult[]>
+- [ADM · GET /PermissionsExt](endpoints/ADM.md) → ADM:map<RPEListResult>
+- [ADM · GET /Roles/{roleID}/permissionsExt](endpoints/ADM.md) → ADM:map<RRPEListResult[]>
 
 ### permissionsui
 
 - [ADM · DELETE /PermissionsUi/{id}](endpoints/ADM.md)
 - [ADM · DELETE /PermissionsUi](endpoints/ADM.md)
-- [ADM · GET /PermissionsUi/{id}](endpoints/ADM.md) → ADM:ResultsPermissionsUiGetResult
-- [ADM · GET /PermissionsUi](endpoints/ADM.md) → ADM:map<ResultsPermissionsUiGetResult>
-- [ADM · GET /Roles/{roleID}/permissionsUi](endpoints/ADM.md) → ADM:map<ResultsRolePermissionsUiListResult[]>
+- [ADM · GET /PermissionsUi/{id}](endpoints/ADM.md) → ADM:RPUGetResult
+- [ADM · GET /PermissionsUi](endpoints/ADM.md) → ADM:map<RPUGetResult>
+- [ADM · GET /Roles/{roleID}/permissionsUi](endpoints/ADM.md) → ADM:map<RRPUListResult[]>
 - [ADM · POST /PermissionsUi](endpoints/ADM.md)
 - [ADM · PUT /PermissionsUi](endpoints/ADM.md)
 
 ### points
 
 - [ES · DELETE /AssetSchemas/{schemaId}/points](endpoints/ES.md)
-- [ES · GET /AssetSchemas/{schemaID}/points](endpoints/ES.md) → ES:ResultsAssetSchemaSchemaTask[]
+- [ES · GET /AssetSchemas/{schemaId}/points](endpoints/ES.md) → ES:ResultsAssetSchemaSchemaTask[]
 - [ES · POST /AssetSchemas/{schemaId}/points](endpoints/ES.md)
 
 ### powerbicustomreports
 
-- [REPORT · GET /PowerBICustomReports](endpoints/REPORT.md) → REPORT:map<CustomReportList>
+- [REPORT · GET /PowerBICustomReports](endpoints/REPORT.md) → REPORT:map<ResultsPowerBICustomReportsCustomReportList>
 
 ### powerbireports
 
@@ -1246,39 +1254,39 @@
 
 ### preferredtechnicians
 
-- [ES · GET /PreferredTechnicians](endpoints/ES.md) → ES:ResultsAssetsAssetDetailedInfoResult
+- [ES · GET /PreferredTechnicians](endpoints/ES.md) → ES:ResultsPreferredTechniciansPreferredTechniciansResult
 - [ES · POST /PreferredTechnicians](endpoints/ES.md)
 
 ### protocols
 
-- [MSG · GET /Protocols](endpoints/MSG.md) → MSG:map<Protocols.ListResult>
+- [MSG · GET /Protocols](endpoints/MSG.md) → MSG:map<RProtocolsListResult>
 
 ### providers
 
-- [MSG · GET /Providers](endpoints/MSG.md) → MSG:Providers.ListResult[]
+- [MSG · GET /Providers](endpoints/MSG.md) → MSG:map<RProvidersListResult>
 
 ### rating
 
-- [PA · GET /Technicians/{userID}/rating](endpoints/PA.md) → PA:TechnicianRatingResult[]
+- [PA · GET /Technicians/{userID}/rating](endpoints/PA.md) → PA:TechnicianRatingResult
 
 ### ratingcriteria
 
 - [PA · DELETE /RatingCriteria/{id}](endpoints/PA.md)
 - [PA · DELETE /RatingCriteria](endpoints/PA.md)
-- [PA · GET /RatingCriteria/{id}](endpoints/PA.md) → PA:RatingCriteria.GetResult
-- [PA · GET /RatingCriteria](endpoints/PA.md) → PA:map<RatingCriteria.ListResult>
+- [PA · GET /RatingCriteria/{id}](endpoints/PA.md) → PA:RRCGetResult
+- [PA · GET /RatingCriteria](endpoints/PA.md) → PA:map<RRCListResult>
 - [PA · POST /RatingCriteria](endpoints/PA.md)
 - [PA · PUT /RatingCriteria](endpoints/PA.md)
 
 ### ratings
 
-- [ADM · GET /Users/{UserID}/ratings](endpoints/ADM.md) → ADM:ResultsUsersRatingTechnicianResult
+- [ADM · GET /Users/{UserID}/ratings](endpoints/ADM.md) → ADM:RatingTechnicianResult
 - [WORK · GET /Tasks/{taskID}/ratings/avg](endpoints/WORK.md) → WORK:RatingResult[]
 - [WORK · GET /Tasks/{taskID}/ratings](endpoints/WORK.md) → WORK:RatingResult[]
 
 ### reactiontime
 
-- [REPORT · GET /ReactionTime](endpoints/REPORT.md) → REPORT:TaskListGroupByAssigneesResult[]
+- [REPORT · GET /ReactionTime](endpoints/REPORT.md) → REPORT:ResultsReactionTimeReactionTimeResult[]
 
 ### read
 
@@ -1303,14 +1311,14 @@
 
 ### recipients
 
-- [MSG · GET /RecipientSelectionRules/recipients](endpoints/MSG.md) → MSG:RecipientListResult[]
+- [MSG · GET /RecipientSelectionRules/recipients](endpoints/MSG.md) → MSG:map<RecipientListResult>
 
 ### recipientselectionrules
 
 - [MSG · DELETE /RecipientSelectionRules/{id}](endpoints/MSG.md)
 - [MSG · DELETE /RecipientSelectionRules](endpoints/MSG.md)
-- [MSG · GET /RecipientSelectionRules/{id}](endpoints/MSG.md) → MSG:map<RecipientSelectionRules.GetResult>
-- [MSG · GET /RecipientSelectionRules](endpoints/MSG.md) → MSG:map<RecipientSelectionRules.ListResult>
+- [MSG · GET /RecipientSelectionRules/{id}](endpoints/MSG.md) → MSG:RRSRGetResult
+- [MSG · GET /RecipientSelectionRules](endpoints/MSG.md) → MSG:map<RRSRListResult>
 - [MSG · POST /RecipientSelectionRules](endpoints/MSG.md)
 - [MSG · PUT /RecipientSelectionRules](endpoints/MSG.md)
 
@@ -1330,12 +1338,12 @@
 
 ### requirements
 
-- [TSTG · GET /Requirements/requirements](endpoints/TSTG.md) → TSTG:Requirements.ListResult[]
-- [TSTG · GET /TaskStages/{id}/requirements](endpoints/TSTG.md) → TSTG:TaskStageRequirementResult
+- [TSTG · GET /Requirements/requirements](endpoints/TSTG.md) → TSTG:map<RRListResult>
+- [TSTG · GET /TaskStages/{id}/requirements](endpoints/TSTG.md) → TSTG:TaskStageRequirementResult[]
 
 ### resources
 
-- [UI · GET /Resources](endpoints/UI.md) → UI:map<TaskViewTemplateResult>
+- [UI · GET /Resources](endpoints/UI.md) → UI:map<IdCodeNameResultOfByte>
 
 ### results
 
@@ -1374,10 +1382,10 @@
 
 - [ADM · DELETE /Roles/{id}](endpoints/ADM.md)
 - [ADM · DELETE /Roles](endpoints/ADM.md)
-- [ADM · GET /Roles/{id}](endpoints/ADM.md) → ADM:ResultsRolesGetResult
-- [ADM · GET /Roles](endpoints/ADM.md) → ADM:map<ResultsRolesGetResult>
+- [ADM · GET /Roles/{id}](endpoints/ADM.md) → ADM:RRGetResult
+- [ADM · GET /Roles](endpoints/ADM.md) → ADM:RRGetResult[]
 - [ADM · GET /UserTemplates/{id}/roles](endpoints/ADM.md) → ADM:IdNameResultOfShort[]
-- [ADM · GET /Users/{id}/roles](endpoints/ADM.md) → ADM:map<IdNameResultOfShort>
+- [ADM · GET /Users/{id}/roles](endpoints/ADM.md) → ADM:map<IdNameResultOfShort[]>
 - [ADM · POST /Roles/copy](endpoints/ADM.md)
 - [ADM · POST /Roles](endpoints/ADM.md)
 - [ADM · PUT /Roles](endpoints/ADM.md)
@@ -1396,7 +1404,7 @@
 
 - [PMP · GET /ScheduledTasks/count](endpoints/PMP.md) → PMP:map<ListCountResult[]>
 - [PMP · GET /ScheduledTasks/v2/count](endpoints/PMP.md) → PMP:map<CountResult[]>
-- [PMP · GET /ScheduledTasks](endpoints/PMP.md) → PMP:map<ScheduledTasks.ListResult>
+- [PMP · GET /ScheduledTasks](endpoints/PMP.md) → PMP:map<RSTListResult>
 - [PMP · HEAD /ScheduledTasks](endpoints/PMP.md)
 
 ### schedulerules
@@ -1415,7 +1423,7 @@
 - [PMP · DELETE /Schedules/{id}](endpoints/PMP.md)
 - [PMP · DELETE /Schedules](endpoints/PMP.md)
 - [PMP · GET /Schedules/{id}](endpoints/PMP.md) → PMP:GetResult
-- [PMP · GET /Schedules](endpoints/PMP.md) → PMP:map<GetResult>[]
+- [PMP · GET /Schedules](endpoints/PMP.md) → PMP:map<RSRListResult>
 - [PMP · POST /Schedules](endpoints/PMP.md)
 - [WORK · GET /TaskTemplates/{id}/schedules](endpoints/WORK.md) → WORK:GetSchedulesResult[]
 - [WORK · POST /TaskTemplates/{id}/schedules](endpoints/WORK.md)
@@ -1426,8 +1434,8 @@
 
 - [MSG · DELETE /MailBoxes/{mailBoxID}/senders/{id}](endpoints/MSG.md)
 - [MSG · DELETE /MailBoxes/{mailBoxID}/senders](endpoints/MSG.md)
-- [MSG · GET /MailBoxes/{mailBoxID}/senders/{senderID}](endpoints/MSG.md) → MSG:MailBoxSender.GetResult
-- [MSG · GET /MailBoxes/{mailBoxID}/senders](endpoints/MSG.md) → MSG:map<MailBoxSender.ListResult>
+- [MSG · GET /MailBoxes/{mailBoxID}/senders/{senderID}](endpoints/MSG.md) → MSG:RMBSGetResult
+- [MSG · GET /MailBoxes/{mailBoxID}/senders](endpoints/MSG.md) → MSG:map<RMBSListResult>
 
 ### servicecontract
 
@@ -1450,13 +1458,13 @@
 
 ### skills
 
-- [ADM · GET /Users/{userID}/skills](endpoints/ADM.md) → ADM:map<ResultsSkillsSkillResult>
-- [ES · GET /AssetTemplates/{assetTemplateID}/skills](endpoints/ES.md) → ES:int[]
+- [ADM · GET /Users/{userID}/skills](endpoints/ADM.md) → ADM:map<SkillResult>
+- [ES · GET /AssetTemplates/{assetTemplateID}/skills](endpoints/ES.md) → ES:ResultsAssetTemplatesAssetTemplateSkillResult[]
 - [ES · GET /Assets/{assetID}/skills](endpoints/ES.md) → ES:map<ResultsAssetSkillsAssetSkillResult>
 - [PA · DELETE /Skills/{id}](endpoints/PA.md)
 - [PA · DELETE /Skills](endpoints/PA.md)
-- [PA · GET /Skills/{id}](endpoints/PA.md) → PA:Skills.GetResult
-- [PA · GET /Skills](endpoints/PA.md) → PA:map<Skills.ListResult>
+- [PA · GET /Skills/{id}](endpoints/PA.md) → PA:RSGetResult
+- [PA · GET /Skills](endpoints/PA.md) → PA:map<RSListResult>
 - [PA · POST /Skills](endpoints/PA.md)
 - [PA · PUT /Skills](endpoints/PA.md)
 - [WORK · GET /Tasks/{taskID}/skills](endpoints/WORK.md) → WORK:map<TaskSkillResult>
@@ -1469,16 +1477,16 @@
 
 ### subsystemview
 
-- [UI · GET /SubsystemView/{subsystemID}](endpoints/UI.md) → UI:SubsystemViewProjection[]
-- [UI · GET /SubsystemView](endpoints/UI.md) → UI:SubsystemViewProjection[]
+- [UI · GET /SubsystemView/{subsystemID}](endpoints/UI.md) → UI:ProjectionsUISubsystemViewProjection[]
+- [UI · GET /SubsystemView](endpoints/UI.md) → UI:ProjectionsUISubsystemViewProjection[]
 
 ### systempermissionuitags
 
-- [ADM · GET /SystemPermissionUiTags](endpoints/ADM.md) → ADM:map<ResultsPermissionsUiTagListResult[]>
+- [ADM · GET /SystemPermissionUiTags](endpoints/ADM.md) → ADM:map<RPUTListResult[]>
 
 ### systemtags
 
-- [COMMON · GET /SystemTags](endpoints/COMMON.md) → COMMON:IdNameResult<Int16>[]
+- [COMMON · GET /SystemTags](endpoints/COMMON.md) → COMMON:IdNameResultOfShort[]
 
 ### tags
 
@@ -1531,8 +1539,8 @@
 
 ### tasklistqueries
 
-- [ADM · GET /Users/this/taskListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersTaskListQueryResult>
-- [ADM · GET /Users/{id}/taskListQueries](endpoints/ADM.md) → ADM:map<ResultsUsersTaskListQueryResult>
+- [ADM · GET /Users/this/taskListQueries](endpoints/ADM.md) → ADM:map<TaskListQueryResult>
+- [ADM · GET /Users/{id}/taskListQueries](endpoints/ADM.md) → ADM:map<TaskListQueryResult>
 - [WORK · DELETE /TaskListQueries/remove](endpoints/WORK.md)
 - [WORK · DELETE /TaskListQueries/{id}/remove](endpoints/WORK.md)
 - [WORK · DELETE /TaskListQueries/{id}](endpoints/WORK.md)
@@ -1556,7 +1564,7 @@
 
 ### taskratings
 
-- [PA · GET /Technicians/{userID}/taskRatings](endpoints/PA.md) → PA:TechnicianRatingResult[]
+- [PA · GET /Technicians/{userID}/taskRatings](endpoints/PA.md) → PA:TaskRatingResult[]
 - [WORK · POST /TaskRatings](endpoints/WORK.md)
 
 ### tasks
@@ -1564,6 +1572,7 @@
 - [EXPORT · GET /Tasks/noData](endpoints/EXPORT.md)
 - [EXPORT · GET /Tasks/v2.0](endpoints/EXPORT.md)
 - [EXPORT · GET /Tasks](endpoints/EXPORT.md)
+- [IMPORT · POST /Tasks](endpoints/IMPORT.md)
 - [WORK · DELETE /Tasks/{taskID}/autoStaginging](endpoints/WORK.md)
 - [WORK · DELETE /Tasks/{taskID}](endpoints/WORK.md)
 - [WORK · DELETE /Tasks](endpoints/WORK.md)
@@ -1584,23 +1593,23 @@
 
 ### tasksbyassets
 
-- [REPORT · GET /TasksByAssets](endpoints/REPORT.md) → REPORT:TaskListGroupByAssigneesResult[]
+- [REPORT · GET /TasksByAssets](endpoints/REPORT.md) → REPORT:ResultsTaskListGroupByAssetsTasksListGroupByAssetsResult[]
 
 ### tasksbyassignees
 
-- [REPORT · GET /TasksByAssignees](endpoints/REPORT.md) → REPORT:TaskListGroupByAssigneesResult[]
+- [REPORT · GET /TasksByAssignees](endpoints/REPORT.md) → REPORT:ResultsTaskListGroupByAssigneesTaskListGroupByAssigneesResult[]
 
 ### tasksbycompanies
 
-- [REPORT · GET /TasksByCompanies](endpoints/REPORT.md) → REPORT:TaskListGroupByCompaniesResult[]
+- [REPORT · GET /TasksByCompanies](endpoints/REPORT.md) → REPORT:ResultsTaskListGroupByCompaniesTaskListGroupByCompaniesResult[]
 
 ### tasksbystages
 
-- [REPORT · GET /TasksByStages](endpoints/REPORT.md) → REPORT:TaskListGroupByStagesResult[]
+- [REPORT · GET /TasksByStages](endpoints/REPORT.md) → REPORT:ResultsTaskListGroupByStagesTaskListGroupByStagesResult[]
 
 ### tasksbyworktypes
 
-- [REPORT · GET /TasksByWorkTypes](endpoints/REPORT.md) → REPORT:TaskListGroupByWorkTypesResult[]
+- [REPORT · GET /TasksByWorkTypes](endpoints/REPORT.md) → REPORT:ResultsTaskListGroupByWorkTypesTaskListGroupByWorkTypesResult[]
 
 ### taskschedules
 
@@ -1618,7 +1627,7 @@
 ### taskstagelinks
 
 - [TSTG · DELETE /TaskStageLinks](endpoints/TSTG.md)
-- [TSTG · GET /TaskStageLinks](endpoints/TSTG.md) → TSTG:TaskStageLinks.ListResult[]
+- [TSTG · GET /TaskStageLinks](endpoints/TSTG.md) → TSTG:RTSLListResult[]
 - [TSTG · POST /TaskStageLinks/copy](endpoints/TSTG.md)
 - [TSTG · POST /TaskStageLinks/reorder](endpoints/TSTG.md)
 - [TSTG · POST /TaskStageLinks](endpoints/TSTG.md)
@@ -1636,8 +1645,8 @@
 
 - [TSTG · DELETE /TaskStages/{id}](endpoints/TSTG.md)
 - [TSTG · DELETE /TaskStages](endpoints/TSTG.md)
-- [TSTG · GET /TaskStages/{id}](endpoints/TSTG.md) → TSTG:TaskStages.GetResult
-- [TSTG · GET /TaskStages](endpoints/TSTG.md) → TSTG:TaskStages.ListResult[]
+- [TSTG · GET /TaskStages/{id}](endpoints/TSTG.md) → TSTG:RTSGetResult
+- [TSTG · GET /TaskStages](endpoints/TSTG.md) → TSTG:map<RTSListResult>
 - [TSTG · HEAD /TaskStages](endpoints/TSTG.md)
 - [TSTG · POST /TaskStages/copy](endpoints/TSTG.md)
 - [TSTG · POST /TaskStages/{id}/assign](endpoints/TSTG.md)
@@ -1698,7 +1707,7 @@
 ### tasktypes
 
 - [UI · DELETE /LayoutTemplates/{id}/taskTypes](endpoints/UI.md)
-- [UI · GET /LayoutTemplates/{id}/taskTypes](endpoints/UI.md) → UI:LayoutTaskTypeDto[]
+- [UI · GET /LayoutTemplates/{id}/taskTypes](endpoints/UI.md) → UI:ApiDtoLayoutTaskTypeDto[]
 - [UI · PUT /LayoutTemplates/{id}/taskTypes](endpoints/UI.md)
 - [WORK · DELETE /TaskTypes/{id}](endpoints/WORK.md)
 - [WORK · DELETE /TaskTypes](endpoints/WORK.md)
@@ -1713,7 +1722,7 @@
 
 ### taskviewtemplate
 
-- [UI · GET /TaskViewTemplate](endpoints/UI.md) → UI:map<TaskViewTemplateResult>
+- [UI · GET /TaskViewTemplate](endpoints/UI.md) → UI:map<ResultsTaskViewTemplatesTaskViewTemplateResult>
 
 ### taskwatchlists
 
@@ -1739,12 +1748,12 @@
 
 ### templates
 
-- [ADM · GET /Tenants/templates](endpoints/ADM.md) → ADM:InterfacesEntitiesITenantEntity[]
+- [ADM · GET /Tenants/templates](endpoints/ADM.md) → ADM:ITenantEntity[]
 - [TSTG · POST /TaskStageComponents/templates](endpoints/TSTG.md)
 
 ### tenantcreationrequests
 
-- [ADM · GET /TenantCreationRequests/{id}](endpoints/ADM.md) → ADM:ResultsTenantCreationRequestsGetResult
+- [ADM · GET /TenantCreationRequests/{id}](endpoints/ADM.md) → ADM:RTCRGetResult
 - [ADM · POST /TenantCreationRequests](endpoints/ADM.md)
 - [ADM · PUT /TenantCreationRequests/{id}/approve](endpoints/ADM.md)
 - [ADM · PUT /TenantCreationRequests/{id}/reject](endpoints/ADM.md)
@@ -1758,11 +1767,11 @@
 
 - [ADM · DELETE /TenantMembers/{tenantMemberID}](endpoints/ADM.md)
 - [ADM · DELETE /TenantMembers](endpoints/ADM.md)
-- [ADM · GET /TenantMembers/anonymousUser](endpoints/ADM.md) → ADM:ResultsTenantMembersListResult
-- [ADM · GET /TenantMembers/apiUser](endpoints/ADM.md) → ADM:ResultsTenantMembersListResult
-- [ADM · GET /TenantMembers/this](endpoints/ADM.md) → ADM:ResultsTenantMembersGetResult
-- [ADM · GET /TenantMembers/{tenantMemberID}](endpoints/ADM.md) → ADM:ResultsTenantMembersGetResult
-- [ADM · GET /TenantMembers](endpoints/ADM.md) → ADM:map<ResultsTenantMembersListResult>
+- [ADM · GET /TenantMembers/anonymousUser](endpoints/ADM.md) → ADM:RTMListResult
+- [ADM · GET /TenantMembers/apiUser](endpoints/ADM.md) → ADM:RTMListResult
+- [ADM · GET /TenantMembers/this](endpoints/ADM.md) → ADM:RTMGetResult
+- [ADM · GET /TenantMembers/{tenantMemberID}](endpoints/ADM.md) → ADM:RTMGetResult
+- [ADM · GET /TenantMembers](endpoints/ADM.md) → ADM:map<RTMListResult>
 - [ADM · POST /TenantMembers](endpoints/ADM.md)
 - [ADM · PUT /TenantMembers](endpoints/ADM.md)
 
@@ -1770,20 +1779,20 @@
 
 - [ADM · GET /Tenants/this/featureFlags](endpoints/ADM.md) → ADM:str[]
 - [ADM · GET /Tenants/this/meta](endpoints/ADM.md)
-- [ADM · GET /Tenants/this](endpoints/ADM.md) → ADM:ResultsTenantsGetResult
-- [ADM · GET /Tenants](endpoints/ADM.md) → ADM:ResultsTenantsListResult[]
+- [ADM · GET /Tenants/this](endpoints/ADM.md) → ADM:RTGetResult
+- [ADM · GET /Tenants](endpoints/ADM.md) → ADM:RTListResult[]
 
 ### tenantsettings
 
 - [ADM · GET /TenantSettings/plateUrl](endpoints/ADM.md) → ADM:str
-- [ADM · GET /TenantSettings](endpoints/ADM.md) → ADM:ResultsTenantSettingsGetResult
+- [ADM · GET /TenantSettings](endpoints/ADM.md) → ADM:RTSGetResult
 - [ADM · PUT /TenantSettings/plateUrl](endpoints/ADM.md)
-- [PA · GET /TenantSettings](endpoints/PA.md) → PA:TenantSettings.GetResult
+- [PA · GET /TenantSettings](endpoints/PA.md) → PA:RTSGetResult
 
 ### timezones
 
 - [COMMON · GET /Timezones/info](endpoints/COMMON.md) → COMMON:TimezoneGetResult
-- [COMMON · GET /Timezones](endpoints/COMMON.md) → COMMON:map<Timezones.ListResult>
+- [COMMON · GET /Timezones](endpoints/COMMON.md) → COMMON:map<RTListResult>
 
 ### tokens
 
@@ -1813,8 +1822,8 @@
 
 - [MSG · DELETE /Triggers/{id}](endpoints/MSG.md)
 - [MSG · DELETE /Triggers](endpoints/MSG.md)
-- [MSG · GET /Triggers/{id}](endpoints/MSG.md) → MSG:map<Triggers.GetResult>
-- [MSG · GET /Triggers](endpoints/MSG.md) → MSG:map<Triggers.ListResult>
+- [MSG · GET /Triggers/{id}](endpoints/MSG.md) → MSG:RTGetResult
+- [MSG · GET /Triggers](endpoints/MSG.md) → MSG:map<RTListResult>
 - [MSG · POST /Triggers](endpoints/MSG.md)
 - [MSG · PUT /Triggers/activate](endpoints/MSG.md)
 - [MSG · PUT /Triggers/deactivate](endpoints/MSG.md)
@@ -1852,7 +1861,7 @@
 
 ### userorderby
 
-- [ADM · GET /UserOrderBy](endpoints/ADM.md) → ADM:map<ResultsUserOrderByListResult>
+- [ADM · GET /UserOrderBy](endpoints/ADM.md) → ADM:map<RUOBListResult>
 
 ### userroles
 
@@ -1863,15 +1872,15 @@
 
 - [ADM · DELETE /Users/{userID}](endpoints/ADM.md)
 - [ADM · DELETE /Users](endpoints/ADM.md)
-- [ADM · GET /Users/geolocation](endpoints/ADM.md) → ADM:ResultsCoordinateAccuracyUserGeolocationSettings[]
-- [ADM · GET /Users/profile](endpoints/ADM.md) → ADM:ResultsUsersUserProfileResult
-- [ADM · GET /Users/relevance](endpoints/ADM.md) → ADM:map<ResultsUsersUserResult>
-- [ADM · GET /Users/short](endpoints/ADM.md) → ADM:map<ResultsUsersUserShortResult>
-- [ADM · GET /Users/this/geolocation](endpoints/ADM.md) → ADM:ResultsCoordinateAccuracyUserGeolocationSettings
-- [ADM · GET /Users/this/profile](endpoints/ADM.md) → ADM:ResultsUsersUserProfileResult
-- [ADM · GET /Users/{id}/profile](endpoints/ADM.md) → ADM:ResultsUsersUserProfileResult
-- [ADM · GET /Users/{id}](endpoints/ADM.md) → ADM:ResultsUsersDetailedInfoResult
-- [ADM · GET /Users](endpoints/ADM.md) → ADM:map<ResultsUsersUserResult>
+- [ADM · GET /Users/geolocation](endpoints/ADM.md) → ADM:UserGeolocationSettings[]
+- [ADM · GET /Users/profile](endpoints/ADM.md) → ADM:UserProfileResult
+- [ADM · GET /Users/relevance](endpoints/ADM.md) → ADM:map<RUUserResult>
+- [ADM · GET /Users/short](endpoints/ADM.md) → ADM:map<UserShortResult>
+- [ADM · GET /Users/this/geolocation](endpoints/ADM.md) → ADM:UserGeolocationSettings
+- [ADM · GET /Users/this/profile](endpoints/ADM.md) → ADM:UserProfileResult
+- [ADM · GET /Users/{id}/profile](endpoints/ADM.md) → ADM:UserProfileResult
+- [ADM · GET /Users/{id}](endpoints/ADM.md) → ADM:DetailedInfoResult
+- [ADM · GET /Users](endpoints/ADM.md) → ADM:map<RUUserResult>
 - [ADM · HEAD /Users](endpoints/ADM.md)
 - [ADM · POST /Users/addbyintegration](endpoints/ADM.md)
 - [ADM · POST /Users/anonymous](endpoints/ADM.md)
@@ -1888,7 +1897,8 @@
 - [ADM · PUT /Users/{userID}/resendinvitation](endpoints/ADM.md)
 - [ADM · PUT /Users/{userID}/restore](endpoints/ADM.md)
 - [EXPORT · GET /Users](endpoints/EXPORT.md)
-- [UI · GET /UserViews/Users/{id}](endpoints/UI.md) → UI:TaskViewProjection[]
+- [IMPORT · POST /Users](endpoints/IMPORT.md)
+- [UI · GET /UserViews/Users/{id}](endpoints/UI.md) → UI:ProjectionsUITaskViewProjection[]
 - [WH · DELETE /Warehouses/users](endpoints/WH.md)
 - [WH · DELETE /Warehouses/{id}/users](endpoints/WH.md)
 - [WH · GET /Warehouses/{id}/users](endpoints/WH.md) → WH:ResultsWarehouseUsersWarehouseUserListResult[]
@@ -1930,8 +1940,8 @@
 
 - [ADM · DELETE /UserTemplates/{id}](endpoints/ADM.md)
 - [ADM · DELETE /UserTemplates](endpoints/ADM.md)
-- [ADM · GET /UserTemplates/{id}](endpoints/ADM.md) → ADM:ResultsUserTemplatesGetResult
-- [ADM · GET /UserTemplates](endpoints/ADM.md) → ADM:map<ResultsUserTemplatesListResult>
+- [ADM · GET /UserTemplates/{id}](endpoints/ADM.md) → ADM:RUTGetResult
+- [ADM · GET /UserTemplates](endpoints/ADM.md) → ADM:map<RUTListResult>
 - [ADM · POST /UserTemplates](endpoints/ADM.md)
 - [ADM · PUT /UserTemplates](endpoints/ADM.md)
 
@@ -1949,7 +1959,7 @@
 
 - [ADM · DELETE /Tenants/this/variables/{name}](endpoints/ADM.md)
 - [ADM · DELETE /Tenants/this/variables](endpoints/ADM.md)
-- [ADM · GET /Tenants/this/variables](endpoints/ADM.md) → ADM:map<ResultsTenantVariablesListResult>
+- [ADM · GET /Tenants/this/variables](endpoints/ADM.md) → ADM:map<RTVListResult>
 - [ADM · POST /Tenants/this/variables](endpoints/ADM.md)
 - [ADM · PUT /Tenants/this/variables](endpoints/ADM.md)
 
@@ -1959,7 +1969,7 @@
 
 ### warehouses
 
-- [ADM · GET /Users/{id}/warehouses](endpoints/ADM.md) → ADM:map<IdNameErpIDResultOfShort>
+- [ADM · GET /Users/{id}/warehouses](endpoints/ADM.md) → ADM:IdNameErpIDResultOfShort[]
 - [WH · DELETE /Warehouses/{id}](endpoints/WH.md)
 - [WH · DELETE /Warehouses](endpoints/WH.md)
 - [WH · GET /Warehouses/V2](endpoints/WH.md) → WH:map<ResultsWarehousesListResult>
@@ -1980,8 +1990,8 @@
 
 - [MSG · DELETE /Webhooks/{id}](endpoints/MSG.md)
 - [MSG · DELETE /Webhooks](endpoints/MSG.md)
-- [MSG · GET /Webhooks/{id}](endpoints/MSG.md) → MSG:Webhook.GetResult
-- [MSG · GET /Webhooks](endpoints/MSG.md) → MSG:map<Webhook.ListResult>
+- [MSG · GET /Webhooks/{id}](endpoints/MSG.md) → MSG:RWGetResult
+- [MSG · GET /Webhooks](endpoints/MSG.md) → MSG:map<RWListResult>
 - [MSG · POST /Webhooks](endpoints/MSG.md)
 - [MSG · PUT /Webhooks/activate/{id}](endpoints/MSG.md)
 - [MSG · PUT /Webhooks/activate](endpoints/MSG.md)
@@ -1990,23 +2000,23 @@
 
 ### workingtime
 
-- [REPORT · GET /WorkingTime](endpoints/REPORT.md) → REPORT:TaskListGroupByAssigneesResult[]
+- [REPORT · GET /WorkingTime](endpoints/REPORT.md) → REPORT:ResultsWorkingTimeWorkingTimeResult[]
 
 ### workschedules
 
-- [PA · GET /Technicians/{userID}/workSchedules](endpoints/PA.md) → PA:WorkScheduleResult[]
+- [PA · GET /Technicians/{userID}/workSchedules](endpoints/PA.md) → PA:map<WorkScheduleResult>
 - [WSP · GET /WorkSchedules/daily](endpoints/WSP.md) → WSP:map<WorkScheduleDailyItemResult[]>
 - [WSP · GET /WorkSchedules](endpoints/WSP.md) → WSP:map<WorkScheduleDailyItemResult>
 
 ### worktypes
 
 - [ES · DELETE /AssetTypes/{id}/workTypes](endpoints/ES.md)
-- [ES · GET /AssetTemplates/{assetTemplateID}/workTypes](endpoints/ES.md) → ES:int[]
-- [ES · GET /AssetTypes/{id}/workTypes](endpoints/ES.md) → ES:IdNameEntityOfShort[]
+- [ES · GET /AssetTemplates/{assetTemplateID}/workTypes](endpoints/ES.md) → ES:ResultsAssetTemplatesAssetTemplateWorkTypeResult[]
+- [ES · GET /AssetTypes/{id}/workTypes](endpoints/ES.md) → ES:map<str>
 - [ES · GET /Assets/{assetID}/workTypes](endpoints/ES.md) → ES:map<ResultsAssetsAssetWorkTypeResult>
 - [ES · POST /AssetTypes/{id}/workTypes](endpoints/ES.md)
 - [PA · DELETE /Users/{userID}/workTypes](endpoints/PA.md)
-- [PA · GET /Users/{userID}/workTypes](endpoints/PA.md) → PA:map<WorkTypesListResult>
+- [PA · GET /Users/{userID}/workTypes](endpoints/PA.md) → PA:map<WorkTypesListResult[]>
 - [PA · POST /Users/{userID}/workTypes](endpoints/PA.md)
 - [WORK · DELETE /TaskTypes/{id}/workTypes](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes/{id}](endpoints/WORK.md)

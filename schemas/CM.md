@@ -3,6 +3,8 @@
 > **Что здесь:** определения типов запросов/ответов сервиса CM. Ручки, ссылающиеся на них — `endpoints/CM.md`.
 
 ```
-type CoordinateData { accuracy?: float /* Точность */, altitude?: float /* Высота */, bearing?: float /* Азимут */, latitude?: float /* Широта */, longitude?: float /* Долгота */, speed?: float /* Скорость */ }
-type PostData { accuracy?: float /* Точность */, altitude?: float /* Высота */, bearing?: float /* Азимут */, clientTimestamp?: datetime /* Дата события UTC */, coordinate?: str /* Координаты в формате "широта:долгота" */, coords?: CoordinateData, speed?: float /* Скорость */, timestamp?: datetime /* Дата события UTC */ }
+type DataClientsCoordinateData { accuracy?: float /* Точность определения координат, метры */, altitude?: float /* Высота над уровнем моря, метры */, bearing?: float /* Азимут (направление движения), градусы */, latitude?: float /* Широта */, longitude?: float /* Долгота */, speed?: float /* Скорость движения, м/с */ }
+type DataClientsPostData { accuracy?: float /* Точность определения координат, метры */, altitude?: float /* Высота над уровнем моря, метры */, bearing?: float /* Азимут (направление движения), градусы */, clientTimestamp?: datetime /* Дата и время события в UTC */, coordinate?: str /* Координаты в формате "широта:долгота" */, coords?: DataClientsCoordinateData, speed?: float /* Скорость движения, м/с */, timestamp?: datetime }
+type ExceptionHandlingModelsErrorModel { arguments?: map<str>, code?: str, message?: str, traceIdentifier?: str }
+type ResultsClientsLocationPostResult { clientId?: str /* Уникальный идентификатор клиента (устройства) */, clientOffset?: int /* Смещение часового пояса клиента в минутах от UTC */ }
 ```

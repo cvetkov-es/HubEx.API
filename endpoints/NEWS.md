@@ -4,13 +4,14 @@
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/NEWS.md`; грабли — `notes/NEWS.md` (если есть).
 
 Base: `{BASE_URL}/NEWS`
+> Примеры ответов вынесены в [../examples/NEWS.md](../examples/NEWS.md).
 
 **Оглавление**
 
-- Articles — строки 12–16
+- Articles — строки 13–17
 
 ## Articles
-- `GET /Articles` — Возвращает список доступных пользователю новостей. · права: ArticleListForTenantMember · paginated · коды: 200, 206
-  ← query: isRead?:enum(true, false), isPublished?:enum(true, false) → map<ListResult>
-- `PUT /Articles` — Помечет новость как прочитанную у текущего пользователя · права: ArticleDeliveryMerge · коды: 202, 409
-  ← body: MergeDeliveryData[]
+- `GET /Articles` — Получение списка доступных пользователю новостей · коды: 200, 204, 206 · примеры
+  ← query: isRead?:bool, isPublished?:bool → map<ResultsArticlesListResult>
+- `PUT /Articles` — Отметка новостей как прочитанных · коды: 202, 409 · примеры
+  ← body: DataNEWSMergeDeliveryData[]

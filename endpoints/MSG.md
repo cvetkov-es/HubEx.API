@@ -4,164 +4,701 @@
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/MSG.md`; грабли — `notes/MSG.md` (если есть).
 
 Base: `{BASE_URL}/MSG`
+> Примеры ответов вынесены в [../examples/MSG.md](../examples/MSG.md).
 
 **Оглавление**
 
-- ContentTypes — строки 23–25
-- CriticalityForTriggers — строки 27–29
-- MailBoxes — строки 31–62
-- MessageTemplates — строки 64–78
-- NavigateTo — строки 80–82
-- Notifications — строки 84–95
-- Protocols — строки 97–99
-- Providers — строки 101–103
-- RecipientSelectionRules — строки 105–119
-- TriggerRecipientSelectionRules — строки 121–123
-- Triggers — строки 125–147
-- Webhooks — строки 149–167
+- ContentTypes — строки 94–97
+- Пример запроса: — строки 99–104
+- Пример успешного ответа (200): — строки 106–115
+- Пример успешного ответа (206): — строки 117–118
+- Негативные сценарии: — строки 120–122
+- CriticalityForTriggers — строки 124–126
+- MailBoxes — строки 128–131
+- Пример запроса: — строки 133–138
+- Пример успешного ответа (200): — строки 140–152
+- Пример успешного ответа (206): — строки 154–155
+- Негативные сценарии: — строки 157–175
+- Пример запроса: — строки 177–182
+- Пример успешного ответа (200): — строки 184–192
+- Пример успешного ответа (206): — строки 194–195
+- Негативные сценарии: — строки 197–206
+- Пример запроса: — строки 208–213
+- Пример успешного ответа (200): — строки 215–227
+- Пример успешного ответа (206): — строки 229–230
+- Негативные сценарии: — строки 232–237
+- Пример запроса: — строки 239–244
+- Пример успешного ответа (200): — строки 246–264
+- Пример успешного ответа (206): — строки 266–267
+- Негативные сценарии: — строки 269–277
+- MessageTemplates — строки 279–282
+- Пример запроса: — строки 284–289
+- Пример успешного ответа (200): — строки 291–294
+- Пример успешного ответа (206): — строки 296–297
+- Негативные сценарии: — строки 299–311
+- Пример запроса: — строки 313–317
+- Пример успешного ответа (200): — строки 319–322
+- Негативные сценарии: — строки 324–332
+- Пример запроса: — строки 334–338
+- Пример успешного ответа (200): — строки 340–341
+- Негативные сценарии: — строки 343–347
+- NavigateTo — строки 349–352
+- Пример запроса: — строки 354–359
+- Пример успешного ответа (200): — строки 361–370
+- Пример успешного ответа (206): — строки 372–373
+- Негативные сценарии: — строки 375–377
+- Notifications — строки 379–382
+- Пример запроса: — строки 384–389
+- Пример успешного ответа (200): — строки 391–407
+- Пример успешного ответа (206): — строки 409–410
+- Негативные сценарии: — строки 412–424
+- Пример запроса: — строки 426–431
+- Пример успешного ответа (200): — строки 433–439
+- Пример успешного ответа (206): — строки 441–442
+- Негативные сценарии: — строки 444–446
+- Protocols — строки 448–451
+- Пример запроса: — строки 453–458
+- Пример успешного ответа (200): — строки 460–468
+- Пример успешного ответа (206): — строки 470–471
+- Негативные сценарии: — строки 473–475
+- Providers — строки 477–480
+- Пример запроса: — строки 482–487
+- Пример успешного ответа (200): — строки 489–499
+- Пример успешного ответа (206): — строки 501–502
+- Негативные сценарии: — строки 504–506
+- RecipientSelectionRules — строки 508–511
+- Пример запроса: — строки 513–518
+- Пример успешного ответа (200): — строки 520–523
+- Пример успешного ответа (206): — строки 525–526
+- Негативные сценарии: — строки 528–539
+- Пример запроса: — строки 541–546
+- Пример успешного ответа (200): — строки 548–551
+- Пример успешного ответа (206): — строки 553–554
+- Негативные сценарии: — строки 556–562
+- TriggerRecipientSelectionRules — строки 564–566
+- Triggers — строки 568–571
+- Пример запроса: — строки 573–578
+- Пример успешного ответа (200): — строки 580–608
+- Пример успешного ответа (206): — строки 610–611
+- Негативные сценарии: — строки 613–632
+- Пример запроса: — строки 634–639
+- Пример успешного ответа (200): — строки 641–653
+- Пример успешного ответа (206): — строки 655–656
+- Негативные сценарии: — строки 658–664
+- Webhooks — строки 666–669
+- Пример запроса: — строки 671–676
+- Пример успешного ответа (200): — строки 678–681
+- Пример успешного ответа (206): — строки 683–684
+- Негативные сценарии: — строки 686–704
 
 ## ContentTypes
-- `GET /ContentTypes` — Метод получения списка типов контента · права: ContentTypeList · paginated · коды: 200, 206
-  → ContentTypes.ListResult[]
+- `GET /ContentTypes` — Возвращает список типов контента. · коды: 200, 204, 206
+  → map<RCTListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /ContentTypes
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "HTML",
+    "code": "HTML"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — типы контента не найдены.
 
 ## CriticalityForTriggers
-- `POST /CriticalityForTriggers` — Добавляет или изменяет критичноти для триггера · права: CriticalityForTriggerMerge · коды: 202
-  ← body: CriticalityForTrigger.MergeData[]
+- `POST /CriticalityForTriggers` — Добавляет или изменяет критичности для триггера. · коды: 202, 400 · примеры
+  ← body: MSGCFTMergeData[]
 
 ## MailBoxes
-- `GET /MailBoxes` — Возвращает список mailbox-ов · права: MailBoxList · paginated · коды: 200, 206
-  → map<MailBox.ListResult>
-- `POST /MailBoxes` — Добавить или обновить mailbox · права: MailBoxMerge · коды: 201
-  ← body: MailBox.MergeData[] → int[]
-- `DELETE /MailBoxes` — Помечает mailbox'ы как удаленные · права: MailBoxDelete · коды: 202
+- `GET /MailBoxes` — Возвращает список почтовых ящиков. · коды: 200, 204, 206
+  → map<RMBListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "Support inbox",
+    "isActive": true,
+    "email": "support@example.com",
+    "calls": { "remaining": 2, "total": 5 },
+    "lastCall": { "completed": "2026-08-20T10:00:00Z", "exception": null, "hasError": false }
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — почтовые ящики не найдены.
+- `POST /MailBoxes` — Создаёт или обновляет почтовые ящики. · коды: 201, 400 · примеры
+  ← body: MSGMBMergeData[] → int[]
+- `DELETE /MailBoxes` — Помечает почтовые ящики как удалённые. · коды: 202 · примеры
   ← body: int[]
-- `PUT /MailBoxes/activate` — Делает mailbox'ы активными · права: MailBoxActivate · коды: 202
+- `PUT /MailBoxes/activate` — Активирует почтовые ящики. · коды: 202 · примеры
   ← body: int[]
-- `PUT /MailBoxes/activate/{id}` — Делает mailbox активным · права: MailBoxActivate · коды: 202
+- `PUT /MailBoxes/activate/{id}` — Активирует почтовый ящик. · коды: 202 · примеры
   ← path: id:int
-- `PUT /MailBoxes/deactivate` — Делает mailbox'ы неактивными · права: MailBoxDeactivate · коды: 202
+- `PUT /MailBoxes/deactivate` — Деактивирует почтовые ящики. · коды: 202 · примеры
   ← body: int[]
-- `PUT /MailBoxes/deactivate/{id}` — Делает mailbox неактивным · права: MailBoxDeactivate · коды: 202
+- `PUT /MailBoxes/deactivate/{id}` — Деактивирует почтовый ящик. · коды: 202 · примеры
   ← path: id:int
-- `GET /MailBoxes/regexactions` — Метод возвращает список действий, которые необходимо выполнить при неудачном применении 
-регулярного выражения для темы или тела email-сообщения · права: RegexNotMatchActionList · paginated · коды: 200, 206
-  → map<RegexNotMatchAction.ListResult>
-- `GET /MailBoxes/{id}` — Получение детальной информации о mailbox'е по идентификатору · права: MailBoxGet · коды: 200
-  ← path: id:int → MailBox.GetResult
-- `DELETE /MailBoxes/{id}` — Помечает mailbox как удаленный · права: MailBoxDelete · коды: 202
+- `GET /MailBoxes/regexactions` — Возвращает список действий при неудачном применении регулярного выражения. · коды: 200, 204, 206
+  → map<RRNMAListResult>
+  Справочник действий, которые выполняются, если регулярное выражение для темы или тела письма не совпало.
+Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/regexactions
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "Пропустить"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — действия не найдены.
+- `GET /MailBoxes/{id}` — Возвращает почтовый ящик по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RMBGetResult
+- `DELETE /MailBoxes/{id}` — Помечает почтовый ящик как удалённый. · коды: 202 · примеры
   ← path: id:int
-- `GET /MailBoxes/{id}/errors` — Получение информации об ошибках, возникших при чтении mailbox'ов · права: MailBoxErrorsList · paginated · коды: 200, 206
-  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBox.GetResult
-- `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список sender'ов mailbox-ов · права: MailBoxSenderList · paginated · коды: 200, 206
-  ← path: mailBoxID:int → map<MailBoxSender.ListResult>
-- `DELETE /MailBoxes/{mailBoxID}/senders` — Помечает sender'ы mailbox'a как удаленные · права: MailBoxSenderDelete · коды: 202
+- `GET /MailBoxes/{id}/errors` — Возвращает ошибки чтения почтового ящика. · коды: 200, 204, 206
+  ← path: id:int; query: occurredFrom?:datetime, occurredTill?:datetime → MailBoxErrorsEntity[]
+  Поддерживает фильтрацию по дате возникновения ошибки и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/1/errors?occurredFrom=2026-08-01T00:00:00Z&occurredTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "tenantID": 1,
+    "mailBoxID": 1,
+    "name": "Support inbox",
+    "email": "support@example.com",
+    "occurred": "2026-08-20T10:00:00Z",
+    "error": "Connection timeout"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — ошибки не найдены.
+- `GET /MailBoxes/{mailBoxID}/senders` — Возвращает список отправителей почтового ящика. · коды: 200, 204, 206
+  ← path: mailBoxID:int → map<RMBSListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MailBoxes/1/senders
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "10": {
+    "id": 10,
+    "mailBoxID": 1,
+    "recipient": "sender@example.com",
+    "taskTemplateID": "TMPL-001",
+    "isActive": true,
+    "sendResponse": true,
+    "taskSubjectRegex": ".*",
+    "taskTextBodyRegex": ".*",
+    "regexNotMatchAction": { "id": 1, "name": "Skip" },
+    "lastTask": { "id": 100, "number": "T-100" },
+    "calls": { "remaining": 1, "total": 3 },
+    "lastCall": { "started": "2026-08-20T10:00:00Z", "completed": "2026-08-20T10:00:01Z", "exception": null, "hasError": false, "lastRecipient": "sender@example.com" }
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — отправители не найдены.
+- `DELETE /MailBoxes/{mailBoxID}/senders` — Помечает отправителей почтового ящика как удалённых. · коды: 202 · примеры
   ← path: mailBoxID:int; body: int[]
-- `DELETE /MailBoxes/{mailBoxID}/senders/{id}` — Помечает sender mailbox'a как удаленный · права: MailBoxSenderDelete · коды: 202
+- `DELETE /MailBoxes/{mailBoxID}/senders/{id}` — Помечает отправителя почтового ящика как удалённого. · коды: 202 · примеры
   ← path: mailBoxID:int, id:int
-- `GET /MailBoxes/{mailBoxID}/senders/{senderID}` — Получение детальной информации о sender'e mailbox'a по идентификатору · права: MailBoxSenderGet · коды: 200
-  ← path: mailBoxID:int, senderID:int → MailBoxSender.GetResult
+- `GET /MailBoxes/{mailBoxID}/senders/{senderID}` — Возвращает отправителя почтового ящика по идентификатору. · коды: 200, 204 · примеры
+  ← path: mailBoxID:int, senderID:int → RMBSGetResult
 
 ## MessageTemplates
-- `GET /MessageTemplates` — Возвращает список активных шаблонов уведоплений · права: MessageTemplateList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false) → map<MessageTemplates.ListResult>
-- `POST /MessageTemplates` — Создает шаблоны уведомлений · права: MessageTemplateAdd · коды: 201
-  ← body: MessageTemplate.AddData[] → int[]
-- `PUT /MessageTemplates` — Изменяет шаблоны уведомлений · права: MessageTemplateUpdate · коды: 202
-  ← body: MessageTemplate.UpdateData[]
-- `DELETE /MessageTemplates` — Помечает шаблоны уведомлений, как удаленные · права: MessageTemplateDelete · коды: 202
+- `GET /MessageTemplates` — Возвращает список шаблонов уведомлений. · коды: 200, 204, 206
+  ← query: isDeleted?:bool → map<RMTListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /MessageTemplates?isDeleted=false
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "description": "Welcome", "subject": "Hello", "validated": "2026-08-20T10:00:00Z", "isValid": true, "providerID": 1, "applicationID": 2, "navigateToID": 3, "contentTypeID": 1 } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `MessageTemplateList`.
+- 204 — шаблоны по фильтрам не найдены.
+- `POST /MessageTemplates` — Создает шаблоны уведомлений. · коды: 201, 400 · примеры
+  ← body: MSGMTAddData[] → int[]
+- `PUT /MessageTemplates` — Изменяет шаблоны уведомлений. · коды: 202, 400 · примеры
+  ← body: MSGMTUpdateData[]
+- `DELETE /MessageTemplates` — Помечает шаблоны уведомлений как удаленные. · коды: 202, 409 · примеры
   ← body: int[]
-- `GET /MessageTemplates/{id}` — Возвращает шаблон уведомлений · права: MessageTemplateGet · коды: 200
-  ← path: id:int → map<MessageTemplates.GetResult>
-- `DELETE /MessageTemplates/{id}` — Помечает шаблон уведомлений, как удаленный · права: MessageTemplateDelete · коды: 202, 409
+- `GET /MessageTemplates/{id}` — Возвращает шаблон уведомлений по идентификатору. · коды: 200, 204
+  ← path: id:int → RMTGetResult
+  Используется для просмотра и редактирования карточки шаблона уведомления.
+            
+## Пример запроса:
+```text
+GET /MessageTemplates/1
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "id": 1, "description": "Welcome", "subject": "Hello", "content": "<p>Hi</p>", "validated": "2026-08-20T10:00:00Z", "isValid": true, "provider": { "id": 1, "code": "Email", "name": "Email" }, "application": { "id": 2, "code": "Portal", "name": "Portal" }, "navigateTo": { "id": 3, "code": "Task", "name": "Task" }, "contentType": { "id": 1, "code": "Html", "name": "HTML" }, "deleted": null }
+```
+            
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `MessageTemplateGet`.
+- 204 — шаблон с указанным идентификатором не найден.
+- `DELETE /MessageTemplates/{id}` — Помечает шаблон уведомлений как удаленный. · коды: 202, 409 · примеры
   ← path: id:int
-- `PUT /MessageTemplates/{id}/validate` — Изменяет валидационную информацию в шаблонах уведомлений · права: MessageTemplateValidate · коды: 202
+- `PUT /MessageTemplates/{id}/validate` — Валидирует шаблон уведомлений и сохраняет результат проверки. · коды: 200, 204, 400
   ← path: id:int
+  Проверяет корректность шаблонов темы и содержимого через MessageBuilder.
+            
+## Пример запроса:
+```text
+PUT /MessageTemplates/1/validate
+Authorization: Bearer <token>
+```
+            
+## Пример успешного ответа (200):
+Тело ответа отсутствует.
+            
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `MessageTemplateValidate`.
+- 204 — шаблон с указанным идентификатором не найден.
+- 400 — шаблон не прошел валидацию.
 
 ## NavigateTo
-- `GET /NavigateTo` — Метод получения списка переходов · права: NavigateToList · paginated · коды: 200, 206
-  → NavigateTo.ListResult[]
+- `GET /NavigateTo` — Возвращает список переходов. · коды: 200, 204, 206
+  → map<RNTListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /NavigateTo
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "code": "TASK",
+    "name": "Заявка"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — переходы не найдены.
 
 ## Notifications
-- `GET /Notifications` — Возвращает список уведомлений пользователя · права: NotificationLogList · paginated · коды: 200, 206
-  ← query: includeIsViewed?:bool → map<Notification.ListResult>
-- `POST /Notifications` — Отправка запроса на интеграцию с системой · права: ApplicationIntegrationRequest · коды: 202
+- `GET /Notifications` — Возвращает список уведомлений пользователя. · коды: 200, 204, 206
+  ← query: includeIsViewed?:bool → map<RNListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Notifications?includeIsViewed=false
+Authorization: Bearer <token>
+Range: items=0-24
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "101": {
+    "id": 101,
+    "providerID": 1,
+    "subject": "Новая заявка",
+    "content": "Создана заявка №123",
+    "contentTypeID": 1,
+    "created": "2026-08-20T10:00:00Z",
+    "sent": "2026-08-20T10:00:01Z",
+    "navigateTo": 3,
+    "taskID": 123,
+    "isViewed": false
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — уведомления не найдены.
+- `POST /Notifications` — Отправляет запрос на интеграцию с внешней системой. · коды: 202, 400 · примеры
   ← query: integratedSystemName?:str
-- `PUT /Notifications` — Установка признака просмотра уведомления · права: NotificationLogList · коды: 202
+- `PUT /Notifications` — Устанавливает признак просмотра уведомлений. · коды: 202, 400 · примеры
   ← body: SetViewedData
-- `HEAD /Notifications` — Возвращает заголовок запроса списка уведомлений пользователя с количеством данных · права: NotificationLogList · коды: 200
+- `HEAD /Notifications` — Возвращает заголовок с количеством уведомлений пользователя. · коды: 200 · примеры
   ← query: includeIsViewed?:bool
-- `PUT /Notifications/all` — Установка признака просмотра всех уведомлений пользователя · права: NotificationLogList · коды: 202
-- `GET /Notifications/fields` — Получение списка полей, используемых для уведомлений · права: NotificationFieldsList · paginated · коды: 200, 206
+- `PUT /Notifications/all` — Отмечает все уведомления пользователя как просмотренные. · коды: 202 · примеры
+- `GET /Notifications/fields` — Возвращает список полей, используемых в шаблонах уведомлений. · коды: 200, 204, 206
   → map<str>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Notifications/fields
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "TaskNumber": "Номер заявки",
+  "UserName": "Имя пользователя"
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — поля не найдены.
 
 ## Protocols
-- `GET /Protocols` — Возвращает список протоколов · права: ProtocolList · paginated · коды: 200, 206
-  → map<Protocols.ListResult>
+- `GET /Protocols` — Возвращает список протоколов. · коды: 200, 204, 206
+  → map<RProtocolsListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Protocols
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "SMTP"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — протоколы не найдены.
 
 ## Providers
-- `GET /Providers` — Метод получения списка провайдеров · права: ProviderList · paginated · коды: 200, 206
-  → Providers.ListResult[]
+- `GET /Providers` — Возвращает список провайдеров сообщений. · коды: 200, 204, 206
+  → map<RProvidersListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Providers
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "name": "SMS",
+    "code": "SMS",
+    "descriptionRu": "SMS-провайдер"
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — провайдеры не найдены.
 
 ## RecipientSelectionRules
-- `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя · права: RecipientSelectionRuleList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), triggerID?:int → map<RecipientSelectionRules.ListResult>
-- `POST /RecipientSelectionRules` — Создает правила выбора получателя · права: RecipientSelectionRuleAdd · коды: 201
-  ← body: RecipientSelectionRule.AddData[] → int[]
-- `PUT /RecipientSelectionRules` — Изменяет правила выбора получателя · права: RecipientSelectionRuleUpdate · коды: 202
-  ← body: RecipientSelectionRule.UpdateData[]
-- `DELETE /RecipientSelectionRules` — Помечает правила выбора получателя, как удаленные · права: RecipientSelectionRuleDelete · коды: 202
+- `GET /RecipientSelectionRules` — Возвращает список правил выбора получателя. · коды: 200, 204, 206
+  ← query: isDeleted?:bool, triggerID?:int → map<RRSRListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /RecipientSelectionRules?isDeleted=false&triggerID=10
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "description": "Исполнитель и руководитель", "isCaller": false, "isTaskRequestor": true, "isTaskAssignee": true, "isPreviousTaskAssignee": false, "isTaskAssigneeManager": true, "isTaskContact": false, "isTaskAssetResponsiblePerson": false, "isTenantPowerUser": false, "isTaskWatchList": false, "isForRelevantUsers": false, "isForRelevantUsersByWorkType": false, "deleted": null } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — правила по фильтрам не найдены.
+- `POST /RecipientSelectionRules` — Создает правила выбора получателя. · коды: 201, 400 · примеры
+  ← body: MSGRSRAddData[] → int[]
+- `PUT /RecipientSelectionRules` — Изменяет правила выбора получателя. · коды: 202, 400 · примеры
+  ← body: MSGRSRUpdateData[]
+- `DELETE /RecipientSelectionRules` — Помечает правила выбора получателя как удаленные. · коды: 202, 409 · примеры
   ← body: int[]
-- `GET /RecipientSelectionRules/recipients` — Возвращает список получателей уведомлений · права: RecipientList · paginated · коды: 200, 206
-  ← query: isHidden?:enum(true, false) → RecipientListResult[]
-- `GET /RecipientSelectionRules/{id}` — Возвращает правило выбора получателя · права: RecipientSelectionRuleGet · коды: 200
-  ← path: id:int → map<RecipientSelectionRules.GetResult>
-- `DELETE /RecipientSelectionRules/{id}` — Помечает правило выбора получателя, как удаленное · права: RecipientSelectionRuleDelete · коды: 202, 409
+- `GET /RecipientSelectionRules/recipients` — Возвращает список получателей уведомлений. · коды: 200, 204, 206
+  ← query: isHidden?:bool → map<RecipientListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /RecipientSelectionRules/recipients?isHidden=false
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "code": "TaskAssignee", "name": "Исполнитель заявки" } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — получатели по фильтрам не найдены.
+- `GET /RecipientSelectionRules/{id}` — Возвращает правило выбора получателя по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RRSRGetResult
+- `DELETE /RecipientSelectionRules/{id}` — Помечает правило выбора получателя как удаленное. · коды: 202, 409 · примеры
   ← path: id:int
 
 ## TriggerRecipientSelectionRules
-- `POST /TriggerRecipientSelectionRules` — Добавляет или изменяет правила выбора получателя для триггера · права: TriggerRecipientSelectionRuleMerge · коды: 202
-  ← body: TriggerRecipientSelectionRule.MergeData[]
+- `POST /TriggerRecipientSelectionRules` — Добавляет или изменяет правила выбора получателя для триггера. · коды: 202, 400 · примеры
+  ← body: MSGTRSRMergeData[]
 
 ## Triggers
-- `GET /Triggers` — Возвращает список активных триггеров · права: TriggerList · paginated · коды: 200, 206
-  ← query: isDeleted?:enum(true, false), isEnabled?:enum(true, false) → map<Triggers.ListResult>
-- `POST /Triggers` — Создает триггеры · права: TriggerAdd · коды: 201
-  ← body: Trigger.AddData[] → int[]
-- `PUT /Triggers` — Изменяет триггеры · права: TriggerUpdate · коды: 202
-  ← body: Trigger.UpdateData[]
-- `DELETE /Triggers` — Помечает триггеры, как удаленные · права: TriggerDelete · коды: 202
+- `GET /Triggers` — Возвращает список триггеров. · коды: 200, 204, 206
+  ← query: isDeleted?:bool, isEnabled?:bool → map<RTListResult>
+  Поддерживает фильтрацию по query-параметрам и ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Triggers?isDeleted=false&isEnabled=true
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "id": 1,
+    "timeoutSeconds": 60,
+    "description": "Уведомление при создании заявки",
+    "isNotifyDuringWorkHours": true,
+    "isNotifyDuringDutyHours": false,
+    "isNotifyDuringOtherHours": false,
+    "isEnabled": true,
+    "provider": {
+      "id": 1,
+      "name": "Email",
+      "description": "Email-провайдер"
+    },
+    "event": {
+      "id": 2,
+      "name": "Создание заявки"
+    },
+    "messageTemplate": {
+      "id": 3,
+      "name": null,
+      "description": "Шаблон уведомления"
+    },
+    "deleted": null
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — триггеры по фильтрам не найдены.
+- `POST /Triggers` — Создает триггеры. · коды: 201, 400 · примеры
+  ← body: MSGTAddData[] → int[]
+- `PUT /Triggers` — Изменяет триггеры. · коды: 202, 400 · примеры
+  ← body: MSGTUpdateData[]
+- `DELETE /Triggers` — Помечает триггеры как удалённые. · коды: 202, 400, 409 · примеры
   ← body: int[]
-- `PUT /Triggers/activate` — Делает триггеры активными · права: TriggerUpdate · коды: 202
+- `PUT /Triggers/activate` — Активирует триггеры. · коды: 202, 400 · примеры
   ← body: int[]
-- `PUT /Triggers/deactivate` — Делает триггеры неактивными · права: TriggerUpdate · коды: 202
+- `PUT /Triggers/deactivate` — Деактивирует триггеры. · коды: 202, 400 · примеры
   ← body: int[]
-- `GET /Triggers/{id}` — Возвращает триггер · права: TriggerGet · коды: 200
-  ← path: id:int → map<Triggers.GetResult>
-- `DELETE /Triggers/{id}` — Помечает триггер, как удаленный · права: TriggerDelete · коды: 202, 409
+- `GET /Triggers/{id}` — Возвращает триггер по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RTGetResult
+- `DELETE /Triggers/{id}` — Помечает триггер как удалённый. · коды: 202, 409 · примеры
   ← path: id:int
-- `GET /Triggers/{id}/criticalities` — Метод получения списка критичностей для триггера · права: CriticalityForTriggerList · paginated · коды: 200, 206
-  ← path: id:int → Triggers.ListResult[]
-- `PUT /Triggers/{triggerID}/activate` — Делает триггер активным · права: TriggerUpdate · коды: 202
+- `GET /Triggers/{id}/criticalities` — Возвращает список критичностей для триггера. · коды: 200, 204, 206
+  ← path: id:int → IdNameResultOfShort[]
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Triggers/1/criticalities
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "name": "Низкая"
+  },
+  {
+    "id": 2,
+    "name": "Высокая"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — критичности для триггера не найдены.
+- `PUT /Triggers/{triggerID}/activate` — Активирует триггер. · коды: 202 · примеры
   ← path: triggerID:int
-- `PUT /Triggers/{triggerID}/deactivate` — Делает триггер неактивным · права: TriggerUpdate · коды: 202
+- `PUT /Triggers/{triggerID}/deactivate` — Деактивирует триггер. · коды: 202 · примеры
   ← path: triggerID:int
 
 ## Webhooks
-- `GET /Webhooks` — Возвращает список webhook-ов · права: WebhookList · paginated · коды: 200, 206
-  → map<Webhook.ListResult>
-- `POST /Webhooks` — Добавить или обновить webhook · права: WebhookMerge · коды: 201
-  ← body: Webhook.MergeData[] → int[]
-- `DELETE /Webhooks` — Помечает webhookи, как удаленные · права: WebhookDelete · коды: 202
+- `GET /Webhooks` — Возвращает список webhook-ов. · коды: 200, 204, 206
+  → map<RWListResult>
+  Поддерживает ограничение результата через заголовок `Range`.
+            
+## Пример запроса:
+```text
+GET /Webhooks
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{ "1": { "id": 1, "name": "Hook", "isActive": true, "callsRemaining": 3, "lastCall": { "completed": "2026-08-20T10:00:00Z", "exception": null } } }
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — webhook-и не найдены.
+- `POST /Webhooks` — Добавляет или обновляет webhook-и. · коды: 201, 400 · примеры
+  ← body: MSGWMergeData[] → int[]
+- `DELETE /Webhooks` — Помечает webhook-и как удаленные. · коды: 202 · примеры
   ← body: int[]
-- `PUT /Webhooks/activate` — Делает webhook-и, активными · права: WebhookActivate · коды: 202
+- `PUT /Webhooks/activate` — Активирует webhook-и. · коды: 202 · примеры
   ← body: int[]
-- `PUT /Webhooks/activate/{id}` — Делает webhook, активным · права: WebhookActivate · коды: 202
+- `PUT /Webhooks/activate/{id}` — Активирует webhook. · коды: 202 · примеры
   ← path: id:int
-- `PUT /Webhooks/deactivate` — Делает webhook-и, неактивными · права: WebhookDeactivate · коды: 202
+- `PUT /Webhooks/deactivate` — Деактивирует webhook-и. · коды: 202 · примеры
   ← body: int[]
-- `PUT /Webhooks/deactivate/{id}` — Делает webhook, неактивным · права: WebhookDeactivate · коды: 202
+- `PUT /Webhooks/deactivate/{id}` — Деактивирует webhook. · коды: 202 · примеры
   ← path: id:int
-- `GET /Webhooks/{id}` — Получение детальной информации о webhook'е по идентификатору · права: WebhookGet · коды: 200
-  ← path: id:int → Webhook.GetResult
-- `DELETE /Webhooks/{id}` — Помечает webhook, как удаленный · права: WebhookDelete · коды: 202
+- `GET /Webhooks/{id}` — Возвращает детальную информацию о webhook-е по идентификатору. · коды: 200, 204 · примеры
+  ← path: id:int → RWGetResult
+- `DELETE /Webhooks/{id}` — Помечает webhook как удаленный. · коды: 202 · примеры
   ← path: id:int

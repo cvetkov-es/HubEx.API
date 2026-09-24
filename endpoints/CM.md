@@ -4,12 +4,12 @@
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/CM.md`; грабли — `notes/CM.md` (если есть).
 
 Base: `{BASE_URL}/CM`
+> Примеры ответов вынесены в [../examples/CM.md](../examples/CM.md).
 
 **Оглавление**
 
-- Clients — строки 12–15
+- Clients — строки 13–15
 
 ## Clients
-- `POST /Clients/locations` — Сохраняет данные о местоположении · коды: 200, 404
-  ← body: PostData[]
-  Выполнение данного метода резрешино от **анонимного пользователя**.
+- `POST /Clients/locations` — Сохранение данных о местоположении клиента · коды: 200, 404, 409 · примеры
+  ← header: X-CLIENT-IDENTIFIER:str, X-Client-Utc-Offset?:int; body: DataClientsPostData[] → ResultsClientsLocationPostResult

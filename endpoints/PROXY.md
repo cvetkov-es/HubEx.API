@@ -4,24 +4,22 @@
 > **Когда сюда идти:** найти ручку и её вход/выход. Типы — `schemas/PROXY.md`; грабли — `notes/PROXY.md` (если есть).
 
 Base: `{BASE_URL}/PROXY`
+> Примеры ответов вынесены в [../examples/PROXY.md](../examples/PROXY.md).
 
 **Оглавление**
 
-- Bypass — строки 14–17
-- NavigateTo — строки 19–22
-- TaskTemplates — строки 24–27
+- Bypass — строки 15–17
+- NavigateTo — строки 19–21
+- TaskTemplates — строки 23–25
 
 ## Bypass
-- `POST /Bypass` · коды: 200
+- `POST /Bypass` — Прокидывает запрос на заданный в теле адрес, применяя к нему дополнительные заголовки по имени домена · коды: 200, 400 · примеры
   ← body: PostData → PostResult
-  Для выполнения данного метода пользователь должен быть **TenantMember**.
 
 ## NavigateTo
-- `GET /NavigateTo/{appCode}` · коды: 200
+- `GET /NavigateTo/{appCode}` — Возвращает ссылку на указанное приложение или расширение с одноразовым токеном для авторизации · коды: 200, 400, 500 · примеры
   ← path: appCode:str; query: deepLink?:str → GetResult
-  Для выполнения данного метода пользователь должен быть **TenantMember**.
 
 ## TaskTemplates
-- `GET /TaskTemplates/{codeDynamicPart}` · коды: 307
+- `GET /TaskTemplates/{codeDynamicPart}` — Перенаправляет запрос на электронный паспорт оборудования · коды: 307, 400, 500 · примеры
   ← path: codeDynamicPart:str; header: referer?:str
-  Выполнение данного метода резрешино от **анонимного пользователя**.
