@@ -11,25 +11,25 @@ Base: `{BASE_URL}/WSP`
 - WorkSchedules — строки 31–35
 
 ## ScheduleRules
-- `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · права: ScheduleRulesList · paginated · коды: 200, 206
+- `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · коды: 200
   → map<ListResult>
-- `POST /ScheduleRules` — Создаёт ГРВ · права: ScheduleRulesList · paginated · коды: 201, 206
+- `POST /ScheduleRules` — Создаёт ГРВ · коды: 201
   ← body: ScheduleCreateDto → int
-- `PUT /ScheduleRules/extend/{id}` — Расширяет ГРВ · права: ScheduleRulesList · paginated · коды: 202, 206
+- `PUT /ScheduleRules/extend/{id}` — Расширяет ГРВ · коды: 202
   ← path: id:int; body: ScheduleExtendDto
-- `GET /ScheduleRules/holiday` — Возвращает График праздничных дней · права: ScheduleRulesList · paginated · коды: 200, 206, 400
+- `GET /ScheduleRules/holiday` — Возвращает График праздничных дней · коды: 200, 400
   ← query: year?:str → map<datetime[]>
-- `POST /ScheduleRules/preview` — Возвращает ГРВ для предпросмотра · права: ScheduleRulesList · paginated · коды: 201, 206
+- `POST /ScheduleRules/preview` — Возвращает ГРВ для предпросмотра · коды: 201
   ← body: ScheduleExtendDto → ScheduleOccurrenceDto[]
-- `GET /ScheduleRules/{id}` — Возвращает ГРВ · права: ScheduleRulesList · paginated · коды: 200, 206
+- `GET /ScheduleRules/{id}` — Возвращает ГРВ · коды: 200
   ← path: id:int → ScheduleRuleDto
-- `PUT /ScheduleRules/{id}` — Меняет ГРВ · права: ScheduleRulesList · paginated · коды: 202, 206
+- `PUT /ScheduleRules/{id}` — Меняет ГРВ · коды: 202
   ← path: id:int; body: ScheduleUpdateDto
-- `DELETE /ScheduleRules/{id}` — Удаляет ГРВ · права: ScheduleRulesList · paginated · коды: 202, 206
+- `DELETE /ScheduleRules/{id}` — Удаляет ГРВ · коды: 202
   ← path: id:int
 
 ## WorkSchedules
-- `GET /WorkSchedules` — Возвращает график рабочего времени на заданный период · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult>
-- `GET /WorkSchedules/daily` — Возвращает график рабочего времени на заданный период по суткам · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult[]>
+- `GET /WorkSchedules` — Возвращает график рабочего времени на заданный период · коды: 200
+  → map<WorkScheduleDailyItemResult>
+- `GET /WorkSchedules/daily` — Возвращает график рабочего времени на заданный период по суткам · коды: 200
+  → map<WorkScheduleDailyItemResult[]>
