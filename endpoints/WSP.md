@@ -12,15 +12,15 @@ Base: `{BASE_URL}/WSP`
 - WorkSchedules — строки 22–26
 
 ## ScheduleRules
-- `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · права: ScheduleRulesList · paginated · коды: 200, 206
+- `GET /ScheduleRules` — Возвращает список доступных графиков рабочего времени · коды: 200
   → map<ListResult>
-- `GET /ScheduleRules/holiday` — Возвращает График праздничных дней · права: ScheduleRulesList · paginated · коды: 200, 206, 400
+- `GET /ScheduleRules/holiday` — Возвращает График праздничных дней · коды: 200, 400
   ← query: year?:str → map<datetime[]>
-- `GET /ScheduleRules/{id}` — Возвращает ГРВ · права: ScheduleRulesList · paginated · коды: 200, 206
+- `GET /ScheduleRules/{id}` — Возвращает ГРВ · коды: 200
   ← path: id:int → ScheduleRuleDto
 
 ## WorkSchedules
-- `GET /WorkSchedules` — Возвращает график рабочего времени на заданный период · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult>
-- `GET /WorkSchedules/daily` — Возвращает график рабочего времени на заданный период по суткам · права: ScheduleRulesList · paginated · коды: 200, 206
-  ← query: validTill?:datetime, validFrom?:datetime, scheduleRuleID?:int → map<WorkScheduleDailyItemResult[]>
+- `GET /WorkSchedules` — Возвращает график рабочего времени на заданный период · коды: 200
+  → map<WorkScheduleDailyItemResult>
+- `GET /WorkSchedules/daily` — Возвращает график рабочего времени на заданный период по суткам · коды: 200
+  → map<WorkScheduleDailyItemResult[]>
