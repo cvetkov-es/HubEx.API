@@ -24,7 +24,7 @@ Base: `{BASE_URL}/SLA`
   ← path: id:int → ResultsCriticalitiesGetResult
 
 ## DeadlineRules
-- `GET /DeadlineRules` — Получение списка правил планового закрытия заявки · коды: 200, 204, 206 · примеры
+- `GET /DeadlineRules` — Получение списка правил планового закрытия заявки · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsDeadlineRulesListResult>
 - `GET /DeadlineRules/{DeadlineRuleID}` — Получение правила планового закрытия заявки · коды: 200, 204, 400 · примеры
   ← path: DeadlineRuleID:int → ResultsDeadlineRulesGetResult

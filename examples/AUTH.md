@@ -48,3 +48,63 @@
 ## Негативные сценарии:
 - 409 Conflict: параметр `credential` не указан.
 - 404 Not Found: учётная запись не найдена или не прошла верификацию (кроме случая `NotVerifiedException`, который возвращает 200).
+
+### `GET /Accounts/this/applications`
+
+## Пример запроса:
+`GET /Accounts/this/applications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "client": {
+      "id": 1,
+      "uniqueClientIdentifier": "abc-123-def-456",
+      "agent": "Android 14",
+      "clientType": { "id": 1, "name": "Mobile" }
+    },
+    "application": {
+      "id": 2,
+      "name": "HubEx Mobile",
+      "version": "3.5.0"
+    },
+    "pushToken": "fcm-token-xyz",
+    "timestamp": "2026-08-21T08:00:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: приложения не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AccountClientApplicationList`.
+
+### `GET /Accounts/this/notifications`
+
+## Пример запроса:
+`GET /Accounts/this/notifications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "notificationID": 501,
+    "providerID": 1,
+    "subject": "Подтверждение адреса электронной почты",
+    "content": "Для подтверждения перейдите по ссылке...",
+    "sent": "2026-08-21T08:01:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: уведомления не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `NotificationLogList`.

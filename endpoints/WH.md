@@ -37,7 +37,7 @@ Base: `{BASE_URL}/WH`
   → map<ResultsDocumentTypesListResult>
 
 ## Documents
-- `GET /Documents` — Получение списка складских документов · коды: 200, 204, 206 · примеры
+- `GET /Documents` — Получение списка складских документов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, isPosted?:bool, documentTypeID?:int, documentStatusID?:int, operationTypeID?:int, fromWarehouses?:int, toWarehouses?:int, responsiblePersonID?:int, creationFrom?:datetime, creationTill?:datetime, modifiedFrom?:datetime, modifiedTill?:datetime, documentDateFrom?:datetime, documentDateTill?:datetime, orderBy?:int, sortDirection?:int → ResultsDocumentsDocumentResult[]
 
 ## Inventories
@@ -47,9 +47,9 @@ Base: `{BASE_URL}/WH`
   → ResultsInventoriesListResult
 
 ## Issues
-- `GET /Issues` — Получение списка списаний материалов · коды: 200, 204, 206 · примеры
+- `GET /Issues` — Получение списка списаний материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, responsiblePersonID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime → map<ResultsIssuesIssueResult>
-- `HEAD /Issues` — Получение общего количества списаний материалов · коды: 200, 206 · примеры
+- `HEAD /Issues` — Получение общего количества списаний материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, responsiblePersonID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `GET /Issues/{id}` — Получение детальной информации о списании материалов · коды: 200, 204 · примеры
   ← path: id:int → ResultsIssuesIssueResult
@@ -95,9 +95,9 @@ Base: `{BASE_URL}/WH`
   ← path: id:int → ResultsOperationTypesOperationTypeResult
 
 ## Receipts
-- `GET /Receipts` — Получение списка оприходываний материалов · коды: 200, 204, 206 · примеры
+- `GET /Receipts` — Получение списка оприходываний материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime, responsiblePersonID?:int → map<ResultsReceiptsReceiptResult>
-- `HEAD /Receipts` — Получение общего количества оприходываний материалов · коды: 200, 206 · примеры
+- `HEAD /Receipts` — Получение общего количества оприходываний материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `GET /Receipts/{id}` — Получение детальной информации об оприходывании материалов · коды: 200, 204 · примеры
   ← path: id:int → ResultsReceiptsReceiptResult
@@ -105,9 +105,9 @@ Base: `{BASE_URL}/WH`
   ← path: receiptID:int → ResultsReceiptItemsListResult[]
 
 ## Transfers
-- `GET /Transfers` — Получение списка перемещений материалов · коды: 200, 204, 206 · примеры
+- `GET /Transfers` — Получение списка перемещений материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, fromWarehouses?:int, toWarehouses?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime, responsiblePersonID?:int → map<ResultsTransfersTransferResult>
-- `HEAD /Transfers` — Получение общего количества перемещений материалов · коды: 200, 206 · примеры
+- `HEAD /Transfers` — Получение общего количества перемещений материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, fromWarehouses?:int, toWarehouses?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `GET /Transfers/{id}` — Получение детальной информации о перемещении материалов · коды: 200, 204 · примеры
   ← path: id:int → ResultsTransfersTransferResult

@@ -31,11 +31,11 @@ Base: `{BASE_URL}/ADM`
 - Users — строки 158–218
 
 ## BanReasons
-- `GET /BanReasons` — Получить список причин блокировки пользователя · коды: 200, 204, 206 · примеры
+- `GET /BanReasons` — Получить список причин блокировки пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<RBRListResult>
 
 ## Capabilities
-- `GET /Capabilities` — Получить список возможностей работы с элементами интерфейса · коды: 200, 204, 206 · примеры
+- `GET /Capabilities` — Получить список возможностей работы с элементами интерфейса · paginated · коды: 200, 204, 206 · примеры
   → map<RCListResult>
 
 ## DefaultPages
@@ -47,7 +47,7 @@ Base: `{BASE_URL}/ADM`
   → IdNameDescriptionEntityOfByte[]
 
 ## Invitations
-- `GET /Invitations` — Получить список всех приглашений тенанта · коды: 200, 204, 206 · примеры
+- `GET /Invitations` — Получить список всех приглашений тенанта · paginated · коды: 200, 204, 206 · примеры
   ← query: userTemplateID?:int → map<RIGetResult>
 - `GET /Invitations/{id}` — Получить расширенную информацию о приглашении · коды: 200 · примеры
   ← path: id:uuid → RIGetResult
@@ -55,51 +55,51 @@ Base: `{BASE_URL}/ADM`
   ← path: id:uuid → GetShortResult
 
 ## PermissionApiTags
-- `GET /PermissionApiTags` — Получить список тегов API-полномочий · коды: 200, 204, 206 · примеры
+- `GET /PermissionApiTags` — Получить список тегов API-полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPATListResult[]>
 
 ## PermissionExtTags
-- `GET /PermissionExtTags` — Получить список тегов расширенных полномочий · коды: 200, 204, 206 · примеры
+- `GET /PermissionExtTags` — Получить список тегов расширенных полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPETListResult[]>
 
 ## PermissionsApi
-- `GET /PermissionsApi` — Получить список API-полномочий · коды: 200, 204, 206 · примеры
+- `GET /PermissionsApi` — Получить список API-полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPAListResult>
 
 ## PermissionsExt
-- `GET /PermissionsExt` — Получить список расширенных полномочий · коды: 200, 204, 206 · примеры
+- `GET /PermissionsExt` — Получить список расширенных полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPEListResult>
 
 ## PermissionsUi
-- `GET /PermissionsUi` — Получить список UI полномочий · коды: 200, 204, 206 · примеры
+- `GET /PermissionsUi` — Получить список UI полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPUGetResult>
 - `GET /PermissionsUi/{id}` — Получить данные UI полномочия · коды: 200, 204 · примеры
   ← path: id:int → RPUGetResult
 
 ## RoleTaskPropertiesAccess
-- `GET /RoleTaskPropertiesAccess/attributes` — Получить настройки доступности атрибутов задач для ролей · коды: 200, 204, 206 · примеры
+- `GET /RoleTaskPropertiesAccess/attributes` — Получить настройки доступности атрибутов задач для ролей · paginated · коды: 200, 204, 206 · примеры
   ← query: roleID?:int → RoleTaskAttributeSettings[]
 
 ## Roles
-- `GET /Roles` — Получить список ролей тенанта · коды: 200, 204, 206 · примеры
+- `GET /Roles` — Получить список ролей тенанта · paginated · коды: 200, 204, 206 · примеры
   ← query: isDeleted?:bool → RRGetResult[]
 - `GET /Roles/{id}` — Получить информацию о роли · коды: 200, 204 · примеры
   ← path: id:int → RRGetResult
-- `GET /Roles/{roleID}/applications` — Получить список приложений роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/applications` — Получить список приложений роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int → map<RRAListResult>
-- `GET /Roles/{roleID}/attachments` — Получить список вложенных файлов роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/attachments` — Получить список вложенных файлов роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int → RCAttachmentResult[]
-- `GET /Roles/{roleID}/packages` — Получить список расширений роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/packages` — Получить список расширений роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int; query: searchText?:str → map<RRPListResult[]>
-- `GET /Roles/{roleID}/permissionsApi` — Получить список API-полномочий роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/permissionsApi` — Получить список API-полномочий роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int; query: systemTagID?:str, isCheckedPermission?:bool → map<RRPAListResult[]>
-- `GET /Roles/{roleID}/permissionsExt` — Получить список Ext-полномочий роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/permissionsExt` — Получить список Ext-полномочий роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int; query: systemTagID?:str, isCheckedPermission?:bool → map<RRPEListResult[]>
-- `GET /Roles/{roleID}/permissionsUi` — Получить список UI-полномочий роли · коды: 200, 204, 206 · примеры
+- `GET /Roles/{roleID}/permissionsUi` — Получить список UI-полномочий роли · paginated · коды: 200, 204, 206 · примеры
   ← path: roleID:int; query: systemTagID?:int, isCheckedPermission?:bool, isSystemPermission?:bool → map<RRPUListResult[]>
 
 ## SystemPermissionUiTags
-- `GET /SystemPermissionUiTags` — Получить список тегов системных UI-полномочий · коды: 200, 204, 206 · примеры
+- `GET /SystemPermissionUiTags` — Получить список тегов системных UI-полномочий · paginated · коды: 200, 204, 206 · примеры
   → map<RPUTListResult[]>
 
 ## TenantCreationRequests
@@ -107,7 +107,7 @@ Base: `{BASE_URL}/ADM`
   ← path: id:str → RTCRGetResult
 
 ## TenantMembers
-- `GET /TenantMembers` — Получить список членов тенанта · коды: 200, 204, 206 · примеры
+- `GET /TenantMembers` — Получить список членов тенанта · paginated · коды: 200, 204, 206 · примеры
   → map<RTMListResult>
 - `GET /TenantMembers/anonymousUser` — Получить анонимного пользователя в текущем тенанте · коды: 200, 204 · примеры
   → RTMListResult
@@ -125,9 +125,9 @@ Base: `{BASE_URL}/ADM`
   ← query: taskTemplateID?:str → str
 
 ## Tenants
-- `GET /Tenants` — Получить список тенантов · коды: 200, 204, 206 · примеры
+- `GET /Tenants` — Получить список тенантов · paginated · коды: 200, 204, 206 · примеры
   → RTListResult[]
-- `GET /Tenants/templates` — Получить список шаблонных тенантов · коды: 200, 204, 206 · примеры
+- `GET /Tenants/templates` — Получить список шаблонных тенантов · paginated · коды: 200, 204, 206 · примеры
   → ITenantEntity[]
 - `GET /Tenants/this` — Получить данные текущего тенанта · коды: 200 · примеры
   → RTGetResult
@@ -136,83 +136,83 @@ Base: `{BASE_URL}/ADM`
 - `GET /Tenants/this/licenses` — Получить список лицензий тенанта · коды: 200, 204 · примеры
   ← query: validOn?:datetime → ListTenantLicenseResult[]
 - `GET /Tenants/this/meta` — Получить метаданные тенанта · коды: 200, 204 · примеры
-- `GET /Tenants/this/packages` — Получить список расширений тенанта · коды: 200, 204, 206 · примеры
+- `GET /Tenants/this/packages` — Получить список расширений тенанта · paginated · коды: 200, 204, 206 · примеры
   ← query: resourceID?:int[] → RTPListResult[]
-- `GET /Tenants/this/variables` — Получить список переменных окружения тенанта · коды: 200, 204, 206 · примеры
+- `GET /Tenants/this/variables` — Получить список переменных окружения тенанта · paginated · коды: 200, 204, 206 · примеры
   → map<RTVListResult>
 
 ## UserOrderBy
-- `GET /UserOrderBy` — Получить список методов сортировки сотрудников · коды: 200, 204, 206 · примеры
+- `GET /UserOrderBy` — Получить список методов сортировки сотрудников · paginated · коды: 200, 204, 206 · примеры
   → map<RUOBListResult>
 
 ## UserTemplates
-- `GET /UserTemplates` — Получить список шаблонов пользователя · коды: 200, 204, 206 · примеры
+- `GET /UserTemplates` — Получить список шаблонов пользователя · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isTechnician?:bool, roleID?:int, districtID?:int → map<RUTListResult>
 - `GET /UserTemplates/{id}` — Получить шаблон пользователя · коды: 200, 204 · примеры
   ← path: id:int → RUTGetResult
-- `GET /UserTemplates/{id}/districts` — Получить список участков шаблона пользователя · коды: 200, 204, 206 · примеры
+- `GET /UserTemplates/{id}/districts` — Получить список участков шаблона пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → IdNameResultOfShort[]
-- `GET /UserTemplates/{id}/roles` — Получить список ролей шаблона пользователя · коды: 200, 204, 206 · примеры
+- `GET /UserTemplates/{id}/roles` — Получить список ролей шаблона пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → IdNameResultOfShort[]
 
 ## Users
-- `GET /Users` — Возвращает список пользователей · коды: 200, 204, 206 · примеры
+- `GET /Users` — Возвращает список пользователей · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, includeTaskActuality?:bool, includeDistricts?:bool, needForAllowedTasks?:bool, orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, isBanned?:bool, isOnShift?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, companyID?:int, orderBy?:int, sortDirection?:int, erpID?:str, roleID?:int → map<RUUserResult>
 - `HEAD /Users` — Возвращает заголовок запроса пользователей с количеством данных, удовлетворяющих фильтру · коды: 200 · примеры
   ← query: orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, erpID?:str
-- `GET /Users/attributes` — Получить список атрибутов пользователей · коды: 200, 204, 206 · примеры
+- `GET /Users/attributes` — Получить список атрибутов пользователей · paginated · коды: 200, 204, 206 · примеры
   ← query: attributeID?:int, userID?:int, IsRelevantForCustomer?:bool, IsRelevantForTechnician?:bool → UserAttributesResult[]
-- `GET /Users/geolocation` — Получить список настроек точности сбора геокоординат для пользователей · коды: 200, 204, 206 · примеры
+- `GET /Users/geolocation` — Получить список настроек точности сбора геокоординат для пользователей · paginated · коды: 200, 204, 206 · примеры
   ← query: userID?:int → UserGeolocationSettings[]
 - `GET /Users/profile` — Получить профиль пользователя · коды: 200, 404 · примеры
   ← query: tenantMemberId?:int, userId?:int → UserProfileResult
-- `GET /Users/relevance` — Возвращает список пользователей по их релевантности к заявке · коды: 200, 204, 206 · примеры
+- `GET /Users/relevance` — Возвращает список пользователей по их релевантности к заявке · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, includeTaskActuality?:bool, includeDistricts?:bool, assetID?:int, districtID?:int, workTypeID?:int, skillID?:int, levelOnShift?:bool, dateOnShift?:datetime, userTypeID?:int, isDeleted?:bool, isCustomer?:bool, isTechnician?:bool, isBanned?:bool → map<RUUserResult>
-- `GET /Users/short` — Возвращает список пользователей с усеченным набором полей (для справочников и ниспадающих списков) · коды: 200, 204, 206 · примеры
+- `GET /Users/short` — Возвращает список пользователей с усеченным набором полей (для справочников и ниспадающих списков) · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, orgUnitID?:int, districtID?:int, userID?:int, workTypeID?:int, skillID?:int, tag?:str, isDeleted?:bool, isCustomer?:bool, isTeam?:bool, isTechnician?:bool, isBanned?:bool, firstName?:str, lastName?:str, middleName?:str, position?:str, userTypeID?:int, erpID?:str, roleID?:int → map<UserShortResult>
-- `GET /Users/this/assetListQueries` — Получить список сохраненных запросов по объектам текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/assetListQueries` — Получить список сохраненных запросов по объектам текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<AssetListQueryResult>
-- `GET /Users/this/companyListQueries` — Получить список сохраненных запросов по компаниям текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/companyListQueries` — Получить список сохраненных запросов по компаниям текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<CompanyListQueryResult>
 - `GET /Users/this/geolocation` — Получить настройку точности сбора геокоординат текущего пользователя · коды: 200 · примеры
   → UserGeolocationSettings
-- `GET /Users/this/notifications` — Получить список настроек уведомлений текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/notifications` — Получить список настроек уведомлений текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → RUDNListResult
-- `GET /Users/this/permissions/ext` — Получить список расширенных полномочий текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/permissions/ext` — Получить список расширенных полномочий текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<str>
-- `GET /Users/this/permissions/ui` — Получить список UI полномочий текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/permissions/ui` — Получить список UI полномочий текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<str>
 - `GET /Users/this/profile` — Получить профиль текущего пользователя · коды: 200 · примеры
   → UserProfileResult
-- `GET /Users/this/taskListQueries` — Получить список сохраненных запросов по заявкам текущего пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/this/taskListQueries` — Получить список сохраненных запросов по заявкам текущего пользователя · paginated · коды: 200, 204, 206 · примеры
   → map<TaskListQueryResult>
-- `GET /Users/{UserID}/ratings` — Получить рейтинг инженера · коды: 200, 204, 206 · примеры
+- `GET /Users/{UserID}/ratings` — Получить рейтинг инженера · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int → RatingTechnicianResult
 - `GET /Users/{id}` — Получить детальную информацию о пользователе · коды: 200, 400, 404 · примеры
   ← path: id:int → DetailedInfoResult
-- `GET /Users/{id}/assetListQueries` — Получить список сохраненных запросов по объектам пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/assetListQueries` — Получить список сохраненных запросов по объектам пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → map<AssetListQueryResult>
-- `GET /Users/{id}/companyListQueries` — Получить список сохраненных запросов по компаниям пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/companyListQueries` — Получить список сохраненных запросов по компаниям пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → map<CompanyListQueryResult>
-- `GET /Users/{id}/districts` — Получить список участков пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/districts` — Получить список участков пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → map<ListDistrictResult>
-- `GET /Users/{id}/notifications` — Получить список настроек уведомлений пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/notifications` — Получить список настроек уведомлений пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → RUDNListResult
 - `GET /Users/{id}/profile` — Получить профиль пользователя · коды: 200, 404 · примеры
   ← path: id:int → UserProfileResult
-- `GET /Users/{id}/roles` — Получить список ролей пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/roles` — Получить список ролей пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → map<IdNameResultOfShort[]>
-- `GET /Users/{id}/taskListQueries` — Получить список сохраненных запросов по заявкам пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/taskListQueries` — Получить список сохраненных запросов по заявкам пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → map<TaskListQueryResult>
-- `GET /Users/{id}/warehouses` — Получить список складов пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{id}/warehouses` — Получить список складов пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int → IdNameErpIDResultOfShort[]
-- `GET /Users/{userID}/assetAssignments` — Получить список объектов, назначенных пользователю · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/assetAssignments` — Получить список объектов, назначенных пользователю · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int; query: assetID?:int, validOn?:datetime → AssetAssignmentResult[]
-- `GET /Users/{userID}/attributes` — Получить атрибуты пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/attributes` — Получить атрибуты пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int; query: attributeID?:int, IsRelevantForCustomer?:bool, IsRelevantForTechnician?:bool → UserAttributesResult[]
 - `GET /Users/{userID}/defaultPages` — Получить текущие стартовые страницы пользователя · коды: 200, 204, 400 · примеры
   ← path: userID:int → RUDPGetResult
-- `GET /Users/{userID}/skills` — Получить список навыков пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/skills` — Получить список навыков пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int → map<SkillResult>
-- `GET /Users/{userID}/tags` — Получить список тегов пользователя · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/tags` — Получить список тегов пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int → str[]

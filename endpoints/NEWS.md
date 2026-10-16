@@ -12,5 +12,5 @@ Base: `{BASE_URL}/NEWS`
 - Articles — строки 14–16
 
 ## Articles
-- `GET /Articles` — Получение списка доступных пользователю новостей · коды: 200, 204, 206 · примеры
+- `GET /Articles` — Получение списка доступных пользователю новостей · paginated · коды: 200, 204, 206 · примеры
   ← query: isRead?:bool, isPublished?:bool → map<ResultsArticlesListResult>

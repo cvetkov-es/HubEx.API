@@ -23,23 +23,23 @@ Base: `{BASE_URL}/PA`
 - Users — строки 81–87
 
 ## AssetAssignments
-- `GET /AssetAssignments` — Возвращает список назначений объектов. · коды: 200, 204, 206 · примеры
+- `GET /AssetAssignments` — Возвращает список назначений объектов. · paginated · коды: 200, 204, 206 · примеры
   ← query: userID?:int, assetID?:int, validOn?:datetime → RAAListResult[]
 
 ## Employment
-- `GET /Employment/{userID}` — Возвращает полный список трудоустройств пользователя · коды: 200, 204, 206 · примеры
+- `GET /Employment/{userID}` — Возвращает полный список трудоустройств пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int; query: validFrom?:datetime, validTill?:datetime → EmploymentGetResult[]
 
 ## GeoTrackingModes
-- `GET /GeoTrackingModes` — Возвращает список режимов геотрекинга. · коды: 200, 204, 206 · примеры
+- `GET /GeoTrackingModes` — Возвращает список режимов геотрекинга. · paginated · коды: 200, 204, 206 · примеры
   → map<RGTMListResult>
 
 ## Mobilities
-- `GET /Mobilities` — Возвращает список мобильностей тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Mobilities` — Возвращает список мобильностей тенанта. · paginated · коды: 200, 204, 206 · примеры
   → map<RMListResult>
 
 ## Moblities
-- `GET /Moblities` — Возвращает список мобильностей тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Moblities` — Возвращает список мобильностей тенанта. · paginated · коды: 200, 204, 206 · примеры
   → map<RMListResult>
 
 ## RatingCriteria
@@ -49,11 +49,11 @@ Base: `{BASE_URL}/PA`
   ← path: id:int → RRCGetResult
 
 ## Sexes
-- `GET /Sexes` — Возвращает список полов. · коды: 200, 204, 206 · примеры
+- `GET /Sexes` — Возвращает список полов. · paginated · коды: 200, 204, 206 · примеры
   → map<NameResult>
 
 ## Skills
-- `GET /Skills` — Возвращает список навыков тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Skills` — Возвращает список навыков тенанта. · paginated · коды: 200, 204, 206 · примеры
   ← query: isDeleted?:bool → map<RSListResult>
 - `GET /Skills/{id}` — Возвращает навык по идентификатору. · коды: 200, 204 · примеры
   ← path: id:int → RSGetResult
@@ -83,5 +83,5 @@ Base: `{BASE_URL}/PA`
   ← query: userID?:int, validFrom?:datetime, validTill?:datetime → map<WorkShiftScheduleDailyItemResult[]>
 - `GET /Users/onshift/status` — Возвращает текущие статусы пользователей "на смене". · коды: 200, 204 · примеры
   ← query: userID?:int → WorkShiftScheduleUserStatusResult[]
-- `GET /Users/{userID}/workTypes` — Возвращает список видов работ пользователя. · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/workTypes` — Возвращает список видов работ пользователя. · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int → map<WorkTypesListResult[]>

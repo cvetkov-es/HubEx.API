@@ -17,8 +17,8 @@
 
 - [ADM](endpoints/ADM.md): пользователи (CRUD, роли, участки, навыки), тенанты, лицензии, приглашения · [схемы](schemas/ADM.md) · [примеры](examples/ADM.md)
 - [AUTH](endpoints/AUTH.md): регистрация, верификация email/телефона, смена пароля, logout · [схемы](schemas/AUTH.md) · [примеры](examples/AUTH.md)
-- [AUTHZ](endpoints/AUTHZ.md): получение/обновление access_token и service_token · [схемы](schemas/AUTHZ.md)
-- [COMMON](endpoints/COMMON.md): вложения (загрузка файлов), валюты, часовые пояса, страны, локализация · [схемы](schemas/COMMON.md) · [грабли](notes/COMMON.md)
+- [AUTHZ](endpoints/AUTHZ.md): получение/обновление access_token и service_token · [схемы](schemas/AUTHZ.md) · [примеры](examples/AUTHZ.md)
+- [COMMON](endpoints/COMMON.md): вложения (загрузка файлов), валюты, часовые пояса, страны, локализация · [схемы](schemas/COMMON.md) · [примеры](examples/COMMON.md) · [грабли](notes/COMMON.md)
 - [ES](endpoints/ES.md): объекты/оборудование (CRUD, иерархия, атрибуты), компании, участки, навыки, теги, QR-коды · [схемы](schemas/ES.md) · [примеры](examples/ES.md) · [грабли](notes/ES.md)
 - [EXPORT](endpoints/EXPORT.md): экспорт в Excel: заявки, пользователи, объекты, компании, материалы · [схемы](schemas/EXPORT.md) · [примеры](examples/EXPORT.md)
 - [LIC](endpoints/LIC.md): сканер лицензий (запуск/остановка/статус) · [схемы](schemas/LIC.md) · [примеры](examples/LIC.md)

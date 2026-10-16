@@ -51,6 +51,48 @@
 
 ## LayoutTemplates
 
+### `GET /LayoutTemplates`
+
+## Пример запроса:
+`GET /LayoutTemplates?taskTypeID=1&taskTypeID=2&isDefault=false`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "isDefault": false,
+    "name": "Шаблон для ремонта",
+    "columns": [],
+    "taskTypes": [1, 2]
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: шаблоны не найдены по указанным фильтрам.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `GET /LayoutTemplates/bytype/{id}`
+
+## Пример запроса:
+`GET /LayoutTemplates/bytype/1`
+            
+## Пример успешного ответа (200):
+```json
+{
+  "id": 3,
+  "isDefault": false,
+  "name": "Шаблон для типа 1",
+  "columns": [],
+  "taskTypes": [1]
+}
+```
+## Негативные сценарии:
+- 404 NotFound: представление для указанного типа заявки не найдено.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
 ### `GET /LayoutTemplates/default`
 
 ## Пример запроса:
@@ -105,6 +147,50 @@
 }
 ```
 ## Негативные сценарии:
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `GET /LayoutTemplates/{id}/Attributes`
+
+## Пример запроса:
+`GET /LayoutTemplates/5/Attributes`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 10,
+    "name": "Приоритет",
+    "isInUse": false
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: атрибуты не найдены.
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `GET /LayoutTemplates/{id}/Components`
+
+## Пример запроса:
+`GET /LayoutTemplates/5/Components`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "code": "TaskDescription",
+    "description": "Описание заявки",
+    "isRequired": true,
+    "isInUse": true
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: компоненты не найдены.
 - 404 NotFound: шаблон с указанным `id` не найден.
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `TaskTemplateGet`.

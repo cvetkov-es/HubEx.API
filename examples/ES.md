@@ -710,6 +710,13 @@ Redirect на временную ссылку для скачивания фай
 - 403 Forbidden: недостаточно прав `AssetAttributeList`.
 - 206 PartialContent: при использовании заголовка Range.
 
+### `GET /Assets/root`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
+
 ### `GET /Assets/{assetID}`
 
 ## Пример запроса:
@@ -1050,6 +1057,20 @@ Redirect на временную ссылку для скачивания фай
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `AssetWorkTypesList`.
 - 206 PartialContent: при использовании заголовка Range.
+
+### `GET /Assets/{parentAssetID}/assets`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
+
+### `GET /Assets/{parentAssetID}/assets/all`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
 
 ## Companies
 
