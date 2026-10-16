@@ -69,6 +69,93 @@
 
 ## LayoutTemplates
 
+### `GET /LayoutTemplates`
+
+## Пример запроса:
+`GET /LayoutTemplates?taskTypeID=1&taskTypeID=2&isDefault=false`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "isDefault": false,
+    "name": "Шаблон для ремонта",
+    "columns": [],
+    "taskTypes": [1, 2]
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: шаблоны не найдены по указанным фильтрам.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `POST /LayoutTemplates`
+
+## Пример запроса:
+```json
+{
+  "isDefault": false,
+  "name": "Новый шаблон",
+  "columns": [
+    {
+      "index": 0,
+      "blocks": [
+        {
+          "index": 0,
+          "name": "Основная информация",
+          "fields": [
+            {
+              "index": 0,
+              "label": "Описание",
+              "type": "Component",
+              "code": "TaskDescription"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "taskTypes": [1, 2]
+}
+```
+## Пример успешного ответа (201):
+```json
+{
+  "id": 10,
+  "isDefault": false,
+  "name": "Новый шаблон",
+  "columns": [],
+  "taskTypes": [1, 2]
+}
+```
+## Негативные сценарии:
+- 400 BadRequest: некорректные данные шаблона.
+- 409 Conflict: шаблон с такими параметрами уже существует.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateAdd`.
+
+### `GET /LayoutTemplates/bytype/{id}`
+
+## Пример запроса:
+`GET /LayoutTemplates/bytype/1`
+            
+## Пример успешного ответа (200):
+```json
+{
+  "id": 3,
+  "isDefault": false,
+  "name": "Шаблон для типа 1",
+  "columns": [],
+  "taskTypes": [1]
+}
+```
+## Негативные сценарии:
+- 404 NotFound: представление для указанного типа заявки не найдено.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
 ### `GET /LayoutTemplates/default`
 
 ## Пример запроса:
@@ -88,6 +175,26 @@
 - 409 Conflict: шаблон по умолчанию не найден или возник конфликт при получении.
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `POST /LayoutTemplates/default`
+
+## Пример запроса:
+`POST /LayoutTemplates/default`
+            
+## Пример успешного ответа (200):
+```json
+{
+  "id": 1,
+  "isDefault": true,
+  "name": "Шаблон по умолчанию",
+  "columns": [],
+  "taskTypes": []
+}
+```
+## Негативные сценарии:
+- 409 Conflict: шаблон по умолчанию уже существует.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateAdd`.
 
 ### `GET /LayoutTemplates/{id}`
 
@@ -127,6 +234,40 @@
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `TaskTemplateGet`.
 
+### `PUT /LayoutTemplates/{id}`
+
+## Пример запроса:
+`PUT /LayoutTemplates/5`
+            
+```json
+{
+  "isDefault": false,
+  "name": "Обновленный шаблон",
+  "columns": [
+    {
+      "index": 0,
+      "blocks": []
+    }
+  ],
+  "taskTypes": [1]
+}
+```
+## Пример успешного ответа (200):
+```json
+{
+  "id": 5,
+  "isDefault": false,
+  "name": "Обновленный шаблон",
+  "columns": [],
+  "taskTypes": [1]
+}
+```
+## Негативные сценарии:
+- 400 BadRequest: некорректные данные шаблона.
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateUpdate`.
+
 ### `DELETE /LayoutTemplates/{id}`
 
 ## Пример запроса:
@@ -139,6 +280,71 @@
 - 404 NotFound: шаблон с указанным `id` не найден.
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `TaskTemplateDelete`.
+
+### `GET /LayoutTemplates/{id}/Attributes`
+
+## Пример запроса:
+`GET /LayoutTemplates/5/Attributes`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 10,
+    "name": "Приоритет",
+    "isInUse": false
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: атрибуты не найдены.
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `GET /LayoutTemplates/{id}/Components`
+
+## Пример запроса:
+`GET /LayoutTemplates/5/Components`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 1,
+    "code": "TaskDescription",
+    "description": "Описание заявки",
+    "isRequired": true,
+    "isInUse": true
+  }
+]
+```
+## Негативные сценарии:
+- 204 NoContent: компоненты не найдены.
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateGet`.
+
+### `PUT /LayoutTemplates/{id}/reset`
+
+## Пример запроса:
+`PUT /LayoutTemplates/5/reset`
+            
+## Пример успешного ответа (200):
+```json
+{
+  "id": 5,
+  "isDefault": false,
+  "name": "Пользовательский шаблон",
+  "columns": [],
+  "taskTypes": [1, 2]
+}
+```
+## Негативные сценарии:
+- 404 NotFound: шаблон с указанным `id` не найден.
+- 409 Conflict: сброс невозможен из-за конфликта данных.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `TaskTemplateUpdate`.
 
 ### `GET /LayoutTemplates/{id}/taskTypes`
 
@@ -332,6 +538,51 @@
 - 204 NoContent: шаблон не найден.
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `UserViewRead`.
+- 404 NotFound: пользователь, приложение или форма не найдены.
+- 500 InternalServerError: внутренняя ошибка сервера.
+
+### `POST /UserViews/Users/{userID}/Applications/{applicationID}/{code}`
+
+## Пример запроса:
+`POST /UserViews/Users/100/Applications/1/taskList`
+            
+```json
+{
+  "columns": [
+    { "field": "number", "width": 120, "visible": true },
+    { "field": "status", "width": 100, "visible": true }
+  ],
+  "sort": { "field": "number", "direction": "desc" }
+}
+```
+## Пример успешного ответа (201):
+Тело ответа отсутствует.
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `UserViewWrite`.
+- 404 NotFound: пользователь, приложение или форма не найдены.
+- 500 InternalServerError: внутренняя ошибка сервера.
+
+### `PUT /UserViews/Users/{userID}/Applications/{applicationID}/{code}`
+
+## Пример запроса:
+`PUT /UserViews/Users/100/Applications/1/taskList`
+            
+```json
+{
+  "columns": [
+    { "field": "number", "width": 150, "visible": true },
+    { "field": "status", "width": 100, "visible": true },
+    { "field": "created", "width": 180, "visible": false }
+  ],
+  "sort": { "field": "created", "direction": "asc" }
+}
+```
+## Пример успешного ответа (202):
+Тело ответа отсутствует.
+## Негативные сценарии:
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `UserViewWrite`.
 - 404 NotFound: пользователь, приложение или форма не найдены.
 - 500 InternalServerError: внутренняя ошибка сервера.
 

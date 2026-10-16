@@ -57,6 +57,33 @@ X-Realm-ID: demo
 - 401 Unauthorized — отсутствует или некорректен Bearer-токен Keycloak.
 - 409 Conflict — аккаунт не найден в HubEx.
 
+### `POST /Accounts/realm`
+
+## Пример запроса:
+```json
+{
+  "credential": "user@company.com"
+}
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "tenantID": 10,
+    "tenantName": "Demo Tenant",
+    "realm": "demo"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 400 Bad Request — не указан credential.
+- 204 No Content — реалмы для указанного credential не найдены.
+
 ### `POST /Accounts/smsLogin`
 
 ## Пример запроса:

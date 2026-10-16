@@ -8,39 +8,36 @@ Base: `{BASE_URL}/ES`
 
 **Оглавление**
 
-- AssetAttachments — строки 45–55
-- AssetAttributes — строки 57–65
-- AssetClasses — строки 67–79
-- AssetDistricts — строки 81–85
-- AssetFilter — строки 87–91
-- AssetListQueries — строки 93–109
-- AssetLocations — строки 111–119
-- AssetSchemas — строки 121–155
-- AssetSearchSettings — строки 157–167
-- AssetSkills — строки 169–173
-- AssetTags — строки 175–179
-- AssetTemplateAttachments — строки 181–191
-- AssetTemplateAttributes — строки 193–195
-- AssetTemplateDistricts — строки 197–203
-- AssetTemplateSkills — строки 205–211
-- AssetTemplateWorkTypes — строки 213–219
-- AssetTemplates — строки 221–253
-- AssetTypes — строки 255–273
-- AssetWorkTypes — строки 275–279
-- Assets — строки 281–308
-- Негативные сценарии: — строки 310–372
-- Негативные сценарии: — строки 374–382
-- Негативные сценарии: — строки 384–387
-- Companies — строки 389–441
-- CompanyAttachments — строки 443–451
-- CompanyContacts — строки 453–457
-- CompanyListQueries — строки 459–475
-- CompanyLocations — строки 477–485
-- CompanyRegistrationTypes — строки 487–489
-- Districts — строки 491–505
-- Locations — строки 507–525
-- OrgUnits — строки 527–533
-- PreferredTechnicians — строки 535–539
+- AssetAttachments — строки 42–52
+- AssetAttributes — строки 54–62
+- AssetClasses — строки 64–76
+- AssetDistricts — строки 78–82
+- AssetFilter — строки 84–88
+- AssetListQueries — строки 90–106
+- AssetLocations — строки 108–116
+- AssetSchemas — строки 118–152
+- AssetSearchSettings — строки 154–164
+- AssetSkills — строки 166–170
+- AssetTags — строки 172–176
+- AssetTemplateAttachments — строки 178–188
+- AssetTemplateAttributes — строки 190–192
+- AssetTemplateDistricts — строки 194–200
+- AssetTemplateSkills — строки 202–208
+- AssetTemplateWorkTypes — строки 210–216
+- AssetTemplates — строки 218–250
+- AssetTypes — строки 252–270
+- AssetWorkTypes — строки 272–276
+- Assets — строки 278–365
+- Companies — строки 367–419
+- CompanyAttachments — строки 421–429
+- CompanyContacts — строки 431–435
+- CompanyListQueries — строки 437–453
+- CompanyLocations — строки 455–463
+- CompanyRegistrationTypes — строки 465–467
+- Districts — строки 469–483
+- Locations — строки 485–503
+- OrgUnits — строки 505–511
+- PreferredTechnicians — строки 513–517
 
 ## AssetAttachments
 - `POST /AssetAttachments` — Связывает объект и вложение · коды: 201 · примеры
@@ -65,7 +62,7 @@ Base: `{BASE_URL}/ES`
   ← body: ESAssetAttributeActionV2Data[] → ResultsAssetAttributesAssetAttributeRejectedResult[]
 
 ## AssetClasses
-- `GET /AssetClasses` — Возвращает список классов объектов · коды: 200, 204, 206 · примеры
+- `GET /AssetClasses` — Возвращает список классов объектов · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsAssetClassesAssetClassListResult>
 - `POST /AssetClasses` — Добавляет класс объектов · коды: 201, 204 · примеры
   ← body: ESAssetClassAddData[] → ResultsAssetClassesAssetClassAddResult[]
@@ -91,7 +88,7 @@ Base: `{BASE_URL}/ES`
   ← body: COMMONUIFilterFilterData[]
 
 ## AssetListQueries
-- `GET /AssetListQueries` — Возвращает список сохранённых запросов, доступных в тенанте · коды: 200, 204, 206 · примеры
+- `GET /AssetListQueries` — Возвращает список сохранённых запросов, доступных в тенанте · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsAssetListQueriesAssetListQueryResult>
 - `POST /AssetListQueries` — Создаёт сохранённый запрос и привязывает его к текущему пользователю · коды: 201 · примеры
   ← body: ESAssetListQueryAddData[] → int[]
@@ -109,7 +106,7 @@ Base: `{BASE_URL}/ES`
   ← path: id:int
 
 ## AssetLocations
-- `GET /AssetLocations` — Возвращает список локаций объекта · коды: 200, 204, 206, 409 · примеры
+- `GET /AssetLocations` — Возвращает список локаций объекта · paginated · коды: 200, 204, 206, 409 · примеры
   ← query: assetID?:int, onDate?:datetime → map<ResultsAssetsAssetLocationResult>
 - `POST /AssetLocations` — Добавляет локацию к объекту · коды: 202 · примеры
   ← body: ESAssetLocationMergeData
@@ -219,7 +216,7 @@ Base: `{BASE_URL}/ES`
   ← path: id:int; body: int[]
 
 ## AssetTemplates
-- `GET /AssetTemplates` — Возвращает список шаблонов объектов · коды: 200, 204, 206 · примеры
+- `GET /AssetTemplates` — Возвращает список шаблонов объектов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, assetClassID?:int, assetTypeID?:int → map<ResultsAssetTemplatesListResult>
 - `POST /AssetTemplates` — Добавляет шаблоны объектов · коды: 201, 409 · примеры
   ← body: ESAssetTemplateAddData[]
@@ -229,17 +226,17 @@ Base: `{BASE_URL}/ES`
   ← body: int[]
 - `DELETE /AssetTemplates/avatar` — Удаляет аватарки для указанного списка шаблонов объектов · коды: 202 · примеры
   ← body: int[]
-- `GET /AssetTemplates/{assetTemplateID}/attachments` — Возвращает список файлов, вложенных в шаблон объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /AssetTemplates/{assetTemplateID}/attachments` — Возвращает список файлов, вложенных в шаблон объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetTemplateID:int; query: thumbnailSize?:int → map<ResultsCommonListAttachmentResult>
 - `GET /AssetTemplates/{assetTemplateID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачивания файла · коды: 307, 400, 404 · примеры
   ← path: assetTemplateID:int, attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /AssetTemplates/{assetTemplateID}/attributes` — Возвращает список пользовательских полей шаблона объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /AssetTemplates/{assetTemplateID}/attributes` — Возвращает список пользовательских полей шаблона объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetTemplateID:int → ResultsAssetTemplatesAssetTemplateAttributeResult[]
-- `GET /AssetTemplates/{assetTemplateID}/districts` — Возвращает список участков шаблона объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /AssetTemplates/{assetTemplateID}/districts` — Возвращает список участков шаблона объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetTemplateID:int → map<ResultsCommonAssetDistrictResult>
-- `GET /AssetTemplates/{assetTemplateID}/skills` — Возвращает список навыков шаблона объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /AssetTemplates/{assetTemplateID}/skills` — Возвращает список навыков шаблона объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetTemplateID:int → ResultsAssetTemplatesAssetTemplateSkillResult[]
-- `GET /AssetTemplates/{assetTemplateID}/workTypes` — Возвращает список видов работ шаблона объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /AssetTemplates/{assetTemplateID}/workTypes` — Возвращает список видов работ шаблона объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetTemplateID:int → ResultsAssetTemplatesAssetTemplateWorkTypeResult[]
 - `GET /AssetTemplates/{id}` — Возвращает шаблон объекта · коды: 200, 204 · примеры
   ← path: id:int → ResultsAssetTemplatesGetResult
@@ -253,7 +250,7 @@ Base: `{BASE_URL}/ES`
   ← path: id:int; body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → AspNetCoreResultsUploadFileResult
 
 ## AssetTypes
-- `GET /AssetTypes` — Возвращает список типов объектов · коды: 200, 204, 206 · примеры
+- `GET /AssetTypes` — Возвращает список типов объектов · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsAssetTypesGetResult>
 - `POST /AssetTypes` — Добавляет тип объекта · коды: 201, 409 · примеры
   ← query: relatedToAnyWorkType?:bool; body: ESAssetTypeAddData[] → ResultsAssetTypesAddResult[]
@@ -265,7 +262,7 @@ Base: `{BASE_URL}/ES`
   ← path: id:int → ResultsAssetTypesGetResult
 - `DELETE /AssetTypes/{id}` — Помечает тип объекта как удалённый · коды: 202, 409 · примеры
   ← path: id:int
-- `GET /AssetTypes/{id}/workTypes` — Возвращает список видов работ, привязанных к типу объекта · коды: 200, 204, 206 · примеры
+- `GET /AssetTypes/{id}/workTypes` — Возвращает список видов работ, привязанных к типу объекта · paginated · коды: 200, 204, 206 · примеры
   ← path: id:int; query: isPublished?:bool → map<str>
 - `POST /AssetTypes/{id}/workTypes` — Привязывает виды работ к типу объекта · коды: 200 · примеры
   ← path: id:int; body: int[]
@@ -279,7 +276,7 @@ Base: `{BASE_URL}/ES`
   ← body: AssetActionDataOfShort
 
 ## Assets
-- `GET /Assets` — Возвращает справочник объектов, доступных пользователю · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets` — Возвращает справочник объектов, доступных пользователю · paginated · коды: 200, 204, 206, 400 · примеры
   ← query: includePath?:bool, includeTaskActuality?:bool, searchText?:str, needForAllowedTasks?:bool, parentID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, hasSchema?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, checkListID?:int, startWithAssetID?:int, assetTypeID?:int, assetClassID?:int, erpID?:str, contactID?:int, attributeValues?:str, contractID?:int → map<ResultsAssetsAssetExtResult>
 - `POST /Assets` — Создает объект · коды: 201, 400, 409 · примеры
   ← body: ESAssetAddData → IdNameResultOfInt
@@ -287,9 +284,9 @@ Base: `{BASE_URL}/ES`
   ← body: ESAssetMassiveUpdateData
 - `DELETE /Assets` — Помечает объекты как удалённые · коды: 202, 409 · примеры
   ← body: int[]
-- `HEAD /Assets` — Возвращает заголовок запроса с количеством объектов, удовлетворяющих фильтру · коды: 200, 206 · примеры
+- `HEAD /Assets` — Возвращает заголовок запроса с количеством объектов, удовлетворяющих фильтру · paginated · коды: 200, 206 · примеры
   ← query: checkListID?:int, parentID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, hasSchema?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, startWithAssetID?:int, assetTypeID?:int, assetClassID?:int, erpID?:str, contactID?:int, attributeValues?:str, contractID?:int
-- `GET /Assets/attributes` — Возвращает список атрибутов по объектам · коды: 200, 204, 206 · примеры
+- `GET /Assets/attributes` — Возвращает список атрибутов по объектам · paginated · коды: 200, 204, 206 · примеры
   ← query: assetID?:int, attributeID?:int → ResultsAssetsAssetAttributesExtResult[]
 - `DELETE /Assets/avatar` — Удаляет аватарки для списка объектов · коды: 202 · примеры
   ← body: int[]
@@ -301,31 +298,24 @@ Base: `{BASE_URL}/ES`
   ← body: int[]
 - `PUT /Assets/restore` — Восстанавливает удалённые объекты · коды: 202, 409 · примеры
   ← query: withNested?:bool; body: int[]
-- `GET /Assets/root` — Возращает справочник корневых объектов, доступных пользователю. · коды: 200, 204, 206
+- `GET /Assets/root` — Возращает справочник корневых объектов, доступных пользователю. · paginated · коды: 200, 204, 206 · примеры
   ← query: checkListID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, hasSchema?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, assetTypeID?:int, assetClassID?:int, erpID?:str, contactID?:int → map<ResultsAssetsAssetExtResult>
-  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
-AllDistricts или AllAssets. Корневой объект - объект не имеющий объекта более высого уровня среди 
-доступных пользователю.
-            
-## Негативные сценарии:
-- 204 NoContent: объекты не найдены.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetsList`.
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия AllDistricts или AllAssets. Корневой объект - объект не имеющий объекта более высого уровня среди доступных пользователю.
 - `GET /Assets/{assetID}` — Детальная информация по объекту · коды: 200, 204 · примеры
   ← path: assetID:int → ResultsAssetsAssetDetailedInfoResult
 - `PUT /Assets/{assetID}` — Изменяет объект · коды: 202, 400, 409 · примеры
   ← path: assetID:int; body: ESAssetUpdateData
 - `DELETE /Assets/{assetID}` — Помечает объект как удалённый · коды: 202, 409 · примеры
   ← path: assetID:int
-- `GET /Assets/{assetID}/assignments` — Возвращает список назначений объекта для пользователей · коды: 200, 204, 206, 404 · примеры
+- `GET /Assets/{assetID}/assignments` — Возвращает список назначений объекта для пользователей · paginated · коды: 200, 204, 206, 404 · примеры
   ← path: assetID:int; query: userID?:int, validOn?:datetime → ResultsAssetsAssetAssignmentResult[]
-- `GET /Assets/{assetID}/attachments` — Возвращает список файлов, вложенных в объект · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets/{assetID}/attachments` — Возвращает список файлов, вложенных в объект · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetID:int; query: thumbnailSize?:int → map<ResultsCommonListAttachmentResult>
 - `GET /Assets/{assetID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачивания файла · коды: 307, 400, 404 · примеры
   ← path: assetID:int, attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /Assets/{assetID}/attributes` — Возвращает список пользовательских полей объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets/{assetID}/attributes` — Возвращает список пользовательских полей объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetID:int → ResultsAssetsAssetAttributeResult[]
-- `GET /Assets/{assetID}/checkLists` — Возвращает список чек-листов объекта · коды: 200, 204, 206 · примеры
+- `GET /Assets/{assetID}/checkLists` — Возвращает список чек-листов объекта · paginated · коды: 200, 204, 206 · примеры
   ← path: assetID:int → map<ResultsAssetCheckListsGetResult[]>
 - `POST /Assets/{assetID}/checkLists` — Добавляет чек-листы к объекту · коды: 202 · примеры
   ← path: assetID:int; body: int[]
@@ -335,7 +325,7 @@ AllDistricts или AllAssets. Корневой объект - объект не
   ← path: assetID:int, checkListID:int
 - `DELETE /Assets/{assetID}/checkLists/{checkListID}` — Помечает чек-лист объекта как удалённый · коды: 202 · примеры
   ← path: assetID:int, checkListID:int
-- `GET /Assets/{assetID}/contacts` — Возвращает список действующих контактов объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets/{assetID}/contacts` — Возвращает список действующих контактов объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetID:int; query: searchText?:str → map<ResultsAssetContactsListResult>
 - `GET /Assets/{assetID}/contacts/{contactID}` — Возвращает контакт объекта · коды: 200, 204 · примеры
   ← path: assetID:int, contactID:int → ResultsAssetContactsGetResult
@@ -343,21 +333,21 @@ AllDistricts или AllAssets. Корневой объект - объект не
   ← path: assetID:int, contactID:int → ResultsAssetContactsPostResult[]
 - `DELETE /Assets/{assetID}/contacts/{contactID}` — Удаляет контактное лицо у объекта · коды: 202, 409 · примеры
   ← path: assetID:int, contactID:int
-- `GET /Assets/{assetID}/districts` — Возвращает список участков объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets/{assetID}/districts` — Возвращает список участков объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetID:int → map<ResultsCommonAssetDistrictResult>
 - `DELETE /Assets/{assetID}/full` — Помечает объект и все дочерние объекты как удалённые · коды: 202, 409 · примеры
   ← path: assetID:int
-- `GET /Assets/{assetID}/locations/actual` — Возвращает текущее местоположение объекта · коды: 200, 204, 206 · примеры
+- `GET /Assets/{assetID}/locations/actual` — Возвращает текущее местоположение объекта · paginated · коды: 200, 204, 206 · примеры
   ← path: assetID:int → ResultsCommonLocationResult
 - `PUT /Assets/{assetID}/publish` — Публикует объект · коды: 202, 409 · примеры
   ← path: assetID:int
-- `GET /Assets/{assetID}/skills` — Возвращает список навыков объекта · коды: 200, 204, 206 · примеры
+- `GET /Assets/{assetID}/skills` — Возвращает список навыков объекта · paginated · коды: 200, 204, 206 · примеры
   ← path: assetID:int → map<ResultsAssetSkillsAssetSkillResult>
-- `GET /Assets/{assetID}/tags` — Возвращает список активных тегов объекта · коды: 200, 204, 206, 400 · примеры
+- `GET /Assets/{assetID}/tags` — Возвращает список активных тегов объекта · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: assetID:int → str[]
 - `PUT /Assets/{assetID}/unpublish` — Снимает объект с публикации · коды: 202, 409 · примеры
   ← path: assetID:int
-- `GET /Assets/{assetID}/workTypes` — Возвращает список доступных по объекту видов работ · коды: 200, 204, 206 · примеры
+- `GET /Assets/{assetID}/workTypes` — Возвращает список доступных по объекту видов работ · paginated · коды: 200, 204, 206 · примеры
   ← path: assetID:int → map<ResultsAssetsAssetWorkTypeResult>
 - `DELETE /Assets/{id}/avatar` — Удаляет аватарку объекта · коды: 202 · примеры
   ← path: id:int
@@ -366,28 +356,16 @@ AllDistricts или AllAssets. Корневой объект - объект не
 - `PUT /Assets/{id}/avatar/upload/fromForm` — Загружает аватарку объекта (данные из формы) · коды: 200, 400 · примеры
   ← path: id:int; body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → AspNetCoreResultsUploadFileResult
 - `GET /Assets/{parentAssetID}/assets` — Возращает справочник дочерних объектов (один уровень иерархии), 
-доступных пользователю. · коды: 200, 204, 206
+доступных пользователю. · paginated · коды: 200, 204, 206 · примеры
   ← path: parentAssetID:int; query: searchText?:str, checkListID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, hasSchema?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, assetTypeID?:int, assetClassID?:int, erpID?:str, contactID?:int → map<ResultsAssetsAssetExtResult>
-  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
-AllDistricts или AllAssets.
-            
-## Негативные сценарии:
-- 204 NoContent: объекты не найдены.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetsList`.
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия AllDistricts или AllAssets.
 - `GET /Assets/{parentAssetID}/assets/all` — Возращает справочник всех дочерних объектов (вниз по иерархии до самого нижнего уровня), 
-доступных пользователю. · коды: 200, 204, 206
+доступных пользователю. · paginated · коды: 200, 204, 206 · примеры
   ← path: parentAssetID:int; query: checkListID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, hasSchema?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, assetTypeID?:int, assetClassID?:int, erpID?:str, contactID?:int → map<ResultsAssetsAssetExtResult>
-  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия
-AllDistricts или AllAssets.
-            
-## Негативные сценарии:
-- 204 NoContent: объекты не найдены.
-- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
-- 403 Forbidden: недостаточно прав `AssetsList`.
+  Доступность объекта определяется по пересечанию участков пользователя и объека, наличию полномочия AllDistricts или AllAssets.
 
 ## Companies
-- `GET /Companies` — Возвращает список доступных пользователю компаний · коды: 200, 204, 206 · примеры
+- `GET /Companies` — Возвращает список доступных пользователю компаний · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, taskTypeID?:int, companyID?:int, companyRegistrationTypeID?:int, isEmployer?:bool, isContractorHolder?:bool, isOurCompany?:bool, isVATTaxpayer?:bool → map<ResultsCompaniesListResult>
 - `POST /Companies` — Добавляет компанию · коды: 201, 409 · примеры
   ← body: ESCompanyAddData[] → int[]
@@ -395,7 +373,7 @@ AllDistricts или AllAssets.
   ← body: ESCompanyUpdateData[]
 - `DELETE /Companies` — Помечает компании как удалённые · коды: 202, 409 · примеры
   ← body: int[]
-- `HEAD /Companies` — Возвращает заголовок запроса доступных пользователю компаний с количеством данных, удовлетворяющих фильтру · коды: 200, 206 · примеры
+- `HEAD /Companies` — Возвращает заголовок запроса доступных пользователю компаний с количеством данных, удовлетворяющих фильтру · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, taskTypeID?:int, companyID?:int, companyRegistrationTypeID?:int, isEmployer?:bool, isContractorHolder?:bool, isOurCompany?:bool, isVATTaxpayer?:bool
 - `POST /Companies/contacts` — Добавляет контактные лица к компаниям · коды: 201, 204, 409 · примеры
   ← body: CompanyActionDataOfInt[] → ResultsCompanyContactsPostResult[]
@@ -407,15 +385,15 @@ AllDistricts или AllAssets.
   ← body: int[]
 - `GET /Companies/{companyID}/attachment/{attachmentID}` — Возвращает прикреплённый файл компании · коды: 200, 204, 400, 500 · примеры
   ← path: companyID:int, attachmentID:int; query: thumbnailSize?:int → ResultsCommonGetAttachmentResult
-- `GET /Companies/{companyID}/attachments` — Возвращает список файлов, вложенных в компанию · коды: 200, 204, 206, 400 · примеры
+- `GET /Companies/{companyID}/attachments` — Возвращает список файлов, вложенных в компанию · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: companyID:int; query: thumbnailSize?:int → map<ResultsCommonListAttachmentResult>
 - `GET /Companies/{companyID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачивания файла · коды: 307, 400, 404 · примеры
   ← path: companyID:int, attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /Companies/{companyID}/attributes` — Возвращает список пользовательских атрибутов компании · коды: 200, 204, 206, 400 · примеры
+- `GET /Companies/{companyID}/attributes` — Возвращает список пользовательских атрибутов компании · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: companyID:int → ResultsCompanyAttributesCompanyAttributeResult[]
 - `POST /Companies/{companyID}/attributes` — Обновляет сведения о пользовательских полях компании · коды: 202, 400 · примеры
   ← path: companyID:int; body: DataCompanyAttributeAttributeUpdateData[]
-- `GET /Companies/{companyID}/bankAccounts` — Возвращает список банковских счетов компании · коды: 200, 204, 206, 400 · примеры
+- `GET /Companies/{companyID}/bankAccounts` — Возвращает список банковских счетов компании · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: companyID:int; query: searchText?:str → map<ResultsCompanyBankAccountsListResult>
 - `POST /Companies/{companyID}/bankAccounts` — Добавляет банковские счета компании · коды: 201, 204, 409 · примеры
   ← path: companyID:int; body: ESCompanyBankAccountAddData[] → ResultsCompanyBankAccountsPostResult[]
@@ -425,7 +403,7 @@ AllDistricts или AllAssets.
   ← path: companyID:int; body: int[]
 - `DELETE /Companies/{companyID}/bankAccounts/{bankAccountID}` — Удаляет банковский счёт компании · коды: 202, 409 · примеры
   ← path: companyID:int, bankAccountID:int
-- `GET /Companies/{companyID}/contacts` — Возвращает список контактов компании · коды: 200, 204, 206, 400 · примеры
+- `GET /Companies/{companyID}/contacts` — Возвращает список контактов компании · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: companyID:int; query: searchText?:str → map<ResultsCompanyContactsListResult>
 - `GET /Companies/{companyID}/contacts/{contactID}` — Возвращает контакт компании · коды: 200, 204 · примеры
   ← path: companyID:int, contactID:int → ResultsCompanyContactsGetResult
@@ -433,7 +411,7 @@ AllDistricts или AllAssets.
   ← path: companyID:int, contactID:int → ResultsCompanyContactsPostResult[]
 - `DELETE /Companies/{companyID}/contacts/{contactID}` — Удаляет контактное лицо у компании · коды: 202, 409 · примеры
   ← path: companyID:int, contactID:int
-- `GET /Companies/{companyID}/locations/actual` — Возвращает текущее местоположение компании · коды: 200, 204, 206 · примеры
+- `GET /Companies/{companyID}/locations/actual` — Возвращает текущее местоположение компании · paginated · коды: 200, 204, 206 · примеры
   ← path: companyID:int → ResultsCommonLocationResult
 - `GET /Companies/{id}` — Возвращает доступную пользователю компанию по идентификатору · коды: 200, 204 · примеры
   ← path: id:int → ResultsCompaniesGetResult
@@ -457,7 +435,7 @@ AllDistricts или AllAssets.
   ← body: CompanyActionDataOfInt[]
 
 ## CompanyListQueries
-- `GET /CompanyListQueries` — Возвращает список сохранённых запросов, доступных в тенанте · коды: 200, 204, 206 · примеры
+- `GET /CompanyListQueries` — Возвращает список сохранённых запросов, доступных в тенанте · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsCompanyListQueriesCompanyListQueryResult>
 - `POST /CompanyListQueries` — Создаёт сохранённый запрос и привязывает его к текущему пользователю · коды: 201 · примеры
   ← body: ESCompanyListQueryAddData[] → int[]
@@ -475,7 +453,7 @@ AllDistricts или AllAssets.
   ← path: id:int
 
 ## CompanyLocations
-- `GET /CompanyLocations` — Возвращает список локаций компании · коды: 200, 204, 206, 409 · примеры
+- `GET /CompanyLocations` — Возвращает список локаций компании · paginated · коды: 200, 204, 206, 409 · примеры
   ← query: companyID?:int, onDate?:datetime → map<ResultsCompaniesCompanyLocationResult>
 - `POST /CompanyLocations` — Добавляет локацию к компании · коды: 202 · примеры
   ← body: ESCompanyLocationMergeData
@@ -489,7 +467,7 @@ AllDistricts или AllAssets.
   → map<ResultsCompanyRegistrationTypesListResult>
 
 ## Districts
-- `GET /Districts` — Возвращает список доступных пользователю участков · коды: 200, 204, 206 · примеры
+- `GET /Districts` — Возвращает список доступных пользователю участков · paginated · коды: 200, 204, 206 · примеры
   ← query: includePath?:bool, parentID?:int, districtID?:int, assetID?:int, userID?:int, taskTypeID?:int → ResultsDistrictsDistrictListForTenantMemberResult[]
 - `POST /Districts` — Добавляет участок · коды: 201, 409 · примеры
   ← body: ESDistrictAddData[] → int[]
@@ -505,7 +483,7 @@ AllDistricts или AllAssets.
   ← path: id:int
 
 ## Locations
-- `GET /Locations` — Возвращает список локаций · коды: 200, 204, 206 · примеры
+- `GET /Locations` — Возвращает список локаций · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, searchFor?:str, radius?:float, pointCenter?:str, pointNorthEast?:str, pointSouthWest?:str → map<ResultsCommonLocationResult>
 - `POST /Locations` — Создаёт локации · коды: 200, 201, 400 · примеры
   ← body: DataLocationsPostData[]
@@ -513,7 +491,7 @@ AllDistricts или AllAssets.
   ← body: DataLocationsPutData[]
 - `DELETE /Locations` — Помечает локации как удалённые · коды: 202 · примеры
   ← body: int[]
-- `HEAD /Locations` — Возвращает количество локаций · коды: 200, 206 · примеры
+- `HEAD /Locations` — Возвращает количество локаций · paginated · коды: 200, 206 · примеры
   ← query: searchFor?:str
 - `DELETE /Locations/remove` — Физически удаляет локации · коды: 202 · примеры
   ← body: int[]
@@ -525,11 +503,11 @@ AllDistricts или AllAssets.
   ← path: id:int
 
 ## OrgUnits
-- `GET /OrgUnits` — Возвращает справочник активных организационных единиц, доступных пользователю · коды: 200, 204, 206 · примеры
+- `GET /OrgUnits` — Возвращает справочник активных организационных единиц, доступных пользователю · paginated · коды: 200, 204, 206 · примеры
   ← query: companyID?:int[] → map<ResultsOrgUnitsOrgUnitListResult>
-- `GET /OrgUnits/root` — Возвращает справочник активных корневых организационных единиц, доступных пользователю · коды: 200, 204, 206 · примеры
+- `GET /OrgUnits/root` — Возвращает справочник активных корневых организационных единиц, доступных пользователю · paginated · коды: 200, 204, 206 · примеры
   ← query: companyID?:int[] → map<ResultsOrgUnitsOrgUnitListResult>
-- `GET /OrgUnits/{id}/orgunits` — Возвращает дочерние организационные единицы для указанного родителя · коды: 200, 204, 206, 400 · примеры
+- `GET /OrgUnits/{id}/orgunits` — Возвращает дочерние организационные единицы для указанного родителя · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: id:int; query: companyID?:int[] → map<ResultsOrgUnitsOrgUnitListResult>
 
 ## PreferredTechnicians

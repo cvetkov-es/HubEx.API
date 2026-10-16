@@ -20,7 +20,7 @@ Base: `{BASE_URL}/EXPORT`
   ← query: searchText?:str, parentID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, checkListID?:int, startWithAssetID?:int, noData?:bool, erpID?:str
 - `GET /Assets/extended` — Экспортирует расширенный список объектов с учетом указанных фильтров · коды: 200, 500 · примеры
   ← query: include?:str[], searchText?:str, parentID?:int, assetID?:int, responsiblePerson?:int, districtID?:int, workTypeID?:int, skillID?:int, companyID?:int, taskTypeID?:int, tag?:str, name?:str, isMobile?:bool, isAssigned?:bool, isDeleted?:bool, isPublished?:bool, warrantyFrom?:datetime, warrantyTill?:datetime, checkListID?:int, startWithAssetID?:int, noData?:bool, erpID?:str
-- `GET /Assets/extended/includes` — Возвращает список данных, доступных для расширенного экспорта · коды: 200, 204, 206 · примеры
+- `GET /Assets/extended/includes` — Возвращает список данных, доступных для расширенного экспорта · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str → FieldResult[]
 
 ## Companies
@@ -44,7 +44,7 @@ Base: `{BASE_URL}/EXPORT`
   ← query: include?:str[], searchText?:str, hideEmptyColumns?:bool, requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:bool, isFavourite?:bool, isCompleted?:bool, isAssigned?:bool, isDeleted?:bool, isOutdated?:bool, companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:str, pointSouthWest?:str, pointCenter?:str, radius?:float, geoHash?:str, noData?:bool, erpID?:str
 - `GET /Tasks/extended/V2` — Экспортирует расширенный список заявок с учетом указанных фильтров (версия 2.0 с постраничной загрузкой) · коды: 200, 500 · примеры
   ← query: include?:str[], searchText?:str, hideEmptyColumns?:bool, requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:bool, isFavourite?:bool, isCompleted?:bool, isAssigned?:bool, isDeleted?:bool, isOutdated?:bool, companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:str, pointSouthWest?:str, pointCenter?:str, radius?:float, geoHash?:str, noData?:bool, erpID?:str
-- `GET /Tasks/extended/includes` — Возвращает список данных, доступных для расширенного экспорта · коды: 200, 204, 206 · примеры
+- `GET /Tasks/extended/includes` — Возвращает список данных, доступных для расширенного экспорта · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str → FieldResult[]
 - `GET /Tasks/noData` — Экспортирует пустой шаблон для импорта заявок · коды: 200 · примеры
   ← query: searchText?:str
