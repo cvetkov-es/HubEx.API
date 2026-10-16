@@ -36,7 +36,7 @@ Base: `{BASE_URL}/WH`
   → map<ResultsDocumentTypesListResult>
 
 ## Documents
-- `GET /Documents` — Получение списка складских документов · коды: 200, 204, 206 · примеры
+- `GET /Documents` — Получение списка складских документов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, isPosted?:bool, documentTypeID?:int, documentStatusID?:int, operationTypeID?:int, fromWarehouses?:int, toWarehouses?:int, responsiblePersonID?:int, creationFrom?:datetime, creationTill?:datetime, modifiedFrom?:datetime, modifiedTill?:datetime, documentDateFrom?:datetime, documentDateTill?:datetime, orderBy?:int, sortDirection?:int → ResultsDocumentsDocumentResult[]
 
 ## Inventories
@@ -54,7 +54,7 @@ Base: `{BASE_URL}/WH`
   ← path: id:int
 
 ## Issues
-- `GET /Issues` — Получение списка списаний материалов · коды: 200, 204, 206 · примеры
+- `GET /Issues` — Получение списка списаний материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, responsiblePersonID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime → map<ResultsIssuesIssueResult>
 - `POST /Issues` — Создание списаний материалов · коды: 201, 409 · примеры
   ← body: WHIssueAddData[] → int[]
@@ -62,7 +62,7 @@ Base: `{BASE_URL}/WH`
   ← body: WHIssueUpdateData[]
 - `DELETE /Issues` — Удаление списаний материалов · коды: 202 · примеры
   ← body: int[]
-- `HEAD /Issues` — Получение общего количества списаний материалов · коды: 200, 206 · примеры
+- `HEAD /Issues` — Получение общего количества списаний материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, responsiblePersonID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `POST /Issues/items` — Добавляет строки к документам списания материалов · коды: 202, 409 · примеры
   ← body: WHIssueIssueItemMergeData[]
@@ -170,7 +170,7 @@ Base: `{BASE_URL}/WH`
   ← path: id:int
 
 ## Receipts
-- `GET /Receipts` — Получение списка оприходываний материалов · коды: 200, 204, 206 · примеры
+- `GET /Receipts` — Получение списка оприходываний материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime, responsiblePersonID?:int → map<ResultsReceiptsReceiptResult>
 - `POST /Receipts` — Создание оприходываний материалов · коды: 201, 409 · примеры
   ← body: WHReceiptAddData[] → int[]
@@ -178,7 +178,7 @@ Base: `{BASE_URL}/WH`
   ← body: WHReceiptUpdateData[]
 - `DELETE /Receipts` — Удаление оприходываний материалов · коды: 202 · примеры
   ← body: int[]
-- `HEAD /Receipts` — Получение общего количества оприходываний материалов · коды: 200, 206 · примеры
+- `HEAD /Receipts` — Получение общего количества оприходываний материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, warehouseID?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `POST /Receipts/items` — Добавляет строки к документам оприходывания материалов · коды: 202, 409 · примеры
   ← body: WHReceiptReceiptItemMergeData[]
@@ -206,7 +206,7 @@ Base: `{BASE_URL}/WH`
   ← path: receiptID:int, materialID:int
 
 ## Transfers
-- `GET /Transfers` — Получение списка перемещений материалов · коды: 200, 204, 206 · примеры
+- `GET /Transfers` — Получение списка перемещений материалов · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, fromWarehouses?:int, toWarehouses?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime, responsiblePersonID?:int → map<ResultsTransfersTransferResult>
 - `POST /Transfers` — Создание перемещений материалов · коды: 201, 409 · примеры
   ← body: WHTransferAddData[] → int[]
@@ -214,7 +214,7 @@ Base: `{BASE_URL}/WH`
   ← body: WHTransferUpdateData[]
 - `DELETE /Transfers` — Удаление перемещений материалов · коды: 202, 409 · примеры
   ← body: int[]
-- `HEAD /Transfers` — Получение общего количества перемещений материалов · коды: 200, 206 · примеры
+- `HEAD /Transfers` — Получение общего количества перемещений материалов · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, isDeleted?:bool, fromWarehouses?:int, toWarehouses?:int, documentStatusID?:int, operationTypeID?:int, consumptionPeriodFrom?:datetime, consumptionPeriodTill?:datetime
 - `POST /Transfers/items` — Добавляет данные к документам перемещения материалов · коды: 202, 409 · примеры
   ← body: WHTransferTransferItemMergeData[]

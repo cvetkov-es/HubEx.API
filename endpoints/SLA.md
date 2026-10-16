@@ -31,7 +31,7 @@ Base: `{BASE_URL}/SLA`
   ← path: id:int
 
 ## DeadlineRules
-- `GET /DeadlineRules` — Получение списка правил планового закрытия заявки · коды: 200, 204, 206 · примеры
+- `GET /DeadlineRules` — Получение списка правил планового закрытия заявки · paginated · коды: 200, 204, 206 · примеры
   → map<ResultsDeadlineRulesListResult>
 - `POST /DeadlineRules` — Создание правил планового закрытия заявки · коды: 201, 409 · примеры
   ← body: SLADeadlineRuleDeadlineRuleAddData[] → ResultsDeadlineRulesPostResult[]

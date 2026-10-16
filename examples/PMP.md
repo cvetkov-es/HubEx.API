@@ -34,6 +34,36 @@ Authorization: Bearer <token>
 
 ## ScheduledTasks
 
+### `GET /ScheduledTasks`
+
+## Пример запроса:
+```text
+GET /ScheduledTasks?assetID=501&scheduleID=1&dateRangeFrom=2026-08-01T00:00:00Z&dateRangeTill=2026-08-31T23:59:59Z&isAssigned=false
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "taskTemplateID": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "Плановое ТО насоса",
+    "description": "Ежемесячное техническое обслуживание",
+    "notes": "Проверить давление",
+    "sortOrder": 0
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — плановые заявки по указанным фильтрам не найдены.
+- 400 — некорректные параметры фильтрации.
+
 ### `HEAD /ScheduledTasks`
 
 ## Пример запроса:
@@ -47,6 +77,44 @@ Authorization: Bearer <token>
             
 ## Негативные сценарии:
 - 401/403 — отсутствие или недостаточность прав доступа.
+- 400 — некорректные параметры фильтрации.
+
+### `GET /ScheduledTasks/appointments`
+
+## Пример запроса:
+```text
+GET /ScheduledTasks/appointments?assetID=501&scheduleID=1&dateRangeFrom=2026-08-01T00:00:00Z&dateRangeTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "scheduleID": 1,
+    "appointmentID": 100,
+    "appointment": "2026-08-20T10:00:00Z",
+    "appointmentWith": "2026-08-20T08:00:00Z",
+    "appointmentBy": "2026-08-20T18:00:00Z",
+    "assetAssigns": [
+      {
+        "assetID": 501,
+        "assetName": "Насос №1",
+        "sortOrder": 0,
+        "userID": 42
+      }
+    ]
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — срабатывания по указанным фильтрам не найдены.
 - 400 — некорректные параметры фильтрации.
 
 ### `HEAD /ScheduledTasks/appointments`
@@ -96,6 +164,56 @@ Authorization: Bearer <token>
 - 204 — данные по указанным фильтрам не найдены.
 - 400 — некорректные параметры фильтрации.
 
+### `GET /ScheduledTasks/v2/appointments`
+
+## Пример запроса:
+```text
+GET /ScheduledTasks/v2/appointments?assetID=501&scheduleID=1&dateRangeFrom=2026-08-01T00:00:00Z&dateRangeTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "scheduleID": 1,
+    "appointmentID": 100,
+    "appointment": "2026-08-20T10:00:00Z",
+    "appointmentWith": "2026-08-20T08:00:00Z",
+    "appointmentBy": "2026-08-20T18:00:00Z",
+    "assetAssigns": [
+      {
+        "assetID": 501,
+        "assetName": "Насос №1",
+        "sortOrder": 0,
+        "users": [42, 43],
+        "company": {
+          "id": 5,
+          "name": "ООО Ремонт",
+          "deleted": null
+        },
+        "location": {
+          "id": 10,
+          "address": "ул. Примерная, 1",
+          "coordinate": "55.7558:37.6173",
+          "description": "Цех №1",
+          "deleted": null
+        }
+      }
+    ]
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — срабатывания по указанным фильтрам не найдены.
+- 400 — некорректные параметры фильтрации.
+
 ### `GET /ScheduledTasks/v2/count`
 
 ## Пример запроса:
@@ -133,6 +251,40 @@ Authorization: Bearer <token>
 - 400 — некорректные параметры фильтрации.
 
 ## Schedules
+
+### `GET /Schedules`
+
+## Пример запроса:
+```text
+GET /Schedules
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "frequencyType": {
+      "id": 1,
+      "name": "Ежедневно"
+    }
+  },
+  "2": {
+    "frequencyType": {
+      "id": 2,
+      "name": "Еженедельно"
+    }
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — расписания не найдены.
 
 ### `POST /Schedules`
 
@@ -182,6 +334,43 @@ Content-Type: application/json
 ## Негативные сценарии:
 - 401/403 — отсутствие или недостаточность прав доступа.
 - 400 — некорректные данные запроса.
+
+### `GET /Schedules/appointments/assign`
+
+## Пример запроса:
+```text
+GET /Schedules/appointments/assign?assetID=501&userID=42&validFrom=2026-08-01T00:00:00Z&validTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "appointments": [
+      {
+        "appointmentID": 100,
+        "appointment": "2026-08-20T10:00:00Z",
+        "assetAssigns": [
+          {
+            "assetID": 501,
+            "userID": 42
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — назначения по указанным фильтрам не найдены.
+- 400 — некорректные параметры фильтрации.
 
 ### `POST /Schedules/appointments/assign`
 
@@ -283,6 +472,73 @@ Authorization: Bearer <token>
 ## Негативные сценарии:
 - 401/403 — отсутствие или недостаточность прав доступа.
 - 400 — некорректные данные запроса.
+
+### `GET /Schedules/{scheduleID}/appointments`
+
+## Пример запроса:
+```text
+GET /Schedules/1/appointments?dateFrom=2026-08-01T00:00:00Z&dateTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "id": 100,
+    "appointment": "2026-08-20T10:00:00Z"
+  },
+  {
+    "id": 101,
+    "appointment": "2026-08-21T10:00:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — события расписания по указанным параметрам не найдены.
+
+### `GET /Schedules/{scheduleID}/appointments/assign`
+
+## Пример запроса:
+```text
+GET /Schedules/1/appointments/assign?assetID=501&userID=42&validFrom=2026-08-01T00:00:00Z&validTill=2026-08-31T23:59:59Z
+Authorization: Bearer <token>
+Range: items=0-49
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "1": {
+    "appointments": [
+      {
+        "appointmentID": 100,
+        "appointment": "2026-08-20T10:00:00Z",
+        "assetAssigns": [
+          {
+            "assetID": 501,
+            "userID": 42
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона.
+            
+## Негативные сценарии:
+- 401/403 — отсутствие или недостаточность прав доступа.
+- 204 — назначения по указанным фильтрам не найдены.
+- 400 — некорректные параметры фильтрации.
 
 ### `DELETE /Schedules/{scheduleID}/appointments/{appointmentID}/asset/{assetID}`
 

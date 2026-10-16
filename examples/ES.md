@@ -2577,6 +2577,13 @@ Multipart/form-data с полем изображения.
 - 403 Forbidden: недостаточно прав `AssetRestore`.
 - 409 Conflict: конфликт при восстановлении.
 
+### `GET /Assets/root`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
+
 ### `GET /Assets/{assetID}`
 
 ## Пример запроса:
@@ -3144,6 +3151,20 @@ Multipart/form-data с полем изображения.
 - 400 BadRequest: некорректный формат изображения или размер менее 128×128.
 - 401 Unauthorized: отсутствует или некорректен Bearer-токен.
 - 403 Forbidden: недостаточно прав `AssetAvatarUpload`.
+
+### `GET /Assets/{parentAssetID}/assets`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
+
+### `GET /Assets/{parentAssetID}/assets/all`
+
+## Негативные сценарии:
+- 204 NoContent: объекты не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AssetsList`.
 
 ## Companies
 

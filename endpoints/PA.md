@@ -23,7 +23,7 @@ Base: `{BASE_URL}/PA`
 - Users — строки 115–133
 
 ## AssetAssignments
-- `GET /AssetAssignments` — Возвращает список назначений объектов. · коды: 200, 204, 206 · примеры
+- `GET /AssetAssignments` — Возвращает список назначений объектов. · paginated · коды: 200, 204, 206 · примеры
   ← query: userID?:int, assetID?:int, validOn?:datetime → RAAListResult[]
 - `POST /AssetAssignments` — Добавляет или изменяет назначение объекта для пользователя. · коды: 201, 202 · примеры
   ← body: PAAAMergeData[]
@@ -37,19 +37,19 @@ Base: `{BASE_URL}/PA`
   ← body: ComplexActionDataOfPAEDUpdateData
 - `DELETE /Employment` — Удаляет набор записей о трудоустройстве пользователя · коды: 202, 400 · примеры
   ← body: ComplexActionDataOfPAEDRemoveData
-- `GET /Employment/{userID}` — Возвращает полный список трудоустройств пользователя · коды: 200, 204, 206 · примеры
+- `GET /Employment/{userID}` — Возвращает полный список трудоустройств пользователя · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int; query: validFrom?:datetime, validTill?:datetime → EmploymentGetResult[]
 
 ## GeoTrackingModes
-- `GET /GeoTrackingModes` — Возвращает список режимов геотрекинга. · коды: 200, 204, 206 · примеры
+- `GET /GeoTrackingModes` — Возвращает список режимов геотрекинга. · paginated · коды: 200, 204, 206 · примеры
   → map<RGTMListResult>
 
 ## Mobilities
-- `GET /Mobilities` — Возвращает список мобильностей тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Mobilities` — Возвращает список мобильностей тенанта. · paginated · коды: 200, 204, 206 · примеры
   → map<RMListResult>
 
 ## Moblities
-- `GET /Moblities` — Возвращает список мобильностей тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Moblities` — Возвращает список мобильностей тенанта. · paginated · коды: 200, 204, 206 · примеры
   → map<RMListResult>
 
 ## RatingCriteria
@@ -67,11 +67,11 @@ Base: `{BASE_URL}/PA`
   ← path: id:int
 
 ## Sexes
-- `GET /Sexes` — Возвращает список полов. · коды: 200, 204, 206 · примеры
+- `GET /Sexes` — Возвращает список полов. · paginated · коды: 200, 204, 206 · примеры
   → map<NameResult>
 
 ## Skills
-- `GET /Skills` — Возвращает список навыков тенанта. · коды: 200, 204, 206 · примеры
+- `GET /Skills` — Возвращает список навыков тенанта. · paginated · коды: 200, 204, 206 · примеры
   ← query: isDeleted?:bool → map<RSListResult>
 - `POST /Skills` — Добавляет навыки тенанту. · коды: 201, 204 · примеры
   ← body: SkillBaseData[] → RSAddResult[]
@@ -125,7 +125,7 @@ Base: `{BASE_URL}/PA`
   ← path: userID:int; body: DailyScheduleDto[] → WorkShiftFlatProjection[]
 - `DELETE /Users/onshift/{userID}` — Удаляет пользовательский график рабочих смен для списка дат. · коды: 202, 409 · примеры
   ← path: userID:int; body: datetime[]
-- `GET /Users/{userID}/workTypes` — Возвращает список видов работ пользователя. · коды: 200, 204, 206 · примеры
+- `GET /Users/{userID}/workTypes` — Возвращает список видов работ пользователя. · paginated · коды: 200, 204, 206 · примеры
   ← path: userID:int → map<WorkTypesListResult[]>
 - `POST /Users/{userID}/workTypes` — Добавляет пользователю виды работ. · коды: 201, 400 · примеры
   ← path: userID:int; body: int[] → map<int[]>

@@ -110,6 +110,40 @@
 ## Негативные сценарии:
 - 409 Conflict: тело запроса не указано, ошибки валидации, не указаны email/телефон/domainLogin или указаны некорректные данные.
 
+### `GET /Accounts/this/applications`
+
+## Пример запроса:
+`GET /Accounts/this/applications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "client": {
+      "id": 1,
+      "uniqueClientIdentifier": "abc-123-def-456",
+      "agent": "Android 14",
+      "clientType": { "id": 1, "name": "Mobile" }
+    },
+    "application": {
+      "id": 2,
+      "name": "HubEx Mobile",
+      "version": "3.5.0"
+    },
+    "pushToken": "fcm-token-xyz",
+    "timestamp": "2026-08-21T08:00:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: приложения не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `AccountClientApplicationList`.
+
 ### `PUT /Accounts/this/applications`
 
 ## Пример запроса:
@@ -147,6 +181,32 @@
             
 ## Негативные сценарии:
 - 401 Unauthorized: отсутствует идентификатор учётной записи и участника тенанта в токене.
+
+### `GET /Accounts/this/notifications`
+
+## Пример запроса:
+`GET /Accounts/this/notifications?offset=0&fetch=25`
+            
+## Пример успешного ответа (200):
+```json
+[
+  {
+    "notificationID": 501,
+    "providerID": 1,
+    "subject": "Подтверждение адреса электронной почты",
+    "content": "Для подтверждения перейдите по ссылке...",
+    "sent": "2026-08-21T08:01:00Z"
+  }
+]
+```
+            
+## Пример успешного ответа (206):
+Тело ответа имеет тот же формат, что и для `200`, но содержит только часть диапазона. Заголовок `Content-Range` указывает общее количество.
+            
+## Негативные сценарии:
+- 204 NoContent: уведомления не найдены.
+- 401 Unauthorized: отсутствует или некорректен Bearer-токен.
+- 403 Forbidden: недостаточно прав `NotificationLogList`.
 
 ## Messages
 
@@ -277,3 +337,38 @@
 ## Негативные сценарии:
 - 403 Forbidden: указан `currentPassword`, но пользователь не аутентифицирован.
 - 409 Conflict: неверный текущий пароль или некорректный верификационный код.
+
+## VerificationCodes
+
+### `POST /VerificationCodes/check`
+
+## Пример запроса (по хэшу из e-mail):
+`POST /VerificationCodes/check`
+            
+```json
+{
+  "codeHash": "a1b2c3d4e5f6"
+}
+```
+            
+## Пример запроса (по SMS-коду):
+`POST /VerificationCodes/check`
+            
+```json
+{
+  "code": "123456",
+  "mobilePhone": "+79001234567"
+}
+```
+            
+## Пример успешного ответа (200):
+```json
+{
+  "accountID": 1001,
+  "oneTimeLoginToken": "olt-abc123xyz",
+  "verificationCodeRepeatTimeout": 60
+}
+```
+            
+## Негативные сценарии:
+- 409 Conflict: тело запроса не указано, ошибки валидации, верификационный код не найден или недействителен.

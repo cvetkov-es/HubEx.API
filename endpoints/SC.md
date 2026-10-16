@@ -16,7 +16,7 @@ Base: `{BASE_URL}/SC`
   ← body: SCCAActionData[]
 
 ## ServiceContract
-- `GET /ServiceContract` — Получение списка договоров обслуживания · коды: 200, 204, 206 · примеры
+- `GET /ServiceContract` — Получение списка договоров обслуживания · paginated · коды: 200, 204, 206 · примеры
   ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:bool, companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime → map<ContractListResult>
 - `POST /ServiceContract` — Создание договоров обслуживания · коды: 201 · примеры
   ← body: ContractMergeData[] → int[]
@@ -24,11 +24,11 @@ Base: `{BASE_URL}/SC`
   ← body: ContractMergeData[]
 - `DELETE /ServiceContract` — Удаление договоров обслуживания · коды: 202, 409 · примеры
   ← body: int[]
-- `HEAD /ServiceContract` — Получение общего количества договоров обслуживания · коды: 200, 206 · примеры
+- `HEAD /ServiceContract` — Получение общего количества договоров обслуживания · paginated · коды: 200, 206 · примеры
   ← query: searchText?:str, taskID?:int, assetID?:int, includeUniversalContractsInAssetFilter?:bool, companyID?:int, contactID?:int, validFrom?:datetime, validTill?:datetime
 - `GET /ServiceContract/{contractID}` — Получение договора обслуживания по идентификатору · коды: 200, 404 · примеры
   ← path: contractID:int → ContractGetResult
-- `GET /ServiceContract/{contractID}/assets` — Возвращает список объектов, привязанных к сервисному договору · коды: 200, 204, 206 · примеры
+- `GET /ServiceContract/{contractID}/assets` — Возвращает список объектов, привязанных к сервисному договору · paginated · коды: 200, 204, 206 · примеры
   ← path: contractID:int → map<AssetResultBase>
 - `POST /ServiceContract/{contractID}/assets` — Добавляет список объектов к сервисному договору · коды: 201, 204, 409 · примеры
   ← path: contractID:int; body: ContractAssetData[] → ContractAssetAddProjection[]
@@ -40,7 +40,7 @@ Base: `{BASE_URL}/SC`
   ← path: contractID:int, assetID:int
 - `GET /ServiceContract/{contractID}/attachment/{attachmentID}` — Возвращает прикреплённый к договору файл-вложение · коды: 200, 204, 500 · примеры
   ← path: contractID:int, attachmentID:int; query: thumbnailSize?:int → RAAttachmentResult
-- `GET /ServiceContract/{contractID}/attachments` — Возвращает список файлов-вложений, прикреплённых к договору · коды: 200, 204, 206, 500 · примеры
+- `GET /ServiceContract/{contractID}/attachments` — Возвращает список файлов-вложений, прикреплённых к договору · paginated · коды: 200, 204, 206, 500 · примеры
   ← path: contractID:int; query: thumbnailSize?:int → map<AttachmentListResult>
 - `POST /ServiceContract/{contractID}/attachments` — Связывает договор с существующими вложениями · коды: 201 · примеры
   ← path: contractID:int; body: int[] → AttachmentActionResultBase[]
@@ -52,9 +52,9 @@ Base: `{BASE_URL}/SC`
   ← path: contractID:int; body: { ContentLength?: int, ContentStream.CanRead?: bool, ContentStream.CanSeek?: bool, ContentStream.CanTimeout?: bool, ContentStream.CanWrite?: bool, ContentStream.Capacity?: int, ContentStream.Length?: int, ContentStream.Position?: int, ContentStream.ReadTimeout?: int, ContentStream.WriteTimeout?: int, ContentType?: str, Coordinate?: str, Description?: str, File: file, FileName?: str, IsIgnorePossibleDuplication?: bool, IsPublic?: bool, Md5Hash?: str, Roles?: int[], Uid?: uuid } → UploadResult
 - `GET /ServiceContract/{contractID}/attachments/{attachmentID}` — Возвращает временную ссылку для скачивания файла-вложения · коды: 200, 204, 307, 500 · примеры
   ← path: contractID:int, attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool → ANCRAttachmentResult
-- `GET /ServiceContract/{contractID}/attributes` — Возвращает список пользовательских полей сервисного договора · коды: 200, 204, 206, 400 · примеры
+- `GET /ServiceContract/{contractID}/attributes` — Возвращает список пользовательских полей сервисного договора · paginated · коды: 200, 204, 206, 400 · примеры
   ← path: contractID:int → ContractAttributeResult[]
-- `GET /ServiceContract/{contractID}/contacts` — Возвращает список контактов, привязанных к сервисному договору · коды: 200, 204, 206 · примеры
+- `GET /ServiceContract/{contractID}/contacts` — Возвращает список контактов, привязанных к сервисному договору · paginated · коды: 200, 204, 206 · примеры
   ← path: contractID:int → map<ContactResultBase>
 - `POST /ServiceContract/{contractID}/contacts` — Добавляет список контактов к сервисному договору · коды: 201, 204, 409 · примеры
   ← path: contractID:int; body: int[] → ContractContactAddProjection[]
