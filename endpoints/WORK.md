@@ -25,225 +25,225 @@ Base: `{BASE_URL}/WORK`
 - WorkTypes — строки 237–249
 
 ## CheckLists
-- `GET /CheckLists` — Возвращает список активных чек-листов · права: CheckListsList · paginated · коды: 200, 206
-  ← query: searchText?:str, assetID?:int, workTypeID?:int, isAssignedToAsset?:enum(true, false), isAssignedToWorkType?:enum(true, false), searchText?:str → map<CheckLists.ListResult>
-- `GET /CheckLists/{checkListID}/items` — Возвращает элементы чек-листа · права: CheckListItemsList · paginated · коды: 200, 206
+- `GET /CheckLists` — Возвращает список активных чек-листов · коды: 200
+  ← query: searchText?:str → map<RCLListResult>
+- `GET /CheckLists/{checkListID}/items` — Возвращает элементы чек-листа · коды: 200
   ← path: checkListID:int → map<CheckListItemResult>
-- `GET /CheckLists/{id}` — Возвращает чек-лист · права: CheckListGet · коды: 200
-  ← path: id:int → map<CheckLists.GetResult>
+- `GET /CheckLists/{id}` — Возвращает чек-лист · коды: 200
+  ← path: id:int → map<RCLGetResult>
 
 ## RequestMethods
-- `GET /RequestMethods` — Возвращает список методов подачи заявок. · права: RequestMethodsList · paginated · коды: 200, 206
-  → map<RequestMethods.ListResult>
+- `GET /RequestMethods` — Возвращает список методов подачи заявок. · коды: 200
+  → map<RRMListResult>
 
 ## TaskActualities
-- `GET /TaskActualities` — Возвращает список актуальностей заявок · права: TaskActualitiesList · paginated · коды: 200, 206
-  → map<TaskActualities.ListResult>
-- `GET /TaskActualities/{id}` — Возвращает актуальность заявки · права: TaskActualityGet · коды: 200
-  ← path: id:int → TaskActualities.ListResult
+- `GET /TaskActualities` — Возвращает список актуальностей заявок · коды: 200
+  → map<RTAListResult>
+- `GET /TaskActualities/{id}` — Возвращает актуальность заявки · коды: 200
+  ← path: id:int → RTAListResult
 
 ## TaskAttributes
-- `GET /TaskAttributes` — Возвращает значения атрибутов по заявкам · права: TaskAttributeGet · paginated · коды: 200, 206
-  ← query: taskID?:int, attributeID?:int → TaskAttributesResult[]
+- `GET /TaskAttributes` — Возвращает значения атрибутов по заявкам · коды: 200
+  → TaskAttributesResult[]
 
 ## TaskConversations
 - `GET /TaskConversations` — Возвращает список сообщений по заявкам, доступным пользователю.
-<param name="searchText">Текст для поиска в сообщениях по заявкам</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз из доступных)</param> · права: TaskConversationsList · paginated · коды: 200, 206
-  ← query: searchText?:str, thumbnailSize?:int, isRead?:enum(true, false) → TaskMessageLast[]
+<param name="searchText">Текст для поиска в сообщениях по заявкам</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз из доступных)</param> · коды: 200
+  ← query: searchText?:str, thumbnailSize?:int → TaskMessageLast[]
 - `HEAD /TaskConversations` — Возвращает заголовок списка сообщений по заявке (для получения количества сообщений, удовлетворяющих условиям фильтрации)
-<param name="searchText">Текст для поиска в сообщениях по заявкам</param> · права: TaskConversationsList · коды: 200
+<param name="searchText">Текст для поиска в сообщениях по заявкам</param> · коды: 200
 
 ## TaskFilter
-- `GET /TaskFilter` — Возвращает список доступных фильтров для пользователя запросившего данные. · права: TasksList · коды: 200
-  ← query: selectedOnly?:bool, selectedOnly?:enum(true, false) → FilterListItemProjection[]
+- `GET /TaskFilter` — Возвращает список доступных фильтров для пользователя запросившего данные. · коды: 200
+  ← query: selectedOnly?:bool → FilterListItemProjection[]
 
 ## TaskListQueries
-- `GET /TaskListQueries` — Возвращает список сохраненных запросов, доступных в тенанте · права: TaskListQueryListAll · paginated · коды: 200, 206
+- `GET /TaskListQueries` — Возвращает список сохраненных запросов, доступных в тенанте · коды: 200
   → map<TaskListQueryResult>
-- `GET /TaskListQueries/{id}` — Возвращает сохраненный запрос · права: TaskListQueryGet · коды: 200
+- `GET /TaskListQueries/{id}` — Возвращает сохраненный запрос · коды: 200
   ← path: id:int → map<TaskListQueryResult>
 
 ## TaskOrderBy
-- `GET /TaskOrderBy` — Возвращает список методов сортировки заявок · права: TaskOrderByList · paginated · коды: 200, 206
-  → map<TaskOrderBy.ListResult>
+- `GET /TaskOrderBy` — Возвращает список методов сортировки заявок · коды: 200
+  → map<RTOBListResult>
 
 ## TaskStatuses
-- `GET /TaskStatuses` — Возвращает список статусов заявок · права: TaskStatusesList · paginated · коды: 200, 206, 500
-  → map<TaskStatuses.ListResult>
-- `GET /TaskStatuses/{id}` — Возвращает статус заявки · права: TaskStatusGet · коды: 200
-  ← path: id:int → TaskStatuses.ListResult
+- `GET /TaskStatuses` — Возвращает список статусов заявок · коды: 200, 500
+  → map<RTSListResult>
+- `GET /TaskStatuses/{id}` — Возвращает статус заявки · коды: 200
+  ← path: id:int → RTSListResult
 
 ## TaskTemplates
-- `GET /TaskTemplates` — Возвращает список шаблонов заявок. · права: TaskTemlatesList · paginated · коды: 200, 206
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, assetTypeID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), taskTemplateID?:str → map<TaskTemplates.ListResult>
-- `HEAD /TaskTemplates` — Возвращает заголовок списка шаблонов заявок. · права: TaskTemlatesList · коды: 200
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isAllowForMailboxSender?:enum(true, false), isScheduled?:enum(true, false), isScheduleActive?:enum(true, false), startWithAssetID?:int
-- `GET /TaskTemplates/download` — Возвращает архив qr-кодов в формате svg в соответствии с заданными фильтрами · права: TaskTemlatesList · paginated · коды: 200, 206
-  ← query: searchText?:str, isPublic?:bool, isPublished?:enum(true, false), assetID?:int, taskTypeID?:int, workTypeID?:int, companyID?:int, contractID?:int, criticalityID?:int, frequencyTypeID?:int, isScheduled?:enum(true, false), isScheduleActive?:enum(true, false)
-- `GET /TaskTemplates/{id}` — Возвращает шаблон заявки · права: TaskTemplateGet · коды: 200
-  ← path: id:str → TaskTemplates.GetResult
+- `GET /TaskTemplates` — Возвращает список шаблонов заявок. · коды: 200
+  ← query: searchText?:str, isPublic?:bool → map<RTaskTemplatesListResult>
+- `HEAD /TaskTemplates` — Возвращает заголовок списка шаблонов заявок. · коды: 200
+  ← query: searchText?:str, isPublic?:bool
+- `GET /TaskTemplates/download` — Возвращает архив qr-кодов в формате svg в соответствии с заданными фильтрами · коды: 200
+  ← query: searchText?:str, isPublic?:bool
+- `GET /TaskTemplates/{id}` — Возвращает шаблон заявки · коды: 200
+  ← path: id:str → RTaskTemplatesGetResult
 - `GET /TaskTemplates/{id}/assignment` — Возвращает список исполнителей, связанных с шаблоном · коды: 200, 500
   ← path: id:str → TaskTemplateAssignmentDetailsProjection
-  Выполнение данного метода резрешино от **анонимного пользователя**.
-- `GET /TaskTemplates/{id}/download` — Возвращает шаблон заявки · права: TaskTemplateGet · коды: 200
+  Выполнение данного метода разрешено от **анонимного пользователя**.
+- `GET /TaskTemplates/{id}/download` — Возвращает шаблон заявки · коды: 200
   ← path: id:str
 - `GET /TaskTemplates/{id}/public` — Возвращает публичный шаблон заявки по идентификатору, который вычисляется как sha256(QrCode) · коды: 200, 500
   ← path: id:str → GetPublicResult
-  Выполнение данного метода резрешино от **анонимного пользователя**.
-- `GET /TaskTemplates/{id}/schedules` — Получить список сгенерированных событий шаблоной зявки · права: TaskTemplateScheduleList · paginated · коды: 200, 206
+  Выполнение данного метода разрешено от **анонимного пользователя**.
+- `GET /TaskTemplates/{id}/schedules` — Получить список сгенерированных событий шаблоной зявки · коды: 200
   ← path: id:str → GetSchedulesResult[]
-- `GET /TaskTemplates/{tasktTemplateID}/excludedAssets` — Возвращает список исключенных объектов для плановой заявки · права: TaskTemplateExcludedAssetList · paginated · коды: 200, 206
+- `GET /TaskTemplates/{tasktTemplateID}/excludedAssets` — Возвращает список исключенных объектов для плановой заявки · коды: 200
   ← path: tasktTemplateID:str → map<TaskTemplateExcludedAssetResult>
 
 ## TaskTypes
-- `GET /TaskTypes` — Возвращает список типов заявок, доступных пользователю. Доступность определяется привязкой пользователя к участкам. · права: TaskTypesList · paginated · коды: 200, 206, 500
-  ← query: companyID?:int, districtID?:int, assetID?:int, workTypeID?:int → map<TaskTypes.ListResult>
-- `GET /TaskTypes/{id}` — Возвращает тип заявки · права: TaskTypeGet · коды: 200
-  ← path: id:int → TaskTypes.ListResult
-- `GET /TaskTypes/{id}/districts` — Метод получения участков для вида работ · права: TaskTypeDistrictList · paginated · коды: 202, 206
+- `GET /TaskTypes` — Возвращает список типов заявок, доступных пользователю. Доступность определяется привязкой пользователя к участкам. · коды: 200, 500
+  → map<RTaskTypesListResult>
+- `GET /TaskTypes/{id}` — Возвращает тип заявки · коды: 200
+  ← path: id:int → RTaskTypesListResult
+- `GET /TaskTypes/{id}/districts` — Метод получения участков для вида работ · коды: 202
   ← path: id:int → map<TaskTypeDistrictList>
-- `GET /TaskTypes/{id}/workTypes` — Возвращает список относящихся к типу задачи видов работ · права: TaskTypesList · paginated · коды: 202, 206
-  ← path: id:int → IdNameEntity<Int16>[]
-- `GET /TaskTypes/{taskTypeID}/route` — Возвращает маршрут типа заявки · права: TaskTypeRouteGet · коды: 200
+- `GET /TaskTypes/{id}/workTypes` — Возвращает список относящихся к типу задачи видов работ · коды: 202
+  ← path: id:int → IdNameEntityOfShort[]
+- `GET /TaskTypes/{taskTypeID}/route` — Возвращает маршрут типа заявки · коды: 200
   ← path: taskTypeID:int → RouteResult
 
 ## Tasks
-- `GET /Tasks` — Возвращает список заявок, доступных пользователю. · права: TasksList · paginated · коды: 200, 206
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), topLevelTasksForHierarchy?:enum(true, false), assetTypeID?:int, assetClassID?:int, districtID?:int, assetResponsibleUserID?:int, branchID?:int, erpID?:str, parentID?:int, assetSchemaID?:int, attributeValues?:str, lastModifiedFrom?:datetime, lastModifiedTill?:datetime, contactID?:int, payeeCompanyID?:int → map<Tasks.ListResult>
-- `HEAD /Tasks` — Возвращает заголовок списка заявок для получения количества заявок, удовлетворяющих фильтру. · права: TasksList · коды: 200
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:int, assetClassID?:int, erpID?:str, parentID?:int, branchID?:int, assetSchemaID?:int, contactID?:int
-- `GET /Tasks/changeTypes` — Возвращает список поддерживаемых в логировании разделов (Tab) и секций этих разделов (Sections) · права: TaskGet · коды: 200, 500
+- `GET /Tasks` — Возвращает список заявок, доступных пользователю. · коды: 200
+  ← query: searchText?:str → map<RTListResult>
+- `HEAD /Tasks` — Возвращает заголовок списка заявок для получения количества заявок, удовлетворяющих фильтру. · коды: 200
+  ← query: searchText?:str
+- `GET /Tasks/changeTypes` — Возвращает список поддерживаемых в логировании разделов (Tab) и секций этих разделов (Sections) · коды: 200, 500
   → ChangeTypeResult[]
-- `GET /Tasks/count` — Возвращает количество заявок по дням · права: TasksList · коды: 200
-  ← query: dateFrom?:datetime, dateTill?:datetime, searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), assetTypeID?:int, assetClassID?:int, districtID?:int, assetResponsibleUserID?:int, branchID?:int, erpID?:str, parentID?:int → map<ListCountResult>
-- `GET /Tasks/groupBy/geoHash` — Возвращает краткий список заявок, сгрупированных по хэш-коду геоообласти (кластеризация) · права: TasksList · коды: 200
-  ← query: searchText?:str, zoomLevel?:float, disableClustering?:bool, clusteringMode?:ClusteringMode, requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, taskTemplateID?:str, requestMethodID?:int, disableClustering?:enum(true, false), clusteringMode?:any → TaskGroupByResult<ClusterResult>[]
-- `GET /Tasks/new/meta` — Возвращает метаданные для формы заявки. · права: TaskMetadataGet · коды: 200, 500
+- `GET /Tasks/count` — Возвращает количество заявок по дням · коды: 200
+  ← query: dateFrom?:datetime, dateTill?:datetime, searchText?:str → map<ListCountResult>
+- `GET /Tasks/groupBy/geoHash` — Возвращает краткий список заявок, сгрупированных по хэш-коду геоообласти (кластеризация) · коды: 200
+  ← query: searchText?:str, zoomLevel?:float, disableClustering?:bool, clusteringMode?:ClusteringMode → TaskGroupByResultOfClusterResult[]
+- `GET /Tasks/new/meta` — Возвращает метаданные для формы заявки. · коды: 200, 500
   ← query: taskTypeID?:int[] → map<TaskTypeFormMetadataResult>
-- `GET /Tasks/short` — Возвращает краткий список заявок, доступных пользователю. · права: TasksList · paginated · коды: 200, 206
-  ← query: searchText?:str, isRated?:enum(true, false), requestedBy?:int, assignedTo?:int, approvalWith?:int, escalatedTo?:int, assetID?:int, startWithAssetID?:int, taskID?:int, taskNumber?:str, taskTypeID?:int, workTypeID?:int, taskStageID?:int, taskStatusID?:int, creationFrom?:datetime, creationTill?:datetime, assignationFrom?:datetime, assignationTill?:datetime, completionFrom?:datetime, completionTill?:datetime, closingFrom?:datetime, closingTill?:datetime, deadlineFrom?:datetime, deadlineTill?:datetime, isClosed?:enum(true, false), isFavourite?:enum(true, false), isCompleted?:enum(true, false), isAssigned?:enum(true, false), isDeleted?:enum(true, false), isOutdated?:enum(true, false), companyID?:int, contractID?:int, criticalityID?:int, orderBy?:int, sortDirection?:int, pointNorthEast?:coordinate, pointSouthWest?:coordinate, pointCenter?:coordinate, radius?:float, geoHash?:str, ratingCriteriaId?:int, taskTemplateID?:str, requestMethodID?:int, hasAssigneeCheckedIn?:enum(true, false), isScheduled?:enum(true, false), branchID?:int, assetTypeID?:int, assetClassID?:int, erpID?:str, parentID?:int, assetSchemaID?:int, contactID?:int → map<ListShortResult>
-- `GET /Tasks/stages/next` — Возвращает список доступных стадий, на котрые могут быть переведены заявки из списка. · права: TaskStagesList · коды: 200, 500
+- `GET /Tasks/short` — Возвращает краткий список заявок, доступных пользователю. · коды: 200
+  ← query: searchText?:str → map<ListShortResult>
+- `GET /Tasks/stages/next` — Возвращает список доступных стадий, на котрые могут быть переведены заявки из списка. · коды: 200, 500
   ← query: id?:int[] → map<ListStagesResult>
-- `GET /Tasks/{taskID}` — Возвращает детальные сведения по заявке · права: TaskGet · коды: 200
+- `GET /Tasks/{taskID}` — Возвращает детальные сведения по заявке · коды: 200
   ← path: taskID:int; query: taskSnapshotID?:int, includeSchedule?:bool → DetailedInfoResult
-- `GET /Tasks/{taskID}/assignments` — Возвращает историю назначения заявки · права: TaskAssignmentHistoryList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/assignments` — Возвращает историю назначения заявки · коды: 200, 500
   ← path: taskID:int → ListAssignmentHistoryResult
 - `GET /Tasks/{taskID}/attachment/{attachmentID}` — Прикрепленный файл к заявке
-<param name="taskID">Идентификатор заявки</param><param name="attachmentID">Идентификатор прикрепленного файла к заявке</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз из доступных)</param> · права: TaskAttachmentGet · коды: 200, 500
+<param name="taskID">Идентификатор заявки</param><param name="attachmentID">Идентификатор прикрепленного файла к заявке</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз из доступных)</param> · коды: 200, 500
   ← path: taskID:int, attachmentID:int; query: thumbnailSize?:int → GetAttachmentResult
 - `GET /Tasks/{taskID}/attachments` — Список прикрепленных файлов к заявке
-<param name="taskID">Идентификатор заявки</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param> · права: TaskAttachmentsList · paginated · коды: 200, 206, 500
-  ← path: taskID:int; query: thumbnailSize?:int → map<Common.ListAttachmentResult>
-- `GET /Tasks/{taskID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · права: TaskAttachmentDownload · paginated · коды: 206, 303
+<param name="taskID">Идентификатор заявки</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param> · коды: 200, 500
+  ← path: taskID:int; query: thumbnailSize?:int → map<RCListAttachmentResult>
+- `GET /Tasks/{taskID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · коды: 303
   ← path: taskID:int, attachmentID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /Tasks/{taskID}/attributes` — Возвращает доп.поля по заявке · права: TaskAttributesList · paginated · коды: 200, 206
+- `GET /Tasks/{taskID}/attributes` — Возвращает доп.поля по заявке · коды: 200
   ← path: taskID:int; query: isForActualTaskStageOnly?:bool → AttributeResult[]
-- `GET /Tasks/{taskID}/changes` — Возвращает историю изменения заявки · права: TaskGet · paginated · коды: 200, 206, 500
-  ← path: taskID:int; query: dateRangeFrom?:datetime, dateRangeTill?:datetime, userID?:int, tab?:str, section?:str → HistoryResult[]
-- `GET /Tasks/{taskID}/checkCompanyCodeUsed` — Возвращает информацию используется ли код компании при генерации номера заявки · права: IfUsedInTaskNumberGet · коды: 200
+- `GET /Tasks/{taskID}/changes` — Возвращает историю изменения заявки · коды: 200, 500
+  ← path: taskID:int → HistoryResult[]
+- `GET /Tasks/{taskID}/checkCompanyCodeUsed` — Возвращает информацию используется ли код компании при генерации номера заявки · коды: 200
   ← path: taskID:int → bool
-- `GET /Tasks/{taskID}/checkLists` — Возвращает список чек-листов в заявке · права: TaskCheckListsList · paginated · коды: 200, 206
+- `GET /Tasks/{taskID}/checkLists` — Возвращает список чек-листов в заявке · коды: 200
   ← path: taskID:int → map<TaskCheckListResult>
-- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results` — Возвращает результаты чек-листа для заявки · права: TaskCheckListResultsList · paginated · коды: 200, 206
+- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results` — Возвращает результаты чек-листа для заявки · коды: 200
   ← path: taskID:int, taskCheckListID:int → map<TaskCheckListResultResult>
-- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/attachments` — Возвращает список файлов прикрепленных к пункту чек-листа по заявке · права: TaskCheckListResultAttachmentList · paginated · коды: 200, 206, 400
-  ← path: taskID:int, taskCheckListID:int, taskCheckListResultID:int; query: thumbnailSize?:int → map<Common.ListAttachmentResult>
-- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/v2` — Возвращает результаты чек-листа для заявки · права: TaskCheckListResultsList · paginated · коды: 200, 206
+- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/attachments` — Возвращает список файлов прикрепленных к пункту чек-листа по заявке · коды: 200, 400
+  ← path: taskID:int, taskCheckListID:int, taskCheckListResultID:int; query: thumbnailSize?:int → map<RCListAttachmentResult>
+- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/v2` — Возвращает результаты чек-листа для заявки · коды: 200
   ← path: taskID:int, taskCheckListID:int → map<TaskCheckListResultV2Result>
-- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments` — Возвращает список файлов прикрепленных к пункту чек-листа по заявке · права: TaskCheckListResultAttachmentList · paginated · коды: 200, 206, 400
-  ← path: taskID:int, taskCheckListID:int, taskCheckListResultID:int; query: thumbnailSize?:int → map<Common.ListAttachmentResult>
-- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments/{attachmentID}` — Получает информацию о прикрепленном к чек-листу по завке файле · права: TaskCheckListResultAttachmentGet · коды: 200, 204, 500
+- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments` — Возвращает список файлов прикрепленных к пункту чек-листа по заявке · коды: 200, 400
+  ← path: taskID:int, taskCheckListID:int, taskCheckListResultID:int; query: thumbnailSize?:int → map<RCListAttachmentResult>
+- `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments/{attachmentID}` — Получает информацию о прикрепленном к чек-листу по завке файле · коды: 200, 204, 500
   ← path: taskID:int, taskCheckListID:int, taskChecklistResultID:int, attachmentID:int
-- `GET /Tasks/{taskID}/completedWorks` — Возвращает список выполненных работ по заявке · права: CompletedWorkList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/completedWorks` — Возвращает список выполненных работ по заявке · коды: 200, 500
   ← path: taskID:int → CompletedWorkResult[]
-- `GET /Tasks/{taskID}/completedWorks/attachments` — Возвращает список вложенных файлов во все выполненные работы в заявке · права: CompletedWorkAttachmentList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/completedWorks/attachments` — Возвращает список вложенных файлов во все выполненные работы в заявке · коды: 200, 500
   ← path: taskID:int; query: thumbnailSize?:int → ListAttachmentForCompletedWorkResult[]
-- `GET /Tasks/{taskID}/completedWorks/attributes` — Возвращает доп.поля для выполненных работ по заявке · права: CompletedWorkAttributeList · paginated · коды: 200, 206
-  ← path: taskID:int; query: completedWorkID?:int → CompletedWorkAttributeResult[]
-- `GET /Tasks/{taskID}/completedWorks/materials` — Список израсходованных материалов для выполненных работ по заявке · права: CompletedWorkMaterialsList · paginated · коды: 200, 204, 206, 500
+- `GET /Tasks/{taskID}/completedWorks/attributes` — Возвращает доп.поля для выполненных работ по заявке · коды: 200
+  ← path: taskID:int → CompletedWorkAttributeResult[]
+- `GET /Tasks/{taskID}/completedWorks/materials` — Список израсходованных материалов для выполненных работ по заявке · коды: 200, 204, 500
   ← path: taskID:int → map<CompletedWorkMaterialResult>
-- `GET /Tasks/{taskID}/completedWorks/materialsWithCodes` — Список израсходованных материалов для выполненных работ по заявке (включая коды маркировки). · права: CompletedWorkMaterialsList · paginated · коды: 200, 204, 206, 500
+- `GET /Tasks/{taskID}/completedWorks/materialsWithCodes` — Список израсходованных материалов для выполненных работ по заявке (включая коды маркировки). · коды: 200, 204, 500
   ← path: taskID:int → map<CompletedWorkMaterialResult>
-- `GET /Tasks/{taskID}/completedWorks/report/attachment` — Получает подпись к акту выполненной работы · права: CompletedWorkReportAttachmentGet · коды: 200, 204, 500
+- `GET /Tasks/{taskID}/completedWorks/report/attachment` — Получает подпись к акту выполненной работы · коды: 200, 204, 500
   ← path: taskID:int
-- `GET /Tasks/{taskID}/completedWorks/technicians` — Список исполнителей для выполненных работ по заявке · права: CompletedWorkTechnicianList · коды: 200, 204
+- `GET /Tasks/{taskID}/completedWorks/technicians` — Список исполнителей для выполненных работ по заявке · коды: 200, 204
   ← path: taskID:int → CompletedWorkTechnicianResult
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments` — Возвращает список вложенных файлов по выполненной работе в заявке · права: CompletedWorkAttachmentList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments` — Возвращает список вложенных файлов по выполненной работе в заявке · коды: 200, 500
   ← path: taskID:int, completedWorkID:int; query: thumbnailSize?:int → ListAttachmentForCompletedWorkResult[]
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · права: CompletedWorkAttachmentDownload · paginated · коды: 206, 303, 500
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · коды: 303, 500
   ← path: taskID:int, attachmentID:int, completedWorkID:int; query: thumbnailSize?:int, noRedirect?:bool
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes` — Возвращает доп.поля для выполненной работы по заявке · права: CompletedWorkAttributeList · paginated · коды: 200, 206
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes` — Возвращает доп.поля для выполненной работы по заявке · коды: 200
   ← path: taskID:int, completedWorkID:int → CompletedWorkAttributeResult[]
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/attachments` — Возвращает список файлов прикрепленных к атрибутам выполенной работы по заявке · права: CompletedWorkAttributeAttachmentList · paginated · коды: 200, 206, 400
-  ← path: taskID:int, completedWorkID:int; query: thumbnailSize?:int, attributeID?:int → map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}/attachments` — Возвращает список файлов прикрепленных к атрибуту выполненной работы по заявке · права: CompletedWorkAttributeAttachmentList · paginated · коды: 200, 206, 400
-  ← path: taskID:int, completedWorkID:int, attributeID:int; query: thumbnailSize?:int → map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/materials` — Список израсходованных материалов для выполненной работы по заявке · права: CompletedWorkMaterialsList · коды: 200, 204
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/attachments` — Возвращает список файлов прикрепленных к атрибутам выполенной работы по заявке · коды: 200, 400
+  ← path: taskID:int, completedWorkID:int; query: thumbnailSize?:int → map<RCWAAListAttachmentResult[]>
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}/attachments` — Возвращает список файлов прикрепленных к атрибуту выполненной работы по заявке · коды: 200, 400
+  ← path: taskID:int, completedWorkID:int, attributeID:int; query: thumbnailSize?:int → map<RCWAAListAttachmentResult[]>
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/materials` — Список израсходованных материалов для выполненной работы по заявке · коды: 200, 204
   ← path: taskID:int, completedWorkID:int → CompletedWorkMaterialResult
-- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/technicians` — Список исполнителей для выполненной работы по заявке · права: CompletedWorkTechnicianList · коды: 200, 204
+- `GET /Tasks/{taskID}/completedWorks/{completedWorkID}/technicians` — Список исполнителей для выполненной работы по заявке · коды: 200, 204
   ← path: taskID:int, completedWorkID:int → CompletedWorkTechnicianResult
-- `GET /Tasks/{taskID}/completedWorks/{id}` — Получает информацию о выполненной работе по заявкам · права: CompletedWorkGet · коды: 200, 500
+- `GET /Tasks/{taskID}/completedWorks/{id}` — Получает информацию о выполненной работе по заявкам · коды: 200, 500
   ← path: taskID:int, id:int → CompletedWorkResult[]
-- `GET /Tasks/{taskID}/contacts` — Возвращает список контактов заявки · права: TaskContactsList · paginated · коды: 200, 206, 400
-  ← path: taskID:int → map<TaskContacts.ListResult>
-- `GET /Tasks/{taskID}/contacts/{contactID}` — Возвращает контакт заявки · права: TaskContactGet · коды: 200
-  ← path: taskID:int, contactID:int → TaskContacts.GetResult
+- `GET /Tasks/{taskID}/contacts` — Возвращает список контактов заявки · коды: 200, 400
+  ← path: taskID:int → map<RTCListResult>
+- `GET /Tasks/{taskID}/contacts/{contactID}` — Возвращает контакт заявки · коды: 200
+  ← path: taskID:int, contactID:int → RTCGetResult
 - `GET /Tasks/{taskID}/conversations` — Возвращает сообщения по заявке
-<param name="taskID">Идентификатор заявки</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param><param name="searchText">Текст для поиска в сообщениях по заявке</param> · права: TaskConversationsList · paginated · коды: 200, 206
-  ← path: taskID:int; query: thumbnailSize?:int, searchText?:str, isRead?:enum(true, false) → TaskMessage[]
+<param name="taskID">Идентификатор заявки</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param><param name="searchText">Текст для поиска в сообщениях по заявке</param> · коды: 200
+  ← path: taskID:int; query: thumbnailSize?:int, searchText?:str → TaskMessage[]
 - `HEAD /Tasks/{taskID}/conversations` — Возвращает заголовок списка сообщений по заявке
 (для получения количества сообщений, удовлетворяющих условиям фильтрации)
-<param name="taskID">Идентификатор заявки</param><param name="searchText">Текст для поиска в сообщениях по заявке</param> · права: TaskConversationsList · коды: 200
-  ← path: taskID:int; query: searchText?:str, isRead?:enum(true, false), isExternal?:enum(true, false)
+<param name="taskID">Идентификатор заявки</param><param name="searchText">Текст для поиска в сообщениях по заявке</param> · коды: 200
+  ← path: taskID:int; query: searchText?:str
 - `GET /Tasks/{taskID}/conversations/{taskConversationID}` — Возвращает сообщение по заявке
-<param name="taskID">Идентификатор заявки</param><param name="taskConversationID">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param> · права: TaskConversationGet · paginated · коды: 200, 206
+<param name="taskID">Идентификатор заявки</param><param name="taskConversationID">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param><param name="thumbnailSize">Размер эскиза (будет возвращен ближайший больший эскиз и доступных)</param> · коды: 200
   ← path: taskID:int, taskConversationID:int; query: thumbnailSize?:int → TaskMessage
-- `GET /Tasks/{taskID}/conversations/{taskConversationID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · права: TaskConversationAttachmentDownload · paginated · коды: 206, 303, 500
+- `GET /Tasks/{taskID}/conversations/{taskConversationID}/attachments/{attachmentID}` — Возвращает TemporaryRedirect на временную ссылку для скачки файла · коды: 303, 500
   ← path: taskID:int, attachmentID:int, taskConversationID:int; query: thumbnailSize?:int, noRedirect?:bool
 - `GET /Tasks/{taskID}/conversations/{taskConversationID}/delivery` — Возвращает информацию по доставке и прочтению сообщения по заявке.
-<param name="taskID">Идентификатор заявки</param><param name="taskConversationID">Идентификатор сообщения</param> · права: TaskConversationDeliveryList · paginated · коды: 200, 206, 500
+<param name="taskID">Идентификатор заявки</param><param name="taskConversationID">Идентификатор сообщения</param> · коды: 200, 500
   ← path: taskID:int, taskConversationID:int → ListConversationDeliveryResult[]
-- `GET /Tasks/{taskID}/materials` — Возвращает список необходимых материалов для заявки · права: TaskMaterialsList · paginated · коды: 200, 206
-  ← path: taskID:int → map<TaskMaterials.ListResult>
-- `GET /Tasks/{taskID}/meta` — Возвращает метаданные для формы заявки. · права: TaskMetadataGet · коды: 200, 500
+- `GET /Tasks/{taskID}/materials` — Возвращает список необходимых материалов для заявки · коды: 200
+  ← path: taskID:int → map<RTMListResult>
+- `GET /Tasks/{taskID}/meta` — Возвращает метаданные для формы заявки. · коды: 200, 500
   ← path: taskID:int → TaskTypeFormMetadataResult
-- `GET /Tasks/{taskID}/ratings` — Возвращает отзывы/рейтинги инжененров по заявке. · права: TaskTechnicianRatingList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/ratings` — Возвращает отзывы/рейтинги инжененров по заявке. · коды: 200, 500
   ← path: taskID:int → RatingResult[]
-- `GET /Tasks/{taskID}/ratings/avg` — Возвращает отзывы/рейтинги инжененров по заявке. · права: TaskTechnicianRatingList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/ratings/avg` — Возвращает отзывы/рейтинги инжененров по заявке. · коды: 200, 500
   ← path: taskID:int → RatingResult[]
-- `GET /Tasks/{taskID}/skills` — Возвращает список навыков заявки · права: TaskSkillList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/skills` — Возвращает список навыков заявки · коды: 200, 500
   ← path: taskID:int → map<TaskSkillResult>
-- `GET /Tasks/{taskID}/stages` — Возвращает историю перемещения заявки по стадиям. · права: TaskStagingHistoryList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/stages` — Возвращает историю перемещения заявки по стадиям. · коды: 200, 500
   ← path: taskID:int; query: includeChangeset?:bool, actionLocationState?:ActionLocationState → ListStagingHistoryResult
-- `GET /Tasks/{taskID}/stages/next` — Возвращает список доступных стадий, на котрые может быть переведена заявка. · права: TaskStagesList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/stages/next` — Возвращает список доступных стадий, на котрые может быть переведена заявка. · коды: 200, 500
   ← path: taskID:int → map<ListStagesResult>
-- `GET /Tasks/{taskID}/tags` — Возвращает тэги по заявке. · права: TaskTagsList · paginated · коды: 200, 206, 500
+- `GET /Tasks/{taskID}/tags` — Возвращает тэги по заявке. · коды: 200, 500
   ← path: taskID:int → str[]
-- `GET /Tasks/{taskID}/watchLists` — WatchList по заявке · права: TaskWatchListList · paginated · коды: 200, 206, 500
-  ← path: taskID:int; query: searchText?:str → TaskWatchLists.ListResult[]
-- `GET /Tasks/{taskId}/completedWorks/{completedWorkID}/marking-codes` — Возвращает коды маркировки для выполненной работы (все материалы). · права: CompletedWorkMaterialsList · коды: 200, 204 · примеры
+- `GET /Tasks/{taskID}/watchLists` — WatchList по заявке · коды: 200, 500
+  ← path: taskID:int; query: searchText?:str → RTWLListResult[]
+- `GET /Tasks/{taskId}/completedWorks/{completedWorkID}/marking-codes` — Возвращает коды маркировки для выполненной работы (все материалы). · коды: 200, 204 · примеры
   ← path: taskId:int, completedWorkId:int → MarkingCodesListResult
-- `GET /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/{materialID}/marking-codes` — Возвращает коды маркировки для конкретного материала в выполненной работе. · права: CompletedWorkMaterialsList · коды: 200, 204 · примеры
-  ← path: taskId:int, completedWorkId:int, materialId:int; query: warehouseID?:int → MarkingCodesListResult
-- `GET /Tasks/{taskId}/marking-codes` — Возвращает коды маркировки для заявки (все выполненные работы). · права: TaskGet · коды: 200, 204 · примеры
+- `GET /Tasks/{taskId}/completedWorks/{completedWorkID}/materials/{materialID}/marking-codes` — Возвращает коды маркировки для конкретного материала в выполненной работе. · коды: 200, 204 · примеры
+  ← path: taskId:int, completedWorkId:int, materialId:int → MarkingCodesListResult
+- `GET /Tasks/{taskId}/marking-codes` — Возвращает коды маркировки для заявки (все выполненные работы). · коды: 200, 204 · примеры
   ← path: taskId:int → MarkingCodesListResult
 
 ## TemplateQuickResponse
-- `GET /TemplateQuickResponse` — Возвращает список быстрых ответов · права: QuickResponseList · paginated · коды: 200, 206
-  ← query: searchText?:str, isDeleted?:enum(true, false), taskTypeID?:int → map<TemplateQuickResponse.ListResult>
-- `GET /TemplateQuickResponse/{id}` — Возвращает быстрый ответ · права: QuickResponseGet · коды: 200
-  ← path: id:int → TemplateQuickResponse.GetResult
+- `GET /TemplateQuickResponse` — Возвращает список быстрых ответов · коды: 200
+  ← query: searchText?:str → map<RTQRListResult>
+- `GET /TemplateQuickResponse/{id}` — Возвращает быстрый ответ · коды: 200
+  ← path: id:int → RTQRGetResult
 
 ## WorkTypes
-- `GET /WorkTypes` — Возвращает список видов работ. · права: WorkTypeList · paginated · коды: 200, 206
-  ← query: searchText?:str, assetID?:int, taskTypeID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false), erpID?:str → map<WorkTypes.ListResult>
-- `GET /WorkTypes/{id}` — Возвращает данные для вида работы. · права: WorkTypeGet · paginated · коды: 200, 206, 500
-  ← path: id:int → WorkTypes.GetResult
-- `GET /WorkTypes/{id}/taskTypes` — Возвращает список относящихся к виду работ типов задач · права: TaskTypesList · paginated · коды: 202, 206
-  ← path: id:int → IdNameEntity<Byte>[]
-- `GET /WorkTypes/{parentWorkTypeID}/workTypes` — Возвращает список дочерних видов работ (вниз по графу). · права: WorkTypeList · paginated · коды: 200, 206, 500
-  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
-- `GET /WorkTypes/{parentWorkTypeID}/workTypes/all` — Возвращает список всех дочерних видов работ (вниз по графу). · права: WorkTypeList · paginated · коды: 200, 206, 500
-  ← path: parentWorkTypeID:int; query: searchText?:str, assetID?:int, workTypeID?:int, contractID?:int, criticalityID?:int, checkListID?:int, isPublished?:enum(true, false) → map<WorkTypes.ListResult>
-- `GET /WorkTypes/{workTypeID}/checkLists` — Возвращает список чек-листов вида работ · права: WorkTypeCheckListList · paginated · коды: 200, 206
-  ← path: workTypeID:int → map<CheckLists.GetResult[]>
+- `GET /WorkTypes` — Возвращает список видов работ. · коды: 200
+  ← query: searchText?:str → map<RWTListResult>
+- `GET /WorkTypes/{id}` — Возвращает данные для вида работы. · коды: 200, 500
+  ← path: id:int → RWTGetResult
+- `GET /WorkTypes/{id}/taskTypes` — Возвращает список относящихся к виду работ типов задач · коды: 202
+  ← path: id:int → IdNameEntityOfByte[]
+- `GET /WorkTypes/{parentWorkTypeID}/workTypes` — Возвращает список дочерних видов работ (вниз по графу). · коды: 200, 500
+  ← path: parentWorkTypeID:int; query: searchText?:str → map<RWTListResult>
+- `GET /WorkTypes/{parentWorkTypeID}/workTypes/all` — Возвращает список всех дочерних видов работ (вниз по графу). · коды: 200, 500
+  ← path: parentWorkTypeID:int; query: searchText?:str → map<RWTListResult>
+- `GET /WorkTypes/{workTypeID}/checkLists` — Возвращает список чек-листов вида работ · коды: 200
+  ← path: workTypeID:int → map<RCLGetResult[]>
