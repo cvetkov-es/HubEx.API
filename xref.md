@@ -505,15 +505,15 @@
 - [WH · POST /Materials/{materialID}/attachments/upload/fromForm](endpoints/WH.md)
 - [WH · POST /Materials/{materialID}/attachments](endpoints/WH.md)
 - [WORK · GET /Tasks/{taskID}/attachments/{attachmentID}](endpoints/WORK.md)
-- [WORK · GET /Tasks/{taskID}/attachments](endpoints/WORK.md) → WORK:map<Common.ListAttachmentResult>
-- [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/attachments](endpoints/WORK.md) → WORK:map<Common.ListAttachmentResult>
+- [WORK · GET /Tasks/{taskID}/attachments](endpoints/WORK.md) → WORK:map<RCListAttachmentResult>
+- [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/attachments](endpoints/WORK.md) → WORK:map<RCListAttachmentResult>
 - [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments/{attachmentID}](endpoints/WORK.md)
-- [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments](endpoints/WORK.md) → WORK:map<Common.ListAttachmentResult>
+- [WORK · GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/{taskCheckListResultID}/attachments](endpoints/WORK.md) → WORK:map<RCListAttachmentResult>
 - [WORK · GET /Tasks/{taskID}/completedWorks/attachments](endpoints/WORK.md) → WORK:ListAttachmentForCompletedWorkResult[]
 - [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments/{attachmentID}](endpoints/WORK.md)
 - [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attachments](endpoints/WORK.md) → WORK:ListAttachmentForCompletedWorkResult[]
-- [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/attachments](endpoints/WORK.md) → WORK:map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
-- [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}/attachments](endpoints/WORK.md) → WORK:map<CompletedWorkAttributeAttachment.ListAttachmentResult[]>
+- [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/attachments](endpoints/WORK.md) → WORK:map<RCWAAListAttachmentResult[]>
+- [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/attributes/{attributeID}/attachments](endpoints/WORK.md) → WORK:map<RCWAAListAttachmentResult[]>
 - [WORK · GET /Tasks/{taskID}/conversations/{taskConversationID}/attachments/{attachmentID}](endpoints/WORK.md)
 
 ### attributelistofvalues
@@ -660,10 +660,10 @@
 - [WORK · DELETE /Tasks/{taskID}/checkLists](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes/{workTypeID}/checkLists/{checkListID}](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes/{workTypeID}/checkLists](endpoints/WORK.md)
-- [WORK · GET /CheckLists/{id}](endpoints/WORK.md) → WORK:map<CheckLists.GetResult>
-- [WORK · GET /CheckLists](endpoints/WORK.md) → WORK:map<CheckLists.ListResult>
+- [WORK · GET /CheckLists/{id}](endpoints/WORK.md) → WORK:map<RCLGetResult>
+- [WORK · GET /CheckLists](endpoints/WORK.md) → WORK:map<RCLListResult>
 - [WORK · GET /Tasks/{taskID}/checkLists](endpoints/WORK.md) → WORK:map<TaskCheckListResult>
-- [WORK · GET /WorkTypes/{workTypeID}/checkLists](endpoints/WORK.md) → WORK:map<CheckLists.GetResult[]>
+- [WORK · GET /WorkTypes/{workTypeID}/checkLists](endpoints/WORK.md) → WORK:map<RCLGetResult[]>
 - [WORK · POST /CheckLists/{checkListID}/assign](endpoints/WORK.md)
 - [WORK · POST /CheckLists](endpoints/WORK.md)
 - [WORK · POST /Tasks/{taskID}/checkLists/{taskCheckListID}/upload/fromForm](endpoints/WORK.md)
@@ -774,8 +774,8 @@
 - [SC · POST /ServiceContract/{contractID}/contacts](endpoints/SC.md)
 - [SC · PUT /ServiceContract/{contractID}/contacts/{contactID}](endpoints/SC.md)
 - [WORK · DELETE /Tasks/{taskID}/contacts/{contactID}](endpoints/WORK.md)
-- [WORK · GET /Tasks/{taskID}/contacts/{contactID}](endpoints/WORK.md) → WORK:TaskContacts.GetResult
-- [WORK · GET /Tasks/{taskID}/contacts](endpoints/WORK.md) → WORK:map<TaskContacts.ListResult>
+- [WORK · GET /Tasks/{taskID}/contacts/{contactID}](endpoints/WORK.md) → WORK:RTCGetResult
+- [WORK · GET /Tasks/{taskID}/contacts](endpoints/WORK.md) → WORK:map<RTCListResult>
 
 ### content
 
@@ -937,7 +937,7 @@
 
 ### groupby
 
-- [WORK · GET /Tasks/groupBy/geoHash](endpoints/WORK.md) → WORK:TaskGroupByResult<ClusterResult>[]
+- [WORK · GET /Tasks/groupBy/geoHash](endpoints/WORK.md) → WORK:TaskGroupByResultOfClusterResult[]
 
 ### image
 
@@ -1093,7 +1093,7 @@
 - [WORK · DELETE /Tasks/{taskID}/completedWorks/{completedWorkID}/materials](endpoints/WORK.md)
 - [WORK · GET /Tasks/{taskID}/completedWorks/materials](endpoints/WORK.md) → WORK:map<CompletedWorkMaterialResult>
 - [WORK · GET /Tasks/{taskID}/completedWorks/{completedWorkID}/materials](endpoints/WORK.md) → WORK:CompletedWorkMaterialResult
-- [WORK · GET /Tasks/{taskID}/materials](endpoints/WORK.md) → WORK:map<TaskMaterials.ListResult>
+- [WORK · GET /Tasks/{taskID}/materials](endpoints/WORK.md) → WORK:map<RTMListResult>
 - [WORK · POST /Tasks/completedWorks/materials](endpoints/WORK.md)
 - [WORK · PUT /Tasks/completedWorks/materials](endpoints/WORK.md)
 
@@ -1334,7 +1334,7 @@
 
 ### requestmethods
 
-- [WORK · GET /RequestMethods](endpoints/WORK.md) → WORK:map<RequestMethods.ListResult>
+- [WORK · GET /RequestMethods](endpoints/WORK.md) → WORK:map<RRMListResult>
 
 ### requirements
 
@@ -1499,8 +1499,8 @@
 
 - [WORK · DELETE /TaskActualities/{id}](endpoints/WORK.md)
 - [WORK · DELETE /TaskActualities](endpoints/WORK.md)
-- [WORK · GET /TaskActualities/{id}](endpoints/WORK.md) → WORK:TaskActualities.ListResult
-- [WORK · GET /TaskActualities](endpoints/WORK.md) → WORK:map<TaskActualities.ListResult>
+- [WORK · GET /TaskActualities/{id}](endpoints/WORK.md) → WORK:RTAListResult
+- [WORK · GET /TaskActualities](endpoints/WORK.md) → WORK:map<RTAListResult>
 - [WORK · POST /TaskActualities](endpoints/WORK.md)
 - [WORK · PUT /TaskActualities](endpoints/WORK.md)
 
@@ -1560,7 +1560,7 @@
 
 ### taskorderby
 
-- [WORK · GET /TaskOrderBy](endpoints/WORK.md) → WORK:map<TaskOrderBy.ListResult>
+- [WORK · GET /TaskOrderBy](endpoints/WORK.md) → WORK:map<RTOBListResult>
 
 ### taskratings
 
@@ -1582,7 +1582,7 @@
 - [WORK · GET /Tasks/{taskID}/checkCompanyCodeUsed](endpoints/WORK.md) → WORK:bool
 - [WORK · GET /Tasks/{taskID}/meta](endpoints/WORK.md) → WORK:TaskTypeFormMetadataResult
 - [WORK · GET /Tasks/{taskID}](endpoints/WORK.md) → WORK:DetailedInfoResult
-- [WORK · GET /Tasks](endpoints/WORK.md) → WORK:map<Tasks.ListResult>
+- [WORK · GET /Tasks](endpoints/WORK.md) → WORK:map<RTListResult>
 - [WORK · HEAD /Tasks](endpoints/WORK.md)
 - [WORK · PATCH /Tasks/{taskID}](endpoints/WORK.md)
 - [WORK · POST /Tasks/{taskID}/autoStaginging](endpoints/WORK.md)
@@ -1663,8 +1663,8 @@
 
 - [WORK · DELETE /TaskStatuses/{id}](endpoints/WORK.md)
 - [WORK · DELETE /TaskStatuses](endpoints/WORK.md)
-- [WORK · GET /TaskStatuses/{id}](endpoints/WORK.md) → WORK:TaskStatuses.ListResult
-- [WORK · GET /TaskStatuses](endpoints/WORK.md) → WORK:map<TaskStatuses.ListResult>
+- [WORK · GET /TaskStatuses/{id}](endpoints/WORK.md) → WORK:RTSListResult
+- [WORK · GET /TaskStatuses](endpoints/WORK.md) → WORK:map<RTSListResult>
 - [WORK · POST /TaskStatuses](endpoints/WORK.md)
 - [WORK · PUT /TaskStatuses](endpoints/WORK.md)
 
@@ -1685,8 +1685,8 @@
 - [WORK · GET /TaskTemplates/download](endpoints/WORK.md)
 - [WORK · GET /TaskTemplates/{id}/download](endpoints/WORK.md)
 - [WORK · GET /TaskTemplates/{id}/public](endpoints/WORK.md) → WORK:GetPublicResult
-- [WORK · GET /TaskTemplates/{id}](endpoints/WORK.md) → WORK:TaskTemplates.GetResult
-- [WORK · GET /TaskTemplates](endpoints/WORK.md) → WORK:map<TaskTemplates.ListResult>
+- [WORK · GET /TaskTemplates/{id}](endpoints/WORK.md) → WORK:RTaskTemplatesGetResult
+- [WORK · GET /TaskTemplates](endpoints/WORK.md) → WORK:map<RTaskTemplatesListResult>
 - [WORK · HEAD /TaskTemplates](endpoints/WORK.md)
 - [WORK · POST /TaskTemplates](endpoints/WORK.md)
 - [WORK · PUT /TaskTemplates/{id}/publish](endpoints/WORK.md)
@@ -1712,9 +1712,9 @@
 - [WORK · DELETE /TaskTypes/{id}](endpoints/WORK.md)
 - [WORK · DELETE /TaskTypes](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes/{id}/taskTypes](endpoints/WORK.md)
-- [WORK · GET /TaskTypes/{id}](endpoints/WORK.md) → WORK:TaskTypes.ListResult
-- [WORK · GET /TaskTypes](endpoints/WORK.md) → WORK:map<TaskTypes.ListResult>
-- [WORK · GET /WorkTypes/{id}/taskTypes](endpoints/WORK.md) → WORK:IdNameEntity<Byte>[]
+- [WORK · GET /TaskTypes/{id}](endpoints/WORK.md) → WORK:RTaskTypesListResult
+- [WORK · GET /TaskTypes](endpoints/WORK.md) → WORK:map<RTaskTypesListResult>
+- [WORK · GET /WorkTypes/{id}/taskTypes](endpoints/WORK.md) → WORK:IdNameEntityOfByte[]
 - [WORK · POST /TaskTypes](endpoints/WORK.md)
 - [WORK · POST /WorkTypes/{id}/taskTypes](endpoints/WORK.md)
 - [WORK · PUT /TaskTypes](endpoints/WORK.md)
@@ -1741,8 +1741,8 @@
 ### templatequickresponse
 
 - [WORK · DELETE /TemplateQuickResponse](endpoints/WORK.md)
-- [WORK · GET /TemplateQuickResponse/{id}](endpoints/WORK.md) → WORK:TemplateQuickResponse.GetResult
-- [WORK · GET /TemplateQuickResponse](endpoints/WORK.md) → WORK:map<TemplateQuickResponse.ListResult>
+- [WORK · GET /TemplateQuickResponse/{id}](endpoints/WORK.md) → WORK:RTQRGetResult
+- [WORK · GET /TemplateQuickResponse](endpoints/WORK.md) → WORK:map<RTQRListResult>
 - [WORK · POST /TemplateQuickResponse](endpoints/WORK.md)
 - [WORK · PUT /TemplateQuickResponse](endpoints/WORK.md)
 
@@ -1984,7 +1984,7 @@
 
 ### watchlists
 
-- [WORK · GET /Tasks/{taskID}/watchLists](endpoints/WORK.md) → WORK:TaskWatchLists.ListResult[]
+- [WORK · GET /Tasks/{taskID}/watchLists](endpoints/WORK.md) → WORK:RTWLListResult[]
 
 ### webhooks
 
@@ -2021,11 +2021,11 @@
 - [WORK · DELETE /TaskTypes/{id}/workTypes](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes/{id}](endpoints/WORK.md)
 - [WORK · DELETE /WorkTypes](endpoints/WORK.md)
-- [WORK · GET /TaskTypes/{id}/workTypes](endpoints/WORK.md) → WORK:IdNameEntity<Int16>[]
-- [WORK · GET /WorkTypes/{id}](endpoints/WORK.md) → WORK:WorkTypes.GetResult
-- [WORK · GET /WorkTypes/{parentWorkTypeID}/workTypes/all](endpoints/WORK.md) → WORK:map<WorkTypes.ListResult>
-- [WORK · GET /WorkTypes/{parentWorkTypeID}/workTypes](endpoints/WORK.md) → WORK:map<WorkTypes.ListResult>
-- [WORK · GET /WorkTypes](endpoints/WORK.md) → WORK:map<WorkTypes.ListResult>
+- [WORK · GET /TaskTypes/{id}/workTypes](endpoints/WORK.md) → WORK:IdNameEntityOfShort[]
+- [WORK · GET /WorkTypes/{id}](endpoints/WORK.md) → WORK:RWTGetResult
+- [WORK · GET /WorkTypes/{parentWorkTypeID}/workTypes/all](endpoints/WORK.md) → WORK:map<RWTListResult>
+- [WORK · GET /WorkTypes/{parentWorkTypeID}/workTypes](endpoints/WORK.md) → WORK:map<RWTListResult>
+- [WORK · GET /WorkTypes](endpoints/WORK.md) → WORK:map<RWTListResult>
 - [WORK · POST /TaskTypes/{id}/workTypes](endpoints/WORK.md)
 - [WORK · POST /WorkTypes](endpoints/WORK.md)
 - [WORK · PUT /WorkTypes/publish](endpoints/WORK.md)
