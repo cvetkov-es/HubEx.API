@@ -15,9 +15,9 @@
 
 ## Сервисы
 
-- [ADM](endpoints/ADM.md): пользователи (CRUD, роли, участки, навыки), тенанты, лицензии, приглашения · [схемы](schemas/ADM.md) · [примеры](examples/ADM.md)
+- [ADM](endpoints/ADM.md): пользователи (CRUD, роли, участки, навыки), тенанты, лицензии, приглашения · [схемы](schemas/ADM.md) · [примеры](examples/ADM.md) · [грабли](notes/ADM.md)
 - [AUTH](endpoints/AUTH.md): регистрация, верификация email/телефона, смена пароля, logout · [схемы](schemas/AUTH.md) · [примеры](examples/AUTH.md)
-- [AUTHZ](endpoints/AUTHZ.md): получение/обновление access_token и service_token · [схемы](schemas/AUTHZ.md) · [примеры](examples/AUTHZ.md)
+- [AUTHZ](endpoints/AUTHZ.md): получение/обновление access_token и service_token · [схемы](schemas/AUTHZ.md) · [примеры](examples/AUTHZ.md) · [грабли](notes/AUTHZ.md)
 - [COMMON](endpoints/COMMON.md): вложения (загрузка файлов), валюты, часовые пояса, страны, локализация · [схемы](schemas/COMMON.md) · [примеры](examples/COMMON.md) · [грабли](notes/COMMON.md)
 - [ES](endpoints/ES.md): объекты/оборудование (CRUD, иерархия, атрибуты), компании, участки, навыки, теги, QR-коды · [схемы](schemas/ES.md) · [примеры](examples/ES.md) · [грабли](notes/ES.md)
 - [EXPORT](endpoints/EXPORT.md): экспорт в Excel: заявки, пользователи, объекты, компании, материалы · [схемы](schemas/EXPORT.md) · [примеры](examples/EXPORT.md)
@@ -30,7 +30,7 @@
 - [REPORT](endpoints/REPORT.md): отчёты: объекты, исполнители, компании, стадии, время реакции, Power BI · [схемы](schemas/REPORT.md) · [примеры](examples/REPORT.md)
 - [SC](endpoints/SC.md): договоры обслуживания: привязка объектов, вложения, атрибуты · [схемы](schemas/SC.md) · [примеры](examples/SC.md) · [грабли](notes/SC.md)
 - [SLA](endpoints/SLA.md): критичности, правила дедлайнов, атрибуты SLA · [схемы](schemas/SLA.md) · [примеры](examples/SLA.md)
-- [TSTG](endpoints/TSTG.md): жизненные циклы заявок: стадии, переходы, ветки, автоназначение · [схемы](schemas/TSTG.md) · [примеры](examples/TSTG.md)
+- [TSTG](endpoints/TSTG.md): жизненные циклы заявок: стадии, переходы, ветки, автоназначение · [схемы](schemas/TSTG.md) · [примеры](examples/TSTG.md) · [грабли](notes/TSTG.md)
 - [UI](endpoints/UI.md): компоненты интерфейса, фильтры, шаблоны раскладки · [схемы](schemas/UI.md) · [примеры](examples/UI.md)
 - [WH](endpoints/WH.md): склады, материалы, приход/расход/перемещение, инвентаризация, штрихкоды · [схемы](schemas/WH.md) · [примеры](examples/WH.md)
 - [WORK](endpoints/WORK.md): заявки (создание, поиск, стадии, назначение), чек-листы, работы, акты, виды работ · [схемы](schemas/WORK.md) · [примеры](examples/WORK.md) · [грабли](notes/WORK.md)
