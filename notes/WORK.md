@@ -61,6 +61,12 @@
 
 ⚠ `GET /Tasks/{taskID}/conversations` принимает `isExternal=true|false` — в swagger параметра нет, но фильтр работает; пусто — `204`. `id` сообщения — **локальный** номер в чате заявки (1..N), не глобальный. Число сообщений без вычитки — `HEAD /Tasks/{taskID}/conversations` → `Content-Range: items=0-0/N` (2026-10-12, 2026-10-15, тенант 192).
 
+⚠ Стоимость строки `GET /Tasks/{taskID}/completedWorks` отдаёт во вложенном `workType.cost` (и `workType.costCurrencyID`) — это стоимость СТРОКИ (`CompletedWork.WorkTypeCost`), а не цена вида работ; у строки без стоимости ключа `cost` нет. Своего поля стоимости у `CompletedWorkResult` нет. Цена вида работ, если задана, кладётся в новую строку (SQL по 18 тенантам, 90 дней — 100 %). (2026-11-18, тенант 1)
+
+⚠ `PUT /CompletedWorks` ЗАМЕНЯЕТ строку целиком: непереданные `quantity`, `notes`, `started`, `finished`, единица измерения становятся пустыми; исполнители строки сохраняются. `maintainedAssetID` обязателен (без него, `null`, `0` — `409 ParameterOutOfRange`; `POST /CompletedWorks` без него — `500`). Применяется сразу (`202`, видно в чтении через 0,3 с). `X-Concurrency-Stamp` не понимает (тот же стамп с другим телом применился). `workTypeCost: null` стирает стоимость. Правка на финальной стадии заявки не измерена. (2026-11-18, тенант 1)
+
+⚠ Доп.поле «значение из списка» с доменом «Компания» в `GET /TaskAttributes?taskID&attributeID`: `value` — ID компании строкой, мультивыбор — через `|` (`"218|268|269"`); название — `listOfValues[id]`, JSON-строка `{"ID","Type","Name"}`. (2026-11-18, тенант 1)
+
 ⚠ `id` выполненной работы в `completedWorks` заявки — тоже локальный. `GET /Tasks/{taskID}/completedWorks/materials` — словарь по `completedWorkID`, `Range` игнорирует (`200` без `Content-Range`). Вложения работ — только `GET /Tasks/{taskID}/completedWorks/attachments`, в «Файлах» заявки их нет (2026-10-15, тенант 192).
 
 ⚠ `GET /Tasks/{taskID}/checkLists/{taskCheckListID}/results/v2`: у нетронутого пункта `isChecked: false`, `value: []` — `null` («не обработан» по схеме) не встретился ни разу на 842 пунктах; «не трогали» и «сняли флажок» не различить (2026-10-06, тенант 1).
