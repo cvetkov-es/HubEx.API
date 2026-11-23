@@ -9,6 +9,12 @@
 
 ⚠ То же самое для «невыполненная заявка» — `isCompleted` и `isDeleted` тоже независимы (стадии «Выполнена»/«Закрыта» разные). `isCompleted=false` без `isDeleted=false` тоже включает мягко удалённые. Правило общее: любой флаг из `taskFlags` (`isClosed`, `isCompleted`, ...) нужно комбинировать с `isDeleted=false`, если нужны строго активные заявки (проверено эмпирически на тенанте 342, 2026-07-06: 8132 против 13430).
 
+⚠ `GET /Tasks/{taskID}` незаполненные поля НЕ отдаёт вовсе — ключа нет, а не `null`: `contactPerson`/`contactPhone`/`contactEmail` из `DetailedInfoResult` не пришли ни в одном из 841 ответа (тенант 206, 2026-11-17). Отсутствие ключа в ответе — не «поля нет в схеме»; сверять со схемой.
+
+⚠ `GET /Tasks/{taskID}/attachments` — словарь, ключ — ID ВЛОЖЕНИЯ (не связки): вложение родителя, привязанное к дочерней через `POST /TaskAttachments` (тело `[{taskID, data: ["<ID>"]}]`), у дочерней лежит под тем же ключом (тенант 206, 2026-11-17). Пустой `data` — `409 ParameterNull`.
+
+⚠ `POST /TaskAttributes` в заявку, только что переведённую на финальную стадию (`isFinalStage: true`), проходит без ошибки (ответ `{}` через ~6 с после перехода; тенант 206, 2026-11-23, исполнения n8n). `GET /Tasks/{taskID}/stages/next` — словарь «ID стадии → стадия»; у открытой заявки финальная стадия в нём есть.
+
 ⚠ `/Tasks/count` капризна к параметрам: без `dateFrom`/`dateTill` — `500 SqlDateTime overflow`; с ними вместе с `creationFrom`/`creationTill` — `409 InvalidDatePeriod`. Для простого «сколько заявок за период» надёжнее `HEAD /Tasks ?creationFrom&creationTill` и читать `Content-Range: items=0-0/{total}` из заголовка ответа.
 
 ⚠ `HEAD /Tasks` — отдаёт `Content-Range: items=0-0/{total}` **и без заголовка `Range`**, в отличие от `GET`-списков (общее правило «без `Range` нет `Content-Range`» в [overview.md](../overview.md) проверено на `GET`). Пустая выборка — тоже `200` с `items=0-0/0`, а не `204`. Проверено живыми вызовами 2026-10-12, тенант 185: `HEAD /Tasks?contractID=1&isCompleted=true&isDeleted=false` без `Range` и с `Range: items=1-1` → одинаково `200`, `items=0-0/1`; `contractID=2` → `200`, `items=0-0/0`.
