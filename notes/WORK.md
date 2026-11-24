@@ -76,6 +76,8 @@
 
 ⚠ `PATCH /Tasks/{taskID}` срока: `[{"field": "Deadline", "value": …}]` → `202`, применение меньше чем за 2 с; значение без пояса понимается как UTC, `+03:00` учитывается, `null` очищает срок. Читается срок из `timesheet.deadline` (UTC без пояса) (2026-11-19, тенант 1).
 
+⚠ `GET /Tasks/{taskID}/completedWorks/{id}` отдаёт **объект** выполненной работы (не массив, вопреки схеме), несуществующая работа — `204` без тела, не `500` (2026-11-24, тенант 1).
+
 ⚠ `POST /CompletedWorks` без `MaintainedAssetID` — `500 UnableToResolve` («Cannot insert the value NULL into column 'MaintainedAssetID'»), работа не создаётся: поле обязательно, хотя в схеме нет. `POST /Tasks` с объектом, который не опубликован, — `409 AssetNotPublished` (2026-11-24, тенант 1).
 
 ⚠ `PUT /Tasks/completedWorks/materials` по строке `(materialID, warehouseID, inventoryID)`, которая уже есть, **задаёт** количество (2 → 5 → 3), а не прибавляет; `202`, `consumed` строки обновляется. `POST` той же тройки — `204` без изменений: количество не прибавляется и не меняется, ошибки нет. `DELETE` строки — `202`, у выполненной работы без материалов `GET …/completedWorks/materials` — `204`. `GET …/completedWorks/{id}/materials` отдаёт строки без `markingCodesInfo`, `GET …/completedWorks/materials` — с `markingCodesInfo.scannedCount` (2026-11-24, тенант 1).
