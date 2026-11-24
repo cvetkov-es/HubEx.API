@@ -76,6 +76,16 @@
 
 ⚠ `PATCH /Tasks/{taskID}` срока: `[{"field": "Deadline", "value": …}]` → `202`, применение меньше чем за 2 с; значение без пояса понимается как UTC, `+03:00` учитывается, `null` очищает срок. Читается срок из `timesheet.deadline` (UTC без пояса) (2026-11-19, тенант 1).
 
+⚠ `POST /CompletedWorks` без `MaintainedAssetID` — `500 UnableToResolve` («Cannot insert the value NULL into column 'MaintainedAssetID'»), работа не создаётся: поле обязательно, хотя в схеме нет. `POST /Tasks` с объектом, который не опубликован, — `409 AssetNotPublished` (2026-11-24, тенант 1).
+
+⚠ `PUT /Tasks/completedWorks/materials` по строке `(materialID, warehouseID, inventoryID)`, которая уже есть, **задаёт** количество (2 → 5 → 3), а не прибавляет; `202`, `consumed` строки обновляется. `POST` той же тройки — `204` без изменений: количество не прибавляется и не меняется, ошибки нет. Строки одного материала на разных складах — разные строки. `DELETE` строки — `202`, у выполненной работы без материалов `GET …/completedWorks/materials` — `204`. `GET …/completedWorks/{id}/materials` отдаёт строки без `markingCodesInfo`, `GET …/completedWorks/materials` — с `markingCodesInfo.scannedCount` (2026-11-24, тенант 1).
+
+⚠ Коды маркировки: ручки принимают код у **немаркируемого** материала (`materialIsMarkable: false`) и не проверяют формат — годится любая строка. Число активных кодов у строки не больше её количества: `POST` сверх количества — `MarkingCodeQuantityExceeded`; `PUT` количества ниже числа кодов — `202`, лишние коды молча снимаются (было 3 кода при количестве 5, после `PUT` 1 — остался 1). `POST …/materials/marking-codes`: новый код — `action: INSERT`, ранее снятый — `UPDATE`; код, уже активный (в той же заявке или в другой), — `errors[].reason = MarkingCodeAlreadyExists` с `existing{taskID, completedWorkID, …}`; повтор того же кода в той же заявке не идемпотентен — это тоже ошибка. Часть кодов принята — `200` с `items` и `errors`; ни одного — `409` с `errors` (2026-11-24, тенант 1).
+
+⚠ `PUT …/materials/marking-codes` **переносит** активный код между заявками: код был в заявке A, `PUT` в заявке B — `200`, у A кода нет, у B есть; `receivedAtUtc` обновляется (у пути по `materialID` перенос не проверялся). Переносит и на строку другого склада того же материала, и на строку другого материала. Кода нет или он снят — `409`, `errors[].reason = MarkingCodeNotFound` («не найден или не активен») (2026-11-24, тенант 1).
+
+⚠ `DELETE` строки материала снимает её коды (мягко: через <0,7 с `GET /Tasks/{id}/marking-codes` — `204`; сразу после `DELETE` чтение может ещё показать коды). Возврат строки `POST` коды не возвращает, повторный `POST` кода — `action: UPDATE`. `DELETE /Tasks/{id}/completedWorks/marking-codes` — `200 {taskID, deletedCount}`, когда кодов нет — `204` без тела. Адресное удаление `DELETE …/materials/marking-codes` и `…/materials/{materialID}/marking-codes` (тело — `codes[]`, `warehouseID`, `inventoryID`) — `200`, `deleted[]` и `notFound[]` (несуществующий код не ошибка) (2026-11-24, тенант 1).
+
 ## Наиболее используемые
 
 `GET /Tasks`, `POST /Tasks`, `GET /Tasks/{taskID}`, `PATCH /Tasks/{taskID}`, `POST /TaskStagingHistory`, `GET /Tasks/{taskID}/stages/next`, `POST /CompletedWorks` — расшифровка в [overview.md](../overview.md).
