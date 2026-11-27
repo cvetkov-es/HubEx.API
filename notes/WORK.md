@@ -13,6 +13,8 @@
 
 ⚠ `GET /Tasks/{taskID}/attachments` — словарь, ключ — ID ВЛОЖЕНИЯ (не связки): вложение родителя, привязанное к дочерней через `POST /TaskAttachments` (тело `[{taskID, data: ["<ID>"]}]`), у дочерней лежит под тем же ключом (тенант 206, 2026-11-17). Пустой `data` — `409 ParameterNull`.
 
+⚠ `POST /TaskAttachments`: повтор привязки, которую HubEx уже выполнил (первая попытка оборвалась у клиента по таймауту чтения), — `409 [{"code": "AlreadyDone", "message": "Операция была выполнена ранее для Attachment"}]`, связка на месте. Что даёт отказ — `X-Concurrency-Stamp` повтора или сама существующая связка, по одному случаю не различить (2026-11-27, тенант 206, наблюдение на бою).
+
 ⚠ `POST /TaskAttributes` в заявку, только что переведённую на финальную стадию (`isFinalStage: true`), проходит без ошибки (ответ `{}` через ~6 с после перехода; тенант 206, 2026-11-23, исполнения n8n). `GET /Tasks/{taskID}/stages/next` — словарь «ID стадии → стадия»; у открытой заявки финальная стадия в нём есть.
 
 ⚠ `/Tasks/count` капризна к параметрам: без `dateFrom`/`dateTill` — `500 SqlDateTime overflow`; с ними вместе с `creationFrom`/`creationTill` — `409 InvalidDatePeriod`. Для простого «сколько заявок за период» надёжнее `HEAD /Tasks ?creationFrom&creationTill` и читать `Content-Range: items=0-0/{total}` из заголовка ответа.
